@@ -1,5 +1,5 @@
 # Advanced-Lab-Course
-# Beginner-Practical-Training-2
+
 This repository contains the data-analysis work and the evaluation of the experiments in Python
 for the mandatory physics lab course for physics students ([FP](https://www.physi.uni-heidelberg.de/Einrichtungen/FP/))
 i attended at Heidelberg University during the year 2018.
