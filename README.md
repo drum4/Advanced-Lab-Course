@@ -16,4 +16,4 @@ It covered the following experiments:
 - ### Measurement Methods:
   - F80 Szintillatoren (scintillators)
   
-&copy; Nils Schmitt ([@drum4](https://github.com/drum4)) and Timo Kleinbek
+&copy; Nils Schmitt ([@drum4](https://github.com/drum4)) and Timo Kleinbek ([@TimoKleinbek](https://github.com/TimoKleinbek))
