@@ -4,7 +4,7 @@ This repository contains the data-analysis work and the evaluation of the experi
 for the mandatory physics lab course for physics students ([FP](https://www.physi.uni-heidelberg.de/Einrichtungen/FP/))
 i attended at Heidelberg University during the year 2018.
 
-All the code was written by my lab partner Timo Kleinbek
+All the code was written by my lab partner ([@TimoKleinbek](https://github.com/TimoKleinbek))
 or by myself ([@drum4](https://github.com/drum4)).
 
 Most of the comments, titles and informations are in german language, because the course was held in german.
