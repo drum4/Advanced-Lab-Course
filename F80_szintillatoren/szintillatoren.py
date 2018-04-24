@@ -23,6 +23,7 @@ plt.plot(a, linestyle='-', marker='.',
 plt.xlabel('Channel', fontsize=13)
 plt.ylabel('Counts', fontsize=13)
 plt.title('Abb. [3]: Coarse Gain 4', fontsize=16)
+plt.savefig('figures//f80_abb_3.pdf',format='pdf')
 plt.show()
 
 raw = np.loadtxt('data//verstaerkung_64_t60_raw.dat',delimiter = '\t', unpack=True)
@@ -32,6 +33,7 @@ plt.plot(a, linestyle='None', marker='.',
 plt.xlabel('Channel', fontsize=13)
 plt.ylabel('Counts', fontsize=13)
 plt.title('Abb. [4]: Coarse Gain 64', fontsize=16)
+plt.savefig('figures//f80_abb_4.pdf',format='pdf')
 plt.show()
 
 raw = np.loadtxt('data//verstaerkung_128_t62_raw.dat',delimiter = '\t', unpack=True)
@@ -41,12 +43,17 @@ plt.plot(a, linestyle='None', marker='.',
 plt.xlabel('Channel', fontsize=13)
 plt.ylabel('Counts', fontsize=13)
 plt.title('Abb. [5]: Coarse Gain 128', fontsize=16)
-plt.savefig('f80_abb_1.pdf',format='pdf')
+plt.text(900,200,'%s'
+         %('Photopeak'), 
+         bbox={'facecolor':'white', 'alpha':0.5, 'pad':10}, 
+         fontsize=13)
+plt.legend(frameon=True, fontsize = 12)
+plt.savefig('figures//f80_abb_5.pdf',format='pdf')
 plt.show()
 ####################
 #Aufgabe 1#
 ####################
-#UNnütz
+
 
 f = np.array([1,2,3,4,5,6,7,8,9])
 plt.plot(f,f**2, linestyle='None', marker='.',
