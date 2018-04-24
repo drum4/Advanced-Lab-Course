@@ -41,10 +41,12 @@ plt.plot(a, linestyle='None', marker='.',
 plt.xlabel('Channel', fontsize=13)
 plt.ylabel('Counts', fontsize=13)
 plt.title('Abb. [5]: Coarse Gain 128', fontsize=16)
+plt.savefig('f80_abb_1.pdf',format='pdf')
 plt.show()
 ####################
 #Aufgabe 1#
 ####################
+#UNnütz
 
 f = np.array([1,2,3,4,5,6,7,8,9])
 plt.plot(f,f**2, linestyle='None', marker='.',
