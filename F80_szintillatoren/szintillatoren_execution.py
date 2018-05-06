@@ -168,30 +168,30 @@ plt.plot(a, marker='.', linestyle='-',
 plt.xlabel('Channel', fontsize=13)
 plt.ylabel('Counts', fontsize=13)
 plt.title('Abb. [13]: Verschiedene Delays', fontsize=16)
-plt.text(212,1770,'%s'%('16'),
+plt.text(200,1850,'%s'%('16'),
          fontsize=13)
-plt.arrow(930, 290, 40, -70, shape='full', width=3, 
+plt.arrow(220, 1810, 40, -80, shape='full', width=3, 
           length_includes_head=True, color='black')
-plt.text(312,1800,'%s'%('18'),
+plt.text(300,1850,'%s'%('18'),
          fontsize=13)
-plt.arrow(790, 110, 50, -40, shape='full', width=3, 
+plt.arrow(315, 1810, 0, -180, shape='full', width=3, 
           length_includes_head=True, color='black')
-plt.text(370,1570,'%s'%('20'),
+plt.text(340,1600,'%s'%('20'),
          fontsize=13)
-plt.arrow(790, 110, 50, -40, shape='full', width=3, 
+plt.arrow(355, 1560, 0, -140, shape='full', width=3, 
           length_includes_head=True, color='black')
 plt.text(420,1600,'%s'%('24'),
          fontsize=13)
-plt.arrow(790, 110, 50, -40, shape='full', width=3, 
+plt.arrow(435, 1560, 0, -140, shape='full', width=3, 
           length_includes_head=True, color='black')
-plt.text(470,1740,'%s'%('26'),
+plt.text(460,1800,'%s'%('26'),
          fontsize=13)
-plt.arrow(790, 110, 50, -40, shape='full', width=3, 
+plt.arrow(475, 1760, 0, -300, shape='full', width=3, 
           length_includes_head=True, color='black')
 plt.text(600,1800,'%s'%('30/32'),
          fontsize=13)
-plt.arrow(790, 110, 50, -40, shape='full', width=3, 
+plt.arrow(590, 1900, -50, 80, shape='full', width=3, 
           length_includes_head=True, color='black')
 plt.savefig('figures//f80_abb_13.pdf',format='pdf')
-plt.show()
+#plt.show()
 plt.close()
