@@ -195,3 +195,8 @@ plt.arrow(590, 1900, -50, 80, shape='full', width=3,
 plt.savefig('figures//f80_abb_13.pdf',format='pdf')
 #plt.show()
 plt.close()
+
+
+
+###Es fehlt noch die Parrallele und Antiparalle
+#... welche Datei??
