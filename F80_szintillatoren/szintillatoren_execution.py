@@ -159,4 +159,39 @@ plt.savefig('figures//f80_abb_12.pdf',format='pdf')
 plt.close()
 
 
-#
+#Delays
+raw = np.loadtxt('data//delay_raw.dat', 
+                 delimiter = '\t', unpack=True)             
+a = raw[0:1025]
+plt.plot(a, marker='.', linestyle='-',
+            color='black', label='Messdaten')
+plt.xlabel('Channel', fontsize=13)
+plt.ylabel('Counts', fontsize=13)
+plt.title('Abb. [13]: Verschiedene Delays', fontsize=16)
+plt.text(212,1770,'%s'%('16'),
+         fontsize=13)
+plt.arrow(930, 290, 40, -70, shape='full', width=3, 
+          length_includes_head=True, color='black')
+plt.text(312,1800,'%s'%('18'),
+         fontsize=13)
+plt.arrow(790, 110, 50, -40, shape='full', width=3, 
+          length_includes_head=True, color='black')
+plt.text(370,1570,'%s'%('20'),
+         fontsize=13)
+plt.arrow(790, 110, 50, -40, shape='full', width=3, 
+          length_includes_head=True, color='black')
+plt.text(420,1600,'%s'%('24'),
+         fontsize=13)
+plt.arrow(790, 110, 50, -40, shape='full', width=3, 
+          length_includes_head=True, color='black')
+plt.text(470,1740,'%s'%('26'),
+         fontsize=13)
+plt.arrow(790, 110, 50, -40, shape='full', width=3, 
+          length_includes_head=True, color='black')
+plt.text(600,1800,'%s'%('30/32'),
+         fontsize=13)
+plt.arrow(790, 110, 50, -40, shape='full', width=3, 
+          length_includes_head=True, color='black')
+plt.savefig('figures//f80_abb_13.pdf',format='pdf')
+plt.show()
+plt.close()
