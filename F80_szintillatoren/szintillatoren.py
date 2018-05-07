@@ -1,7 +1,7 @@
 '''
-Created on 20.04.2018
+Created on 06.05.2018
 
-@author: Nils Schmitt
+@author: schmi
 '''
 import matplotlib.pyplot as plt
 import numpy as np
@@ -13,78 +13,34 @@ rc('font',**{'family':'serif','serif':['Linux Libertine O']})
 plt.rcParams['errorbar.capsize']=2
 
 
+################
+#Energiekalibrierung#
+################
 
+ch = np.array([250,495])
+ch_err = np.array([5,10])
+E = np.array([0.66166,1.3325])
+M = np.arange(1025)
 
-####################
-#Aufgabe 4.2#
-####################
-raw = np.loadtxt('data//verstaerkung_4_t62_raw.dat', 
-                 delimiter = '\t', unpack=True)
-a = raw[:1025]
-plt.plot(a, linestyle='-', marker='.',
-            color='black', label='Messdaten')
+def linear (x,a,b):
+    return a*x+b
+
+popt, pcov = curve_fit(linear, ch, E,
+                        absolute_sigma=True,
+                        sigma=ch_err)
+plt.errorbar(ch, E, xerr=ch_err, fmt=".", linewidth=1,
+              linestyle='', color='black',
+               label='Messpunkte mit Fehler')
 plt.xlabel('Channel', fontsize=13)
-plt.ylabel('Counts', fontsize=13)
-plt.title('Abb. [3]: Coarse Gain 4', fontsize=16)
-plt.savefig('figures//f80_abb_3.pdf',format='pdf')
-plt.show()
-
-raw = np.loadtxt('data//verstaerkung_64_t60_raw.dat', 
-                 delimiter = '\t', unpack=True)
-a = raw[0:1025]
-plt.plot(a, linestyle='None', marker='.',
-            color='black', label='Messdaten')
-plt.xlabel('Channel', fontsize=13)
-plt.ylabel('Counts', fontsize=13)
-plt.title('Abb. [4]: Coarse Gain 64', fontsize=16)
-plt.savefig('figures//f80_abb_4.pdf',format='pdf')
-plt.show()
-
-raw = np.loadtxt('data//verstaerkung_128_t62_raw.dat', 
-                delimiter = '\t', unpack=True)
-a = raw[0:1025]
-plt.plot(a, linestyle='None', marker='.',
-            color='black', label='Messdaten')
-plt.xlabel('Channel', fontsize=13)
-plt.ylabel('Counts', fontsize=13)
-plt.title('Abb. [5]: Coarse Gain 128', fontsize=16)
-plt.text(850,300,'%s'%('Photopeak'),
-         fontsize=13)
-plt.arrow(930, 290, 40, -70, shape='full', width=3, 
-          length_includes_head=True, color='black')
-plt.text(650,120,'%s'%('Compton-Effekt'),
-         fontsize=13)
-plt.arrow(790, 110, 50, -40, shape='full', width=3, 
-          length_includes_head=True, color='black')
+plt.ylabel('Energie [MeV]', fontsize=13)
+plt.title('Abb. [16]: Energie als Funktion der Kanäle',
+           fontsize=16)
+plt.plot(M, linear(M,*popt),
+         color='red', label='Linearer Fit')
+#plt.text(15000,5,'%s \n%s'%(steigung,chisquare_text),
+ #        bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
+  #        fontsize=13)
 plt.legend(frameon=True, fontsize = 12)
-plt.savefig('figures//f80_abb_5.pdf',format='pdf')
-plt.show()
-
-
-
-
-
-
-####################
-#Aufgabe 5#
-####################
-
-raw = np.loadtxt('data//verstaerkung_128_t62_raw.dat', 
-                delimiter = '\t', unpack=True)
-a = raw[0:1025]
-plt.plot(a, linestyle='None', marker='.',
-            color='black', label='Messdaten')
-plt.xlabel('Channel', fontsize=13)
-plt.ylabel('Counts', fontsize=13)
-plt.title('Abb. [5]: Coarse Gain 128', fontsize=16)
-plt.text(850,300,'%s'%('Photopeak'),
-         fontsize=13)
-plt.arrow(930, 290, 40, -70, shape='full', width=3, 
-          length_includes_head=True, color='black')
-plt.text(650,120,'%s'%('Compton-Effekt'),
-         fontsize=13)
-plt.arrow(790, 110, 50, -40, shape='full', width=3, 
-          length_includes_head=True, color='black')
-plt.legend(frameon=True, fontsize = 12)
-plt.savefig('figures//f80_abb_5.pdf',format='pdf')
-plt.show()
+plt.savefig('figures//f80_abb_16.pdf',format='pdf')
+#plt.show()
+plt.close()
