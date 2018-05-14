@@ -13,6 +13,28 @@ rc('font',**{'family':'serif','serif':['Linux Libertine O']})
 plt.rcParams['errorbar.capsize']=2
 
 
+#################
+#Photopeak bei verscheidenen Spannungen#
+#################
+V=np.array([450, 435, 420, 405, 380, 370])
+dV=np.array([1, 1, 1, 1, 1, 1])
+P=np.array([870, 737, 556, 410, 242, 193])
+dP=np.array([10, 20, 20, 15, 10, 10])
+M=np.arange(350,500,1)
+
+def linear (x,a,b):
+    return a*x+b
+
+popt, pcov = curve_fit(linear, V, P, absolute_sigma=True)
+plt.errorbar(V, P, xerr=dV, yerr=dP, fmt='.', linewidth=1, linestyle='', label='Messpunkte mit Fehler')
+plt.xlabel('Spannung [V]', fontsize=13)
+plt.ylabel('Pulse height [Channel]', fontsize=13)
+plt.title('Abb. [1]: Position des Photopeaks', fontsize=16)
+plt.plot(M, linear(M,*popt), color='red', label='Linearer Fit')
+plt.savefig('figures//f80_abb_1.pdf',format='pdf')
+plt.show()
+
+
 ################
 #Energiekalibrierung#
 ################
@@ -47,5 +69,22 @@ plt.text(500,0.5,'%s \n%s'%(steigung,chisquare_text),
         fontsize=13)
 plt.legend(frameon=True, fontsize = 12)
 plt.savefig('figures//f80_abb_16.pdf',format='pdf')
+plt.show()
+plt.close()
+
+##############
+#Endpunktenergie beta-Strahlung#
+##############
+
+x1,y1 = np.loadtxt('data//Sr90_diff.dat', 
+                 usecols=(1,2), unpack=True)
+x = x1[:1025]
+y = y1[:1025]
+plt.plot(x,y, linestyle='-', marker='.',
+            color='black', label='Messdaten')
+plt.xlabel('Channel', fontsize=13)
+plt.ylabel('Counts', fontsize=13)
+plt.title('Abb. [17]: Sr90 Spektrum', fontsize=16)
+plt.savefig('figures//f80_abb_17.pdf',format='pdf')
 plt.show()
 plt.close()
