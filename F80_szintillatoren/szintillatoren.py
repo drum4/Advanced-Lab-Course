@@ -17,7 +17,7 @@ plt.rcParams['errorbar.capsize']=2
 
 
 #################
-#Photopeak bei verscheidenen Spannungen#
+print("Photopeak bei verscheidenen Spannungen")
 #################
 V=np.array([450, 435, 420, 405, 380, 370])
 dV=np.array([1, 1, 1, 1, 1, 1])
@@ -49,7 +49,7 @@ plt.close()
 
 
 ################
-#Energiekalibrierung#
+print("Energiekalibrierung")
 ################
 
 ch = np.array([250,495])
@@ -66,8 +66,7 @@ popt, pcov = curve_fit(prop, ch, E,
 chisquare = np.sum(((prop(ch,*popt)-E)**2/E_err**2))
 dof = 1
 chisquare_red = chisquare/dof
-prob=np.round(1-chi2.cdf(chisquare,dof),2)*100
-print("Wahrscheinlichkeit Plot=", prob,"%")
+print("chisquare_red=",chisquare_red)
 
 steigung = 'm ='+str(np.round(popt[0],4))+' $\\pm$ '+str(np.round(np.sqrt(pcov[0][0]),4))+' MeV'
 chisquare_text = '$\\chi_{red}^2$ = '+str(np.round(chisquare_red,1))
@@ -90,7 +89,7 @@ plt.savefig('figures//f80_abb_17.pdf',format='pdf')
 plt.close()
 
 ##############
-#Endpunktenergie beta-Strahlung#
+print("Endpunktenergie beta-Strahlung")
 ##############
 m_e=511.
 alpha=1./137
@@ -132,9 +131,7 @@ def f80_readfile(filename):
             dataarray=np.array(data)
     return dataarray #convert data list to numpy array
     #y_uncertaintyarray=np.array(y_uncertainty)
-
-    
-# cal    
+  
 def chisquareValue(xvalue, yvalues, sigma_y, fit_parameter, function):
     "return chi2/ndf value of fit for parameter function 'function'"
     chi2=0
@@ -165,6 +162,9 @@ fitplot  = plt.plot(x, func(x, fit_parameter[0]), 'r-', label='fit')
 plt.text(0.8,150,'%s'%(steigung),
         bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
         fontsize=13)
+plt.xlabel('Energie [MeV]', fontsize=13)
+plt.ylabel('Pulsposition [Channel]', fontsize=13)
+plt.title('Abb. [17]: Energiekalibrierung', fontsize=16)
 #plt.show()
 
 print("E="+str(np.round(fit_parameter[0],1))+' $\\pm$ '+str(np.round(np.sqrt(covariance_matrix[0][0]),1)))
@@ -176,6 +176,7 @@ alpha=1./137
 Z=39
 pi=math.pi
 
+print('Sr90')
 ydataarray=f80_readfile('data//Sr90_diff.dat')
 #y_uncertaintyarray=np.sqrt(ydataarray)
 
@@ -188,7 +189,7 @@ def linfunc(x, a, b):
     return a*x + b
 
 fitxmin=300
-fitxmax=580
+fitxmax=590
 
 #fit_parameter, covariance_matrix = optimization.curve_fit(linfunc, xdataarray[fitxmin:fitxmax], ydataarray[fitxmin:fitxmax], x0,y_uncertaintyarray[fitxmin:fitxmax])
 
@@ -203,35 +204,34 @@ fitplot  = plt.plot(x, linfunc(x, m, b), 'r-', label='fit')
 ####### endfit
 
 plt.plot(xdataarray,ydataarray)
-#plt.ylabel('Kurie Variable')
-#plt.xlabel('Energy')
+plt.ylabel('Kurie Variable', fontsize=13)
+plt.xlabel('Energy', fontsize=13)
 xmin=0
-xmax=2.2
+xmax=2
 plt.xlim((xmin,xmax)) #restrict x axis to [xmin,xmax]
 axes = plt.gca()
 axes.set_ylim([0,1.1*max(ydataarray)])
 endpointEnergy=-b/m
 plt.text(xmax*0.4,max(ydataarray), 'Endpoint Enegy = '+str(round(endpointEnergy,2))+' Unit', fontsize=16)
-
+plt.title('Abb. [18]: Kurieplot von Sr90 Spektrum', fontsize=16)
 plt.show()
 
 
 print("Endpoint Energy = ", endpointEnergy)
-
+E1=endpointEnergy
 plt.close()
 
-
+print('Sr90_al5')
 ydataarray=f80_readfile('data//Sr90_t5min_al5_raw.dat')-background
 #y_uncertaintyarray=np.sqrt(ydataarray)
 
 #Your energy calibration of form y= a*x +b
-a=0.00267 #calibration slope. Default value (no calibration): a=1
 b=0 #calibration offset. Default value b=0
 xdataarray = np.arange(0,len(ydataarray))*a+b
 
 #fitrange
-fitxmin=290
-fitxmax=490
+fitxmin=250
+fitxmax=450
 
 #fit_parameter, covariance_matrix = optimization.curve_fit(linfunc, xdataarray[fitxmin:fitxmax], ydataarray[fitxmin:fitxmax], x0,y_uncertaintyarray[fitxmin:fitxmax])
 
@@ -246,28 +246,25 @@ fitplot  = plt.plot(x, linfunc(x, m, b), 'r-', label='fit')
 ####### endfit
 
 plt.plot(xdataarray,ydataarray)
-#plt.ylabel('Kurie Variable')
-#plt.xlabel('Energy')
-xmin=0
-xmax=2.2
+plt.ylabel('Kurie Variable', fontsize=13)
+plt.xlabel('Energy', fontsize=13)
 plt.xlim((xmin,xmax)) #restrict x axis to [xmin,xmax]
 axes = plt.gca()
 axes.set_ylim([0,1.1*max(ydataarray)])
 endpointEnergy=-b/m
 plt.text(xmax*0.4,max(ydataarray), 'Endpoint Enegy = '+str(round(endpointEnergy,2))+' Unit', fontsize=16)
-
+plt.title('Abb. [19]: Kurieplot von Sr90 Spektrum mit 0.5mm Al', fontsize=16)
 plt.show()
 
 
 print("Endpoint Energy = ", endpointEnergy)
-
+E2=endpointEnergy
 plt.close()
 
 
-
+print('Sr90_al10')
 ydataarray=f80_readfile('data//Sr90_t5min_al10_raw.dat')-background
 #y_uncertaintyarray=np.sqrt(ydataarray)
-a=0.00267
 b=0
 #Your energy calibration of form y= a*x +b
 #calibration offset. Default value b=0
@@ -275,7 +272,7 @@ xdataarray = np.arange(0,len(ydataarray))*a+b
 
 #fitrange
 fitxmin=200
-fitxmax=430
+fitxmax=390
 
 #fit_parameter, covariance_matrix = optimization.curve_fit(linfunc, xdataarray[fitxmin:fitxmax], ydataarray[fitxmin:fitxmax], x0,y_uncertaintyarray[fitxmin:fitxmax])
 
@@ -290,33 +287,33 @@ fitplot  = plt.plot(x, linfunc(x, m, b), 'r-', label='fit')
 ####### endfit
 
 plt.plot(xdataarray,ydataarray)
-#plt.ylabel('Kurie Variable')
-#plt.xlabel('Energy')
+plt.ylabel('Kurie Variable', fontsize=13)
+plt.xlabel('Energy', fontsize=13)
 
 plt.xlim((xmin,xmax)) #restrict x axis to [xmin,xmax]
 axes = plt.gca()
 axes.set_ylim([0,1.1*max(ydataarray)])
 endpointEnergy=-b/m
 plt.text(xmax*0.4,max(ydataarray), 'Endpoint Enegy = '+str(round(endpointEnergy,2))+' Unit', fontsize=16)
-
+plt.title('Abb. [20]: Kurieplot von Sr90 Spektrum mit 1mm Al', fontsize=16)
 plt.show()
 
 
 print("Endpoint Energy = ", endpointEnergy)
-
+E3=endpointEnergy
 plt.close()
 
+print('Sr90_Al15')
 ydataarray=f80_readfile('data//Sr90_t5min_al15_raw.dat')-background
 #y_uncertaintyarray=np.sqrt(ydataarray)
-a=0.00267
 b=0
 #Your energy calibration of form y= a*x +b
 #calibration offset. Default value b=0
 xdataarray = np.arange(0,len(ydataarray))*a+b
 
 #fitrange
-fitxmin=100
-fitxmax=360
+fitxmin=105
+fitxmax=350
 
 #fit_parameter, covariance_matrix = optimization.curve_fit(linfunc, xdataarray[fitxmin:fitxmax], ydataarray[fitxmin:fitxmax], x0,y_uncertaintyarray[fitxmin:fitxmax])
 
@@ -331,32 +328,32 @@ fitplot  = plt.plot(x, linfunc(x, m, b), 'r-', label='fit')
 ####### endfit
 
 plt.plot(xdataarray,ydataarray)
-#plt.ylabel('Kurie Variable')
-#plt.xlabel('Energy')
+plt.ylabel('Kurie Variable', fontsize=13)
+plt.xlabel('Energy', fontsize=13)
 
 plt.xlim((xmin,xmax)) #restrict x axis to [xmin,xmax]
 axes = plt.gca()
 axes.set_ylim([0,1.1*max(ydataarray)])
 endpointEnergy=-b/m
 plt.text(xmax*0.4,max(ydataarray), 'Endpoint Enegy = '+str(round(endpointEnergy,2))+' Unit', fontsize=16)
-
+plt.title('Abb. [21]: Kurieplot von Sr90 Spektrum mit 1.5mm Al', fontsize=16)
 plt.show()
 
 
 print("Endpoint Energy = ", endpointEnergy)
-
+E4=endpointEnergy
 plt.close()
 
+print('Sr90_Al30')
 ydataarray=f80_readfile('data//Sr90_t5min_al30_raw.dat')-background
 #y_uncertaintyarray=np.sqrt(ydataarray)
-a=0.00267
 b=0
 #Your energy calibration of form y= a*x +b
 #calibration offset. Default value b=0
 xdataarray = np.arange(0,len(ydataarray))*a+b
 
 #fitrange
-fitxmin=100
+fitxmin=105
 fitxmax=300
 
 #fit_parameter, covariance_matrix = optimization.curve_fit(linfunc, xdataarray[fitxmin:fitxmax], ydataarray[fitxmin:fitxmax], x0,y_uncertaintyarray[fitxmin:fitxmax])
@@ -372,24 +369,24 @@ fitplot  = plt.plot(x, linfunc(x, m, b), 'r-', label='fit')
 ####### endfit
 
 plt.plot(xdataarray,ydataarray)
-#plt.ylabel('Kurie Variable')
-#plt.xlabel('Energy')
+plt.ylabel('Kurie Variable', fontsize=13)
+plt.xlabel('Energy', fontsize=13)
 
 plt.xlim((xmin,xmax)) #restrict x axis to [xmin,xmax]
 axes = plt.gca()
 axes.set_ylim([0,1.1*max(ydataarray)])
 endpointEnergy=-b/m
 plt.text(xmax*0.4,max(ydataarray), 'Endpoint Enegy = '+str(round(endpointEnergy,2))+' Unit', fontsize=16)
-
+plt.title('Abb. [18]: Kurieplot von Sr90 Spektrum mit 3mm Al', fontsize=16)
 plt.show()
 
 
 print("Endpoint Energy = ", endpointEnergy)
-
+E5=endpointEnergy
 plt.close()
 
 d=np.array([1, 1.5, 2, 2.5, 4])
-E=np.array([1.67871258539, 1.33628874118, 1.16859621833, 0.98276189432, 0.69788234755])
+E=np.array([E1, E2, E3, E4, E5])
 E_err=E*0.05
 popt, pcov = curve_fit(linear, d[:-1], E[:-1], absolute_sigma=True, sigma=E_err[:-1])
 chisquare = np.sum(((linear(d,*popt)-E)**2/E_err**2))
