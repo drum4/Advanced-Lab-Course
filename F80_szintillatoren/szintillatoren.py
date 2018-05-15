@@ -92,16 +92,9 @@ plt.close()
 ##############
 #Endpunktenergie beta-Strahlung#
 ##############
-
-
-#some constants:
-# electron mass in keV
 m_e=511.
-# Fine-structure constant
 alpha=1./137
-# Atomic number Strontium
 Z=39
-# pi
 pi=math.pi
 
 def Fermifunction (x):
@@ -157,17 +150,12 @@ background = f80_readfile('data//Sr90_t5min_plexi_raw.dat')
 
 #Energiekalibration
 
-xdata = np.array([0.66166,1.3325]) #real energy values of Co60_1, Co60_2, Cs137, Mn54, Na22
+xdata = np.array([0.66166,1.3325]) #real energy values
 ydata = np.array([250,495]) # measured channels
 y_uncertainty = np.array([5,10])
 
-# Initial guess.
-
-
 def func(x, a):
     return a*x
-
-
 
 fit_parameter, covariance_matrix =curve_fit(func, xdata, ydata,absolute_sigma=True, sigma=y_uncertainty)
 steigung = "$m=$ ("+str(np.round(fit_parameter[0],1))+'$\\pm$ '+str(np.round(np.sqrt(covariance_matrix[0][0]),1))+') 1/MeV'
@@ -183,34 +171,22 @@ print("E="+str(np.round(fit_parameter[0],1))+' $\\pm$ '+str(np.round(np.sqrt(cov
 print("chi2/ndf = ",chisquareValue(xdata,ydata,y_uncertainty,fit_parameter,func))
 
 
-#some constants:
-# electron mass in keV
 m_e=511.
-# Fine-structure constant
 alpha=1./137
-# Atomic number Strontium
 Z=39
-# pi
 pi=math.pi
 
 ydataarray=f80_readfile('data//Sr90_diff.dat')
 #y_uncertaintyarray=np.sqrt(ydataarray)
 
-#Your energy calibration of form y= a*x +b
 a=0.00267 #calibration slope. Default value (no calibration): a=1
-b=0 #calibration offset. Default value b=0
+b=0 
 xdataarray = np.arange(0,len(ydataarray))*a+b
-
-
-##### fit
-# Initial guess.
 
 
 def linfunc(x, a, b):
     return a*x + b
 
-
-#fitrange
 fitxmin=300
 fitxmax=580
 
