@@ -200,3 +200,18 @@ plt.close()
 
 ###Es fehlt noch die Parrallele und Antiparalle
 #... welche Datei??
+
+
+raw = np.loadtxt('data//degree0_t901_raw.dat',
+                 delimiter = '\t', unpack=True)
+#back = np.loadtxt('data//myon_t62_u1700_back_raw.dat',
+#                 delimiter = '\t', unpack=True)            
+a = raw[0:1025]#-back[0:1025]
+plt.plot(a, marker='.', linestyle='-',
+            color='black', label='Messdaten')
+plt.xlabel('Channel', fontsize=13)
+plt.ylabel('Counts', fontsize=13)
+plt.title('Abb. [11]: Arbeitsspannung U=-1700V', fontsize=16)
+#plt.savefig('figures//f80_abb_11.pdf',format='pdf')
+plt.show()
+plt.close()
