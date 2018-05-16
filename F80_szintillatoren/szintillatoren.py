@@ -6,18 +6,20 @@ Created on 06.05.2018
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.optimize import curve_fit
-import scipy.optimize as optimization
-from scipy.stats import chi2
+#import scipy.optimize as optimization
+#from scipy.stats import chi2
 from matplotlib import rc
-import matplotlib.mlab as mlab
+#import matplotlib.mlab as mlab
 import math
 
 rc('font',**{'family':'serif','serif':['Linux Libertine O']})
 plt.rcParams['errorbar.capsize']=2
 
 
+
+
 #################
-print("Photopeak bei verscheidenen Spannungen")
+#Photopeak bei verschiedenen Spannungen#
 #################
 V=np.array([450, 435, 420, 405, 380, 370])
 dV=np.array([1, 1, 1, 1, 1, 1])
@@ -34,63 +36,27 @@ popt, pcov = curve_fit(linear, V, P, absolute_sigma=True)
 chisquare = np.sum(((linear(V,*popt)-P)**2/dP**2))
 dof = 4
 chisquare_red = chisquare/dof
-print('$\\chi_{red}^2$ = '+str(np.round(chisquare_red,1)))
 plt.errorbar(V, P, xerr=dV, yerr=dP,
              fmt='.', linewidth=1,
              linestyle='', color='black',
              label='Messpunkte mit Fehler')
 plt.xlabel('Spannung [V]', fontsize=13)
-plt.ylabel('Pulshohe [Channel]', fontsize=13)
+plt.ylabel('Wurzel der Pulshöhe [$\\sqrt{Channel}$]', fontsize=13)
 plt.title('Abb. [16]: Position des Photopeaks', fontsize=16)
 plt.plot(M, linear(M,*popt), color='red', label='Linearer Fit')
+plt.legend(frameon=True, fontsize = 12)
 plt.savefig('figures//f80_abb_16.pdf',format='pdf')
 #plt.show()
 plt.close()
 
 
-################
-print("Energiekalibrierung")
-################
 
-ch = np.array([250,495])
-ch_err = np.array([5,10])
-E = np.array([0.66166,1.3325])
-E_err = np.array([0.00003,0.0003])
-M = np.arange(1025)
 
-def prop (x,a):
-    return a*x
 
-popt, pcov = curve_fit(prop, ch, E,
-                        absolute_sigma=True)
-chisquare = np.sum(((prop(ch,*popt)-E)**2/E_err**2))
-dof = 1
-chisquare_red = chisquare/dof
-print("chisquare_red=",chisquare_red)
+####################
+#Energiekalibrierung#
+####################
 
-steigung = 'm ='+str(np.round(popt[0],4))+' $\\pm$ '+str(np.round(np.sqrt(pcov[0][0]),4))+' MeV'
-chisquare_text = '$\\chi_{red}^2$ = '+str(np.round(chisquare_red,1))
-
-plt.errorbar(ch, E, xerr=ch_err, fmt=".", linewidth=1,
-              linestyle='', color='black',
-               label='Messpunkte mit Fehler')
-plt.xlabel('Pulshöhe [Channel]', fontsize=13)
-plt.ylabel('Energie [MeV]', fontsize=13)
-plt.title('Abb. [17]: Energie als Funktion der Kanäle',
-           fontsize=16)
-plt.plot(M, prop(M,*popt),
-         color='red', label='Linearer Fit')
-plt.text(500,0.5,'%s \n%s'%(steigung,chisquare_text),
-        bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
-        fontsize=13)
-plt.legend(frameon=True, fontsize = 12)
-plt.savefig('figures//f80_abb_17.pdf',format='pdf')
-#plt.show()
-plt.close()
-
-##############
-print("Endpunktenergie beta-Strahlung")
-##############
 m_e=511.
 alpha=1./137
 Z=39
@@ -130,15 +96,6 @@ def f80_readfile(filename):
                 y_uncertainty.append(sigmaKuriePlotData)
             dataarray=np.array(data)
     return dataarray #convert data list to numpy array
-    #y_uncertaintyarray=np.array(y_uncertainty)
-  
-def chisquareValue(xvalue, yvalues, sigma_y, fit_parameter, function):
-    "return chi2/ndf value of fit for parameter function 'function'"
-    chi2=0
-    for i in range(len(xvalue)):
-        expected = function(xvalue[i],*fit_parameter)
-        chi2+=((expected-yvalues[i])/sigma_y[i])**2
-    return chi2/(len(xvalue)-len(fit_parameter)) #chis2 per degree of freedom
 
 
 SR90 = f80_readfile('data//Sr90_diff.dat')
@@ -154,36 +111,48 @@ y_uncertainty = np.array([5,10])
 def func(x, a):
     return a*x
 
-fit_parameter, covariance_matrix =curve_fit(func, xdata, ydata,absolute_sigma=True, sigma=y_uncertainty)
+fit_parameter, covariance_matrix = curve_fit(func, xdata, ydata,absolute_sigma=True, sigma=y_uncertainty)
 steigung = "$m=$ ("+str(np.round(fit_parameter[0],1))+'$\\pm$ '+str(np.round(np.sqrt(covariance_matrix[0][0]),1))+') 1/MeV'
-pointplot = plt.errorbar(xdata, ydata, y_uncertainty, linestyle="None")
+pointplot = plt.errorbar(xdata, ydata, y_uncertainty,
+                         fmt='.', linewidth=1,
+                         linestyle='', color='black',
+                         label='Messpunkte mit Fehler')
 x = np.linspace(0, max(xdata))
-fitplot  = plt.plot(x, func(x, fit_parameter[0]), 'r-', label='fit')
-plt.text(0.8,150,'%s'%(steigung),
+fitplot  = plt.plot(x, func(x, fit_parameter[0]), 'r-',
+                    color='red', label='Linearer Fit')
+plt.text(0.7,150,'%s'%(steigung),
         bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
         fontsize=13)
 plt.xlabel('Energie [MeV]', fontsize=13)
 plt.ylabel('Pulsposition [Channel]', fontsize=13)
 plt.title('Abb. [17]: Energiekalibrierung', fontsize=16)
+plt.legend(frameon=True, fontsize = 12)
+plt.savefig('figures//f80_abb_17.pdf',format='pdf')
 #plt.show()
-
-print("E="+str(np.round(fit_parameter[0],1))+' $\\pm$ '+str(np.round(np.sqrt(covariance_matrix[0][0]),1)))
-print("chi2/ndf = ",chisquareValue(xdata,ydata,y_uncertainty,fit_parameter,func))
+plt.close()
 
 
+
+
+
+
+
+##############
+#Kurie-Plot#
+##############
 m_e=511.
 alpha=1./137
 Z=39
 pi=math.pi
 
-print('Sr90')
+####
+####
+#Sr90#
+########
 ydataarray=f80_readfile('data//Sr90_diff.dat')
-#y_uncertaintyarray=np.sqrt(ydataarray)
-
 a=0.00267 #calibration slope. Default value (no calibration): a=1
 b=0 
 xdataarray = np.arange(0,len(ydataarray))*a+b
-
 
 def linfunc(x, a, b):
     return a*x + b
@@ -191,102 +160,95 @@ def linfunc(x, a, b):
 fitxmin=300
 fitxmax=590
 
-#fit_parameter, covariance_matrix = optimization.curve_fit(linfunc, xdataarray[fitxmin:fitxmax], ydataarray[fitxmin:fitxmax], x0,y_uncertaintyarray[fitxmin:fitxmax])
-
 m,b = np.polyfit(xdataarray[fitxmin:fitxmax], ydataarray[fitxmin:fitxmax],1)
 
 print(m,b)
 
-
-#pointplot = plt.errorbar(xdataarray, ydataarray, y_uncertaintyarray, linestyle="None")
 x = np.linspace(0, max(xdataarray), 1000)
-fitplot  = plt.plot(x, linfunc(x, m, b), 'r-', label='fit')
-####### endfit
+fitplot  = plt.plot(x, linfunc(x, m, b), 'r-',
+                    color='red', label='Linearer Fit')
 
-plt.plot(xdataarray,ydataarray)
+plt.plot(xdataarray,ydataarray,'r-',
+         color='black', label='Messkurve')
 plt.ylabel('Kurie Variable', fontsize=13)
-plt.xlabel('Energy', fontsize=13)
+plt.xlabel('Energie [MeV]', fontsize=13)
 xmin=0
 xmax=2
 plt.xlim((xmin,xmax)) #restrict x axis to [xmin,xmax]
 axes = plt.gca()
 axes.set_ylim([0,1.1*max(ydataarray)])
 endpointEnergy=-b/m
-plt.text(xmax*0.4,max(ydataarray), 'Endpoint Enegy = '+str(round(endpointEnergy,2))+' Unit', fontsize=16)
-plt.title('Abb. [18]: Kurieplot von Sr90 Spektrum', fontsize=16)
-plt.show()
-
-
-print("Endpoint Energy = ", endpointEnergy)
+plt.text(xmax*0.4,max(ydataarray),
+         'Endpoint Energy = '+str(round(endpointEnergy,2))+' MeV',
+         fontsize=16)
+plt.title('Abb. [18]: Kurieplot von $^{90}Sr$-Spektrum',
+          fontsize=16)
 E1=endpointEnergy
+plt.legend(frameon=True, loc='right', fontsize = 12)
+plt.savefig('figures//f80_abb_18.pdf',format='pdf')
+#plt.show()
 plt.close()
 
-print('Sr90_al5')
-ydataarray=f80_readfile('data//Sr90_t5min_al5_raw.dat')-background
-#y_uncertaintyarray=np.sqrt(ydataarray)
 
-#Your energy calibration of form y= a*x +b
-b=0 #calibration offset. Default value b=0
+#########
+#Sr90_al5#
+#########
+
+ydataarray=f80_readfile('data//Sr90_t5min_al5_raw.dat')-background
+b=0
 xdataarray = np.arange(0,len(ydataarray))*a+b
 
 #fitrange
 fitxmin=250
 fitxmax=450
 
-#fit_parameter, covariance_matrix = optimization.curve_fit(linfunc, xdataarray[fitxmin:fitxmax], ydataarray[fitxmin:fitxmax], x0,y_uncertaintyarray[fitxmin:fitxmax])
-
 m,b = np.polyfit(xdataarray[fitxmin:fitxmax], ydataarray[fitxmin:fitxmax],1)
 
 print(m,b)
 
-
-#pointplot = plt.errorbar(xdataarray, ydataarray, y_uncertaintyarray, linestyle="None")
 x = np.linspace(0, max(xdataarray), 1000)
-fitplot  = plt.plot(x, linfunc(x, m, b), 'r-', label='fit')
-####### endfit
+fitplot  = plt.plot(x, linfunc(x, m, b), 'r-',
+                    color='red', label='Linearer Fit')
 
-plt.plot(xdataarray,ydataarray)
+plt.plot(xdataarray,ydataarray,'r-',
+         color='black', label='Messkurve')
 plt.ylabel('Kurie Variable', fontsize=13)
 plt.xlabel('Energy', fontsize=13)
 plt.xlim((xmin,xmax)) #restrict x axis to [xmin,xmax]
 axes = plt.gca()
 axes.set_ylim([0,1.1*max(ydataarray)])
 endpointEnergy=-b/m
-plt.text(xmax*0.4,max(ydataarray), 'Endpoint Enegy = '+str(round(endpointEnergy,2))+' Unit', fontsize=16)
-plt.title('Abb. [19]: Kurieplot von Sr90 Spektrum mit 0.5mm Al', fontsize=16)
-plt.show()
-
-
-print("Endpoint Energy = ", endpointEnergy)
+plt.text(xmax*0.4,max(ydataarray),
+         'Endpoint Energy = '+str(round(endpointEnergy,2))+' MeV',
+         fontsize=16)
+plt.title('Abb. [19]: Kurieplot von $^{90}Sr$ Spektrum mit 0.5mm Al',
+          fontsize=16)
 E2=endpointEnergy
+plt.legend(frameon=True, loc='right', fontsize = 12)
+plt.savefig('figures//f80_abb_19.pdf',format='pdf')
+#plt.show()
 plt.close()
 
 
-print('Sr90_al10')
+#Sr90_al10
 ydataarray=f80_readfile('data//Sr90_t5min_al10_raw.dat')-background
-#y_uncertaintyarray=np.sqrt(ydataarray)
 b=0
-#Your energy calibration of form y= a*x +b
-#calibration offset. Default value b=0
 xdataarray = np.arange(0,len(ydataarray))*a+b
 
 #fitrange
 fitxmin=200
 fitxmax=390
 
-#fit_parameter, covariance_matrix = optimization.curve_fit(linfunc, xdataarray[fitxmin:fitxmax], ydataarray[fitxmin:fitxmax], x0,y_uncertaintyarray[fitxmin:fitxmax])
-
 m,b = np.polyfit(xdataarray[fitxmin:fitxmax], ydataarray[fitxmin:fitxmax],1)
 
 print(m,b)
 
-
-#pointplot = plt.errorbar(xdataarray, ydataarray, y_uncertaintyarray, linestyle="None")
 x = np.linspace(0, max(xdataarray), 1000)
-fitplot  = plt.plot(x, linfunc(x, m, b), 'r-', label='fit')
-####### endfit
+fitplot  = plt.plot(x, linfunc(x, m, b), 'r-',
+                    color='red', label='Linearer Fit')
 
-plt.plot(xdataarray,ydataarray)
+plt.plot(xdataarray,ydataarray,'r-',
+         color='black', label='Messkurve')
 plt.ylabel('Kurie Variable', fontsize=13)
 plt.xlabel('Energy', fontsize=13)
 
@@ -294,40 +256,36 @@ plt.xlim((xmin,xmax)) #restrict x axis to [xmin,xmax]
 axes = plt.gca()
 axes.set_ylim([0,1.1*max(ydataarray)])
 endpointEnergy=-b/m
-plt.text(xmax*0.4,max(ydataarray), 'Endpoint Enegy = '+str(round(endpointEnergy,2))+' Unit', fontsize=16)
-plt.title('Abb. [20]: Kurieplot von Sr90 Spektrum mit 1mm Al', fontsize=16)
-plt.show()
-
-
-print("Endpoint Energy = ", endpointEnergy)
+plt.text(xmax*0.4,max(ydataarray),
+         'Endpoint Energy = '+str(round(endpointEnergy,2))+' MeV',
+         fontsize=16)
+plt.title('Abb. [20]: Kurieplot von $^{90}Sr$ Spektrum mit 1mm Al',
+          fontsize=16)
 E3=endpointEnergy
+plt.legend(frameon=True, loc='right', fontsize = 12)
+plt.savefig('figures//f80_abb_20.pdf',format='pdf')
+#plt.show()
 plt.close()
 
-print('Sr90_Al15')
+#Sr90_Al15'
 ydataarray=f80_readfile('data//Sr90_t5min_al15_raw.dat')-background
-#y_uncertaintyarray=np.sqrt(ydataarray)
 b=0
-#Your energy calibration of form y= a*x +b
-#calibration offset. Default value b=0
 xdataarray = np.arange(0,len(ydataarray))*a+b
 
 #fitrange
 fitxmin=105
 fitxmax=350
 
-#fit_parameter, covariance_matrix = optimization.curve_fit(linfunc, xdataarray[fitxmin:fitxmax], ydataarray[fitxmin:fitxmax], x0,y_uncertaintyarray[fitxmin:fitxmax])
-
 m,b = np.polyfit(xdataarray[fitxmin:fitxmax], ydataarray[fitxmin:fitxmax],1)
 
 print(m,b)
 
-
-#pointplot = plt.errorbar(xdataarray, ydataarray, y_uncertaintyarray, linestyle="None")
 x = np.linspace(0, max(xdataarray), 1000)
-fitplot  = plt.plot(x, linfunc(x, m, b), 'r-', label='fit')
-####### endfit
+fitplot  = plt.plot(x, linfunc(x, m, b), 'r-',
+                    color='red', label='Linearer Fit')
 
-plt.plot(xdataarray,ydataarray)
+plt.plot(xdataarray,ydataarray,'r-',
+         color='black', label='Messkurve')
 plt.ylabel('Kurie Variable', fontsize=13)
 plt.xlabel('Energy', fontsize=13)
 
@@ -335,40 +293,34 @@ plt.xlim((xmin,xmax)) #restrict x axis to [xmin,xmax]
 axes = plt.gca()
 axes.set_ylim([0,1.1*max(ydataarray)])
 endpointEnergy=-b/m
-plt.text(xmax*0.4,max(ydataarray), 'Endpoint Enegy = '+str(round(endpointEnergy,2))+' Unit', fontsize=16)
-plt.title('Abb. [21]: Kurieplot von Sr90 Spektrum mit 1.5mm Al', fontsize=16)
-plt.show()
-
-
-print("Endpoint Energy = ", endpointEnergy)
+plt.text(xmax*0.4,max(ydataarray), 'Endpoint Energy = '+str(round(endpointEnergy,2))+' MeV', fontsize=16)
+plt.title('Abb. [21]: Kurieplot von $^{90}Sr$ Spektrum mit 1.5mm Al', fontsize=16)
 E4=endpointEnergy
+plt.legend(frameon=True, loc='right', fontsize = 12)
+plt.savefig('figures//f80_abb_21.pdf',format='pdf')
+#plt.show()
 plt.close()
 
-print('Sr90_Al30')
+
+##Sr90_Al30
 ydataarray=f80_readfile('data//Sr90_t5min_al30_raw.dat')-background
-#y_uncertaintyarray=np.sqrt(ydataarray)
-b=0
-#Your energy calibration of form y= a*x +b
-#calibration offset. Default value b=0
+b=0 #b wird immer wieder neu definiert
 xdataarray = np.arange(0,len(ydataarray))*a+b
 
 #fitrange
 fitxmin=105
 fitxmax=300
 
-#fit_parameter, covariance_matrix = optimization.curve_fit(linfunc, xdataarray[fitxmin:fitxmax], ydataarray[fitxmin:fitxmax], x0,y_uncertaintyarray[fitxmin:fitxmax])
-
 m,b = np.polyfit(xdataarray[fitxmin:fitxmax], ydataarray[fitxmin:fitxmax],1)
 
 print(m,b)
 
-
-#pointplot = plt.errorbar(xdataarray, ydataarray, y_uncertaintyarray, linestyle="None")
 x = np.linspace(0, max(xdataarray), 1000)
-fitplot  = plt.plot(x, linfunc(x, m, b), 'r-', label='fit')
-####### endfit
+fitplot  = plt.plot(x, linfunc(x, m, b), 'r-',
+                    color='red', label='Linearer Fit')
 
-plt.plot(xdataarray,ydataarray)
+plt.plot(xdataarray,ydataarray,'r-',
+         color='black', label='Messkurve')
 plt.ylabel('Kurie Variable', fontsize=13)
 plt.xlabel('Energy', fontsize=13)
 
@@ -376,14 +328,25 @@ plt.xlim((xmin,xmax)) #restrict x axis to [xmin,xmax]
 axes = plt.gca()
 axes.set_ylim([0,1.1*max(ydataarray)])
 endpointEnergy=-b/m
-plt.text(xmax*0.4,max(ydataarray), 'Endpoint Enegy = '+str(round(endpointEnergy,2))+' Unit', fontsize=16)
-plt.title('Abb. [18]: Kurieplot von Sr90 Spektrum mit 3mm Al', fontsize=16)
-plt.show()
-
-
-print("Endpoint Energy = ", endpointEnergy)
+plt.text(xmax*0.4,max(ydataarray),
+         'Endpoint Energy = '+str(round(endpointEnergy,2))+' MeV',
+         fontsize=16)
+plt.title('Abb. [22]: Kurieplot von $^{90}Sr$ Spektrum mit 3mm Al',
+          fontsize=16)
+plt.legend(frameon=True, loc='right', fontsize = 12)
 E5=endpointEnergy
+plt.savefig('figures//f80_abb_22.pdf',format='pdf')
+#plt.show()
 plt.close()
+
+
+
+
+
+
+##############
+#Maximalenergie#
+###############
 
 d=np.array([1, 1.5, 2, 2.5, 4])
 E=np.array([E1, E2, E3, E4, E5])
@@ -392,21 +355,127 @@ popt, pcov = curve_fit(linear, d[:-1], E[:-1], absolute_sigma=True, sigma=E_err[
 chisquare = np.sum(((linear(d,*popt)-E)**2/E_err**2))
 dof = 2
 chisquare_red = chisquare/dof
-abschnitt = 'y_0 ='+str(np.round(popt[1],4))+' $\\pm$ '+str(np.round(np.sqrt(pcov[1][1]),4))+' MeV'
-chisquare_text = '$\\chi_{red}^2$ = '+str(np.round(chisquare_red,1))
-print('$\\chi_{red}^2$ = '+str(np.round(chisquare_red,1)))
+abschnitt = '$y_0=($'+str(np.round(popt[1],2))+' $\\pm$ '+str(np.round(np.sqrt(pcov[1][1]),2))+'$)$ MeV'
+chisquare_text = '$\\chi_{red}^2=$'+str(np.round(chisquare_red,1))
 plt.errorbar(d, E, xerr=E_err,
              fmt='.', linewidth=1,
              linestyle='', color='black',
              label='Messpunkte mit Fehler')
 plt.xlabel('Spannung [V]', fontsize=13)
-plt.ylabel('Pulshohe [Channel]', fontsize=13)
-plt.title('Abb. [16]: Position des Photopeaks', fontsize=16)
+plt.ylabel('Pulshöhe [Channel]', fontsize=13)
+plt.title('Abb. [23]: Maximalenergie bei 0mm Absorberdicke', fontsize=16)
 plt.plot(d, linear(d,*popt), color='red', label='Linearer Fit')
-plt.text(2.5,1.4,'%s \n%s'%(abschnitt,chisquare_text),
+plt.text(2.74,1.2,'%s \n%s'%(abschnitt,chisquare_text),
         bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
         fontsize=13)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f80_abb_30.pdf',format='pdf')
-plt.show()
+plt.savefig('figures//f80_abb_23.pdf',format='pdf')
+#plt.show()
+plt.close()
+
+
+
+
+
+###############
+#Zeitkalibrierung#
+###############
+
+t=np.array([16,18,20,24,26,30])
+ch = np.array([276,314,354,435,474,519])
+ch_err = np.ones(6)
+
+popt, pcov = curve_fit(linear, t[:-1], ch[:-1],
+                       absolute_sigma=True,
+                       sigma=ch_err[:-1])
+chisquare = np.sum(((linear(t,*popt)-ch)**2/ch_err**2))
+dof = 3
+chisquare_red = chisquare/dof
+steigung = '$m=($'+str(np.round(popt[0],2))+' $\\pm$ '+str(np.round(np.sqrt(pcov[0][0]),2))+'$)$ 1/ns'
+y0 = '$y_0=($'+str(np.round(popt[1],1))+' $\\pm$ '+str(np.round(np.sqrt(pcov[1][1]),1))+'$)$'
+chisquare_text = '$\\chi_{red}^2=$'+str(np.round(chisquare_red,1))
+plt.errorbar(t, ch, yerr=ch_err,
+             fmt='.', linewidth=1,
+             linestyle='', color='black',
+             label='Messpunkte mit Fehler')
+plt.xlabel('Delay [ns]', fontsize=13)
+plt.ylabel('Kanal', fontsize=13)
+plt.title('Abb. [24]: Zeitkalibrierung', fontsize=16)
+plt.plot(t, linear(t,*popt), color='red', label='Linearer Fit')
+plt.text(24,300,'%s \n%s \n%s'%(steigung,y0,chisquare_text),
+        bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
+        fontsize=13)
+plt.legend(frameon=True, fontsize = 12)
+plt.savefig('figures//f80_abb_24.pdf',format='pdf')
+#plt.show()
+plt.close()
+
+
+
+##############
+#Cosinus-Fit#
+##############
+raw = np.loadtxt('data//degree0_t901_raw.dat',
+                 delimiter = '\t', unpack=True)
+a=0
+for i in range(100,451):
+    a = a + raw[i]
+
+raw = np.loadtxt('data//degree22_t900_raw.dat',
+                 delimiter = '\t', unpack=True)
+b=0
+for i in range(100,451):
+    b = b + raw[i]
+
+raw = np.loadtxt('data//degree45_t900_raw.dat',
+                 delimiter = '\t', unpack=True)
+c=0
+for i in range(100,451):
+    c = c + raw[i]
+
+raw = np.loadtxt('data//degree67_t900_raw.dat',
+                 delimiter = '\t', unpack=True)
+d=0
+for i in range(100,451):
+    d = d + raw[i]
+
+raw = np.loadtxt('data//degree90_t902_raw.dat',
+                 delimiter = '\t', unpack=True)
+e=0
+for i in range(100,451):
+    e = e + raw[i]
+
+counts_raw = np.array([a,b,c,d,e])
+counts_raw_err =np.sqrt(counts_raw)
+counts = counts_raw-900*0.00417
+counts_err = np.sqrt(counts_raw_err**2+(900*0.00005)**2)
+theta = np.array([0,22,45,67,90])
+
+def cosinus (x,a,b):
+    return a*np.cos(b*x/360*2*np.pi)**2
+
+popt, pcov = curve_fit(cosinus, theta, counts,
+                       absolute_sigma=True,
+                       sigma=counts_err, p0=[2500,1])
+chisquare = np.sum(((cosinus(theta,*popt)-counts)**2/counts_err**2))
+dof = 3
+chisquare_red = chisquare/dof
+chisquare_text = '$\\chi_{red}^2=$'+str(np.round(chisquare_red,1))
+ab = '$A=$'+str(np.round(popt[0],1))+' $\\pm$ '+str(np.round(np.sqrt(pcov[0][0]),1))
+ba = '$B=$'+str(np.round(popt[1],4))+' $\\pm$ '+str(np.round(np.sqrt(pcov[1][1]),4))
+plt.errorbar(theta, counts, yerr=counts_err,
+             fmt='.', linewidth=1,
+             linestyle='', color='black',
+             label='Messpunkte mit Fehler')
+plt.xlabel('Winkel $\\theta$ [°]', fontsize=13)
+plt.ylabel('Zählrate', fontsize=13)
+plt.title('Abb. [25]: Winkelabhängigkeit der Myonendetektion', fontsize=16)
+M = np.arange(0,91,0.1)
+plt.plot(M, cosinus(M,*popt), color='red', label='Linearer Fit')
+plt.text(60,2000,'%s \n%s \n%s'%(ab,ba,chisquare_text),
+        bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
+        fontsize=13)
+plt.legend(frameon=True, fontsize = 12)
+plt.savefig('figures//f80_abb_25.pdf',format='pdf')
+#plt.show()
 plt.close()
