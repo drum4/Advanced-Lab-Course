@@ -6,8 +6,6 @@ Created on 20.04.2018
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.optimize import curve_fit
-import scipy.integrate as integrate
-from scipy.stats import chi2
 from matplotlib import rc
 
 rc('font',**{'family':'serif','serif':['Linux Libertine O']})
