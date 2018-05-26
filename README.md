@@ -15,5 +15,7 @@ It covered the following experiments:
   - E01 Grundpraktikum Elektronik (basic internship electronics)
 - ### Measurement Methods:
   - F80 Szintillatoren (scintillators)
+- ### Optics:
+  - F16 Laserspektroskopie (laserspectroscopy)
   
 &copy; Nils Schmitt ([@drum4](https://github.com/drum4)) and Timo Kleinbek ([@TimoKleinbek](https://github.com/TimoKleinbek))
