@@ -42,7 +42,7 @@ plt.xlabel('Frequenz [Hz]', fontsize=13)
 plt.ylabel('Verstärkung', fontsize=13)
 plt.title('Abb. [1]: Frequenzgang der Emitterschaltung', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-plt.savefig('figures//e01_abb_1.pdf',format='pdf')
+plt.savefig('figures//e08_abb_1.pdf',format='pdf')
 plt.show()
 plt.close()
 
