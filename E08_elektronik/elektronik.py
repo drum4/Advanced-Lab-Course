@@ -25,7 +25,8 @@ U_aus_err = np.array([0.01,0.02,0.02,0.03,0.03,0.05,0.04,0.05,0.04,0.04,0.04,0.0
 V = U_aus/U_ein
 V_err = np.sqrt((U_aus_err/U_ein)**2+(U_aus*U_ein_err/U_ein**2)**2)
 
-fg = np.ones(2)*11.75
+def gerade(x):
+    return 11.75+0*x #Verstärkung eintragen
 M = np.array([1,50000])
 
 plt.errorbar(f, V, yerr=V_err,
@@ -36,8 +37,12 @@ plt.yscale('log')
 plt.xscale('log')
 plt.yticks([1,2,10])
 plt.xticks([10,100,1000,10000,5000000])
-plt.plot(M,fg, linestyle='-', marker='',
-            color='red', label='Grenzfrequenz')
+plt.plot(M,gerade(M), linestyle='-', marker='',
+            color='red', label='Verstärkung $V_U\\approx 11.75$')
+plt.plot(M,gerade(M)/np.sqrt(2), linestyle='--', marker='',
+            color='red', label='Verstärkung $\\sqrt{2}\\cdot V_U$')
+plt.plot(np.array([20.6,20.6]),np.array([5.1,11]), linestyle=':', marker='',
+            color='blue', label='untere Grenzfrequenz $f=20.6$ Hz')
 plt.xlabel('Frequenz [Hz]', fontsize=13)
 plt.ylabel('Verstärkung', fontsize=13)
 plt.title('Abb. [1]: Frequenzgang der Emitterschaltung', fontsize=16)
