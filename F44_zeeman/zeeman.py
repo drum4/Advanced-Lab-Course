@@ -40,7 +40,7 @@ print('chi^2_a='+str(chisquare_a))
 popt_down, pcov_down = curve_fit(prop, current, mag_down, absolute_sigma=True,
                                  sigma=mag_down_err)
 chisquare_d = np.sum(((prop(current,*popt_down)-current)**2/current_err**2))
-print('chi^2_d='chisquare_d)
+print('chi^2_d=',chisquare_d)
 slope_d = '$a_{down}=($'+str(np.round(popt_down[0],3))+' $\\pm$ '+str(np.round(np.sqrt(pcov_down[0][0]),3))+'$)$ mT/A'
 plt.errorbar(current, mag_up, xerr=current_err, yerr=mag_up_err,
              fmt='.', linewidth=1,
@@ -61,7 +61,7 @@ plt.text(6,0.05,'Ascending/Descending Slope: \n %s \n %s'%(slope_a, slope_d),
         fontsize=13)
 plt.legend(frameon=True, fontsize = 12)
 plt.savefig('figures//f44_abb_1.pdf',format='pdf')
-plt.show()
+#plt.show()
 plt.close()
 
 
@@ -75,18 +75,19 @@ plt.close()
 ############
 
 def Gauss(x,a,b,c,d):
-    return a*np.exp(-(x-b)**2/c)+d
+    return a*np.exp(-(x-b)**2/(2*c**2))+d
 
 
 #############
 x,cd=np.loadtxt('data/cd.txt', skiprows=1, unpack=True)
-popt, pcov = curve_fit(Gauss, x[:-1], cd[:-1],p0=[1,800,1,-1.65*10**-10], absolute_sigma=True)
+popt, pcov = curve_fit(Gauss, x[700:900], cd[700:900],p0=[4*10**6,800,3.94,-1.65*10**7], absolute_sigma=True, maxfev=999999)
 plt.plot(x,cd, linestyle='-', marker='.',
             color='black', label='Messdaten')
 plt.xlabel('Pixel', fontsize=13)
 plt.ylabel('Intensity', fontsize=13)
 plt.title('Abb. [??]: Data cd', fontsize=16)
-plt.plot(x, Gauss(x,*popt), color='red', label='Linearer Fit')
+plt.plot(x[700:900], Gauss(x[700:900],*popt), color='red', label='Linearer Fit')
+print(popt)
 #plt.savefig('figures//f44_abb_1.pdf',format='pdf')
 #plt.show()
 plt.close()
@@ -94,11 +95,23 @@ plt.close()
 #############
 
 x,ne=np.loadtxt('data/ne.txt', skiprows=1, unpack=True)
+popt1, pcov1 = curve_fit(Gauss, x[1:35], ne[1:35],p0=[3*10**6,15,3.5,-1.65*10**7], absolute_sigma=True, maxfev=999999)
+popt2, pcov2 = curve_fit(Gauss, x[200:280], ne[200:280],p0=[9*10**6,235,3.5,-1.65*10**7], absolute_sigma=True, maxfev=999999)
+popt3, pcov3 = curve_fit(Gauss, x[1040:1170], ne[1040:1170],p0=[16*10**6,1100,3.5,-1.65*10**7], absolute_sigma=True, maxfev=999999)
+popt4, pcov4 = curve_fit(Gauss, x[1220:1282], ne[1220:1282],p0=[15*10**6,1265,3.5,-1.65*10**7], absolute_sigma=True, maxfev=999999)
 plt.plot(x,ne, linestyle='-', marker='.',
             color='black', label='Messdaten')
 plt.xlabel('Pixel', fontsize=13)
 plt.ylabel('Intensity', fontsize=13)
 plt.title('Abb. [??]: Data ne', fontsize=16)
+plt.plot(x[1:35], Gauss(x[1:35],*popt1), color='red', label='Linearer Fit')
+plt.plot(x[200:280], Gauss(x[200:280],*popt2), color='blue', label='Linearer Fit')
+plt.plot(x[1040:1170], Gauss(x[1040:1170],*popt3), color='green', label='Linearer Fit')
+plt.plot(x[1220:1282], Gauss(x[1220:1282],*popt4), color='orange', label='Linearer Fit')
+print(popt1)
+print(popt2)
+print(popt3)
+print(popt4)
 #plt.savefig('figures//f44_abb_1.pdf',format='pdf')
 #plt.show()
 plt.close()
@@ -106,11 +119,27 @@ plt.close()
 #############
 
 x,ne_cd=np.loadtxt('data/ne_cd.txt', skiprows=1, unpack=True)
+popt5, pcov5 = curve_fit(Gauss, x[700:900], ne_cd[700:900],p0=[6*10**6,800,3.94,-1.65*10**7], absolute_sigma=True, maxfev=999999)
+popt6, pcov6 = curve_fit(Gauss, x[1:35], ne_cd[1:35],p0=[3*10**6,15,3.5,-1.65*10**7], absolute_sigma=True, maxfev=999999)
+popt7, pcov7 = curve_fit(Gauss, x[200:280], ne_cd[200:280],p0=[10*10**6,235,3.5,-1.65*10**7], absolute_sigma=True, maxfev=999999)
+popt8, pcov8 = curve_fit(Gauss, x[1040:1170], ne_cd[1040:1170],p0=[16*10**6,1100,3.5,-1.65*10**7], absolute_sigma=True, maxfev=999999)
+popt9, pcov9 = curve_fit(Gauss, x[1220:1279], ne_cd[1220:1279],p0=[15*10**6,1265,3.5,-1.65*10**7], absolute_sigma=True, maxfev=999999)
 plt.plot(x,ne_cd, linestyle='-', marker='.',
             color='black', label='Messdaten')
 plt.xlabel('Pixel', fontsize=13)
 plt.ylabel('Intensity', fontsize=13)
 plt.title('Abb. [??]: Data ne_cd', fontsize=16)
+plt.plot(x[700:900], Gauss(x[700:900],*popt5), color='black', label='Linearer Fit')
+plt.plot(x[1:35], Gauss(x[1:35],*popt6), color='red', label='Linearer Fit')
+plt.plot(x[200:280], Gauss(x[200:280],*popt7), color='blue', label='Linearer Fit')
+plt.plot(x[1040:1170], Gauss(x[1040:1170],*popt8), color='green', label='Linearer Fit')
+plt.plot(x[1220:1279], Gauss(x[1220:1279],*popt9), color='orange', label='Linearer Fit')
+print('###############################################################')
+print(popt5)
+print(popt6)
+print(popt7)
+print(popt8)
+print(popt9)
 #plt.savefig('figures//f44_abb_1.pdf',format='pdf')
 #plt.show()
 plt.close()
@@ -118,13 +147,22 @@ plt.close()
 ##############
 
 x,pi_9=np.loadtxt('data/pi_9.txt', skiprows=1, unpack=True)
+popt10, pcov10 = curve_fit(Gauss, x[0:60], pi_9[0:60],p0=[3.7*10**6,30,8,-1.37*10**7], absolute_sigma=True, maxfev=999999)
+popt11, pcov11 = curve_fit(Gauss, x[80:160], pi_9[80:160],p0=[3.7*10**6,120,8,-1.37*10**7], absolute_sigma=True, maxfev=999999)
+
+plt.plot(x[0:60], Gauss(x[0:60],*popt10), color='blue', label='Linearer Fit')
+plt.plot(x[80:160], Gauss(x[80:160],*popt11), color='blue', label='Linearer Fit')
+
+print('###############################################################')
+print(popt10)
+print(popt11)
 plt.plot(x,pi_9, linestyle='-', marker='.',
             color='black', label='Messdaten')
 plt.xlabel('Pixel', fontsize=13)
 plt.ylabel('Intensity', fontsize=13)
 plt.title('Abb. [??]: Data pi_9', fontsize=16)
 #plt.savefig('figures//f44_abb_1.pdf',format='pdf')
-#plt.show()
+plt.show()
 plt.close()
 
 ##############
