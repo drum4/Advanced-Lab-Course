@@ -87,7 +87,7 @@ plt.xlabel('Pixel', fontsize=13)
 plt.ylabel('Intensity', fontsize=13)
 plt.title('Fig. [2]: Cadmium Spectrum', fontsize=16)
 plt.plot(x[700:900], Gauss(x[700:900],*popt), color='red', label='Linearer Fit')
-print(popt)
+print("cd:",popt)
 #plt.savefig('figures//f44_abb_1.pdf',format='pdf')
 #plt.show()
 plt.close()
@@ -108,10 +108,10 @@ plt.plot(x[1:35], Gauss(x[1:35],*popt1), color='red', label='Linearer Fit')
 plt.plot(x[200:280], Gauss(x[200:280],*popt2), color='blue', label='Linearer Fit')
 plt.plot(x[1040:1170], Gauss(x[1040:1170],*popt3), color='green', label='Linearer Fit')
 plt.plot(x[1220:1282], Gauss(x[1220:1282],*popt4), color='orange', label='Linearer Fit')
-print(popt1)
-print(popt2)
-print(popt3)
-print(popt4)
+print("ne_1:",popt1)
+print("ne_2:",popt2)
+print("ne_3:",popt3)
+print("ne_4:",popt4)
 #plt.savefig('figures//f44_abb_1.pdf',format='pdf')
 #plt.show()
 plt.close()
@@ -134,7 +134,7 @@ plt.plot(x[1:35], Gauss(x[1:35],*popt6), color='red', label='Linearer Fit')
 plt.plot(x[200:280], Gauss(x[200:280],*popt7), color='blue', label='Linearer Fit')
 plt.plot(x[1040:1170], Gauss(x[1040:1170],*popt8), color='green', label='Linearer Fit')
 plt.plot(x[1220:1279], Gauss(x[1220:1279],*popt9), color='orange', label='Linearer Fit')
-print('###############################################################')
+print('########################### Cd, Ne 1 bis 4 ##############################')
 print(popt5)
 print(popt6)
 print(popt7)
@@ -157,8 +157,8 @@ def linear(x,a,b):
 
 popt_wave, pcov_wave = curve_fit(linear, w, pos, absolute_sigma=True,
                              sigma=pos_err)
-a = '$a = $('+str(np.round(popt_wave[0],1))+' $\\pm$ '+str(np.round(np.sqrt(pcov_wave[0,0]),1))+') mm'
-b = '$b = $('+str(np.round(popt_wave[1],1))+' $\\pm$ '+str(np.round(np.sqrt(pcov_wave[1,1]),1))+') mm/px'
+a = '$a = $('+str(np.round(popt_wave[0],1))+' $\\pm$ '+str(np.round(np.sqrt(pcov_wave[0,0]),1))+') px'
+b = '$b = $('+str(np.round(popt_wave[1],1))+' $\\pm$ '+str(np.round(np.sqrt(pcov_wave[1,1]),1))+') px/nm'
 plt.errorbar(w, pos, yerr=pos_err,
              fmt='.', linewidth=1,
              linestyle='', color='black',
@@ -172,7 +172,7 @@ plt.text(639,100,'Linear fit: \n %s \n %s'%(a, b),
          fontsize=13)
 plt.legend(frameon=True, fontsize = 12)
 #plt.savefig('figures//f44_abb_1.pdf',format='pdf')
-plt.show()
+#plt.show()
 plt.close()
 
 wave_cd = (popt5[1]-popt_wave[0])/popt_wave[1]
@@ -212,7 +212,7 @@ plt.plot(x[950:1000], Gauss(x[950:1000],*popt19), color='blue', label='Linearer 
 plt.plot(x[1085:1125], Gauss(x[1085:1125],*popt20), color='blue', label='Linearer Fit')
 plt.plot(x[1230:1265], Gauss(x[1230:1265],*popt21), color='blue', label='Linearer Fit')
 
-print('###############################################################')
+print('################### pi_9 Peak 1 bis 12 ############################')
 print(popt10)
 print(popt11)
 print(popt12)
@@ -232,6 +232,19 @@ plt.ylabel('Intensity', fontsize=13)
 plt.title('Abb. [??]: Data pi_9', fontsize=16)
 #plt.savefig('figures//f44_abb_1.pdf',format='pdf')
 #plt.show()
+plt.close()
+
+def polynom(x,b0,b1,b2):
+    return b0+x*b1+x**2*b2
+
+a=np.array([popt10[1],popt11[1],popt12[1],popt13[1],popt14[1],popt15[1],popt16[1],popt17[1],popt18[1],popt19[1],popt20[1],popt21[1]])
+a_err=np.array([popt10[2],popt11[2],popt12[2],popt13[2],popt14[2],popt15[2],popt16[2],popt17[2],popt18[2],popt19[2],popt20[2],popt21[2]])
+k=np.array([12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1])
+
+popt_pi_9, pcov_pi_9 = curve_fit(polynom, a, k, absolute_sigma=True)
+plt.errorbar(a, k, xerr=a_err, fmt='.')
+plt.plot(a, polynom(a,*popt_pi_9), color='red')
+plt.show()
 plt.close()
 
 ##############
@@ -264,7 +277,7 @@ plt.plot(x[955:1000], Gauss(x[955:1000],*popt31), color='blue', label='Linearer 
 plt.plot(x[1085:1130], Gauss(x[1085:1130],*popt32), color='blue', label='Linearer Fit')
 plt.plot(x[1230:1270], Gauss(x[1230:1270],*popt33), color='blue', label='Linearer Fit')
 
-print('###############################################################')
+print('################# pi_11 Peak 1 bis 12 ############################')
 print(popt22)
 print(popt23)
 print(popt24)
@@ -290,6 +303,47 @@ plt.close()
 ##############
 
 x,pi_13=np.loadtxt('data/pi_13.txt', skiprows=1, unpack=True)
+
+popt34, pcov34 = curve_fit(Gauss, x[10:50], pi_13[10:50],p0=[3*10**6,30,8,-1.37*10**7], absolute_sigma=True, maxfev=999999)
+popt35, pcov35 = curve_fit(Gauss, x[100:140], pi_13[100:140],p0=[3*10**6,120,8,-1.37*10**7], absolute_sigma=True, maxfev=999999)
+popt36, pcov36 = curve_fit(Gauss, x[193:230], pi_13[193:230],p0=[3*10**6,210,8,-1.37*10**7], absolute_sigma=True, maxfev=999999)
+popt37, pcov37 = curve_fit(Gauss, x[290:330], pi_13[290:330],p0=[3*10**6,308,8,-1.37*10**7], absolute_sigma=True, maxfev=999999)
+popt38, pcov38 = curve_fit(Gauss, x[385:430], pi_13[385:430],p0=[3*10**6,408,8,-1.37*10**7], absolute_sigma=True, maxfev=999999)
+popt39, pcov39 = curve_fit(Gauss, x[490:535], pi_13[490:535],p0=[3*10**6,510,8,-1.37*10**7], absolute_sigma=True, maxfev=999999)
+popt40, pcov40 = curve_fit(Gauss, x[600:640], pi_13[600:640],p0=[3*10**6,620,8,-1.37*10**7], absolute_sigma=True, maxfev=999999)
+popt41, pcov41 = curve_fit(Gauss, x[710:755], pi_13[710:755],p0=[3*10**6,730,8,-1.37*10**7], absolute_sigma=True, maxfev=999999)
+popt42, pcov42 = curve_fit(Gauss, x[825:875], pi_13[825:875],p0=[3*10**6,850,8,-1.37*10**7], absolute_sigma=True, maxfev=999999)
+popt43, pcov43 = curve_fit(Gauss, x[950:1000], pi_13[950:1000],p0=[3*10**6,970,8,-1.37*10**7], absolute_sigma=True, maxfev=999999)
+popt44, pcov44 = curve_fit(Gauss, x[1085:1130], pi_13[1085:1130],p0=[3*10**6,1105,8,-1.37*10**7], absolute_sigma=True, maxfev=999999)
+popt45, pcov45 = curve_fit(Gauss, x[1225:1270], pi_13[1225:1270],p0=[3*10**6,1250,8,-1.37*10**7], absolute_sigma=True, maxfev=999999)
+
+plt.plot(x[10:50], Gauss(x[10:50],*popt34), color='blue', label='Linearer Fit')
+plt.plot(x[100:140], Gauss(x[100:140],*popt35), color='blue', label='Linearer Fit')
+plt.plot(x[193:230], Gauss(x[193:230],*popt36), color='blue', label='Linearer Fit')
+plt.plot(x[290:330], Gauss(x[290:330],*popt37), color='blue', label='Linearer Fit')
+plt.plot(x[385:430], Gauss(x[385:430],*popt38), color='blue', label='Linearer Fit')
+plt.plot(x[490:535], Gauss(x[490:535],*popt39), color='blue', label='Linearer Fit')
+plt.plot(x[600:640], Gauss(x[600:640],*popt40), color='blue', label='Linearer Fit')
+plt.plot(x[710:755], Gauss(x[710:755],*popt41), color='blue', label='Linearer Fit')
+plt.plot(x[825:875], Gauss(x[825:875],*popt42), color='blue', label='Linearer Fit')
+plt.plot(x[950:1000], Gauss(x[950:1000],*popt43), color='blue', label='Linearer Fit')
+plt.plot(x[1085:1130], Gauss(x[1085:1130],*popt44), color='blue', label='Linearer Fit')
+plt.plot(x[1225:1270], Gauss(x[1225:1270],*popt45), color='blue', label='Linearer Fit')
+
+print('################### pi_13 Peak 1 bis 12 ###############################')
+print(popt34)
+print(popt35)
+print(popt36)
+print(popt37)
+print(popt38)
+print(popt39)
+print(popt40)
+print(popt41)
+print(popt42)
+print(popt43)
+print(popt44)
+print(popt45)
+
 plt.plot(x,pi_13, linestyle='-', marker='.',
             color='black', label='Messdaten')
 plt.xlabel('Pixel', fontsize=13)
