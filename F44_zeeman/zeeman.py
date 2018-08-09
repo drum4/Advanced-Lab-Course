@@ -85,7 +85,7 @@ plt.plot(x,cd, linestyle='-', marker='.',
             color='black', label='Messdaten')
 plt.xlabel('Pixel', fontsize=13)
 plt.ylabel('Intensity', fontsize=13)
-plt.title('Abb. [??]: Data cd', fontsize=16)
+plt.title('Fig. [2]: Cadmium Spectrum', fontsize=16)
 plt.plot(x[700:900], Gauss(x[700:900],*popt), color='red', label='Linearer Fit')
 print(popt)
 #plt.savefig('figures//f44_abb_1.pdf',format='pdf')
@@ -103,7 +103,7 @@ plt.plot(x,ne, linestyle='-', marker='.',
             color='black', label='Messdaten')
 plt.xlabel('Pixel', fontsize=13)
 plt.ylabel('Intensity', fontsize=13)
-plt.title('Abb. [??]: Data ne', fontsize=16)
+plt.title('Fig. [3]: Neon spectrum', fontsize=16)
 plt.plot(x[1:35], Gauss(x[1:35],*popt1), color='red', label='Linearer Fit')
 plt.plot(x[200:280], Gauss(x[200:280],*popt2), color='blue', label='Linearer Fit')
 plt.plot(x[1040:1170], Gauss(x[1040:1170],*popt3), color='green', label='Linearer Fit')
@@ -128,7 +128,7 @@ plt.plot(x,ne_cd, linestyle='-', marker='.',
             color='black', label='Messdaten')
 plt.xlabel('Pixel', fontsize=13)
 plt.ylabel('Intensity', fontsize=13)
-plt.title('Abb. [??]: Data ne_cd', fontsize=16)
+plt.title('Fig. [4]: Neon and Cadmium Spectrum', fontsize=16)
 plt.plot(x[700:900], Gauss(x[700:900],*popt5), color='black', label='Linearer Fit')
 plt.plot(x[1:35], Gauss(x[1:35],*popt6), color='red', label='Linearer Fit')
 plt.plot(x[200:280], Gauss(x[200:280],*popt7), color='blue', label='Linearer Fit')
@@ -143,6 +143,45 @@ print(popt9)
 #plt.savefig('figures//f44_abb_1.pdf',format='pdf')
 #plt.show()
 plt.close()
+
+####################
+#Wavelength Cadmium#
+####################
+
+pos = np.array([popt6[1],popt7[1],popt8[1],popt9[1]])
+pos_err = np.array([popt6[2],popt7[2],popt8[2],popt9[2]])
+w = np.array([653.29,650.65,640.22,638.30])
+
+def linear(x,a,b):
+    return a+b*x
+
+popt_wave, pcov_wave = curve_fit(linear, w, pos, absolute_sigma=True,
+                             sigma=pos_err)
+a = '$a = $('+str(np.round(popt_wave[0],1))+' $\\pm$ '+str(np.round(np.sqrt(pcov_wave[0,0]),1))+') mm'
+b = '$b = $('+str(np.round(popt_wave[1],1))+' $\\pm$ '+str(np.round(np.sqrt(pcov_wave[1,1]),1))+') mm/px'
+plt.errorbar(w, pos, yerr=pos_err,
+             fmt='.', linewidth=1,
+             linestyle='', color='black',
+             label='Measuring data')
+plt.xlabel('Wavelength [nm]', fontsize=13)
+plt.ylabel('Position [px]', fontsize=13)
+plt.title('Fig. [?]: Wave to ', fontsize=16)
+plt.plot(w, linear(w,*popt_wave), color='red', label='Linear fit')
+plt.text(639,100,'Linear fit: \n %s \n %s'%(a, b),
+         bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
+         fontsize=13)
+plt.legend(frameon=True, fontsize = 12)
+#plt.savefig('figures//f44_abb_1.pdf',format='pdf')
+plt.show()
+plt.close()
+
+wave_cd = (popt5[1]-popt_wave[0])/popt_wave[1]
+wave_cd_err = np.sqrt((popt5[2]/popt_wave[1])**2+(np.sqrt(pcov_wave[0,0])/popt_wave[1])**2+((popt5[1]-popt_wave[0])/popt_wave[1]**2*np.sqrt(pcov_wave[1,1]))**2)
+print("###########################################")
+print("Wavelength Cadmium")
+print("lambda_cd = ",wave_cd," + ",wave_cd_err)
+
+
 
 ##############
 
