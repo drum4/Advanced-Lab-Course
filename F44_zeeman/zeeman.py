@@ -243,8 +243,15 @@ k=np.array([12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1])
 
 popt_pi_9, pcov_pi_9 = curve_fit(polynom, a, k, absolute_sigma=True)
 plt.errorbar(a, k, xerr=a_err, fmt='.')
-plt.plot(a, polynom(a,*popt_pi_9), color='red')
-plt.show()
+plt.plot(a, polynom(a,*popt_pi_9), linestyle='-', color='red', label='quadratic plot')
+plt.xlabel('Position of the lines [px]', fontsize=13)
+plt.ylabel('Order', fontsize=13)
+plt.title('Abb. [??]: Orders of the pi-Lines at 9 A', fontsize=16)
+plt.text(500,8.5,'Fitfunction b0+b1*x+b2*x**2 \n b0= %s \n b1= %s \n b2= %s'%(popt_pi_9[0],popt_pi_9[1],popt_pi_9[2]),
+        bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
+        fontsize=11)
+plt.legend(frameon=True, fontsize = 12)
+#plt.show()
 plt.close()
 
 ##############
@@ -300,6 +307,25 @@ plt.title('Abb. [??]: Data pi_11', fontsize=16)
 #plt.show()
 plt.close()
 
+
+a=np.array([popt22[1],popt23[1],popt24[1],popt25[1],popt26[1],popt27[1],popt28[1],popt29[1],popt30[1],popt31[1],popt32[1],popt33[1]])
+a_err=np.array([popt22[2],popt23[2],popt24[2],popt25[2],popt26[2],popt27[2],popt28[2],popt29[2],popt30[2],popt31[2],popt32[2],popt33[2]])
+k=np.array([12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1])
+
+popt_pi_11, pcov_pi_11 = curve_fit(polynom, a, k, absolute_sigma=True)
+plt.errorbar(a, k, xerr=a_err, fmt='.')
+plt.plot(a, polynom(a,*popt_pi_11), linestyle='-', color='red', label='quadratic plot')
+plt.xlabel('Position of the lines [px]', fontsize=13)
+plt.ylabel('Order', fontsize=13)
+plt.title('Abb. [??]: Orders of the pi-Lines at 11 A', fontsize=16)
+plt.text(500,8.5,'Fitfunction b0+b1*x+b2*x**2 \n b0= %s \n b1= %s \n b2= %s'%(popt_pi_11[0],popt_pi_11[1],popt_pi_11[2]),
+        bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
+        fontsize=11)
+plt.legend(frameon=True, fontsize = 12)
+#plt.show()
+plt.close()
+
+
 ##############
 
 x,pi_13=np.loadtxt('data/pi_13.txt', skiprows=1, unpack=True)
@@ -353,16 +379,51 @@ plt.title('Abb. [??]: Data pi_13', fontsize=16)
 #plt.show()
 plt.close()
 
+a=np.array([popt34[1],popt35[1],popt36[1],popt37[1],popt38[1],popt39[1],popt40[1],popt41[1],popt42[1],popt43[1],popt44[1],popt45[1]])
+a_err=np.array([popt34[2],popt35[2],popt36[2],popt37[2],popt38[2],popt39[2],popt40[2],popt41[2],popt42[2],popt43[2],popt44[2],popt45[2]])
+k=np.array([12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1])
+
+popt_pi_13, pcov_pi_13 = curve_fit(polynom, a, k, absolute_sigma=True)
+plt.errorbar(a, k, xerr=a_err, fmt='.')
+plt.plot(a, polynom(a,*popt_pi_13), linestyle='-', color='red', label='quadratic plot')
+plt.xlabel('Position of the lines [px]', fontsize=13)
+plt.ylabel('Order', fontsize=13)
+plt.title('Abb. [??]: Orders of the pi-Lines at 13 A', fontsize=16)
+plt.text(500,8.5,'Fitfunction b0+b1*x+b2*x**2 \n b0= %s \n b1= %s \n b2= %s'%(popt_pi_13[0],popt_pi_13[1],popt_pi_13[2]),
+        bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
+        fontsize=11)
+plt.legend(frameon=True, fontsize = 12)
+#plt.show()
+plt.close()
+
+
+
+
 ##############
 
 x,sigma_9=np.loadtxt('data/sigma_9.txt', skiprows=1, unpack=True)
+
+popt46, pcov46 = curve_fit(Gauss, x[0:37], sigma_9[0:37],p0=[1*10**6,14,8,-1.36*10**7], absolute_sigma=True, maxfev=999999)
+popt47, pcov47 = curve_fit(Gauss, x[38:70], sigma_9[38:70],p0=[1*10**6,55,8,-1.36*10**7], absolute_sigma=True, maxfev=999999)
+popt48, pcov48 = curve_fit(Gauss, x[87:115], sigma_9[87:115],p0=[1*10**6,102,8,-1.36*10**7], absolute_sigma=True, maxfev=999999)
+
+plt.plot(x[0:37], Gauss(x[0:37],*popt46), color='blue', label='Linearer Fit')
+plt.plot(x[38:70], Gauss(x[38:70],*popt47), color='blue', label='Linearer Fit')
+plt.plot(x[87:115], Gauss(x[87:115],*popt48), color='blue', label='Linearer Fit')
+
+print('################### sigma_9 Peak 1 bis 24 ###############################')
+print(popt46)
+print(popt47)
+print(popt48)
+
+
 plt.plot(x,sigma_9, linestyle='-', marker='.',
             color='black', label='Messdaten')
 plt.xlabel('Pixel', fontsize=13)
 plt.ylabel('Intensity', fontsize=13)
 plt.title('Abb. [??]: Data sigma_9', fontsize=16)
 #plt.savefig('figures//f44_abb_1.pdf',format='pdf')
-#plt.show()
+plt.show()
 plt.close()
 
 ##############
