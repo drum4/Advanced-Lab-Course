@@ -210,7 +210,7 @@ plt.close()
 def polynom(x,b0,b1,b2):
     return b0+x*b1+x**2*b2
 
-
+## Achtung Fehler der Fitparameter b1 und b2 wurden durch 10 geteilt ##
 ######### Pi-9A #########
 x,pi_9=np.loadtxt('data/pi_9.txt', skiprows=1, unpack=True)
 popt10, pcov10 = curve_fit(Gauss, x[0:60], pi_9[0:60],p0=[3*10**6,30,8,-1.37*10**7], absolute_sigma=True, maxfev=999999)
@@ -271,8 +271,8 @@ popt_pi_9, pcov_pi_9 = curve_fit(polynom, a, k, absolute_sigma=True)
 chisquare_9 = np.sum(((polynom(a,*popt_pi_9)-k)**2/a_err**2))
 print('chi^2_9='+str(chisquare_9))
 p = '$p=($'+str(np.round(popt_pi_9[0],1))+' $\\pm$ '+str(np.round(np.sqrt(pcov_pi_9[0][0]),1))+'$)$'
-q = '$q=($'+str(np.round(popt_pi_9[1],3))+' $\\pm$ '+str(np.round(np.sqrt(pcov_pi_9[1][1]),3))+'$)$ 1/px'
-r = '$r=($'+str(np.round(popt_pi_9[2]*10**6,1))+' $\\pm$ '+str(np.round(np.sqrt(pcov_pi_9[2][2])*10**6,1))+'$) \\cdot 10^{-6}$ 1/px$^2$'
+q = '$q=($'+str(np.round(popt_pi_9[1],4))+' $\\pm$ '+str(np.round(np.sqrt(pcov_pi_9[1][1])/10,4))+'$)$ 1/px'
+r = '$r=($'+str(np.round(popt_pi_9[2]*10**6,2))+' $\\pm$ '+str(np.round(np.sqrt(pcov_pi_9[2][2])*10**5,2))+'$) \\cdot 10^{-6}$ 1/px$^2$'
 plt.errorbar(a, k, xerr=a_err, fmt='.', linewidth=1,
              linestyle='', color='black',
              label='Measurement data')
@@ -280,7 +280,7 @@ plt.plot(a, polynom(a,*popt_pi_9), linestyle='-', color='red', label='polynomial
 plt.xlabel('Position of the lines [px]', fontsize=13)
 plt.ylabel('Order', fontsize=13)
 plt.title('Fig. [??]: Orders of the $\\pi$-lines at 9A', fontsize=16)
-plt.text(700,7,'Fit parameter $p+q\\cdot x+r\\cdot x^2$\n %s \n %s \n %s'%(p,q,r),
+plt.text(650,7,'Fit parameter $p+q\\cdot x+r\\cdot x^2$\n %s \n %s \n %s'%(p,q,r),
         bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
         fontsize=11)
 plt.legend(frameon=True, fontsize = 12)
@@ -348,8 +348,8 @@ k=np.array([12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1])
 
 popt_pi_11, pcov_pi_11 = curve_fit(polynom, a, k, absolute_sigma=True)
 p = '$p=($'+str(np.round(popt_pi_11[0],1))+' $\\pm$ '+str(np.round(np.sqrt(pcov_pi_11[0][0]),1))+'$)$'
-q = '$q=($'+str(np.round(popt_pi_11[1],3))+' $\\pm$ '+str(np.round(np.sqrt(pcov_pi_11[1][1]),3))+'$)$ 1/px'
-r = '$r=($'+str(np.round(popt_pi_11[2]*10**6,1))+' $\\pm$ '+str(np.round(np.sqrt(pcov_pi_11[2][2])*10**6,1))+'$) \\cdot 10^{-6}$ 1/px$^2$'
+q = '$q=($'+str(np.round(popt_pi_11[1],4))+' $\\pm$ '+str(np.round(np.sqrt(pcov_pi_11[1][1])/10,4))+'$)$ 1/px'
+r = '$r=($'+str(np.round(popt_pi_11[2]*10**6,2))+' $\\pm$ '+str(np.round(np.sqrt(pcov_pi_11[2][2])*10**5,2))+'$) \\cdot 10^{-6}$ 1/px$^2$'
 plt.errorbar(a, k, xerr=a_err, fmt='.', linewidth=1,
              linestyle='', color='black',
              label='Measurement data')
@@ -357,7 +357,7 @@ plt.plot(a, polynom(a,*popt_pi_11), linestyle='-', color='red', label='polynomia
 plt.xlabel('Position of the lines [px]', fontsize=13)
 plt.ylabel('Order', fontsize=13)
 plt.title('Fig. [??]: Orders of the $\\pi$-lines at 11A', fontsize=16)
-plt.text(700,7,'Fit parameter $p+q\\cdot x+r\\cdot x^2$\n %s \n %s \n %s'%(p,q,r),
+plt.text(650,7,'Fit parameter $p+q\\cdot x+r\\cdot x^2$\n %s \n %s \n %s'%(p,q,r),
         bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
         fontsize=11)
 plt.legend(frameon=True, fontsize = 12)
@@ -423,8 +423,8 @@ k=np.array([12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1])
 
 popt_pi_13, pcov_pi_13 = curve_fit(polynom, a, k, absolute_sigma=True)
 p = '$p=($'+str(np.round(popt_pi_13[0],1))+' $\\pm$ '+str(np.round(np.sqrt(pcov_pi_13[0][0]),1))+'$)$'
-q = '$q=($'+str(np.round(popt_pi_13[1],3))+' $\\pm$ '+str(np.round(np.sqrt(pcov_pi_13[1][1]),3))+'$)$ 1/px'
-r = '$r=($'+str(np.round(popt_pi_13[2]*10**6,1))+' $\\pm$ '+str(np.round(np.sqrt(pcov_pi_13[2][2])*10**6,1))+'$) \\cdot 10^{-6}$ 1/px$^2$'
+q = '$q=($'+str(np.round(popt_pi_13[1],4))+' $\\pm$ '+str(np.round(np.sqrt(pcov_pi_13[1][1])/10,4))+'$)$ 1/px'
+r = '$r=($'+str(np.round(popt_pi_13[2]*10**6,2))+' $\\pm$ '+str(np.round(np.sqrt(pcov_pi_13[2][2])*10**5,2))+'$) \\cdot 10^{-6}$ 1/px$^2$'
 plt.errorbar(a, k, xerr=a_err, fmt='.', linewidth=1,
              linestyle='', color='black',
              label='Measurement data')
@@ -432,7 +432,7 @@ plt.plot(a, polynom(a,*popt_pi_11), linestyle='-', color='red', label='polynomia
 plt.xlabel('Position of the lines [px]', fontsize=13)
 plt.ylabel('Order', fontsize=13)
 plt.title('Fig. [??]: Orders of the $\\pi$-lines at 13A', fontsize=16)
-plt.text(700,7,'Fit parameter $p+q\\cdot x+r\\cdot x^2$\n %s \n %s \n %s'%(p,q,r),
+plt.text(650,7,'Fit parameter $p+q\\cdot x+r\\cdot x^2$\n %s \n %s \n %s'%(p,q,r),
         bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
         fontsize=11)
 plt.legend(frameon=True, fontsize = 12)
@@ -468,7 +468,16 @@ popt56, pcov56 = curve_fit(Gauss, x[475:495], sigma_9[475:495],p0=[1*10**6,487,8
 popt57, pcov57 = curve_fit(Gauss, x[524:545], sigma_9[524:545],p0=[1*10**6,535,8,-1.36*10**7], absolute_sigma=True, maxfev=999999)
 popt58, pcov58 = curve_fit(Gauss, x[580:600], sigma_9[580:600],p0=[1*10**6,592,8,-1.36*10**7], absolute_sigma=True, maxfev=999999)
 popt59, pcov59 = curve_fit(Gauss, x[630:650], sigma_9[630:650],p0=[1*10**6,643,8,-1.36*10**7], absolute_sigma=True, maxfev=999999)
-popt60, pcov60 = curve_fit(Gauss, x[690:730], sigma_9[690:730],p0=[1*10**6,703,8,-1.36*10**7], absolute_sigma=True, maxfev=999999)
+popt60, pcov60 = curve_fit(Gauss, x[692:715], sigma_9[692:715],p0=[1*10**6,703,8,-1.36*10**7], absolute_sigma=True, maxfev=999999)
+popt61, pcov61 = curve_fit(Gauss, x[745:767], sigma_9[745:767],p0=[1*10**6,758,8,-1.36*10**7], absolute_sigma=True, maxfev=999999)
+popt62, pcov62 = curve_fit(Gauss, x[809:833], sigma_9[809:833],p0=[1*10**6,822,8,-1.36*10**7], absolute_sigma=True, maxfev=999999)
+popt63, pcov63 = curve_fit(Gauss, x[865:888], sigma_9[865:888],p0=[1*10**6,878,8,-1.36*10**7], absolute_sigma=True, maxfev=999999)
+popt64, pcov64 = curve_fit(Gauss, x[932:956], sigma_9[932:956],p0=[1*10**6,945,8,-1.36*10**7], absolute_sigma=True, maxfev=999999)
+popt65, pcov65 = curve_fit(Gauss, x[992:1017], sigma_9[992:1017],p0=[1*10**6,1004,8,-1.36*10**7], absolute_sigma=True, maxfev=999999)
+popt66, pcov66 = curve_fit(Gauss, x[1063:1086], sigma_9[1063:1086],p0=[1*10**6,1076,8,-1.36*10**7], absolute_sigma=True, maxfev=999999)
+popt67, pcov67 = curve_fit(Gauss, x[1127:1157], sigma_9[1127:1157],p0=[1*10**6,1140,8,-1.36*10**7], absolute_sigma=True, maxfev=999999)
+popt68, pcov68 = curve_fit(Gauss, x[1201:1224], sigma_9[1201:1224],p0=[1*10**6,1215,8,-1.36*10**7], absolute_sigma=True, maxfev=999999)
+popt69, pcov69 = curve_fit(Gauss, x[1272:1289], sigma_9[1272:1289],p0=[1*10**6,1284,8,-1.36*10**7], absolute_sigma=True, maxfev=999999)
 
 plt.plot(x[0:37], Gauss(x[0:37],*popt46), color='blue', label='Gaussian for $\\sigma^+$')
 plt.plot(x[38:70], Gauss(x[38:70],*popt47), color='red', label='Gaussian for $\\sigma^-$')
@@ -484,7 +493,16 @@ plt.plot(x[475:495], Gauss(x[475:495],*popt56), color='blue')
 plt.plot(x[524:545], Gauss(x[524:545],*popt57), color='red')
 plt.plot(x[580:600], Gauss(x[580:600],*popt58), color='blue')
 plt.plot(x[630:650], Gauss(x[630:650],*popt59), color='red')
-plt.plot(x[690:730], Gauss(x[690:730],*popt60), color='blue')
+plt.plot(x[692:715], Gauss(x[692:715],*popt60), color='blue')
+plt.plot(x[745:767], Gauss(x[745:767],*popt61), color='red')
+plt.plot(x[809:833], Gauss(x[809:833],*popt62), color='blue')
+plt.plot(x[865:888], Gauss(x[865:888],*popt63), color='red')
+plt.plot(x[932:956], Gauss(x[932:956],*popt64), color='blue')
+plt.plot(x[992:1017], Gauss(x[992:1017],*popt65), color='red')
+plt.plot(x[1063:1086], Gauss(x[1063:1086],*popt66), color='blue')
+plt.plot(x[1127:1157], Gauss(x[1127:1157],*popt67), color='red')
+plt.plot(x[1201:1224], Gauss(x[1201:1224],*popt68), color='blue')
+plt.plot(x[1272:1289], Gauss(x[1272:1289],*popt69), color='red')
 
 print('################### sigma_9 Peak 1 bis 24 ###############################')
 print(popt46)
@@ -502,6 +520,15 @@ print(popt57)
 print(popt58)
 print(popt59)
 print(popt60)
+print(popt61)
+print(popt62)
+print(popt63)
+print(popt64)
+print(popt65)
+print(popt66)
+print(popt67)
+print(popt68)
+print(popt69)
 plt.plot(x,sigma_9, linestyle='', marker='.',
             color='black', label='Measurement data')
 plt.xlabel('Position [px]', fontsize=13)
@@ -509,8 +536,45 @@ plt.ylabel('Intensity', fontsize=13)
 plt.title('Fig. [??]: Transversal measurement with 9A', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
 #plt.savefig('figures//f44_abb_?.pdf',format='pdf')
-plt.show()
+#plt.show()
 plt.close()
+
+
+b0=popt_pi_9[0]
+b0_err=np.sqrt(pcov_pi_9[0][0])
+b1=popt_pi_9[1]
+b1_err=np.sqrt(pcov_pi_9[1][1])/10
+b2=popt_pi_9[2]
+b2_err=np.sqrt(pcov_pi_9[2][2])/10
+
+sigma_plus = np.array([popt46[1], popt48[1], popt50[1], popt52[1], popt54[1], popt56[1], popt58[1], popt60[1], popt62[1], popt64[1], popt66[1], popt68[1]])
+sigma_plus_err= np.array([popt46[2], popt48[2], popt50[2], popt52[2], popt54[2], popt56[2], popt58[2], popt60[2], popt62[2], popt64[2], popt66[2], popt68[2]])
+sigma_minus = np.array([popt47[1], popt49[1], popt51[1], popt53[1], popt55[1], popt57[1], popt59[1], popt61[1], popt63[1], popt65[1], popt67[1], popt69[1]])
+sigma_minus_err = np.array([popt47[2], popt49[2], popt51[2], popt53[2], popt55[2], popt57[2], popt59[2], popt61[2], popt63[2], popt65[2], popt67[2], popt69[2]])
+
+k_plus = b0+b1*sigma_plus+b2*sigma_plus**2
+k_plus_err = np.sqrt((b0_err)**2+(sigma_plus*b1_err)**2+(sigma_plus**2*b2_err)**2+((b1+2*b2*sigma_plus)*sigma_plus_err)**2)
+k_minus = b0+b1*sigma_minus+b2*sigma_minus**2
+k_minus_err = np.sqrt((b0_err)**2+(sigma_minus*b1_err)**2+(sigma_minus**2*b2_err)**2+((b1+2*b2*sigma_minus)*sigma_minus_err)**2)
+print("k_plus=",k_plus,'+/-',k_plus_err)
+print("k_minus=",k_minus,'+/-',k_minus_err)
+
+delta_9 = np.mean(np.append(k_plus-k,k-k_minus))
+delta_9_err = np.std(np.append(k_plus-k,k-k_minus)) 
+print('delta_err=1/24*np.sqrt(np.sum(k_plus_err**2)+np.sum(k_minus_err**2)) messfehler zu groﬂ')
+print('delta =',delta_9,'+/-',delta_9_err)
+
+h=6.626*10**-34
+c= 299792458
+d=4.04*10**-3
+n=1.4567
+B_9=0.527
+B_9_err=0.019
+
+mu_b_9=h*c*delta_9/(2*B_9*d*np.sqrt(n**2-1))
+mu_b_9_err=np.sqrt((mu_b_9/delta_9*delta_9_err)**2+(mu_b_9/B_9*B_9_err)**2)
+print('mu_b_9=',mu_b_9,'+/-',mu_b_9_err)
+
 
 ############## Sigma-11A ##################
 x,sigma_11=np.loadtxt('data/sigma_11.txt', skiprows=1, unpack=True)
@@ -533,5 +597,5 @@ plt.ylabel('Intensity', fontsize=13)
 plt.title('Fig. [??]: Transversal measurement with 13A', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
 #plt.savefig('figures//f44_abb_?.pdf',format='pdf')
-#plt.show()
+plt.show()
 plt.close()
