@@ -13,10 +13,10 @@ It covered the following experiments:
 
 - ### Electromagnetism:
   - E01 Grundpraktikum Elektronik (basic internship electronics)
-- ### Mechanics and Vacuums:
-  - F70 Mechanik und Vakuum (mechanics and vacuum)
 - ### Measurement Methods:
   - F80 Szintillatoren (scintillators)
+- ### Mechanics and Vacuums:
+  - F70 Mechanik und Vakuum (mechanics and vacuum)
 - ### Optics:
   - F16 Laserspektroskopie (laserspectroscopy)
 - ### Spectroscopy:
