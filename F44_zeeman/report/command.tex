@@ -1,0 +1,25 @@
+% !TeX root = ..//theo_4_skript_hebecker_ss_18.tex
+
+\newcommand*{\quelle}[1]{\par\footnotesize Quelle:~\href{#1}{#1}}
+\newcommand{\Index}[1]{#1\index{#1}}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\newtheorem{thm}{Satz}[section]
+\newcommand{\im}{\mathrm{i}}
+\newcommand{\e}[1]{\mathrm{e}^{#1}}
+\renewcommand{\pi}{\uppi}
+\newcommand{\pmbx}{(\pmb{x},t)}
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+\newcommand{\opa}[1]{\braket{\psi|\hat{\pmb{#1}}}{\psi}}
+\newcommand{\rom}[1]{\uppercase\expandafter{\romannumeral #1 \relax}}
+
+%\addtokomafont{labelinglabel}{\sffamily\bfseries}
+\newtcolorbox{mybox}[1]{%
+	tikznode boxed title,
+	enhanced,
+	arc=0mm,
+	interior style={white},
+	attach boxed title to top center= {yshift=-\tcboxedtitleheight/2},
+	fonttitle=\bfseries,
+	colbacktitle=white,coltitle=black,
+	boxed title style={size=normal,colframe=white,boxrule=0pt},
+title={#1}}
