@@ -41,7 +41,7 @@
   >
 ]>
 <requests version="1.0">
-  <internal package="biblatex" priority="9" active="1">
+  <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
       <file>f44_shortreport_schmitt_kleinbek.bcf</file>
@@ -59,10 +59,10 @@
       <file>standard.bbx</file>
       <file>numeric.cbx</file>
       <file>biblatex.cfg</file>
-      <file>german.lbx</file>
+      <file>english.lbx</file>
     </requires>
   </internal>
-  <external package="biblatex" priority="5" active="1">
+  <external package="biblatex" priority="5" active="0">
     <generic>biber</generic>
     <cmdline>
       <binary>biber</binary>
@@ -81,7 +81,7 @@
       <file>f44_shortreport_schmitt_kleinbek.bcf</file>
     </requires>
     <requires type="editable">
-      <file>appendix//bibliography.bib</file>
+      <file>..\\..\\bib_fp.bib</file>
     </requires>
   </external>
 </requests>

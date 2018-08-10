@@ -2,22 +2,36 @@
 				 a4paper,
 				%landscape,
 				%headings=Big,
+				numbers=endperiod
 				 ]{scrartcl}
 \input{config.tex}
+\input{command.tex}
 
-\subject{Universität Heidelberg}
+\titlehead{\begin{minipage}{.5\textwidth}
+			\begin{flushleft}
+			\includegraphics[scale=.065]{logo_color.jpg}
+			\end{flushleft}
+ 	 		\end{minipage}
+			\begin{minipage}{.5\textwidth}
+			\begin{flushright}
+			\includegraphics[scale=.8]{logo_fp.png}
+			\end{flushright}
+ 	 		\end{minipage}}
 \title{F44 Zeeman Spectroscopy}
 \subtitle{Short Report}
 \author{Nils Schmitt \and Timo Kleinbek}
-\publishers{Under the supervision of Srinivas, Hemkumar}
-\date{Conducted on 08.07.2018}
-
+\publishers{Supervisor: Srinivas, Hemkumar}
+\date{Conducted in August 2018}
 
 \begin{document}
 \maketitle
-\begin{abstract}
-Das ist der Verusch
-\end{abstract}
-
-
+\input{abstract}
+\tableofcontents
+\input{introduction}
+\input{basics}
+\input{log}
+\input{discussion}
+%\nocite{*}
+%\cite*{Demtröder_3}
+\printbibliography
 \end{document}

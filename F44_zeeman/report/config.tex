@@ -1,68 +1,55 @@
 % !TeX root = f44_shortreport_schmitt_kleinbek.tex
 \usepackage{polyglossia}				%Sprache
-\usepackage{12many}					%Mengen
 \usepackage{amsmath}					%Matheumgebung
 \usepackage{amsopn}					%Matheoperatoren
 \usepackage{amssymb}					%Mathesymbole
 \usepackage{amsthm}					%Mathetheorem
 \usepackage{array}						%Tabellenumgebung
-\usepackage{bbm}						%Mengensymbol
 \usepackage[style=numeric,
 			natbib=true,
-			backend=biber]{biblatex}		%Bibliographie
+			backend=biber]{biblatex}	%Bibliographie
 \usepackage{blindtext}					%Blindtext
 \usepackage{booktabs}					%Tabellen
-\usepackage{braket}						%Dirac-Schreibweise
-\usepackage[markup=nocolor,
-			deletedmarkup=xout]
-			{changes}					%Kommentare und durchstreichen
-\usepackage{colortbl}					%Farbe in Tabelle
 \usepackage[style=german]{csquotes}	%Anführungszeichen
-\usepackage{empheq}					%umrahmte Gleichungen
-\usepackage{fancybox}					%Boxen
-\usepackage[Bjornstrup]{fncychap}		%Kapitellayout
+\usepackage[includeheadfoot,
+			top=1cm,
+			bottom=1.5cm,
+			left=2cm,
+			right=2cm,
+			]{geometry}
 \usepackage{graphicx}					%Graphik
-\usepackage[misc]{ifsym}				%Alltagssymbole
 \usepackage{listings}					%Codeumgebung
-\usepackage{makeidx}					%Index
-\usepackage{marginnote}				%Randkommentare
 \usepackage{mathdots}					%Punkte
-\usepackage{mathtools}					%Bugfix ams
-\usepackage{microtype}					%Makrotypographie
+\usepackage{mathtools}				%Bugfix ams
+\usepackage{microtype}				%Makrotypographie
 \usepackage{multicol}					%dreispaltig
 \usepackage{multirow}					%mehrfache Zeilen
-\usepackage{pdfpages}					%Pdf-seiten
 \usepackage{pgfplots}					%Diagramme
-\usepackage{relsize}						%Größenangaben
+\usepackage{relsize}					%Größenangaben
 \usepackage{scrhack}
 \usepackage[headsepline, automark]
 			{scrlayer-scrpage}			%Kopfzeile
-\usepackage{siunitx}						%Einheiten
-\usepackage{subcaption}					%Gleitumgebung Graphik
+\usepackage{siunitx}					%Einheiten
+\usepackage{subcaption}				%Gleitumgebung Graphik
 \usepackage{tikz}						%Zeichnen
 \usepackage{upgreek}					%Griechische Buchstaben
-\usepackage{xcolor}						%Farben
-\usepackage{xltxtra}						%fontec
+\usepackage{xcolor}					%Farben
+\usepackage{xltxtra}					%fontec
 
 \pgfplotsset{compat=1.15}
 \setmainlanguage{english}
 \setmainfont{Linux Libertine O}
 \setsansfont{Linux Biolinum O}
 
-\setOTMstyle{dots}
-
-\addbibresource{bib_fp.bib}
+\addbibresource{..\\..\\bib_fp.bib}
 
 \ihead{F44 Zeeman Spectroscopy}
 \ohead{\headmark}
 \chead{}
-%\automark{chapter}
 \pagestyle{scrheadings}
 
-\makeindex
-
 \setcounter{tocdepth}{1}
-\setcounter{secnumdepth}{15}
+\setcounter{secnumdepth}{1}
 \setlength{\parindent}{0pt}
 
 \usepackage[bookmarksopenlevel=section,
