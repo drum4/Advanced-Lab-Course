@@ -561,7 +561,7 @@ print("k_minus=",k_minus,'+/-',k_minus_err)
 
 delta_9 = np.mean(np.append(k_plus-k,k-k_minus))
 delta_9_err = np.std(np.append(k_plus-k,k-k_minus)) 
-print('delta_err=1/24*np.sqrt(np.sum(k_plus_err**2)+np.sum(k_minus_err**2)) messfehler zu groß')
+#print('delta_err=1/24*np.sqrt(np.sum(k_plus_err**2)+np.sum(k_minus_err**2)) messfehler zu groï¿½')
 print('delta =',delta_9,'+/-',delta_9_err)
 
 h=6.626*10**-34
@@ -585,7 +585,7 @@ plt.ylabel('Intensity', fontsize=13)
 plt.title('Fig. [??]: Transversal measurement with 11A', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
 #plt.savefig('figures//f44_abb_?.pdf',format='pdf')
-#plt.show()
+plt.show()
 plt.close()
 
 ############## Sigma-13A ###################
