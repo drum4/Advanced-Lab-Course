@@ -688,12 +688,12 @@ delta_11_err = np.std(np.append(k_plus-k,k-k_minus))
 #print('delta_err=1/24*np.sqrt(np.sum(k_plus_err**2)+np.sum(k_minus_err**2)) messfehler zu gro�')
 print('delta =',delta_11,'+/-',delta_11_err)
 
-h=6.626*10**-34
-c= 299792458
-d=4.04*10**-3
-n=1.4567
-B_11=0.527
-B_11_err=0.019
+h = 6.626*10**-34
+c = 299792458
+d = 4.04*10**-3
+n = 1.4567
+B_11 = 0.644
+B_11_err = 0.023
 
 mu_b_11=h*c*delta_11/(2*B_11*d*np.sqrt(n**2-1))
 mu_b_11_err=np.sqrt((mu_b_11/delta_11*delta_11_err)**2+(mu_b_11/B_11*B_11_err)**2)
@@ -711,3 +711,16 @@ plt.legend(frameon=True, fontsize = 12)
 #plt.savefig('figures//f44_abb_?.pdf',format='pdf')
 #plt.show()
 plt.close()
+
+h = 6.626*10**-34
+c = 299792458
+d = 4.04*10**-3
+n = 1.4567
+B_13 = 0.761
+B_11_err = 0.027
+
+mu_b_13=h*c*delta_13/(2*B_13*d*np.sqrt(n**2-1))
+mu_b_13_err=np.sqrt((mu_b_13/delta_13*delta_13_err)**2+(mu_b_13/B_13*B_13_err)**2)
+print('mu_b_13=',mu_b_13,'+/-',mu_b_13_err)
+
+mu_b = np.mean([mu_b_9,mu_b_11,mu_b_13])
