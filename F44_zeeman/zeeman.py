@@ -58,7 +58,7 @@ plt.errorbar(current, mag_down, xerr=current_err, yerr=mag_down_err,
              label='Descending Measurement')
 plt.xlabel('Current I [A]', fontsize=13)
 plt.ylabel('Magnetic Field B [mT]', fontsize=13)
-plt.title('Fig. [1]: Hysteresis effect for magnets used', fontsize=16)
+#plt.title('Fig. [1]: Hysteresis effect for magnets used', fontsize=16)
 plt.plot(current, prop(current,*popt_up), color='red', label='Linear fit ascending')
 plt.plot(current, prop(current,*popt_down), color='blue', label='Linear fit descending',
          linestyle='--')
@@ -96,7 +96,7 @@ plt.ylabel('Intensity', fontsize=13)
 plt.title('Fig. [??]: Cadmium Spectrum', fontsize=16)
 plt.plot(x[700:900], Gauss(x[700:900],*popt), color='red', label='Gaussian')
 #print("Cadmium:",popt)
-#plt.savefig('figures//f44_abb_??.pdf',format='pdf')
+#plt.savefig('figures//f44_abb_?.pdf',format='pdf')
 #plt.show()
 plt.close()
 
@@ -135,7 +135,8 @@ plt.plot(x,ne_cd, linestyle='', marker='.',
             color='black', label='Measured data')
 plt.xlabel('Position [px]', fontsize=13)
 plt.ylabel('Intensity', fontsize=13)
-plt.title('Fig. [?]: Spectrum of Cadmium and Neon', fontsize=16)
+#plt.title('Fig. [11]: Spectrum of Cadmium and Neon', fontsize=16)
+plt.text(650,-1.0*10**7,'Cadmiumpeak', fontsize=13)
 plt.plot(x[700:900], Gauss(x[700:900],*popt5), color='magenta', label='Cadmium')
 plt.plot(x[1:35], Gauss(x[1:35],*popt6), color='red', label='653.29 nm')
 plt.plot(x[200:280], Gauss(x[200:280],*popt7), color='blue', label='650.65 nm')
@@ -148,7 +149,7 @@ print("Neon_653:",popt6)
 print("Neon_650:",popt7)
 print("Neon_640:",popt8)
 print("Neon_638:",popt9)
-#plt.savefig('figures//f44_abb_?.pdf',format='pdf')
+plt.savefig('figures//f44_abb_11.pdf',format='pdf')
 #plt.show()
 plt.close()
 
@@ -181,7 +182,7 @@ plt.errorbar(w, pos, yerr=pos_err,
              label='Measuring data')
 plt.xlabel('Wavelength [nm]', fontsize=13)
 plt.ylabel('Position [px]', fontsize=13)
-plt.title('Fig. [?]: Wavelength as function of position', fontsize=16)
+#plt.title('Fig. [12]: Wavelength as function of position', fontsize=16)
 plt.plot(w, linear(w,*popt_wave), color='red', label='Linear fit')
 plt.text(639,100,'Linear fit: \n %s \n %s'%(a, b),
          bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
@@ -191,7 +192,7 @@ wave_cd = (popt5[1]-popt_wave[0])/popt_wave[1]
 wave_cd_err = np.sqrt((popt5[2]/popt_wave[1])**2+(np.sqrt(pcov_wave[0,0])/popt_wave[1])**2+((popt5[1]-popt_wave[0])/popt_wave[1]**2*np.sqrt(pcov_wave[1,1]))**2)
 print("############## Wavelength Cadmium ####################")
 print("lambda_cd = ",wave_cd," + ",wave_cd_err)
-#plt.savefig('figures//f44_abb_?.pdf',format='pdf')
+plt.savefig('figures//f44_abb_12.pdf',format='pdf')
 #plt.show()
 plt.close()
 
@@ -256,9 +257,9 @@ plt.plot(x,pi_9, linestyle='', marker='.',
             color='black', label='Measurement data')
 plt.xlabel('Position [px]', fontsize=13)
 plt.ylabel('Intensity', fontsize=13)
-plt.title('Fig. [??]: Transversal measurement with 9A', fontsize=16)
+#plt.title('Fig. [2]: $\\pi$-lines with 9A', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f44_abb_?.pdf',format='pdf')
+plt.savefig('figures//f44_abb_2.pdf',format='pdf')
 #plt.show()
 plt.close()
 
@@ -279,12 +280,12 @@ plt.errorbar(a, k, xerr=a_err, fmt='.', linewidth=1,
 plt.plot(a, polynom(a,*popt_pi_9), linestyle='-', color='red', label='polynomial fit')
 plt.xlabel('Position of the lines [px]', fontsize=13)
 plt.ylabel('Order', fontsize=13)
-plt.title('Fig. [??]: Orders of the $\\pi$-lines at 9A', fontsize=16)
+#plt.title('Fig. [8]: Orders of the $\\pi$-lines with 9A', fontsize=16)
 plt.text(650,7,'Fit parameter $p+q\\cdot x+r\\cdot x^2$\n %s \n %s \n %s'%(p,q,r),
         bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
         fontsize=11)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f44_abb_?.pdf',format='pdf')
+plt.savefig('figures//f44_abb_8.pdf',format='pdf')
 #plt.show()
 plt.close()
 
@@ -335,9 +336,9 @@ plt.plot(x,pi_11, linestyle='', marker='.',
             color='black', label='Measurement data')
 plt.xlabel('Position [px]', fontsize=13)
 plt.ylabel('Intensity', fontsize=13)
-plt.title('Fig. [??]: Transversal measurement with 11A', fontsize=16)
+#plt.title('Fig. [3]: $\\pi$-lines with 11A', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f44_abb_?.pdf',format='pdf')
+plt.savefig('figures//f44_abb_3.pdf',format='pdf')
 #plt.show()
 plt.close()
 
@@ -356,12 +357,12 @@ plt.errorbar(a, k, xerr=a_err, fmt='.', linewidth=1,
 plt.plot(a, polynom(a,*popt_pi_11), linestyle='-', color='red', label='polynomial fit')
 plt.xlabel('Position of the lines [px]', fontsize=13)
 plt.ylabel('Order', fontsize=13)
-plt.title('Fig. [??]: Orders of the $\\pi$-lines at 11A', fontsize=16)
+#plt.title('Fig. [9]: Orders of the $\\pi$-lines with 11A', fontsize=16)
 plt.text(650,7,'Fit parameter $p+q\\cdot x+r\\cdot x^2$\n %s \n %s \n %s'%(p,q,r),
         bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
         fontsize=11)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f44_abb_?.pdf',format='pdf')
+plt.savefig('figures//f44_abb_9.pdf',format='pdf')
 #plt.show()
 plt.close()
 
@@ -411,9 +412,9 @@ plt.plot(x,pi_13, linestyle='', marker='.',
             color='black', label='Measurement data')
 plt.xlabel('Position [px]', fontsize=13)
 plt.ylabel('Intensity', fontsize=13)
-plt.title('Fig. [??]: Transversal measurement with 13A', fontsize=16)
+#plt.title('Fig. [4]: $\\pi$-lines with 13A', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f44_abb_?.pdf',format='pdf')
+plt.savefig('figures//f44_abb_4.pdf',format='pdf')
 #plt.show()
 plt.close()
 
@@ -431,12 +432,12 @@ plt.errorbar(a, k, xerr=a_err, fmt='.', linewidth=1,
 plt.plot(a, polynom(a,*popt_pi_11), linestyle='-', color='red', label='polynomial fit')
 plt.xlabel('Position of the lines [px]', fontsize=13)
 plt.ylabel('Order', fontsize=13)
-plt.title('Fig. [??]: Orders of the $\\pi$-lines at 13A', fontsize=16)
+#plt.title('Fig. [10]: Orders of the $\\pi$-lines with 13A', fontsize=16)
 plt.text(650,7,'Fit parameter $p+q\\cdot x+r\\cdot x^2$\n %s \n %s \n %s'%(p,q,r),
         bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
         fontsize=11)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f44_abb_?.pdf',format='pdf')
+plt.savefig('figures//f44_abb_10.pdf',format='pdf')
 #plt.show()
 plt.close()
 
@@ -533,9 +534,9 @@ plt.plot(x,sigma_9, linestyle='', marker='.',
             color='black', label='Measurement data')
 plt.xlabel('Position [px]', fontsize=13)
 plt.ylabel('Intensity', fontsize=13)
-plt.title('Fig. [??]: Transversal measurement with 9A', fontsize=16)
+#plt.title('Fig. [5]: $\\sigma$-lines with 9A', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f44_abb_?.pdf',format='pdf')
+plt.savefig('figures//f44_abb_5.pdf',format='pdf')
 #plt.show()
 plt.close()
 
@@ -658,9 +659,9 @@ plt.plot(x,sigma_11, linestyle='', marker='.',
             color='black', label='Measurement data')
 plt.xlabel('Position [px]', fontsize=13)
 plt.ylabel('Intensity', fontsize=13)
-plt.title('Fig. [??]: Transversal measurement with 11A', fontsize=16)
+#plt.title('Fig. [6]: $\\sigma$-lines with 11A', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f44_abb_?.pdf',format='pdf')
+plt.savefig('figures//f44_abb_6.pdf',format='pdf')
 #plt.show()
 plt.close()
 
@@ -782,9 +783,9 @@ plt.plot(x,sigma_13, linestyle='', marker='.',
             color='black', label='Measurement data')
 plt.xlabel('Position [px]', fontsize=13)
 plt.ylabel('Intensity', fontsize=13)
-plt.title('Fig. [??]: Transversal measurement with 13A', fontsize=16)
+#plt.title('Fig. [7]: $\\sigma$-lines with 13A', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f44_abb_?.pdf',format='pdf')
+plt.savefig('figures//f44_abb_7.pdf',format='pdf')
 #plt.show()
 plt.close()
 
