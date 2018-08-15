@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2018.4.6)  10 AUG 2018 15:34
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2018.4.6)  15 AUG 2018 11:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1988,7 +1988,7 @@ Package polyglossia Info: Default language is english.
 . - 'bold italic small caps'  (bx/itsc) with NFSS spec.: <->"Linux Libertine
 . O/BI/OT:script=latn;language=DFLT;+smcp;mapping=tex-text;"
 .................................................
-LaTeX Info: Redefining \rmfamily on input line 41.
+LaTeX Info: Redefining \rmfamily on input line 44.
 \g__fontspec_family_LinuxBiolinumO_int=\count486
 .................................................
 . fontspec info: "defining-font"
@@ -2015,7 +2015,7 @@ LaTeX Info: Redefining \rmfamily on input line 41.
 . - 'bold italic small caps'  (bx/itsc) with NFSS spec.: <->"Linux Biolinum
 . O/BI/OT:script=latn;language=DFLT;+smcp;mapping=tex-text;"
 .................................................
-LaTeX Info: Redefining \sffamily on input line 42.
+LaTeX Info: Redefining \sffamily on input line 45.
 )
 Package scrhack Info: hyperref hack deactivated because of
 (scrhack)             detection of KOMA-Script class, that doesn't
@@ -2367,15 +2367,15 @@ Package tocbasic Info: character protrusion at toc deactivated on input line 29
 File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
 
 ))
-(./basics.tex) (./log.tex) (./discussion.tex)
+(./basics.tex
 LaTeX Font Info:    Font shape `TU/LinuxLibertineO(0)/m/sl' in size <12> not av
 ailable
 (Font)              Font shape `TU/LinuxLibertineO(0)/m/it' tried instead on in
-put line 37.
+put line 2.
  [1
 
 
-]
+]) (./log.tex) (./discussion.tex) [2]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 37.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 37.
 
@@ -2388,12 +2388,12 @@ xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 57519 strings out of 493007
- 1296228 string characters out of 6137966
- 1964944 words of memory out of 5000000
- 60706 multiletter control sequences out of 15000+600000
- 539366 words of font info for 87 fonts, out of 8000000 for 9000
+ 57542 strings out of 493007
+ 1296745 string characters out of 6137966
+ 1966946 words of memory out of 5000000
+ 60723 multiletter control sequences out of 15000+600000
+ 540375 words of font info for 94 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 76i,19n,119p,10519b,6081s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 76i,19n,119p,10519b,6047s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on f44_shortreport_schmitt_kleinbek.pdf (1 page).
+Output written on f44_shortreport_schmitt_kleinbek.pdf (2 pages).

@@ -1,0 +1,104 @@
+\documentclass[12pt,
+				 a4paper,
+				%landscape,
+				%headings=Big,
+				 ]{scrartcl}
+\usepackage{polyglossia}			%Sprache
+\usepackage{12many}				%Mengen
+\usepackage{amsmath}				%Mathe
+\usepackage{amsopn}				%Operatoren
+\usepackage{amssymb}				%Symbole
+\usepackage{amsthm}				%Theorem
+\usepackage{array}					%Tabelle
+\usepackage{booktabs}				%Tabellen
+\usepackage{colortbl}				%Farbentabelle
+\usepackage[top=1cm,bottom=1cm]{geometry}
+\usepackage{graphicx}				%Graphik
+\usepackage{mathdots}				%Punkte
+\usepackage{mathtools}			%Bugfix
+\usepackage{microtype}			%Typographie
+\usepackage{multirow}				%Zeilen
+\usepackage{physics}				%Physik
+\usepackage{relsize}				%Größe
+\usepackage{scrhack}				%Verbesserung
+\usepackage[separate-uncertainty,
+			per-mode=symbol,
+			]{siunitx}				%Einheiten
+\usepackage{subcaption}			%Gleitumgebung
+\usepackage{tikz}					%Zeichnen
+\usepackage{upgreek}				%Aufrecht
+\usepackage{xcolor}				%Farbe
+\usepackage{xltxtra}				%Fontec
+
+\setmainlanguage{english}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+			 
+\begin{document}
+
+\newcolumntype{L}{>{$}l<{$}}
+
+\begin{table}
+\centering
+\begin{tabular}{LLLLLL}
+\sigma^+\text{-Peak} & \text{Order }k & \frac{\delta a}{\Delta a} & \sigma^-\text{-Peak} & \text{Order }k & \frac{\delta a}{\Delta a}\\
+\midrule
+14\pm8 & 12.167 & 0.167 & 55\pm9 & 11.714 & 0.186\\
+104\pm13 & 11.165 & 0.165 & 146\pm10 & 10.714 & 0.186\\
+196\pm44 & 10.174 & 0.174 & 239\pm12 & 9.723 & 0.277\\
+289\pm10 & 9.200 & 0.200 & 334\pm10 & 8.744 & 0.256\\
+386\pm8 & 8.218 & 0.218 & 433\pm12 & 7.757 & 0.243\\
+488\pm11 & 7.225 & 0.225 & 535\pm11 & 6.771 & 0.229\\
+593\pm9 & 6.234 & 0.234 & 644\pm9 & 5.775 & 0.225\\
+705\pm12 & 5.226 & 0.226 & 758\pm11 & 4.767 & 0.233\\
+822\pm13 & 4.220 & 0.220 & 878\pm9 & 3.757& 0.243\\
+946\pm12 & 3.215 & 0.215 & 1005\pm11 & 2.752 & 0.248\\
+1076\pm11 & 2.212 & 0.212 & 1140\pm8 & 1.744 & 0.256\\
+1216\pm9 & 1.205 & 0.205 & 1284\pm5 & 0.740 & 0.260
+\end{tabular}
+\caption{$\sigma$-lines and $\frac{\delta a}{\Delta a}$ by 9A}
+\end{table}
+
+\begin{table}
+\centering
+\begin{tabular}{LLLLLL}
+\sigma^+\text{-Peak} & \text{Order }k & \frac{\delta a}{\Delta a} & \sigma^-\text{-Peak} & \text{Order }k & \frac{\delta a}{\Delta a}\\
+\midrule
+6\pm5 & 12.277 & 0.277 & 56\pm7 & 11.718 & 0.282\\
+97\pm9 & 11.260 & 0.260 & 148\pm9 & 10.708 & 0.292\\
+190\pm11 & 10.251 & 0.251 & 242\pm10 & 9.706 & 0.294\\
+286\pm10 & 9.249 & 0.249 & 339\pm9 & 8.701 & 0.299\\
+386\pm12 & 8.336 & 0.336 & 441\pm10 & 7.690 & 0.310\\
+488\pm11 & 7.233 & 0.233 & 546\pm9 & 6.684 & 0.316\\
+595\pm12 & 6.227 & 0.227 & 656\pm11 & 5.674 & 0.326\\
+707\pm10 & 5.221 & 0.221 & 770\pm11 & 4.673 & 0.327\\
+824\pm12 & 4.220 & 0.220 & 890\pm11 & 3.673 & 0.327\\
+947\pm11 & 3.217 & 0.217 & 1017\pm11 & 2.673 & 0.327\\
+1077\pm15 & 2.215 & 0.215 & 1151\pm11 & 1.673 & 0.327\\
+1215\pm14 & 1.220 & 0.220 & 1288\pm5 & 0.728 & 0.272
+\end{tabular}
+\caption{$\sigma$-lines and the $\frac{\delta a}{\Delta a}$ by 11A}
+\end{table}
+
+\begin{table}
+\centering
+\begin{tabular}{LLLLLL}
+\sigma^+\text{-Peak} & \text{Order }k & \frac{\delta a}{\Delta a} & \sigma^-\text{-Peak} & \text{Order }k & \frac{\delta a}{\Delta a}\\
+\midrule
+2\pm4 & 12.290 & 0.290 & 54\pm10 & 11.703 & 0.297\\
+90\pm8 & 11.301 & 0.301 & 146\pm10 & 10.696 & 0.304\\
+183\pm9 & 10.291 & 0.291 & 240\pm10 & 9.687 & 0.313\\
+279\pm10 & 9.283 & 0.283 & 338\pm11 & 8.676 & 0.324\\
+379\pm9 & 8.270 & 0.270 & 440\pm11 & 7.664 & 0.336\\
+482\pm12 & 7.261 & 0.261 & 545\pm12 & 6.657 & 0.343\\
+588\pm12 & 6.256 & 0.256 & 655\pm11 & 5.648 & 0.352\\
+700\pm12 & 5.251 & 0.251 & 770\pm12 & 4.648 & 0.352\\
+816\pm13 & 4.253 & 0.253 & 889\pm10 & 3.650 & 0.350\\
+939\pm10 & 3.252 & 0.252 & 1016\pm12 & 2.652 & 0.348\\
+1069\pm11 & 2.253 & 0.253 & 1151\pm9 & 1.656 & 0.344\\
+1207\pm11 & 1.262 & 0.262 & & &
+\end{tabular}
+\caption{$\sigma$-lines and the Difference $\frac{\delta a}{\Delta a}$ by 13A}
+\end{table}
+
+\end{document}
