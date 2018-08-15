@@ -44,11 +44,11 @@ plt.errorbar(I, P10, xerr=I_err, yerr=P10_err,
              fmt='.', linewidth=1,
              linestyle='-', color='blue',
              label='Messpunkte mit Fehler für R=10 k$\\Omega$')
-plt.errorbar(I, P1, xerr=I_err, yerr=P50_err,
+plt.errorbar(I, P50, xerr=I_err, yerr=P50_err,
              fmt='.', linewidth=1,
              linestyle='-', color='green',
              label='Messpunkte mit Fehler für R=50 $\\Omega$')
-plt.errorbar(I, P1, xerr=I_err, yerr=P100_err,
+plt.errorbar(I, P100, xerr=I_err, yerr=P100_err,
              fmt='.', linewidth=1,
              linestyle='-', color='magenta',
              label='Messpunkte mit Fehler für R=100 k$\\Omega$')
@@ -76,13 +76,23 @@ I100_err = U_100_err/100000
 def linear(x,a,b):
     return a+x*b
 
-popt, pcov = curve_fit(linear, I[8:], I1[8:], absolute_sigma=True,
+popt1, pcov1 = curve_fit(linear, I[8:], I1[8:], absolute_sigma=True,
                              sigma=I1_err[8:])
-a = '$a=$'+str(np.round(popt[1],3))+' $\\pm$ '+str(np.round(np.sqrt(pcov[1][1]),3))
-chisquare_a0 = np.sum(((linear(I,*popt)-I1)**2/I1_err**2))
-dof = 2
-chisquare_a = chisquare_a0/dof
-print('chi^2_a='+str(chisquare_a))
+a1 = '$a=$'+str(np.round(popt1[1],3))+' $\\pm$ '+str(np.round(np.sqrt(pcov1[1][1]),3))
+
+popt10, pcov10 = curve_fit(linear, I[8:], I10[8:], absolute_sigma=True,
+                             sigma=I10_err[8:])
+a10 = '$a=$'+str(np.round(popt10[1],3))+' $\\pm$ '+str(np.round(np.sqrt(pcov10[1][1]),3))
+popt50, pcov50 = curve_fit(linear, I[8:], I50[8:], absolute_sigma=True,
+                             sigma=I50_err[8:])
+a50 = '$a=$'+str(np.round(popt50[1],3))+' $\\pm$ '+str(np.round(np.sqrt(pcov50[1][1]),3))
+popt100, pcov100 = curve_fit(linear, I[8:], I100[8:], absolute_sigma=True,
+                             sigma=I100_err[8:])
+a100 = '$a=$'+str(np.round(popt100[1],3))+' $\\pm$ '+str(np.round(np.sqrt(pcov100[1][1]),3))
+#chisquare_a0 = np.sum(((linear(I,*popt)-I1)**2/I1_err**2))
+#dof = 2
+#chisquare_a = chisquare_a0/dof
+#print('chi^2_a='+str(chisquare_a))
 
 plt.errorbar(I, I1, xerr=I_err, yerr=I1_err,
              fmt='.', linewidth=1,
@@ -92,12 +102,44 @@ plt.errorbar(I, I50, xerr=I_err, yerr=I50_err,
              fmt='.', linewidth=1,
              linestyle='', color='grey',
              label='$R=50 \\Omega$')
-plt.plot(I[8:],linear(I[8:],*popt), linestyle='-', marker='',
-            color='red', label='Messdaten')
+plt.errorbar(I, I10, xerr=I_err, yerr=I10_err,
+             fmt='.', linewidth=1,
+             linestyle='', color='black',
+             label='$R=10 \\mathrm{k}\\Omega$')
+plt.errorbar(I, I100, xerr=I_err, yerr=I100_err,
+             fmt='.', linewidth=1,
+             linestyle='', color='black',
+             label='$R=100 \\mathrm{k}\\Omega$')
+plt.plot(I[8:],linear(I[8:],*popt1), linestyle='-', marker='',
+            color='red', label='Messdaten $R=1 \\mathrm{k}\\Omega$')
+plt.plot(I[8:],linear(I[8:],*popt50), linestyle='-', marker='',
+            color='red', label='Messdaten $R=50 \\Omega$')
+plt.plot(I[8:],linear(I[8:],*popt10), linestyle='-', marker='',
+            color='red', label='Messdaten $R=10 \\mathrm{k}\\Omega$')
+plt.plot(I[8:],linear(I[8:],*popt100), linestyle='-', marker='',
+            color='red', label='Messdaten $R=100 \\mathrm{k}\\Omega$')
 plt.xlabel('Stromstärke I [mA]', fontsize=13)
 plt.ylabel('Stromstärke I$_{PD}$ [mA]', fontsize=13)
 plt.title('Abb. [2]: Strom-Strom-Kennlinie', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
 #plt.savefig('figures//f16_abb_1.pdf',format='pdf')
-plt.show()
+#plt.show()
 plt.close()
+
+slope1=popt1[1]
+slope1_err=np.sqrt(pcov1[1][1])
+print('slope1=',slope1,'+/-',slope1_err)
+slope50=popt50[1]
+slope50_err=np.sqrt(pcov50[1][1])
+print('slope50=',slope50,'+/-',slope50_err)
+slope10=popt10[1]
+slope10_err=np.sqrt(pcov10[1][1])
+print('slope10=',slope10,'+/-',slope10_err)
+slope100=popt100[1]
+slope100_err=np.sqrt(pcov100[1][1])
+print('slope100=',slope100,'+/-',slope100_err)
+
+
+x, trans=np.loadtxt('data/transmissionpeak.csv', skiprows=16, delimiter="\t", usecols=(3,4), unpack=True)
+plt.plot(x,trans)
+plt.show()
