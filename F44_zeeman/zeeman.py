@@ -562,7 +562,7 @@ print("k_minus=",k_minus,'+/-',k_minus_err)
 delta_9 = np.mean(np.append(k_plus-k,k-k_minus))
 delta_9_err = np.std(np.append(k_plus-k,k-k_minus)) 
 #print('delta_err=1/24*np.sqrt(np.sum(k_plus_err**2)+np.sum(k_minus_err**2)) messfehler zu gro�')
-print('delta =',delta_9,'+/-',delta_9_err)
+print('delta_9 =',delta_9,'+/-',delta_9_err)
 
 h=6.626*10**-34
 c= 299792458
@@ -661,7 +661,7 @@ plt.ylabel('Intensity', fontsize=13)
 plt.title('Fig. [??]: Transversal measurement with 11A', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
 #plt.savefig('figures//f44_abb_?.pdf',format='pdf')
-plt.show()
+#plt.show()
 plt.close()
 
 b0=popt_pi_11[0]
@@ -686,7 +686,7 @@ print("k_minus=",k_minus,'+/-',k_minus_err)
 delta_11 = np.mean(np.append(k_plus-k,k-k_minus))
 delta_11_err = np.std(np.append(k_plus-k,k-k_minus)) 
 #print('delta_err=1/24*np.sqrt(np.sum(k_plus_err**2)+np.sum(k_minus_err**2)) messfehler zu gro�')
-print('delta =',delta_11,'+/-',delta_11_err)
+print('delta_11 =',delta_11,'+/-',delta_11_err)
 
 h = 6.626*10**-34
 c = 299792458
@@ -702,6 +702,82 @@ print('mu_b_11=',mu_b_11,'+/-',mu_b_11_err)
 
 ############## Sigma-13A ###################
 x,sigma_13=np.loadtxt('data/sigma_13.txt', skiprows=1, unpack=True)
+popt46, pcov46 = curve_fit(Gauss, x[0:13], sigma_13[0:13],p0=[1*10**6,2,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt47, pcov47 = curve_fit(Gauss, x[41:63], sigma_13[41:63],p0=[1*10**6,55,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt48, pcov48 = curve_fit(Gauss, x[78:103], sigma_13[78:103],p0=[1*10**6,90,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt49, pcov49 = curve_fit(Gauss, x[133:152], sigma_13[133:152],p0=[1*10**6,145,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt50, pcov50 = curve_fit(Gauss, x[171:196], sigma_13[171:196],p0=[1*10**6,183,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt51, pcov51 = curve_fit(Gauss, x[229:247], sigma_13[229:247],p0=[1*10**6,241,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt52, pcov52 = curve_fit(Gauss, x[265:290], sigma_13[265:290],p0=[1*10**6,278,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt53, pcov53 = curve_fit(Gauss, x[326:346], sigma_13[326:346],p0=[1*10**6,338,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt54, pcov54 = curve_fit(Gauss, x[365:389], sigma_13[365:389],p0=[1*10**6,378,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt55, pcov55 = curve_fit(Gauss, x[426:450], sigma_13[426:450],p0=[1*10**6,439,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt56, pcov56 = curve_fit(Gauss, x[470:494], sigma_13[470:494],p0=[1*10**6,482,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt57, pcov57 = curve_fit(Gauss, x[532:554], sigma_13[532:554],p0=[1*10**6,546,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt58, pcov58 = curve_fit(Gauss, x[576:599], sigma_13[576:599],p0=[1*10**6,587,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt59, pcov59 = curve_fit(Gauss, x[642:667], sigma_13[642:667],p0=[1*10**6,656,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt60, pcov60 = curve_fit(Gauss, x[686:710], sigma_13[686:710],p0=[1*10**6,699,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt61, pcov61 = curve_fit(Gauss, x[756:780], sigma_13[756:780],p0=[1*10**6,770,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt62, pcov62 = curve_fit(Gauss, x[803:825], sigma_13[803:825],p0=[1*10**6,816,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt63, pcov63 = curve_fit(Gauss, x[873:899], sigma_13[873:899],p0=[1*10**6,890,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt64, pcov64 = curve_fit(Gauss, x[923:949], sigma_13[923:949],p0=[1*10**6,939,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt65, pcov65 = curve_fit(Gauss, x[1001:1027], sigma_13[1001:1027],p0=[1*10**6,1017,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt66, pcov66 = curve_fit(Gauss, x[1054:1080], sigma_13[1054:1080],p0=[1*10**6,1068,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt67, pcov67 = curve_fit(Gauss, x[1131:1160], sigma_13[1131:1160],p0=[1*10**6,1151,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt68, pcov68 = curve_fit(Gauss, x[1191:1217], sigma_13[1191:1217],p0=[1*10**6,1207,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+popt69, pcov69 = curve_fit(Gauss, x[1278:1287], sigma_13[1278:1287],p0=[1*10**6,1285,8,-1.3*10**7], absolute_sigma=True, maxfev=999999)
+
+plt.plot(x[0:13], Gauss(x[0:13],*popt46), color='blue', label='Gaussian for $\\sigma^+$')
+plt.plot(x[41:63], Gauss(x[41:63],*popt47), color='red', label='Gaussian for $\\sigma^-$')
+plt.plot(x[78:103], Gauss(x[78:103],*popt48), color='blue')
+plt.plot(x[133:152], Gauss(x[133:152],*popt49), color='red')
+plt.plot(x[171:196], Gauss(x[171:196],*popt50), color='blue')
+plt.plot(x[229:247], Gauss(x[229:247],*popt51), color='red')
+plt.plot(x[265:290], Gauss(x[265:290],*popt52), color='blue')
+plt.plot(x[326:346], Gauss(x[326:346],*popt53), color='red')
+plt.plot(x[365:389], Gauss(x[365:389],*popt54), color='blue')
+plt.plot(x[426:450], Gauss(x[426:450],*popt55), color='red')
+plt.plot(x[470:494], Gauss(x[470:494],*popt56), color='blue')
+plt.plot(x[532:554], Gauss(x[532:554],*popt57), color='red')
+plt.plot(x[576:599], Gauss(x[576:599],*popt58), color='blue')
+plt.plot(x[642:667], Gauss(x[642:667],*popt59), color='red')
+plt.plot(x[686:710], Gauss(x[686:710],*popt60), color='blue')
+plt.plot(x[756:780], Gauss(x[756:780],*popt61), color='red')
+plt.plot(x[803:825], Gauss(x[803:825],*popt62), color='blue')
+plt.plot(x[873:899], Gauss(x[873:899],*popt63), color='red')
+plt.plot(x[923:949], Gauss(x[923:949],*popt64), color='blue')
+plt.plot(x[1001:1027], Gauss(x[1001:1027],*popt65), color='red')
+plt.plot(x[1054:1080], Gauss(x[1054:1080],*popt66), color='blue')
+plt.plot(x[1131:1160], Gauss(x[1131:1160],*popt67), color='red')
+plt.plot(x[1191:1217], Gauss(x[1191:1217],*popt68), color='blue')
+plt.plot(x[1278:1287], Gauss(x[1278:1287],*popt69), color='red')
+
+print('################### sigma_13 Peak 1 bis 24 ###############################')
+print(popt46)
+print(popt47)
+print(popt48)
+print(popt49)
+print(popt50)
+print(popt51)
+print(popt52)
+print(popt53)
+print(popt54)
+print(popt55)
+print(popt56)
+print(popt57)
+print(popt58)
+print(popt59)
+print(popt60)
+print(popt61)
+print(popt62)
+print(popt63)
+print(popt64)
+print(popt65)
+print(popt66)
+print(popt67)
+print(popt68)
+print(popt69)
+
 plt.plot(x,sigma_13, linestyle='', marker='.',
             color='black', label='Measurement data')
 plt.xlabel('Position [px]', fontsize=13)
@@ -712,15 +788,41 @@ plt.legend(frameon=True, fontsize = 12)
 #plt.show()
 plt.close()
 
+b0=popt_pi_13[0]
+b0_err=np.sqrt(pcov_pi_13[0][0])
+b1=popt_pi_13[1]
+b1_err=np.sqrt(pcov_pi_13[1][1])/10
+b2=popt_pi_13[2]
+b2_err=np.sqrt(pcov_pi_13[2][2])/10
+
+sigma_plus = np.array([popt46[1], popt48[1], popt50[1], popt52[1], popt54[1], popt56[1], popt58[1], popt60[1], popt62[1], popt64[1], popt66[1], popt68[1]])
+sigma_plus_err= np.array([popt46[2], popt48[2], popt50[2], popt52[2], popt54[2], popt56[2], popt58[2], popt60[2], popt62[2], popt64[2], popt66[2], popt68[2]])
+sigma_minus = np.array([popt47[1], popt49[1], popt51[1], popt53[1], popt55[1], popt57[1], popt59[1], popt61[1], popt63[1], popt65[1], popt67[1]])
+sigma_minus_err = np.array([popt47[2], popt49[2], popt51[2], popt53[2], popt55[2], popt57[2], popt59[2], popt61[2], popt63[2], popt65[2], popt67[2]])
+
+k_plus = b0+b1*sigma_plus+b2*sigma_plus**2
+k_plus_err = np.sqrt((b0_err)**2+(sigma_plus*b1_err)**2+(sigma_plus**2*b2_err)**2+((b1+2*b2*sigma_plus)*sigma_plus_err)**2)
+k_minus = b0+b1*sigma_minus+b2*sigma_minus**2
+k_minus_err = np.sqrt((b0_err)**2+(sigma_minus*b1_err)**2+(sigma_minus**2*b2_err)**2+((b1+2*b2*sigma_minus)*sigma_minus_err)**2)
+print("k_plus=",k_plus,'+/-',k_plus_err)
+print("k_minus=",k_minus,'+/-',k_minus_err)
+k2 = np.array([12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2])
+delta_13 = np.mean(np.append(k_plus-k,k2-k_minus))
+delta_13_err = np.std(np.append(k_plus-k,k2-k_minus)) 
+#print('delta_err=1/24*np.sqrt(np.sum(k_plus_err**2)+np.sum(k_minus_err**2)) messfehler zu gro�')
+print('delta_13 =',delta_13,'+/-',delta_13_err)
+
 h = 6.626*10**-34
 c = 299792458
 d = 4.04*10**-3
 n = 1.4567
 B_13 = 0.761
-B_11_err = 0.027
+B_13_err = 0.027
 
 mu_b_13=h*c*delta_13/(2*B_13*d*np.sqrt(n**2-1))
 mu_b_13_err=np.sqrt((mu_b_13/delta_13*delta_13_err)**2+(mu_b_13/B_13*B_13_err)**2)
 print('mu_b_13=',mu_b_13,'+/-',mu_b_13_err)
 
-mu_b = np.mean([mu_b_9,mu_b_11,mu_b_13])
+mu_b_mean = np.mean([mu_b_9,mu_b_11,mu_b_13])
+mu_b_mean_err = np.sqrt(mu_b_9_err**2+mu_b_11_err**2+mu_b_13_err**2)/3
+print("mu_b_mean=",mu_b_mean,'+/-',mu_b_mean_err)
