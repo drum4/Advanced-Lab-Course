@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2018.4.6)  17 AUG 2018 02:15
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2018.4.6)  17 AUG 2018 02:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3353,34 +3353,34 @@ put line 9.
 
 
 ] (./images//bohrangular.tex)
-Overfull \hbox (2.48756pt too wide) in paragraph at lines 25--28
+Overfull \hbox (2.48756pt too wide) in paragraph at lines 27--30
 \TU/LinuxLibertineO(0)/m/n/12 Now the angular momentum of the electron along
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 39--42
+Underfull \hbox (badness 10000) in paragraph at lines 41--44
 
  []
 
 (./images//splitting.tex) [2]
-Overfull \hbox (6.38359pt too wide) in paragraph at lines 68--72
+Overfull \hbox (6.38359pt too wide) in paragraph at lines 70--74
 \TU/LinuxLibertineO(0)/m/n/12 which describes the transition probability betwee
 n
  []
 
 
-Overfull \hbox (9.57956pt too wide) in paragraph at lines 76--82
+Overfull \hbox (9.57956pt too wide) in paragraph at lines 78--84
 \TU/LinuxLibertineO(0)/m/n/12 causes us to observe circularly polarized light a
 long
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--82
+Underfull \hbox (badness 10000) in paragraph at lines 78--84
 
  []
 
 ) (./log.tex
-Overfull \hbox (10.99341pt too wide) in paragraph at lines 83--2
+Overfull \hbox (10.99341pt too wide) in paragraph at lines 85--2
 \TU/LinuxLibertineO(0)/m/n/12 called longitudinal and for $\OT1/cmr/m/n/12 ^^A\
 OML/cmm/m/it/12 M[] \OT1/cmr/m/n/12 = +1$ \TU/LinuxLibertineO(0)/m/n/12 and $\O
 T1/cmr/m/n/12 ^^A\OML/cmm/m/it/12 M[] \OT1/cmr/m/n/12 =
