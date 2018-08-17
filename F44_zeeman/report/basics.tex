@@ -1,22 +1,84 @@
 % !TeX root = f44_shortreport_schmitt_kleinbek.tex
 \section{Theoretical Basics}
 \subsection{Normal Zeeman effect}
-To understand the basics of the Zeeman effect, we first assume that the magnetic moment of an electron $I$ can be sufficiently described by Bohr's atomic model.
-According to this model, the electron orbits the atomic nucleus as point mass $m_e$ with velocity $v$ and charge $e$ at a distance $r_\text{B}$, the Bohr radius.\\
-Using this approximation, the magnetic moment
+To understand the basics of the Zeeman effect, we first assume that the magnetic moment of an electron $I$ can be sufficiently described by Bohr's atomic model.\\
+According to this model, the electron orbits the atomic nucleus as point mass $m_e$ with velocity $v$ and charge $e$ at a distance $r_\text{B}$, the Bohr radius.
+Using this approximation, the orbital magnetic moment
 \begin{align}
 \vec{\mu}_l = \frac{evr}{2}\cdot\vec{n}
 \end{align}
 is obtained.
-
-%\begin{figure}[ht]
-%\includegraphics[scale=1]{images//bohrangular.png}
-%\caption{Bohr model of an electron with the angular momentum $\vec{L}$ and the magnetic moment $\vec{\mu}$ \cite{ETHZurich}}
-%\label{fig:bohrangular}
-%\end{figure}
-
-Thus $\vec{n}$ is the normal vector, perpendicular to the disk on which the electron moves.
+\begin{figure}[ht]
+\centering
+\input{images//bohrangular.tex}
+\caption{Bohr model of an electron with the angular momentum $\vec{L}$ and the magnetic moment $\vec{\mu}$}
+\label{fig:bohrangular}
+\end{figure}
+Thus $\vec{n}$ is the normal vector, perpendicular to the disk on which the electron moves (see Fig. \ref{fig:bohrangular}).\\
 You can easily see that the magnetic moment resembles the angular momentum of the electron
 \begin{align}
-\vec{L} = \vec{r} \times \vec{p} = m_e r v \cdot \vec{n}.
+\vec{l} = \vec{r} \times \vec{p} = m_e r v \cdot \vec{n}.
 \end{align}
+If an external magnetic field $\vec{B}$ is applied, it interacts with the magnetic moment of the electron so that the energy level
+\begin{align}
+\Delta E_\text{pot} = -\vec{\mu}_l \cdot \vec{B} = \frac{e}{2m_e} \cdot \vec{l} \cdot \vec{B}
+\end{align}
+changes.\\
+Now the angular momentum of the electron along the magnetic field vector $\vec{B}$ is quantized in the form
+\begin{align}
+\abs{\vec{l}} = \sqrt{l(l+1)}\hbar
+\end{align}
+with the quantum number $l = 0, 1,…, n-1$ and the $z$-component
+\begin{align}
+l_z = m_l \hbar,
+\end{align}
+which runs in the range $-l \leq m_l \leq l$.\\
+This allows you to simplify the energy difference to
+\begin{align}
+\Delta E_\text{pot} = \frac{e \hbar}{2 m_e} m_l B = \mu_\text{B} m_l B,
+\end{align}
+where $\mu_B$ describes the Bohr magneton we are looking for.\\
+Changing the energy level by $\Delta E_\text{pot}$ causes the original energy level with angular momentum $l$ to split into $2l+1$ lower levels with the same angular momentum $l$ but different $m_l$ (see Fig. \ref{fig:splitting}).\\
+
+\begin{figure}[ht]
+\centering
+\input{images//splitting.tex}
+\caption{Schematic of the energy levels trough the normal Zeeman effect}
+\label{fig:splitting}
+\end{figure}
+
+Alternatively, this equation can also be derived quantum mechanically.
+All spins and torques of the electrons of an atom are considered as individual sums, as well as the total spin $\vec{J}$ required for the Hamilton operator in the external magnetic field.\\
+This gives the equation
+\begin{align}
+\Delta E_\text{pot} = \mu_\text{B} \cdot M_J \cdot B \cdot g_j
+\end{align}
+with the Landé factor $g_j$, which is one for the normal Zeeman effect we needed.
+The matrix element $M_J$ that appears in the equation is explained again in the following section.
+
+\subsection{Selection Rules and polarization of light}
+When an electron \enquote{jumps} between two electron shells $E_i$ and $E_k$, it emits a photon with a wavelength $\lambda$, which depends on the energy difference of the electron shells
+\begin{align}
+\frac{hc}{\lambda} = E_\text{photon} = \Delta E = E_i - E_k.
+\end{align}
+However, there are restrictions on which transitions are possible.
+Important for this is the dipole matrix element
+\begin{align}
+M_{ik} = e \int \psi_i^* \, \vec{r} \, \psi_k \dd{V},
+\end{align}
+which describes the transition probability between the electron shells $k$ to $i$.
+It must also have at least one component other than zero for a transition from $k$ to $i$ to be possible.\\
+If we evaluate the integral in three spatial directions, we get the conditions
+\begin{align}
+\Delta M_J &= M_{J,i} - M_{J,k} = 0, \pm 1,\\
+\Delta L &= L_i - L_k = \pm 1,\\
+\Delta S &= 0.
+\end{align}
+Assuming the magnetic field vector $\vec{B}$ points in the z-direction, only the matrix element $(M_{ik})_z$ cannot become zero for $\Delta M_J = 0$.
+These transitions are called $\pi$ transitions.
+These are equivalent to a dipole oscillating along the $z$-axis, which means that no radiation is emitted along the $z$-direction. In the other two directions, this oscillation of the dipole can be observed as linearly polarized light.\\
+If $\Delta M_J = \pm 1$, we get $\sigma$ transitions, for which the $z$-component of the dipole matrix becomes zero and the $x$- and $y$-components are not equal to zero, but phase shifted to each other by $\nicefrac{\pi}{2}$.
+This causes us to observe circularly polarized light along the $z$-axis and linearly polarized light along the $x$- and $y$-axis.\\
+
+The direction of observation along the $z$-axis is called longitudinal and for $\Delta M_J = + 1$ and $\Delta M_J = - 1$ circular polarized $\sigma$-lines should be visible.\\
+In contrast, linearly polarized $\pi$-lines should be observed in the transverse direction (perpendicular to the $z$-axis).

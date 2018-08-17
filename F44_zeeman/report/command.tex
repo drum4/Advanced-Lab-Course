@@ -5,3 +5,15 @@
 \newcommand{\e}[1]{\mathrm{e}^{#1}}
 \renewcommand{\pi}{\uppi}
 \newcommand{\rom}[1]{\uppercase\expandafter{\romannumeral #1 \relax}}
+\renewcommand{\vec}{\pmb}
+
+\usetikzlibrary{shapes.callouts}
+\tikzset{
+	level/.style = {ultra thick},
+	connect/.style = {dashed},
+	notice/.style = {
+        draw,
+        rectangle callout,
+        callout relative pointer={#1}},
+}
+\usetikzlibrary{arrows.meta}
