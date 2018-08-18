@@ -52,9 +52,6 @@ plt.errorbar(I, P100, xerr=I_err, yerr=P100_err,
              fmt='.', linewidth=1,
              linestyle='-', color='magenta',
              label='Messpunkte mit Fehler für R=100 k$\\Omega$')
-#plt.plot(,f**2, linestyle='None', marker='.',
- #           color='black', label='Messdaten')
-#plt.axis([4e2, 1.5e5, 10, 1.5E3])
 plt.xlabel('Stromstärke I [mA]', fontsize=13)
 plt.ylabel('Leistung [W]', fontsize=13)
 plt.title('Abb. [1]: Leistungs-Strom-Kennlinie', fontsize=16)
@@ -139,7 +136,20 @@ slope100=popt100[1]
 slope100_err=np.sqrt(pcov100[1][1])
 print('slope100=',slope100,'+/-',slope100_err)
 
+####################
+# Transmissionpeak #
+####################
 
-x, trans=np.loadtxt('data/transmissionpeak.csv', skiprows=16, delimiter="\t", usecols=(3,4), unpack=True)
-plt.plot(x,trans)
+x_2, trans_2 = np.loadtxt('data/transmissionpeak.csv', delimiter=',', usecols=(3, 4), unpack=True)
+x_4, trans_4 = np.loadtxt('data/transmissionpeak.csv', delimiter=',', usecols=(9, 10), unpack=True)
+plt.plot(x_2,trans_2*100, linestyle='-',
+         color='black', label='Messkurve')
+plt.plot(x_4,trans_4, linestyle='-',
+         color='green', label='Modulation')
+plt.xlabel('Zeit t [ms]', fontsize=13)
+plt.ylabel('Spannung U [mV]', fontsize=13)
+plt.title('Abb. [?]: Transmissionpeak', fontsize=16)
+plt.legend(frameon=True, fontsize = 12)
+#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
 plt.show()
+plt.close()
