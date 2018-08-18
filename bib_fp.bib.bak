@@ -1,3 +1,39 @@
 % Encoding: UTF-8
 
+@Book{Demtröder_3,
+  author    = {Demtr{\"o}der, Wolfgang},
+  title     = {Experimentalphysik 3},
+  year      = {2016},
+  subtitle  = {Atome, Molek{\"u}le und Festk{\"o}rper},
+  language  = {ger},
+  edition   = {5. Aufl. 2016},
+  series    = {Springer-Lehrbuch},
+  publisher = {Springer Spektrum},
+  isbn      = {978-3-662-49094-5},
+  pages     = {Online-Ressource (XXI, 588 S. 740 Abb. in Farbe, online resource)},
+  doi       = {10.1007/978-3-662-49094-5},
+  url       = {http://dx.doi.org/10.1007/978-3-662-49094-5},
+  address   = {Berlin, Heidelberg},
+  keywords  = {Experimentalphysik},
+  library   = {UB ; UW},
+}
+
+@Online{leaflets,
+  author   = {LD Didactic GmbH},
+  title    = {Physics Leaflets},
+  url      = {https://www.ld-didactic.de/literatur/hb/p_index_e.html#},
+  language = {en},
+  urldate  = {2018-08-18},
+  address  = {Huerth},
+}
+
+@Article{script_mpi,
+  title    = {Zeeman effect},
+  year     = {2012},
+  date     = {2012-03-10},
+  language = {en},
+  url      = {https://www.physi.uni-heidelberg.de/Einrichtungen/FP/anleitungen/F44.pdf},
+  address  = {Max-Planck-Institut für Kernphysik, Saupfercheckweg 1, Heidelberg},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

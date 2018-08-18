@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2018.4.6)  17 AUG 2018 02:16
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2018.4.6)  18 AUG 2018 15:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3386,34 +3386,124 @@ OML/cmm/m/it/12 M[] \OT1/cmr/m/n/12 = +1$ \TU/LinuxLibertineO(0)/m/n/12 and $\O
 T1/cmr/m/n/12 ^^A\OML/cmm/m/it/12 M[] \OT1/cmr/m/n/12 =
  []
 
-) (./discussion.tex)
-Overfull \hbox (3.2505pt too wide) in paragraph at lines 38--38
+
+Overfull \hbox (7.41441pt too wide) in paragraph at lines 4--5
+\TU/LinuxLibertineO(0)/m/n/12 which ist formed at the transition from $[][][] \
+OMS/cmsy/m/n/12 !  [][][][]$\TU/LinuxLibertineO(0)/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+
+ []
+
+File: images//hystheresis.png Graphic file (type bmp)
+<images//hystheresis.png>
+
+Overfull \hbox (17.54326pt too wide) in paragraph at lines 11--12
+ [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+[][][]|\TU/LinuxLibertineO(0)/m/n/12 Comparison of the magnetic field
+ []
+
+
+Overfull \hbox (2.90756pt too wide) in paragraph at lines 6--16
+\TU/LinuxLibertineO(0)/m/n/12 and decreasing field strength in the relevant ran
+ge
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--16
+
+ []
+
+File: images//structure.png Graphic file (type bmp)
+<images//structure.png>
+
+Overfull \hbox (3.35495pt too wide) in paragraph at lines 21--22
+ [][] 
+ []
+
+
+Underfull \hbox (badness 1609) in paragraph at lines 22--22
+[][][]|\TU/LinuxLibertineO(0)/m/n/12 Experimental set-up: a) Pole pieces
+ []
+
+
+Underfull \hbox (badness 1565) in paragraph at lines 22--22
+\TU/LinuxLibertineO(0)/m/n/12 of the magnet, b) Cd lamp, c) Red
+ []
+
+
+Overfull \hbox (9.07828pt too wide) in paragraph at lines 17--29
+\TU/LinuxLibertineO(0)/m/n/12 tion. For this purpose, we used the structure sho
+wn
+ []
+
+File: images//interference.jpg Graphic file (type bmp)
+<images//interference.jpg>
+
+Overfull \hbox (0.55157pt too wide) in paragraph at lines 31--41
+\TU/LinuxLibertineO(0)/m/n/12 constructive interference with the gear differenc
+e
+ []
+
+
+Overfull \hbox (4.38144pt too wide) in paragraph at lines 31--41
+\TU/LinuxLibertineO(0)/m/n/12 mately $\OT1/cmr/m/n/12 90[]$\TU/LinuxLibertineO(
+0)/m/n/12 , resulting in near total reflection within
+ []
+
+[3]) (./discussion.tex)
+Overfull \hbox (3.2505pt too wide) in paragraph at lines 36--36
 \TU/LinuxLibertineO(0)/m/n/12 2016. Springer-Lehrbuch. Berlin, Heidelberg:
  []
 
 
-Overfull \hbox (1.5736pt too wide) in paragraph at lines 38--38
+Overfull \hbox (1.5736pt too wide) in paragraph at lines 36--36
 \TU/LinuxLibertineO(0)/m/n/12 Springer Spektrum, 2016, Online–Ressource
  []
 
-[3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 38.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 38.
+
+Overfull \hbox (17.1993pt too wide) in paragraph at lines 36--36
+[][]$[][][][][] [] [] [] [][][] [] [][] [][] [][][][][][][][] [] [][] [] [][][]
+[][][][][][] []
+ []
+
+
+Overfull \hbox (11.65942pt too wide) in paragraph at lines 36--36
+[][] [] [] [] [][][][][] [] [] [] [][][][][]$[][] \TU/LinuxLibertineO(0)/m/n/12
+ (visited on 08/18/2018). 
+ []
+
+
+Overfull \hbox (8.02237pt too wide) in paragraph at lines 36--36
+\TU/LinuxLibertineO(0)/m/n/12 In: (Mar. 10, 2012). \TU/LinuxLibertineO(0)/m/sc/
+12 url\TU/LinuxLibertineO(0)/m/n/12 : [][]$[][][][][] [] [] [] [][][] [] [][][]
+[][] []
+ []
+
+[4]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 36.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 36.
  (./f44_shortreport_schmitt_kleinbek.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 38.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 38.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 36.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 36.
 Package logreq Info: Writing requests to 'f44_shortreport_schmitt_kleinbek.run.
 xml'.
 \openout1 = `f44_shortreport_schmitt_kleinbek.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 59047 strings out of 493007
- 1325942 string characters out of 6137966
- 2015152 words of memory out of 5000000
- 62199 multiletter control sequences out of 15000+600000
+ 59068 strings out of 493007
+ 1326480 string characters out of 6137966
+ 2015153 words of memory out of 5000000
+ 62217 multiletter control sequences out of 15000+600000
  540399 words of font info for 97 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  76i,20n,119p,10519b,6046s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on f44_shortreport_schmitt_kleinbek.pdf (3 pages).
+Output written on f44_shortreport_schmitt_kleinbek.pdf (4 pages).

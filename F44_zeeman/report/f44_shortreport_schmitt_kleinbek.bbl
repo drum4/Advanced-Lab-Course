@@ -66,6 +66,77 @@
       \endverb
       \keyw{Experimentalphysik}
     \endentry
+    \entry{leaflets}{online}{}
+      \name{author}{1}{}{%
+        {{hash=c8e538423d22fbb846b619a6491ec682}{%
+           family={GmbH},
+           familyi={G\bibinitperiod},
+           given={LD\bibnamedelima Didactic},
+           giveni={L\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{location}{1}{%
+        {Huerth}%
+      }
+      \strng{namehash}{c8e538423d22fbb846b619a6491ec682}
+      \strng{fullhash}{c8e538423d22fbb846b619a6491ec682}
+      \strng{bibnamehash}{c8e538423d22fbb846b619a6491ec682}
+      \strng{authorbibnamehash}{c8e538423d22fbb846b619a6491ec682}
+      \strng{authornamehash}{c8e538423d22fbb846b619a6491ec682}
+      \strng{authorfullhash}{c8e538423d22fbb846b619a6491ec682}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Physics Leaflets}
+      \field{urlday}{18}
+      \field{urlmonth}{8}
+      \field{urlyear}{2018}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.ld-didactic.de/literatur/hb/p_index_e.html#
+      \endverb
+      \verb{url}
+      \verb https://www.ld-didactic.de/literatur/hb/p_index_e.html#
+      \endverb
+    \endentry
+    \entry{script_mpi}{article}{}
+      \name{author}{1}{}{%
+        {{hash=e512c602496bfc7f96745d82833ea453}{%
+           family={MPIK},
+           familyi={M\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{location}{1}{%
+        {Max-Planck-Institut für Kernphysik, Saupfercheckweg 1, Heidelberg}%
+      }
+      \strng{namehash}{e512c602496bfc7f96745d82833ea453}
+      \strng{fullhash}{e512c602496bfc7f96745d82833ea453}
+      \strng{bibnamehash}{e512c602496bfc7f96745d82833ea453}
+      \strng{authorbibnamehash}{e512c602496bfc7f96745d82833ea453}
+      \strng{authornamehash}{e512c602496bfc7f96745d82833ea453}
+      \strng{authorfullhash}{e512c602496bfc7f96745d82833ea453}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{10}
+      \field{month}{3}
+      \field{subtitle}{FP instructions}
+      \field{title}{Zeeman effect}
+      \field{year}{2012}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.physi.uni-heidelberg.de/Einrichtungen/FP/anleitungen/F44.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.physi.uni-heidelberg.de/Einrichtungen/FP/anleitungen/F44.pdf
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
