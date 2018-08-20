@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2018.4.6)  18 AUG 2018 15:48
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2018.4.6)  20 AUG 2018 15:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2942,7 +2942,7 @@ Package polyglossia Info: Default language is english.
 . - 'bold italic small caps'  (bx/itsc) with NFSS spec.: <->"Linux Libertine
 . O/BI/OT:script=latn;language=DFLT;+smcp;mapping=tex-text;"
 .................................................
-LaTeX Info: Redefining \rmfamily on input line 46.
+LaTeX Info: Redefining \rmfamily on input line 47.
 \g__fontspec_family_LinuxBiolinumO_int=\count486
 .................................................
 . fontspec info: "defining-font"
@@ -2969,7 +2969,7 @@ LaTeX Info: Redefining \rmfamily on input line 46.
 . - 'bold italic small caps'  (bx/itsc) with NFSS spec.: <->"Linux Biolinum
 . O/BI/OT:script=latn;language=DFLT;+smcp;mapping=tex-text;"
 .................................................
-LaTeX Info: Redefining \sffamily on input line 47.
+LaTeX Info: Redefining \sffamily on input line 48.
 )
 Package scrhack Info: hyperref hack deactivated because of
 (scrhack)             detection of KOMA-Script class, that doesn't
@@ -3358,29 +3358,29 @@ Overfull \hbox (2.48756pt too wide) in paragraph at lines 27--30
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 41--44
+Underfull \hbox (badness 10000) in paragraph at lines 42--45
 
  []
 
 (./images//splitting.tex) [2]
-Overfull \hbox (6.38359pt too wide) in paragraph at lines 70--74
+Overfull \hbox (6.38359pt too wide) in paragraph at lines 71--75
 \TU/LinuxLibertineO(0)/m/n/12 which describes the transition probability betwee
 n
  []
 
 
-Overfull \hbox (9.57956pt too wide) in paragraph at lines 78--84
+Overfull \hbox (9.57956pt too wide) in paragraph at lines 79--85
 \TU/LinuxLibertineO(0)/m/n/12 causes us to observe circularly polarized light a
 long
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--84
+Underfull \hbox (badness 10000) in paragraph at lines 79--85
 
  []
 
 ) (./log.tex
-Overfull \hbox (10.99341pt too wide) in paragraph at lines 85--2
+Overfull \hbox (10.99341pt too wide) in paragraph at lines 86--2
 \TU/LinuxLibertineO(0)/m/n/12 called longitudinal and for $\OT1/cmr/m/n/12 ^^A\
 OML/cmm/m/it/12 M[] \OT1/cmr/m/n/12 = +1$ \TU/LinuxLibertineO(0)/m/n/12 and $\O
 T1/cmr/m/n/12 ^^A\OML/cmm/m/it/12 M[] \OT1/cmr/m/n/12 =
@@ -3446,18 +3446,98 @@ wn
 File: images//interference.jpg Graphic file (type bmp)
 <images//interference.jpg>
 
-Overfull \hbox (0.55157pt too wide) in paragraph at lines 31--41
+Overfull \hbox (0.55157pt too wide) in paragraph at lines 31--46
 \TU/LinuxLibertineO(0)/m/n/12 constructive interference with the gear differenc
 e
  []
 
 
-Overfull \hbox (4.38144pt too wide) in paragraph at lines 31--41
-\TU/LinuxLibertineO(0)/m/n/12 mately $\OT1/cmr/m/n/12 90[]$\TU/LinuxLibertineO(
-0)/m/n/12 , resulting in near total reflection within
+Overfull \hbox (3.79156pt too wide) in paragraph at lines 31--46
+\TU/LinuxLibertineO(0)/m/n/12 mately $[][]$, resulting in near total reflection
+ within
  []
 
-[3]) (./discussion.tex)
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--46
+
+ []
+
+[3]
+Overfull \hbox (12.52893pt too wide) in paragraph at lines 47--49
+\TU/LinuxLibertineO(0)/m/n/12 sider the distance between the $\U/eur/m/n/12 ^^Y
+$\TU/LinuxLibertineO(0)/m/n/12 - and $\OML/cmm/m/it/12 ^^[$\TU/LinuxLibertineO(
+0)/m/n/12 -lines, which
+ []
+
+
+Overfull \hbox (1.54936pt too wide) in paragraph at lines 51--53
+\TU/LinuxLibertineO(0)/m/n/12 with $\OT1/cmr/m/n/12 ^^A\OML/cmm/m/it/12 k$ \TU/
+LinuxLibertineO(0)/m/n/12 the order difference between two $\U/eur/m/n/12 ^^Y$\
+TU/LinuxLibertineO(0)/m/n/12 -lines,
+ []
+
+File: images//gaussian.png Graphic file (type bmp)
+<images//gaussian.png>
+
+Overfull \hbox (17.54326pt too wide) in paragraph at lines 92--93
+ [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
+
+ []
+
+[4]
+Overfull \hbox (2.0116pt too wide) in paragraph at lines 100--103
+\TU/LinuxLibertineO(0)/m/n/12 mirror onto the grating, where it is spectrally s
+plit
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--103
+
+ []
+
+File: images//spectrum.png Graphic file (type bmp)
+<images//spectrum.png>
+
+Overfull \hbox (17.54326pt too wide) in paragraph at lines 108--109
+ [][] 
+ []
+
+File: images//position.png Graphic file (type bmp)
+<images//position.png>
+
+Overfull \hbox (17.54326pt too wide) in paragraph at lines 117--118
+ [][] 
+ []
+
+
+Overfull \hbox (2.90355pt too wide) in paragraph at lines 113--124
+\TU/LinuxLibertineO(0)/m/n/12 determined the position of the peaks using a Gaus
+-
+ []
+
+) (./discussion.tex [5])
+Overfull \hbox (6.92358pt too wide) in paragraph at lines 3--36
+\TU/LinuxLibertineO(0)/m/n/12 The aim of the experiment was to determine Bohr’s
+
+ []
+
+
+Overfull \hbox (14.75957pt too wide) in paragraph at lines 3--36
+\TU/LinuxLibertineO(0)/m/n/12 line and an unknown element using a Czerny Turner
+
+ []
+
+
+Overfull \hbox (11.82758pt too wide) in paragraph at lines 3--36
+\TU/LinuxLibertineO(0)/m/n/12 ment, we would suggest an optical bench for mount
+-
+ []
+
+
 Overfull \hbox (3.2505pt too wide) in paragraph at lines 36--36
 \TU/LinuxLibertineO(0)/m/n/12 2016. Springer-Lehrbuch. Berlin, Heidelberg:
  []
@@ -3486,24 +3566,28 @@ Overfull \hbox (8.02237pt too wide) in paragraph at lines 36--36
 [][] []
  []
 
-[4]
+[6]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 36.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 36.
  (./f44_shortreport_schmitt_kleinbek.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 36.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 36.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package logreq Info: Writing requests to 'f44_shortreport_schmitt_kleinbek.run.
 xml'.
 \openout1 = `f44_shortreport_schmitt_kleinbek.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 59068 strings out of 493007
- 1326480 string characters out of 6137966
- 2015153 words of memory out of 5000000
- 62217 multiletter control sequences out of 15000+600000
+ 59088 strings out of 493007
+ 1326847 string characters out of 6137966
+ 2015297 words of memory out of 5000000
+ 62234 multiletter control sequences out of 15000+600000
  540399 words of font info for 97 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 76i,20n,119p,10519b,6046s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 76i,20n,119p,10519b,6044s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on f44_shortreport_schmitt_kleinbek.pdf (4 pages).
+Output written on f44_shortreport_schmitt_kleinbek.pdf (6 pages).
