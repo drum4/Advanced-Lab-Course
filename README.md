@@ -20,7 +20,7 @@ It covered the following experiments:
 - ### Optics:
   - F16 Laserspektroskopie (laserspectroscopy)
 - ### Spectroscopy:
-  - F44 Zeeman-Spektroskopie (zeeman spectroscopy)
+  - F44 Zeeman-Spektroskopie (zeeman spectroscopy) \[Short Report\]
   - F61 Kernresonanzspektroskopie (NMR)
   
 &copy; Nils Schmitt ([@drum4](https://github.com/drum4)) and Timo Kleinbek ([@TimoKleinbek](https://github.com/TimoKleinbek))
