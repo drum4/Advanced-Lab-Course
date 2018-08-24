@@ -58,7 +58,7 @@ plt.errorbar(current, mag_down, xerr=current_err, yerr=mag_down_err,
              label='Descending Measurement')
 plt.xlabel('Current I [A]', fontsize=13)
 plt.ylabel('Magnetic Field B [mT]', fontsize=13)
-#plt.title('Fig. [1]: Hysteresis effect for magnets used', fontsize=16)
+plt.title('Fig. [1]: Hysteresis effect for magnets used', fontsize=16)
 plt.plot(current, prop(current,*popt_up), color='red', label='Linear fit ascending')
 plt.plot(current, prop(current,*popt_down), color='blue', label='Linear fit descending',
          linestyle='--')
@@ -412,7 +412,7 @@ plt.plot(x,pi_13, linestyle='', marker='.',
             color='black', label='Measurement data')
 plt.xlabel('Position [px]', fontsize=13)
 plt.ylabel('Intensity', fontsize=13)
-#plt.title('Fig. [4]: $\\pi$-lines with 13A', fontsize=16)
+plt.title('Fig. [4]: $\\pi$-lines with 13A', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
 plt.savefig('figures//f44_abb_4.pdf',format='pdf')
 #plt.show()
