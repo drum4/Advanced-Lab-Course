@@ -57,7 +57,7 @@ plt.ylabel('Leistung [W]', fontsize=13)
 plt.title('Abb. [1]: Leistungs-Strom-Kennlinie', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
 #plt.savefig('figures//f16_abb_1.pdf',format='pdf')
-#plt.show()
+plt.show()
 plt.close()
 
 ############## Strom-Strom-Kennlinie #############
@@ -120,7 +120,7 @@ plt.ylabel('Stromstärke I$_{PD}$ [mA]', fontsize=13)
 plt.title('Abb. [2]: Strom-Strom-Kennlinie', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
 #plt.savefig('figures//f16_abb_1.pdf',format='pdf')
-#plt.show()
+plt.show()
 plt.close()
 
 slope1=popt1[1]
