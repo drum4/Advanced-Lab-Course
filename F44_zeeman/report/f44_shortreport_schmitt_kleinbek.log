@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2018.4.6)  24 AUG 2018 08:58
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2018.4.6)  25 AUG 2018 19:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3380,13 +3380,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 79--85
  []
 
 ) (./log.tex
-Overfull \hbox (10.99341pt too wide) in paragraph at lines 86--2
-\TU/LinuxLibertineO(0)/m/n/12 called longitudinal and for $\OT1/cmr/m/n/12 ^^A\
-OML/cmm/m/it/12 M[] \OT1/cmr/m/n/12 = +1$ \TU/LinuxLibertineO(0)/m/n/12 and $\O
-T1/cmr/m/n/12 ^^A\OML/cmm/m/it/12 M[] \OT1/cmr/m/n/12 =
- []
-
-
 Overfull \hbox (7.41441pt too wide) in paragraph at lines 4--5
 \TU/LinuxLibertineO(0)/m/n/12 which ist formed at the transition from $[][][] \
 OMS/cmsy/m/n/12 !  [][][][]$\TU/LinuxLibertineO(0)/m/n/12 . 
@@ -3522,12 +3515,6 @@ Overfull \hbox (2.90355pt too wide) in paragraph at lines 113--124
 ) (./discussion.tex [5])
 Overfull \hbox (6.92358pt too wide) in paragraph at lines 3--36
 \TU/LinuxLibertineO(0)/m/n/12 The aim of the experiment was to determine Bohr’s
-
- []
-
-
-Overfull \hbox (14.75957pt too wide) in paragraph at lines 3--36
-\TU/LinuxLibertineO(0)/m/n/12 line and an unknown element using a Czerny Turner
 
  []
 
