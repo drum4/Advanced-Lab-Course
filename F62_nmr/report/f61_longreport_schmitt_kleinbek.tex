@@ -1,0 +1,37 @@
+\documentclass[12pt,
+				 a4paper,
+				%landscape,
+				%headings=Big,
+				numbers=endperiod
+				 ]{scrartcl}
+\input{config.tex}
+\input{command.tex}
+
+\titlehead{\begin{minipage}{.5\textwidth}
+			\begin{flushleft}
+			\includegraphics[scale=.065]{images//logo_color.jpg}
+			\end{flushleft}
+ 	 		\end{minipage}
+			\begin{minipage}{.5\textwidth}
+			\begin{flushright}
+			\includegraphics[scale=.8]{images//logo_fp.png}
+			\end{flushright}
+ 	 		\end{minipage}}
+\title{F61 Nuclear magnetic resonance}
+\subtitle{Long Report}
+\author{Nils Schmitt \and Timo Kleinbek}
+\publishers{Supervisor: Minjung, Kim}
+\date{Conducted in August 2018}
+
+\begin{document}
+%\twocolumn
+\maketitle
+\input{abstract.tex}
+\tableofcontents
+\input{introduction}
+\input{basics}
+\input{log}
+\input{discussion}
+\nocite{*}
+\printbibliography
+\end{document}

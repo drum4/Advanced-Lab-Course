@@ -1,0 +1,15 @@
+% !TeX root = ..//f44_shortreport_schmitt_kleinbek.tex
+\begin{tikzpicture}[scale=.75]
+\fill (0,0) circle (4pt);
+\draw [thick](0,0) ellipse (3cm and 1cm);
+
+\fill (2,-0.73) circle (2.5pt) node[below]{$e$};
+\draw[arrows=-{Stealth[scale=1]}, thick] (2,-.73)--+(.75,.2);
+
+\draw[arrows=-{Stealth[scale=1]}, thick] (0,0)--+(0,3) node [below right]{$\pmb{L}$};
+
+\draw[thick] (0,0) -- (2,0.73) node [midway, below right]{$\pmb{r}$};
+
+\draw[thick, dashed] (0,0) -- (0,-1);
+\draw[arrows=-{Stealth[scale=1]}, thick] (0,-1)--+(0,-2) node [midway,right]{$\pmb{\mu}$};
+\end{tikzpicture}

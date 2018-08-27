@@ -1,0 +1,21 @@
+% !TeX root = f61_longreport_schmitt_kleinbek.tex
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\newcommand{\im}{\mathrm{i}}
+\newcommand{\e}[1]{\mathrm{e}^{#1}}
+\renewcommand{\pi}{\uppi}
+\newcommand{\rom}[1]{\uppercase\expandafter{\romannumeral #1 \relax}}
+\renewcommand{\vec}{\pmb}
+
+\newcolumntype{C}{>{$}c<{$}}
+
+\usetikzlibrary{shapes.callouts}
+\tikzset{
+	level/.style = {ultra thick},
+	connect/.style = {dashed},
+	notice/.style = {
+        draw,
+        rectangle callout,
+        callout relative pointer={#1}},
+}
+\usetikzlibrary{arrows.meta}
