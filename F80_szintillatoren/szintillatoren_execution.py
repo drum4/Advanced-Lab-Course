@@ -68,7 +68,7 @@ plt.arrow(790, 110, 50, -40, shape='full', width=3,
           length_includes_head=True, color='black')
 plt.legend(frameon=True, fontsize = 12)
 plt.savefig('figures//f80_abb_5.pdf',format='pdf')
-#plt.show()
+plt.show()
 plt.close()
 
 
