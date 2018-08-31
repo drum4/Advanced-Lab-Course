@@ -1,2 +1,92 @@
 % !TeX root = f61_longreport_schmitt_kleinbek.tex
 \section{Theoretical Basics}
+
+
+
+\subsection{Basics and the relaxation time}
+In an applied external magnetic field, existing magnetic moments of the atomic nuclei in a material align themselves along the external magnetic field, parallel or anti-parallel.
+The corresponding energy splitting is given by the scalar product of magnetic moment and external magnetic field in the form
+\begin{align}
+\Delta E=-\vec{\mu}\cdot\vec{B}_0.
+\end{align}
+The parallel alignment is energetically lower.
+The proton population numbers correctly described by the Fermi-Dirac statistics can be approximated classically by the Boltzmann distribution.
+The ratio of the two occupation numbers with parallel and antiparallel alignment is then given by
+\begin{align}
+\frac{N_+}{N_-}=\e{\frac{2\Delta E}{k_\text{B}T}}.
+\end{align}
+An estimate in which the magnetic moment is approximately one Bohr's magneton and the magnetic field is approximately \SI{1}{\tesla} results in a difference between the two occupation numbers of approximately one per thousand at room temperature.
+The total magnetization results from the sum of these thousandth part over the whole substance.
+In general, the following applies from the electrodynamics for the resulting torque from a magnetic field and a magnetization
+\begin{align}
+\vec{\tau}=\vec{M}\times\vec{B}_0.
+\end{align}
+For (anti-)parallel alignment, the torque is zero.
+As soon as $B_0$ and $M$ span a plane, the resulting torque rotates the magnetization around the axis of the magnetic field with the Larmor frequency
+\begin{align}
+\omega_\text{L}=\gamma\,B_0.
+\end{align}
+Now we create a second magnetic field $B_1$ orthogonal to a relatively strong external magnetic field $B_0$.
+Before the magnetization can align itself along the new total magnetic field $B_\text{tot}$, the Larmor precession around this begins.
+If the magnetic field $B_1$ oscillates with the Larmor frequency of the atomic nuclei, the magnetization can be deflected, as schematically shown in Figure \ref{fig:}.
+With the duration of the applied high-frequency magnetic field $B_1$ we can determine the angle by which the magnetization is deflected compared to the external magnetic field $B_0$.
+In particular, so-called $\ang{90}$ and $\ang{180}$ pulses can be generated, which generate an orthogonal or antiparallel magnetisation to $B_0$ from a parallel magnetisation.
+For these excited states of magnetization, the Bloch equations result in an asymptotic drop on characteristic time scales for antiparallel and orthogonal magnetization respectively $T_1$ and $T_2$:
+\begin{align}
+M_\parallel(t)&=M_0\cdot\left(1-2\e{-\frac{t}{T_1}}\right)\\
+M_\bot(t)&=M_0\cdot\e{-\frac{t}{T_2}}
+\end{align}
+The decay of the anti-parallel magnetization is caused by the interaction of the spins with the external magnetic field $B_0$ (spin-grating changer effect), whereas interactions between the individual spins (spin-spin interaction) lead to the decay of the parallel magnetization.
+Since the spin-spin interaction is stronger than the spin-grating interaction, $T_2\leq T_1$ is expected.
+Measurements of orthogonal magnetization are made in the $B_1$ generating coil by induction.
+After switching off the $B_1$ field, the precession of the magnetization around the external magnetic field $B_0$ induces an alternating current in the $B_1$ coil.
+This can be measured on a connected oscilloscope.
+In our setup, the output signal of the induction coil leads back again into the signal generator, which generates the high-frequency alternating field $B_1$, and only then into the readout devices.
+Thus we see the final signal as a superposition of the signal frequency and the alarm frequency, which shows the sum and difference of the two frequencies.
+We also call the difference the operating frequency, which is a few hundred hertz; this difference is in the per thousand range relative to the larmor frequency of hydrogen nuclei (about \SI{20}{\mega\hertz}).
+The relaxation time $T_1$ can be measured by first passing a $\ang{180}$ pulse
+an antiparallel orientation of the magnetization is caused and then after different time intervals a $\ang{90}$ pulse generates a signal in the induction coil whose amplitude is proportional to the magnitude of the antiparallel magnetization of before the $\ang{90}$ pulse.
+By recording these amplitudes after different times, the exponential decrease of the antiparallel magnetization can be investigated and $T_1$ determined.
+The relaxation time $T_2$ is measured by another combination of $\ang{90}$ and $\ang{180}$ pulses:
+First a $\ang{90}$ pulse produces a magnetization perpendicular to the $B_0$ field, which because of this field begins to precisionize this axis with the Larmor frequency.
+However, the external magnetic field is designed so that the magnetic field strength varies in the direction of the magnetic field vector.
+Because the Larmor frequency by equation \ref{eq:} depends on it, the frequency at different coordinates is also different, which after a certain time results in a phase difference at the different coordinates.
+This incoherence reduces the amplitude of the induced field in the coil.
+After a certain period of time $\tau$ a $\ang{180}$ pulse is sent, which causes a mirroring around $\ang{180}$ on an axis perpendicular to the axis of the $B_0$ field around which the magnetization rotates (see Fig. \ref{fig:}).
+The consequence of this mirroring is that the nuclei that were previously in phase after the other nuclei are now at the same phase angle in front of them. 
+The previous phase difference was due to the precession during a time $\tau$ had arisen.
+By mirroring through the $\ang{180}$ pulse, after a further precession period of $\tau$, the nuclei are all in phase again and thus show a maximum induction current.
+This allows the magnitude decrease to be measured over a period of 2$\tau$ .
+Now you can always use different values for $\tau$ and measure the decrease of the amplitude after twice the time to reconstruct the exponential decrease and so $T_2$.
+This measuring method is called spin-echo method.
+Alternatively, another $\ang{180}$ pulse can be sent to all odd multiples of time $\tau$ so that a maximum induction current is measured at all even multiples of $\tau$ and the relaxation time can be determined from this.
+This sequence of one $\ang{90}$ and several $\ang{180}$ pulses is called the Carr-Purcell sequence.
+The basic procedure of the process described here is shown in figure \ref{fig:} is illustrated.
+
+
+
+\subsection{Chemical Shift}
+When considering the excitation of nuclear spins, only atoms that actually have a nuclear spin can be excited; i. e. $S\neq 0$.
+Of course, a single proton as fermion in the nucleus of a hydrogen atom has a spin of $S = \nicefrac{1}{2}$.
+On the other hand, for a carbon atom, for example, $S = 0$, so there is no magnetic moment at all that could contribute to magnetization.
+Additionally, note that the $\ang{90}$ and $\ang{180}$ pulses are always adjusted to a noise frequency.
+In order to achieve an effective excitation of nuclear spins of different atoms, the gyromagnetic ratio must also be the same.
+If we expose a sample of organic material to only one frequency that excites hydrogen nuclei, only the hydrogen atoms of an organic material will contribute to the measured larmor frequency.
+In different molecules the hydrogen molecules are present in different bonds with different electronegativity differences, which means that the probability of residence of the electrons around the proton is not always the same.
+Due to this difference, the externally applied magnetic field $B_0$ is also shielded to different degrees by the electron, which results in a slightly different larmor frequency.
+\begin{align}
+\delta\vec{B}=-\sigma\vec{B}_0
+\end{align}
+
+
+
+\subsection{Imaging Techniques}
+
+
+\subsubsection{Frequency Coding}
+
+
+\subsubsection{Phase Coding}
+
+
+\subsubsection{Two dimensional imaging}

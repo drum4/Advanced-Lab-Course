@@ -142,7 +142,7 @@ plt.close()
 
 
 ########################
-#Sand#
+#Sand# Zur Übersichtlichkeit im Plot nicht alle benutzen 
 ########################
 x1, y1=np.loadtxt('data/oilinsand/testProfil538976318.txt', skiprows=0, unpack=True)
 x2, y2=np.loadtxt('data/oilinsand/testProfil538976323.txt', skiprows=0, unpack=True)
@@ -158,21 +158,21 @@ x11, y11=np.loadtxt('data/oilinsand/testProfil538976386.txt', skiprows=0, unpack
 x12, y12=np.loadtxt('data/oilinsand/testProfil538976396.txt', skiprows=0, unpack=True)
 
 plt.plot(x1[299:], y1[299:], color='black', label='Measured Data')
-plt.plot(x2[299:], y2[299:], color='forestgreen')
-plt.plot(x3[299:], y3[299:], color='darkblue')
-plt.plot(x4[299:], y4[299:])
+plt.plot(x2[299:], y2[299:])
+#plt.plot(x3[299:], y3[299:])
+#plt.plot(x4[299:], y4[299:])
 plt.plot(x5[299:], y5[299:])
-plt.plot(x6[299:], y6[299:])
+#plt.plot(x6[299:], y6[299:])
 plt.plot(x7[299:], y7[299:])
 plt.plot(x8[299:], y8[299:])
 plt.plot(x9[299:], y9[299:])
 plt.plot(x10[299:], y10[299:])
-plt.plot(x11[299:], y11[299:])
-plt.plot(x12[299:], y12[299:])
+#plt.plot(x11[299:], y11[299:])
+#plt.plot(x12[299:], y12[299:])
 plt.xlabel('Vertical Coordinates [mm]', fontsize=13)
 plt.ylabel('Amplitude', fontsize=13)
 #plt.title('Fig. [6]: Oil in Sand', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
 plt.savefig('figures//f61_abb_6.png',format='png')
-#plt.show()
+plt.show()
 plt.close()
