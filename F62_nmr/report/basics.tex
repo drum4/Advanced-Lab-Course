@@ -25,10 +25,17 @@ For (anti-)parallel alignment, the torque is zero.
 As soon as $B_0$ and $M$ span a plane, the resulting torque rotates the magnetization around the axis of the magnetic field with the Larmor frequency
 \begin{align}
 \omega_\text{L}=\gamma\,B_0.
+\label{eq:lamor}
 \end{align}
 Now we create a second magnetic field $B_1$ orthogonal to a relatively strong external magnetic field $B_0$.
 Before the magnetization can align itself along the new total magnetic field $B_\text{tot}$, the Larmor precession around this begins.
-If the magnetic field $B_1$ oscillates with the Larmor frequency of the atomic nuclei, the magnetization can be deflected, as schematically shown in Figure \ref{fig:}.
+If the magnetic field $B_1$ oscillates with the Larmor frequency of the atomic nuclei, the magnetization can be deflected, as schematically shown in Figure \ref{fig:magnet}.
+\begin{figure}[ht]
+\centering
+\input{images//magnet.tex}
+\label{fig:magnet}
+\caption{High-frequency external magnetic field generates elongation of magnetization.}
+\end{figure}
 With the duration of the applied high-frequency magnetic field $B_1$ we can determine the angle by which the magnetization is deflected compared to the external magnetic field $B_0$.
 In particular, so-called $\ang{90}$ and $\ang{180}$ pulses can be generated, which generate an orthogonal or antiparallel magnetisation to $B_0$ from a parallel magnetisation.
 For these excited states of magnetization, the Bloch equations result in an asymptotic drop on characteristic time scales for antiparallel and orthogonal magnetization respectively $T_1$ and $T_2$:
@@ -49,8 +56,8 @@ an antiparallel orientation of the magnetization is caused and then after differ
 By recording these amplitudes after different times, the exponential decrease of the antiparallel magnetization can be investigated and $T_1$ determined.
 The relaxation time $T_2$ is measured by another combination of $\ang{90}$ and $\ang{180}$ pulses:
 First a $\ang{90}$ pulse produces a magnetization perpendicular to the $B_0$ field, which because of this field begins to precisionize this axis with the Larmor frequency.
-However, the external magnetic field is designed so that the magnetic field strength varies in the direction of the magnetic field vector.
-Because the Larmor frequency by equation \ref{eq:} depends on it, the frequency at different coordinates is also different, which after a certain time results in a phase difference at the different coordinates.
+However, the external magnetic field is designed so that the magnetic field strength varies in the direction of the magnetic field vector.ends on it, the frequency at different coordinates is also different, which after a certain time results in a phase diff
+Because the Larmor frequency by equation \ref{eq:lamor} deperence at the different coordinates.
 This incoherence reduces the amplitude of the induced field in the coil.
 After a certain period of time $\tau$ a $\ang{180}$ pulse is sent, which causes a mirroring around $\ang{180}$ on an axis perpendicular to the axis of the $B_0$ field around which the magnetization rotates (see Fig. \ref{fig:}).
 The consequence of this mirroring is that the nuclei that were previously in phase after the other nuclei are now at the same phase angle in front of them. 
@@ -74,19 +81,92 @@ In order to achieve an effective excitation of nuclear spins of different atoms,
 If we expose a sample of organic material to only one frequency that excites hydrogen nuclei, only the hydrogen atoms of an organic material will contribute to the measured larmor frequency.
 In different molecules the hydrogen molecules are present in different bonds with different electronegativity differences, which means that the probability of residence of the electrons around the proton is not always the same.
 Due to this difference, the externally applied magnetic field $B_0$ is also shielded to different degrees by the electron, which results in a slightly different larmor frequency.
+The shielded part of the magnetic field is described by
 \begin{align}
-\delta\vec{B}=-\sigma\vec{B}_0
+\delta\vec{B}=-\sigma\vec{B}_0,
 \end{align}
+where $\sigma$ is the proportionality factor.
+For a certain material, the changed Larmor frequency results accordingly from the superposition of both magnetic fields to
+\begin{align}
+\omega_i=\omega_\text{L}(1-\sigma_i).
+\end{align}
+In order to identify a sample on the basis of this shift of the Larmor frequency, the shielding factors relative to a reference sample (here Tetra-Methyl-Silane, short TMS) are measured by measuring the distance of the corresponding resonance peaks.
+This distance then corresponds to
+\begin{align}
+\delta_i\cdot\omega_\text{L}=\omega_\text{TMS}-\omega_i.
+\end{align}
+The differences of the shielding factors $\delta_i =\sigma_i-\sigma_\text{TMS}$ can then be shown in a table as shown in figure \ref{fig:} shown look up.
+The positions of the molecules in this list can be explained using the example of a COOH group:
+Here, the hydrogen atom is directly bonded to an oxygen atom with a relatively high electronegativity, while a second oxygen atom is bonded directly to an oxygen atom with a relatively high electronegativity.
+oxygen atom is still in the immediate vicinity.
+The hydrogen atom itself is thus virtually \enquote{naked} and is hardly shielded from its electron, which leads to a stronger effective magnetic field compared to C-H bonds and thus to an increased larmor frequency. 
 
 
 
 \subsection{Imaging Techniques}
-
+By excitation of nuclear spins and subsequent measurement of the magnetization, the distribution of the excited spins can be reconstructed under certain conditions and thus one-, two- or three-dimensional images of the nuclear spin distribution can be generated.
+To divide the material into readable pixels in the different dimensions, in addition to an external $B_0$ field along the direction, which we now define as $z$ direction, we use magnetic fields, which also point in $z$ direction but change spatially with the $x, y$ or $z$ coordinate.
+In $x$ direction, for example:
+\begin{align*}
+\vec{B}_x=(0,0,G_xx)
+\end{align*}
 
 \subsubsection{Frequency Coding}
-
+After equation \ref{eq:lamor} the Larmor frequency in a magnetic field, which is superimposed by $B_0$ and a field varying in $z$ direction, results to
+\begin{align}
+\omega_\text{L}(z)=\gamma(B_0+G_zz)=\omega_\text{L}^0+\omega_z.
+\end{align}
+As soon as a $\ang{90}$ pulse causes a magnetization in the $x-y$ plane, this precedes the $z$ position with different alarm frequency around the axis of the magnetic field.
+The signal generated in an adjacent induction coil whose axis must be perpendicular to the $z$ direction is then proportional to the sum of all magnetizations multiplied by the phase resulting from the high frequency of the $\ang{90}$ pulse
+\begin{align}
+S(t)&\sim\int\limits_V M_\bot(z,t)\,\e{-\im\omega_\text{HF}t}\dd{V}\\
+\intertext{what is equal to}
+S(t)&\sim\int\limits_V M_\bot^\text{rot}(z,t)\,\e{-\im\left(\omega_\text{L}^0+\omega_z-\omega_\text{HF}\right)t}\dd{V}.
+\end{align}
+If we assume that $\Omega=\omega_\text{L}^0-\omega_\text{HF}$, the exponential function before the integral only contributes a phase and we get
+\begin{align}
+S(t)&\sim\e{\im\Omega t}\int\limits_Z\left(\int\limits_X\int\limits_Y M_\bot^\text{rot}(z,t)\dd{y}\dd{x}\right)\e{\im\omega_z t}\dd{z}.
+\end{align}
+After integration over the area of the induction coil, the measured signal is thus proportional to the Fourier transform of the magnetization.
+By measuring the signal at different times $t_i$ the distribution of the magnetization depending on the position $z$ can be calculated by discrete Fourier transformation.
+As usual for functions that are linked via Fourier transform, the product of characteristic widths of the functions is constant.
+Therefore, the following applies
+\begin{align}
+\Delta z\sim\frac{1}{\Delta t}.
+\end{align}
+The nuclear spins along the $z$ coordinate have because of the inhomogeneous magnetic field different Larmor frequencies and the information of the position is \enquote{encoded} by these frequencies.
+Therefore we also call this method frequency coding.
+For the resolution of a two-dimensional image we cannot simply use a
+apply inhomogeneous magnetic field in an additional direction because the two fields would superimpose each other and the magnetization would occur along the corresponding diagonals.
+Rather, we need a second type of coding, which we find in phase coding.
 
 \subsubsection{Phase Coding}
-
+By applying an inhomogeneous magnetic field and the different Larmor frequency, a phase difference
+\begin{align}
+\Delta \phi(z)=\phi(z)-\phi(0)=\gamma G^z zt=\omega_z t
+\end{align}
+between the nuclear spin.
+If we create such a field for a fixed time $T_\text{Ph}$, the phase is dependent on the z-coordinate in the form
+\begin{align}
+\phi(z)=\gamma G^z T_\text{Ph} z=k_z z.
+\end{align}
+Similar to the steps above, signal and magnetization are again linked via Fourier transformation.
+Instead of creating several measuring points over time, different
+in the phase coding, the $k_z$ implicitly defined above is obtained by varying the magnetic field gradient
+or the action time and thus receive a collection of measuring points that can be transformed back.
 
 \subsubsection{Two dimensional imaging}
+
+\begin{figure}[ht]
+\centering
+\input{images//phase.tex}
+\label{fig:phase}
+\caption{Spins for two-dimensional images, where the direction of the arrow symbolizes the phase and the grayscale the frequency.}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=.25]{images//signal.png}
+\label{fig:signal}
+\caption{Datarecording for two dimensional imaging \cite{script_nmr}.}
+\end{figure}
