@@ -1,0 +1,43 @@
+% !TeX root = ..//f61_longreport_schmitt_kleinbek.tex
+\begin{tikzpicture}[scale=1]
+%point
+\foreach \i in {4.5,9}
+\fill (\i,0) circle (2pt);
+
+%circle
+\foreach \i in {0,4.5,9,13.5}
+\draw [thick] (\i,0) circle (1cm);
+
+%time
+\node at (0,2.5){$t=0$};
+\node at (4.5,2.5){$t=\tau$};
+\node at (9,2.5){$t=\tau$};
+\node at (13.5,2.5){$t=2\tau$};
+\node at (1.2,1.25)[color=grey]{$\ang{90}$-pulse};
+
+%coordinates
+\foreach \i in {0,4.5,9,13.5}
+\draw[arrows=-{Stealth[scale=1]},thick](\i,0)--+(0,1.5) node[left]{$x$};
+\foreach \i in {0,4.5,9,13.5}
+\draw[arrows=-{Stealth[scale=1]},thick](\i,0)--+(1.5,0) node[below]{$y$};
+
+%timearrows
+\draw[arrows=-{Stealth[scale=.75]}, color=grey, line width=.75mm](2,0)--+(1,0) node[midway, above]{$\tau$};
+\draw[arrows=-{Stealth[scale=.75]}, color=grey, line width=.75mm](6.5,0)--+(1,0) node[midway, above]{$\ang{180}$};
+\draw[arrows=-{Stealth[scale=.75]}, color=grey, line width=.75mm](11,0)--+(1,0) node[midway, above]{$\tau$};
+
+%arrows
+\draw[arrows=-{Stealth[scale=.5]}, color=myred, line width=1.25mm](0,0)--+(1.2,0) node[midway, below, xshift=-3pt]{\footnotesize $M_\bot$};
+\draw[arrows=-{Stealth[scale=.5]}, color=myred, line width=1.25mm](13.5,0)--+(-1.2,0) node[midway, below, xshift=3pt]{\footnotesize $M_\bot$};
+\draw[arrows=-{Stealth[scale=1]},thick](4.5,0)--+(-35:1.5) node[below]{$\omega_2$};
+\draw[arrows=-{Stealth[scale=1]},thick](4.5,0)--+(-60:1.5) node[below]{$\omega_1$};
+\draw[arrows=-{Stealth[scale=1]},thick](9,0)--+(215:1.5) node[below]{$\omega_2$};
+\draw[arrows=-{Stealth[scale=1]},thick](9,0)--+(240:1.5) node[below]{$\omega_1$};
+
+\draw[arrows=-{Stealth[scale=1]},thick, shift = {(0.8,-0.8)}](5.42,-.4) arc (-25:-80:1);
+\draw[arrows=-{Stealth[scale=1]},thick, shift = {(-0.8,-0.8)}](8.8,-.97) arc (-100:-155:1);
+
+%redcircle
+\foreach \i in {0,13.5}
+\fill (\i,0) circle (1.775pt)[color=myred];
+\end{tikzpicture}
