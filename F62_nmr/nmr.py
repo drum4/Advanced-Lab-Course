@@ -32,11 +32,30 @@ plt.errorbar(x, y, yerr=y_err,
              label='Measuring data')
 plt.xlabel('Time [ms]', fontsize=13)
 plt.ylabel('Amplitude', fontsize=13)
-#plt.title('Fig. [1]: Gd500 Relaxationtime $T_1$', fontsize=16)
+#plt.title('Fig. [1]: Gd500 relaxationtime $T_1$', fontsize=16)
 t = np.arange(20,750)
-plt.plot(t, lattice(t,*popt), color='red', label='Exponential fit')
+plt.plot(t, lattice(t,*popt), color=(.784,0,0), label='Exponential fit')
 plt.legend(frameon=True, fontsize = 12)
-plt.savefig('figures//f61_abb_1.png',format='png')
+plt.savefig('figures//f61_abb_1.pdf',format='pdf')
+#plt.show()
+plt.close()
+
+x, y, y_err=np.loadtxt('data/relaxation/Ga600_T1.txt', skiprows=0, unpack=True)
+
+popt, pcov = curve_fit(lattice, x, y, absolute_sigma=True,
+                        p0=[10.8,190,1],sigma=y_err)
+
+plt.errorbar(x, y, yerr=y_err,
+             fmt='.', linewidth=1,
+             linestyle='', color='black',
+             label='Measuring data')
+plt.xlabel('Time [ms]', fontsize=13)
+plt.ylabel('Amplitude', fontsize=13)
+#plt.title('Fig. [1]: Gd600 relaxationtime $T_1$', fontsize=16)
+t = np.arange(20,750)
+plt.plot(t, lattice(t,*popt), color=(.784,0,0), label='Exponential fit')
+plt.legend(frameon=True, fontsize = 12)
+plt.savefig('figures//f61_abb_1_600.pdf',format='pdf')
 #plt.show()
 plt.close()
 
@@ -57,9 +76,28 @@ plt.xlabel('Time [ms]', fontsize=13)
 plt.ylabel('Amplitude', fontsize=13)
 #plt.title('Fig. [2]: Gd500 Relaxationtime $T_2$', fontsize=16)
 t = np.arange(20,380)
-plt.plot(t, lattice(t,*popt), color='red', label='Exponential fit')
+plt.plot(t, lattice(t,*popt), color=(.784,0,0), label='Exponential fit')
 plt.legend(frameon=True, fontsize = 12)
-plt.savefig('figures//f61_abb_2.png',format='png')
+plt.savefig('figures//f61_abb_2.pdf',format='pdf')
+#plt.show()
+plt.close()
+
+x, y, y_err=np.loadtxt('data/relaxation/Ga600_T2.txt', skiprows=0, unpack=True)
+
+popt, pcov = curve_fit(lattice, x, y, absolute_sigma=True,
+                        p0=[10.9,154,3],sigma=y_err)
+
+plt.errorbar(x, y, yerr=y_err,
+             fmt='.', linewidth=1,
+             linestyle='', color='black',
+             label='Measuring data')
+plt.xlabel('Time [ms]', fontsize=13)
+plt.ylabel('Amplitude', fontsize=13)
+#plt.title('Fig. [2]: Gd600 Relaxationtime $T_2$', fontsize=16)
+t = np.arange(20,380)
+plt.plot(t, lattice(t,*popt), color=(.784,0,0), label='Exponential fit')
+plt.legend(frameon=True, fontsize = 12)
+plt.savefig('figures//f61_abb_2_600.pdf',format='pdf')
 #plt.show()
 plt.close()
 
@@ -77,13 +115,30 @@ plt.xlabel('Time [ms]', fontsize=13)
 plt.ylabel('Amplitude', fontsize=13)
 #plt.title('Fig. [3]: Gd500 Relaxationtime $T_2$ Car-Purcell', fontsize=16)
 t = np.arange(20,700)
-plt.plot(t, lattice(t,*popt), color='red', label='Exponential fit')
+plt.plot(t, lattice(t,*popt), color=(.784,0,0), label='Exponential fit')
 plt.legend(frameon=True, fontsize = 12)
-plt.savefig('figures//f61_abb_3.png',format='png')
+plt.savefig('figures//f61_abb_3.pdf',format='pdf')
 #plt.show()
 plt.close()
 
+x, y, y_err=np.loadtxt('data/relaxation/Ga600_CP.txt', skiprows=0, unpack=True)
 
+popt, pcov = curve_fit(lattice, x, y, absolute_sigma=True,
+                        p0=[86,170,3],sigma=y_err)
+
+plt.errorbar(x, y, yerr=y_err,
+             fmt='.', linewidth=1,
+             linestyle='', color='black',
+             label='Measuring data')
+plt.xlabel('Time [ms]', fontsize=13)
+plt.ylabel('Amplitude', fontsize=13)
+#plt.title('Fig. [3]: Gd600 Relaxationtime $T_2$ Car-Purcell', fontsize=16)
+t = np.arange(20,700)
+plt.plot(t, lattice(t,*popt), color=(.784,0,0), label='Exponential fit')
+plt.legend(frameon=True, fontsize = 12)
+plt.savefig('figures//f61_abb_3_600.pdf',format='pdf')
+#plt.show()
+plt.close()
 
 
 
@@ -103,7 +158,20 @@ plt.ylabel('Amplitude', fontsize=13)
 plt.annotate("TMS-Peak", xy=(350, 0.105), xytext=(100, 0.115), fontsize=13,
             arrowprops=dict(arrowstyle="simple", color='black'))
 plt.legend(frameon=True, fontsize = 12)
-plt.savefig('figures//f61_abb_4.png',format='png')
+plt.savefig('figures//f61_abb_4.pdf',format='pdf')
+#plt.show()
+plt.close()
+
+x, y=np.loadtxt('data/samples/Cplus.txt', skiprows=0, unpack=True)
+
+plt.plot(x[51:], y[51:], color='black', label='Measuring Data')
+plt.xlabel('Frequency [Hz]', fontsize=13)
+plt.ylabel('Amplitude', fontsize=13)
+#plt.title('Fig. [5]: Sample C+', fontsize=16)
+plt.annotate("TMS-Peak", xy=(650, 0.1), xytext=(740, 0.14), fontsize=13,
+            arrowprops=dict(arrowstyle="simple", color='black'))
+plt.legend(frameon=True, fontsize = 12)
+plt.savefig('figures//f61_abb_5.pdf',format='pdf')
 #plt.show()
 plt.close()
 
@@ -127,9 +195,9 @@ plt.plot(x2, y2, color='forestgreen', label='Much Oil')
 plt.plot(x3, y3, color='darkblue', label='Oil and Teflon')
 plt.xlabel('Vertical Coordinates [mm]', fontsize=13)
 plt.ylabel('Amplitude', fontsize=13)
-#plt.title('Fig. [5]: Different Oil', fontsize=16)
+#plt.title('Fig. [6]: Different Oil', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-plt.savefig('figures//f61_abb_5.png',format='png')
+plt.savefig('figures//f61_abb_6.pdf',format='pdf')
 #plt.show()
 plt.close()
 
@@ -171,8 +239,8 @@ plt.plot(x10[299:], y10[299:])
 #plt.plot(x12[299:], y12[299:])
 plt.xlabel('Vertical Coordinates [mm]', fontsize=13)
 plt.ylabel('Amplitude', fontsize=13)
-#plt.title('Fig. [6]: Oil in Sand', fontsize=16)
+#plt.title('Fig. [7]: Oil in Sand', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-plt.savefig('figures//f61_abb_6.png',format='png')
-plt.show()
+plt.savefig('figures//f61_abb_7.pdf',format='pdf')
+#plt.show()
 plt.close()
