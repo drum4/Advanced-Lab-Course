@@ -95,18 +95,28 @@ This was done by measuring the resonance peaks of the Fourier transform of the r
 \begin{figure}[ht]
 \begin{subfigure}{.45\textwidth}
 \includegraphics[width=9.3cm]{..//figures//f61_abb_4.pdf}
+\caption{Sample A}
+\end{subfigure}
+\qquad
+\begin{subfigure}{.495\textwidth}
+\includegraphics[width=9.3cm]{..//figures//f61_abb_5.pdf}
 \caption{Sample B}
 \end{subfigure}
 \qquad
 \begin{subfigure}{.45\textwidth}
-\includegraphics[width=9.3cm]{..//figures//f61_abb_5.pdf}
+\includegraphics[width=9.3cm]{..//figures//f61_abb_6.pdf}
 \caption{Sample C}
+\end{subfigure}
+\qquad
+\begin{subfigure}{.45\textwidth}
+\includegraphics[width=9.3cm]{..//figures//f61_abb_7.pdf}
+\caption{Sample D}
 \end{subfigure}
 \caption{Fourier transform of the registered signal}
 \label{fig:fourier}
 \end{figure}
 From the frequency shift measured in this way, the chemical shift can be calculated using equation \ref{eq:shift}.\\
-Experimentally, we had to give a pulse to the magnet every three seconds and continuously adjust the main magnetic field so that the working frequency is around \SI{500}{\hertz}.
+Experimentally, we had to give a pulse to the magnet every three seconds and continuously adjust the main magnetic field so that the working frequency is around $\nu_\text{w}=\SI{500}{\hertz}$.
 Therefore, one wavelength had to be \SI{2}{\milli\second} long, which we could achieve via the screw on the magnet.\\
 Table \ref{tab:shift} lists the measured chemical shifts of the different samples and their assignment to the corresponding chemical elements.
 \begin{table}[ht]
@@ -118,8 +128,8 @@ Sample & Shift 1 [ppm] & Shift 2 [ppm] & Shift 3 [ppm] & Substance\\
 A & \num{2.4(1)} & \num{3.9(1)} & \num{6.3(1)} & fluoroacetone\\
 B & \num{2.1(1)} & \num{6.9(1)} & & p-xylol\\
 C & \num{9.6(1)} & \num{12.0(1)} & & acetic acid\\
-D & \num{4.0(1)} & \num{6.4(1)} & & Fluoroacetonitril\\
-E & \num{2.2(1)} & \num{7(1)} & & tuluol\\
+D & \num{4.0(1)} & \num{6.4(1)} & & fluoroacetonitril\\
+E & \num{2.2(1)} & \num{7.3(1)} & & tuluol\\
 \bottomrule
 \end{tabular}
 \caption{Measured chemical shifts}
@@ -128,7 +138,14 @@ E & \num{2.2(1)} & \num{7(1)} & & tuluol\\
 Due to missing samples A,D and E, the shifts could unfortunately only be taken over by leading test participants.\\
 
 Now we knew that the elements toluol (CH$_3$ - C$_6$H$_5$), p-xylol (CH$_3$ - C$_6$H$_4$ - CH$_3$), acetic acid (CH$_3$ - COOH), fluoroacetone (FCH$_2$ - CO - CH$_3$) and fluoroacetonitril (FCH$_2$ - CN) were among the samples and could classify them according to the same principle with figure \ref{fig:shift}.\\
-
+Sample C is the only one that has a shift above 10 ppm and therefore must have a COOH group, which only applies to acetic acid.
+The two shifts of samples B and E are in fact the same.
+The same functional groups, a carbon ring and one or two methyl groups for tuluol and p-xylol, cause the same shifts.
+Because p-xylol contains twice the amount of methyl groups, this substance should show a higher ratio in the peak heights.
+Sample B shows exactly such a difference and is therefore p-xylol, while sample E is then tuluol.
+Both fluoroacetone and fluoroacetonitril have a fluoromethyl group and show two identical shifts.
+Nevertheless, the former has a third shift exactly the same size as tuluol and p-xylol, which could be assigned to the simple methyl group.
+Therefore, sample A with the additional peak corresponds to fluoroacetone and sample D to fluoroacetonitril.
 
 
 
