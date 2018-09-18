@@ -57,7 +57,7 @@ plt.ylabel('Leistung [W]', fontsize=13)
 plt.title('Abb. [1]: Leistungs-Strom-Kennlinie', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
 #plt.savefig('figures//f16_abb_1.pdf',format='pdf')
-plt.show()
+#plt.show()
 plt.close()
 
 ############## Strom-Strom-Kennlinie #############
@@ -73,19 +73,19 @@ I100_err = U_100_err/100000
 def linear(x,a,b):
     return a+x*b
 
-popt1, pcov1 = curve_fit(linear, I[8:], I1[8:], absolute_sigma=True,
-                             sigma=I1_err[8:])
+popt1, pcov1 = curve_fit(linear, I[9:], I1[9:], absolute_sigma=True,
+                             sigma=I1_err[9:])
 a1 = '$a=$'+str(np.round(popt1[1],3))+' $\\pm$ '+str(np.round(np.sqrt(pcov1[1][1]),3))
 
-popt10, pcov10 = curve_fit(linear, I[8:], I10[8:], absolute_sigma=True,
-                             sigma=I10_err[8:])
-a10 = '$a=$'+str(np.round(popt10[1],3))+' $\\pm$ '+str(np.round(np.sqrt(pcov10[1][1]),3))
-popt50, pcov50 = curve_fit(linear, I[8:], I50[8:], absolute_sigma=True,
-                             sigma=I50_err[8:])
+#popt10, pcov10 = curve_fit(linear, I[8:], I10[8:], absolute_sigma=True,
+#                             sigma=I10_err[8:])
+#a10 = '$a=$'+str(np.round(popt10[1],3))+' $\\pm$ '+str(np.round(np.sqrt(pcov10[1][1]),3))
+popt50, pcov50 = curve_fit(linear, I[9:], I50[9:], absolute_sigma=True,
+                             sigma=I50_err[9:])
 a50 = '$a=$'+str(np.round(popt50[1],3))+' $\\pm$ '+str(np.round(np.sqrt(pcov50[1][1]),3))
-popt100, pcov100 = curve_fit(linear, I[8:], I100[8:], absolute_sigma=True,
-                             sigma=I100_err[8:])
-a100 = '$a=$'+str(np.round(popt100[1],3))+' $\\pm$ '+str(np.round(np.sqrt(pcov100[1][1]),3))
+#popt100, pcov100 = curve_fit(linear, I[8:], I100[8:], absolute_sigma=True,
+#                             sigma=I100_err[8:])
+#a100 = '$a=$'+str(np.round(popt100[1],3))+' $\\pm$ '+str(np.round(np.sqrt(pcov100[1][1]),3))
 #chisquare_a0 = np.sum(((linear(I,*popt)-I1)**2/I1_err**2))
 #dof = 2
 #chisquare_a = chisquare_a0/dof
@@ -101,26 +101,26 @@ plt.errorbar(I, I50, xerr=I_err, yerr=I50_err,
              label='$R=50 \\Omega$')
 plt.errorbar(I, I10, xerr=I_err, yerr=I10_err,
              fmt='.', linewidth=1,
-             linestyle='', color='black',
+             linestyle='', color='blue',
              label='$R=10 \\mathrm{k}\\Omega$')
 plt.errorbar(I, I100, xerr=I_err, yerr=I100_err,
              fmt='.', linewidth=1,
-             linestyle='', color='black',
+             linestyle='', color='green',
              label='$R=100 \\mathrm{k}\\Omega$')
 plt.plot(I[8:],linear(I[8:],*popt1), linestyle='-', marker='',
-            color='red', label='Messdaten $R=1 \\mathrm{k}\\Omega$')
+            color='black', label='linearer Fit $R=1 \\mathrm{k}\\Omega$')
 plt.plot(I[8:],linear(I[8:],*popt50), linestyle='-', marker='',
-            color='red', label='Messdaten $R=50 \\Omega$')
-plt.plot(I[8:],linear(I[8:],*popt10), linestyle='-', marker='',
-            color='red', label='Messdaten $R=10 \\mathrm{k}\\Omega$')
-plt.plot(I[8:],linear(I[8:],*popt100), linestyle='-', marker='',
-            color='red', label='Messdaten $R=100 \\mathrm{k}\\Omega$')
+            color='grey', label='linearer Fit $R=50 \\Omega$')
+#plt.plot(I[8:],linear(I[8:],*popt10), linestyle='-', marker='',
+#            color='blue', label='Messdaten $R=10 \\mathrm{k}\\Omega$')
+#plt.plot(I[8:],linear(I[8:],*popt100), linestyle='-', marker='',
+#            color='green', label='Messdaten $R=100 \\mathrm{k}\\Omega$')
 plt.xlabel('Stromstärke I [mA]', fontsize=13)
 plt.ylabel('Stromstärke I$_{PD}$ [mA]', fontsize=13)
 plt.title('Abb. [2]: Strom-Strom-Kennlinie', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
 #plt.savefig('figures//f16_abb_1.pdf',format='pdf')
-plt.show()
+#plt.show()
 plt.close()
 
 slope1=popt1[1]
@@ -129,27 +129,68 @@ print('slope1=',slope1,'+/-',slope1_err)
 slope50=popt50[1]
 slope50_err=np.sqrt(pcov50[1][1])
 print('slope50=',slope50,'+/-',slope50_err)
-slope10=popt10[1]
-slope10_err=np.sqrt(pcov10[1][1])
-print('slope10=',slope10,'+/-',slope10_err)
-slope100=popt100[1]
-slope100_err=np.sqrt(pcov100[1][1])
-print('slope100=',slope100,'+/-',slope100_err)
+
 
 ####################
 # Transmissionpeak #
 ####################
 
+def Gauss(x,a,b,c,d):
+    return a*np.exp(-(x-b)**2/(2*c**2))+d
+
 x_2, trans_2 = np.loadtxt('data/transmissionpeak.csv', delimiter=',', usecols=(3, 4), unpack=True)
 x_4, trans_4 = np.loadtxt('data/transmissionpeak.csv', delimiter=',', usecols=(9, 10), unpack=True)
-plt.plot(x_2,trans_2*100, linestyle='-',
+trans_2=trans_2*100
+popt1, pcov1 = curve_fit(Gauss, x_2[91:191], trans_2[91:191],p0=[68,0.0946,0.0003,0.1], absolute_sigma=True)
+popt2, pcov2 = curve_fit(Gauss, x_2[1212:1290], trans_2[1212:1290],p0=[68,0.099,0.0003,0.1], absolute_sigma=True)
+popt3, pcov3 = curve_fit(Gauss, x_2[2220:2310], trans_2[2220:2310],p0=[68,0.103,0.0003,0.1], absolute_sigma=True)
+plt.plot(x_2,trans_2, linestyle='-',
          color='black', label='Messkurve')
 plt.plot(x_4,trans_4, linestyle='-',
          color='green', label='Modulation')
+plt.plot(x_2[91:191], Gauss(x_2[91:191],*popt1), color='red', label='Gaussian')
+plt.plot(x_2[1212:1290], Gauss(x_2[1212:1290],*popt2), color='red', label='Gaussian')
+plt.plot(x_2[2220:2310], Gauss(x_2[2220:2310],*popt3), color='red', label='Gaussian')
 plt.xlabel('Zeit t [ms]', fontsize=13)
 plt.ylabel('Spannung U [mV]', fontsize=13)
 plt.title('Abb. [?]: Transmissionpeak', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
 #plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+print("peak1",popt1)
+print("peak2",popt2)
+print("peak3",popt3)
+#plt.show()
+plt.close()
+
+
+####################
+# Modulation #
+####################
+print('######################')
+
+def Gauss(x,a,b,c,d):
+    return a*np.exp(-(x-b)**2/(2*c**2))+d
+
+x_2, trans_2 = np.loadtxt('data/modulation.csv', delimiter=',', usecols=(3, 4), unpack=True)
+x_4, trans_4 = np.loadtxt('data/modulation.csv', delimiter=',', usecols=(9, 10), unpack=True)
+trans_2=trans_2*100
+popt1, pcov1 = curve_fit(Gauss, x_2[76:117], trans_2[76:117],p0=[4,0.094,0.00006,25], absolute_sigma=True)
+popt2, pcov2 = curve_fit(Gauss, x_2[124:185], trans_2[124:185],p0=[4,0.0942,0.00006,25], absolute_sigma=True)
+popt3, pcov3 = curve_fit(Gauss, x_2[185:238], trans_2[185:238],p0=[4,0.0944,0.00007,25], absolute_sigma=True)
+plt.plot(x_2,trans_2, linestyle='-',
+         color='black', label='Messkurve')
+plt.plot(x_4,trans_4, linestyle='-',
+         color='green', label='Modulation')
+plt.plot(x_2[76:117], Gauss(x_2[76:117],*popt1), color='red', label='Gaussian')
+plt.plot(x_2[124:185], Gauss(x_2[124:185],*popt2), color='red')
+plt.plot(x_2[185:238], Gauss(x_2[185:238],*popt3), color='red')
+plt.xlabel('Zeit t [ms]', fontsize=13)
+plt.ylabel('Spannung U [mV]', fontsize=13)
+plt.title('Abb. [?]: Modulation', fontsize=16)
+plt.legend(frameon=True, fontsize = 12)
+#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+print("linke Modulation",popt1)
+print("Mitte",popt2)
+print("rechte Modulation",popt3)
 plt.show()
 plt.close()
