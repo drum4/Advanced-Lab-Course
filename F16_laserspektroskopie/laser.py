@@ -162,6 +162,16 @@ print("peak3",popt3)
 #plt.show()
 plt.close()
 
+diff1=popt2[1]-popt1[1]
+diff1_err=np.sqrt(popt2[2]**2+popt1[2]**2)
+diff2=popt3[1]-popt2[1]
+diff2_err=np.sqrt(popt3[2]**2+popt2[2]**2)
+print("diff1=",diff1,'+',diff1_err)
+print("diff2=",diff2,'+',diff2_err)
+
+FSR=(diff1+diff2)/2
+FSR_err=np.sqrt(diff1_err**2+diff2_err**2)/2
+print('FSR=',FSR,'+',FSR_err)
 
 ####################
 # Modulation #
@@ -177,6 +187,12 @@ trans_2=trans_2*100
 popt1, pcov1 = curve_fit(Gauss, x_2[76:117], trans_2[76:117],p0=[4,0.094,0.00006,25], absolute_sigma=True)
 popt2, pcov2 = curve_fit(Gauss, x_2[124:185], trans_2[124:185],p0=[4,0.0942,0.00006,25], absolute_sigma=True)
 popt3, pcov3 = curve_fit(Gauss, x_2[185:238], trans_2[185:238],p0=[4,0.0944,0.00007,25], absolute_sigma=True)
+popt4, pcov4 = curve_fit(Gauss, x_2[1200:1242], trans_2[1200:1242],p0=[4,0.0984,0.00006,25], absolute_sigma=True)
+popt5, pcov5 = curve_fit(Gauss, x_2[1245:1295], trans_2[1245:1295],p0=[4,0.09865,0.00006,25], absolute_sigma=True)
+popt6, pcov6 = curve_fit(Gauss, x_2[1295:1346], trans_2[1295:1346],p0=[4,0.09886,0.00007,25], absolute_sigma=True)
+popt7, pcov7 = curve_fit(Gauss, x_2[2230:2278], trans_2[2230:2278],p0=[4,0.1026,0.00006,25], absolute_sigma=True)
+popt8, pcov8 = curve_fit(Gauss, x_2[2280:2329], trans_2[2280:2329],p0=[4,0.1028,0.00006,25], absolute_sigma=True)
+popt9, pcov9 = curve_fit(Gauss, x_2[2330:2370], trans_2[2330:2370],p0=[4,0.10296,0.00007,25], absolute_sigma=True)
 plt.plot(x_2,trans_2, linestyle='-',
          color='black', label='Messkurve')
 plt.plot(x_4,trans_4, linestyle='-',
@@ -184,13 +200,49 @@ plt.plot(x_4,trans_4, linestyle='-',
 plt.plot(x_2[76:117], Gauss(x_2[76:117],*popt1), color='red', label='Gaussian')
 plt.plot(x_2[124:185], Gauss(x_2[124:185],*popt2), color='red')
 plt.plot(x_2[185:238], Gauss(x_2[185:238],*popt3), color='red')
+plt.plot(x_2[1200:1242], Gauss(x_2[1200:1242],*popt4), color='red')
+plt.plot(x_2[1245:1295], Gauss(x_2[1245:1295],*popt5), color='red')
+plt.plot(x_2[1295:1346], Gauss(x_2[1295:1346],*popt6), color='red')
+plt.plot(x_2[2230:2278], Gauss(x_2[2230:2278],*popt7), color='red')
+plt.plot(x_2[2280:2329], Gauss(x_2[2280:2329],*popt8), color='red')
+plt.plot(x_2[2330:2370], Gauss(x_2[2330:2370],*popt9), color='red')
+
 plt.xlabel('Zeit t [ms]', fontsize=13)
 plt.ylabel('Spannung U [mV]', fontsize=13)
 plt.title('Abb. [?]: Modulation', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
 #plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+print('peak 1')
 print("linke Modulation",popt1)
 print("Mitte",popt2)
 print("rechte Modulation",popt3)
+print('peak 2')
+print("linke Modulation",popt4)
+print("Mitte",popt5)
+print("rechte Modulation",popt6)
+print('peak 3')
+print("linke Modulation",popt7)
+print("Mitte",popt8)
+print("rechte Modulation",popt9)
 plt.show()
 plt.close()
+
+diff1=popt2[1]-popt1[1]
+diff1_err=np.sqrt(popt2[2]**2+popt1[2]**2)
+diff2=popt3[1]-popt2[1]
+diff2_err=np.sqrt(popt3[2]**2+popt2[2]**2)
+diff3=popt5[1]-popt4[1]
+diff3_err=np.sqrt(popt5[2]**2+popt4[2]**2)
+diff4=popt6[1]-popt5[1]
+diff4_err=np.sqrt(popt6[2]**2+popt5[2]**2)
+diff5=popt8[1]-popt7[1]
+diff5_err=np.sqrt(popt8[2]**2+popt7[2]**2)
+diff6=popt9[1]-popt8[1]
+diff6_err=np.sqrt(popt9[2]**2+popt8[2]**2)
+
+print("diff1=",diff1,'+',diff1_err)
+print("diff2=",diff2,'+',diff2_err)
+print("diff3=",diff3,'+',diff3_err)
+print("diff4=",diff4,'+',diff4_err)
+print("diff5=",diff5,'+',diff5_err)
+print("diff6=",diff6,'+',diff6_err)
