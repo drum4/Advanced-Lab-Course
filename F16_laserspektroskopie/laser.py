@@ -173,6 +173,12 @@ FSR=(diff1+diff2)/2
 FSR_err=np.sqrt(diff1_err**2+diff2_err**2)/2
 print('FSR=',FSR,'+',FSR_err)
 
+sigma=np.array([-popt1[2],-popt2[2],popt3[2]])
+deltax=np.mean(sigma)*2*np.sqrt(2*np.log(2))
+deltax_err=np.std(sigma)*2*np.sqrt(2*np.log(2))
+print('deltax=',deltax,'+',deltax_err)
+
+
 ####################
 # Modulation #
 ####################
@@ -224,7 +230,7 @@ print('peak 3')
 print("linke Modulation",popt7)
 print("Mitte",popt8)
 print("rechte Modulation",popt9)
-plt.show()
+#plt.show()
 plt.close()
 
 diff1=popt2[1]-popt1[1]
@@ -246,3 +252,61 @@ print("diff3=",diff3,'+',diff3_err)
 print("diff4=",diff4,'+',diff4_err)
 print("diff5=",diff5,'+',diff5_err)
 print("diff6=",diff6,'+',diff6_err)
+
+wm=(diff1+diff2+diff3+diff4+diff5+diff6)/6
+wm_err=np.sqrt(diff1_err**2+diff2_err**2+diff3_err**2+diff4_err**2+diff5_err**2+diff6_err**2)/6
+print("wm=",wm,"+",wm_err,"Messfehler zu gross da fit beim dritten peak nicht passt")
+a=np.array([diff1,diff2,diff3,diff4,diff5,diff6])
+wm_err=np.std(a)
+print("wm=",wm,"+",wm_err,"statistischer Fehler wird hier genommen")
+
+omegaM=56069000
+omegaM_err=5000
+###Umrechnungsfaktor u###
+u=omegaM/wm
+u_err=np.sqrt((omegaM_err/wm)**2+(omegaM/wm**2*wm_err)**2)
+print('u=',u,'+',u_err)
+
+omegaFSR=u*FSR
+omegaFSR_err=np.sqrt((u_err*FSR)**2+(u*FSR_err)**2)
+print('omegaFSR=',omegaFSR,'+',omegaFSR_err,'Mittlere Freie Weglaenge')
+
+####Laenge Resonator######
+c=299792458
+n=1.000292
+L=c/(4*omegaFSR*n)
+L_err=c/(4*omegaFSR**2*n)*omegaFSR_err
+print('L=',L,'+',L_err)
+
+F=FSR/deltax
+F_err=np.sqrt((FSR_err/deltax)**2+(FSR/deltax**2*deltax_err)**2)
+print('F=',F,'+',F_err)
+
+######Frequenz Strom Charakteristik#########
+
+x_2, trans_2 = np.loadtxt('data/stromfrequenz.csv', delimiter=',', usecols=(3, 4), unpack=True)
+popt1, pcov1 = curve_fit(Gauss, x_2[1236:1265], trans_2[1236:1265],p0=[0.5,1.249,0.006,0], absolute_sigma=True)
+popt2, pcov2 = curve_fit(Gauss, x_2[1330:1355], trans_2[1330:1355],p0=[0.4,1.34,0.006,0], absolute_sigma=True)
+popt3, pcov3 = curve_fit(Gauss, x_2[1400:1416], trans_2[1400:1416],p0=[0.3,1.41,0.006,0], absolute_sigma=True)
+popt4, pcov4 = curve_fit(Gauss, x_2[1453:1486], trans_2[1453:1486],p0=[0.2,1.47,0.006,0], absolute_sigma=True)
+popt5, pcov5 = curve_fit(Gauss, x_2[1536:1556], trans_2[1536:1556],p0=[0.05,1.547,0.006,0], absolute_sigma=True)
+
+
+plt.plot(x_2[1142:1610],trans_2[1142:1610], linestyle='-',color='black', label='Messkurve')
+plt.plot(x_2[1236:1265], Gauss(x_2[1236:1265],*popt1), color='red', label='Gaussian')
+plt.plot(x_2[1330:1355], Gauss(x_2[1330:1355],*popt2), color='red')
+plt.plot(x_2[1400:1416], Gauss(x_2[1400:1416],*popt3), color='red')
+plt.plot(x_2[1453:1486], Gauss(x_2[1453:1486],*popt4), color='red')
+plt.plot(x_2[1536:1556], Gauss(x_2[1536:1556],*popt5), color='red')
+plt.xlabel('Zeit t [ms]', fontsize=13)
+plt.ylabel('Spannung U [mV]', fontsize=13)
+plt.title('Abb. [?]: Strom-Frequenz-Charakteristik', fontsize=16)
+plt.legend(frameon=True, fontsize = 12)
+#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+print('peak 1',popt1)
+print('peak 2',popt2)
+print('peak 3',popt3)
+print('peak 4',popt4)
+print('peak 5',popt5)
+plt.show()
+plt.close()
