@@ -29,7 +29,7 @@ As soon as $B_0$ and $M$ span a plane, the resulting torque rotates the magnetiz
 \end{align}
 Now we create a second magnetic field $B_1$ orthogonal to a relatively strong external magnetic field $B_0$.
 Before the magnetization can align itself along the new total magnetic field $B_\text{tot}$, the Larmor precession around this begins.
-If the magnetic field $B_1$ oscillates with the Larmor frequency of the atomic nuclei, the magnetization can be deflected, as schematically shown in Figure \ref{fig:magnet}.
+If the magnetic field $B_1$ oscillates with the Larmor frequency of the atomic nuclei, the magnetization can be deflected, as schematically shown in figure \ref{fig:magnet}.
 \begin{figure}[ht]
 \centering
 \input{images//magnet.tex}
@@ -41,11 +41,12 @@ In particular, so-called $\ang{90}$ and $\ang{180}$ pulses can be generated, whi
 
 For these excited states of magnetization, the Bloch equations result in an asymptotic drop on characteristic time scales for antiparallel and orthogonal magnetization respectively $T_1$ and $T_2$:
 \begin{align}
-M_\parallel(t)&=M_0\cdot\left(1-2\e{-\frac{t}{T_1}}\right)\\
+M_\parallel(t)&=M_0\cdot\left(1-2\e{-\frac{t}{T_1}}\right) \label{eq:t1}\\
 M_\bot(t)&=M_0\cdot\e{-\frac{t}{T_2}}
+\label{eq:t2}
 \end{align}
-The decay of the anti-parallel magnetization is caused by the interaction of the spins with the external magnetic field $B_0$ (spin-grating changer effect), whereas interactions between the individual spins (spin-spin interaction) lead to the decay of the parallel magnetization.
-Since the spin-spin interaction is stronger than the spin-grating interaction, $T_2\leq T_1$ is expected.\\
+The decay of the anti-parallel magnetization is caused by the interaction of the spins with the external magnetic field $B_0$ (spin-lattice changer effect), whereas interactions between the individual spins (spin-spin interaction) lead to the decay of the parallel magnetization.
+Since the spin-spin interaction is stronger than the spin-lattice interaction, $T_2\leq T_1$ is expected.\\
 Measurements of orthogonal magnetization are made in the $B_1$ generating coil by induction.
 After switching off the $B_1$ field, the precession of the magnetization around the external magnetic field $B_0$ induces an alternating current in the $B_1$ coil.
 This can be measured on a connected oscilloscope.
