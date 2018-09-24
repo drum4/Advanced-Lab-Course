@@ -151,7 +151,7 @@ plt.plot(x_4,trans_4, linestyle='-',
 plt.plot(x_2[91:191], Gauss(x_2[91:191],*popt1), color='red', label='Gaussian')
 plt.plot(x_2[1212:1290], Gauss(x_2[1212:1290],*popt2), color='red', label='Gaussian')
 plt.plot(x_2[2220:2310], Gauss(x_2[2220:2310],*popt3), color='red', label='Gaussian')
-plt.xlabel('Zeit t [ms]', fontsize=13)
+plt.xlabel('Zeit t [s]', fontsize=13)
 plt.ylabel('Spannung U [mV]', fontsize=13)
 plt.title('Abb. [?]: Transmissionpeak', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
@@ -213,7 +213,7 @@ plt.plot(x_2[2230:2278], Gauss(x_2[2230:2278],*popt7), color='red')
 plt.plot(x_2[2280:2329], Gauss(x_2[2280:2329],*popt8), color='red')
 plt.plot(x_2[2330:2370], Gauss(x_2[2330:2370],*popt9), color='red')
 
-plt.xlabel('Zeit t [ms]', fontsize=13)
+plt.xlabel('Zeit t [s]', fontsize=13)
 plt.ylabel('Spannung U [mV]', fontsize=13)
 plt.title('Abb. [?]: Modulation', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
@@ -269,7 +269,7 @@ print('u=',u,'+',u_err)
 
 omegaFSR=u*FSR
 omegaFSR_err=np.sqrt((u_err*FSR)**2+(u*FSR_err)**2)
-print('omegaFSR=',omegaFSR,'+',omegaFSR_err,'Mittlere Freie Weglaenge')
+print('omegaFSR=',omegaFSR,'+',omegaFSR_err,'Freier Spektralbereich')
 
 ####Laenge Resonator######
 c=299792458
@@ -298,7 +298,7 @@ plt.plot(x_2[1330:1355], Gauss(x_2[1330:1355],*popt2), color='red')
 plt.plot(x_2[1400:1416], Gauss(x_2[1400:1416],*popt3), color='red')
 plt.plot(x_2[1453:1486], Gauss(x_2[1453:1486],*popt4), color='red')
 plt.plot(x_2[1536:1556], Gauss(x_2[1536:1556],*popt5), color='red')
-plt.xlabel('Zeit t [ms]', fontsize=13)
+plt.xlabel('Zeit t [s]', fontsize=13)
 plt.ylabel('Spannung U [mV]', fontsize=13)
 plt.title('Abb. [?]: Strom-Frequenz-Charakteristik', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
@@ -308,5 +308,51 @@ print('peak 2',popt2)
 print('peak 3',popt3)
 print('peak 4',popt4)
 print('peak 5',popt5)
+#plt.show()
+plt.close()
+
+I=27.5
+I_err=0.1
+t=0.4477
+t_err=0.0004
+deltaI=I/t
+deltaI_err=np.sqrt((I_err/t)**2+(I/t**2*t_err)**2)
+print('deltaI=',deltaI,'+',deltaI_err)
+
+diff1=popt2[1]-popt1[1]
+diff1_err=np.sqrt(popt2[2]**2+popt1[2]**2)
+diff2=popt3[1]-popt2[1]
+diff2_err=np.sqrt(popt3[2]**2+popt2[2]**2)
+diff3=popt4[1]-popt3[1]
+diff3_err=np.sqrt(popt4[2]**2+popt3[2]**2)
+diff4=popt5[1]-popt4[1]
+diff4_err=np.sqrt(popt5[2]**2+popt4[2]**2)
+
+print("diff1=",diff1,'+',diff1_err)
+print("diff2=",diff2,'+',diff2_err)
+print("diff3=",diff3,'+',diff3_err)
+print("diff4=",diff4,'+',diff4_err)
+
+deltat=(diff1+diff2+diff3+diff4)/4
+deltat_err=np.sqrt(diff1_err**2+diff2_err**2+diff3_err**2+diff4_err**2)/4
+print("deltat=",deltat,"+",deltat_err)
+
+deltavdeltaI=omegaFSR/(deltaI*deltat)
+deltavdeltaI_err=np.sqrt((omegaFSR_err/(deltaI*deltat))**2+(omegaFSR/(deltaI**2*deltat)*deltaI_err)**2+(omegaFSR/(deltaI*deltat**2)*deltat_err)**2)
+print('deltavdeltaI=',deltavdeltaI,'+',deltavdeltaI_err,'in Herz pro mA')
+#Um wie viel Prozent kann man die Laserfrequenz maximal veraendern#
+f=deltavdeltaI*13.6 #Differenz zwischen 40mA und der Laserschwelle 26.4
+f_err=np.sqrt((deltavdeltaI_err*13.6)**2+(deltavdeltaI*0.1)**2)
+print('f=',f,'+',f_err,'In der Abbildung der StromFrequenzCharakteristik sieht man dass die Photodiode bis etwa 15mA anstatt 26.4 detektiert')
+
+######### Frequenz Temperatur Charakteristik #########
+
+x_2, trans_2 = np.loadtxt('data/temperatur.csv', delimiter=',', usecols=(3, 4), unpack=True)
+plt.plot(x_2,trans_2, linestyle='-',color='black', label='Messkurve')
+plt.xlabel('Zeit t [s]', fontsize=13)
+plt.ylabel('Spannung U [mV]', fontsize=13)
+plt.title('Abb. [?]: Strom-Frequenz-Charakteristik', fontsize=16)
+plt.legend(frameon=True, fontsize = 12)
+#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
 plt.show()
 plt.close()
