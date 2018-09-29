@@ -21,6 +21,6 @@ It covered the following experiments:
   - F16 Laserspektroskopie (laserspectroscopy)
 - ### Spectroscopy:
   - F44 Zeeman-Spektroskopie (zeeman spectroscopy) \[Short Report\]
-  - F61 Kernresonanzspektroskopie (NMR)
+  - F61 Kernresonanzspektroskopie (NMR) \[Long Report\]
   
 &copy; Nils Schmitt ([@drum4](https://github.com/drum4)) and Timo Kleinbek ([@TimoKleinbek](https://github.com/TimoKleinbek))
