@@ -9,14 +9,16 @@ The corresponding energy splitting is given by the scalar product of magnetic mo
 \begin{align}
 \Delta E=-\vec{\mu}\cdot\vec{B}_0.
 \end{align}
-The parallel alignment is energetically lower.\\
+The parallel alignment is energetically lower.
 The proton population numbers correctly described by the Fermi-Dirac statistics can be approximated classically by the Boltzmann distribution.
-The ratio of the two occupation numbers with parallel and antiparallel alignment is then given by
+The ratio of the two occupation numbers $N$ with parallel ($+$) and antiparallel ($-$) alignment is then given by
 \begin{align}
 \frac{N_+}{N_-}=\e{\frac{2\Delta E}{k_\text{B}T}}.
 \end{align}
-An estimate in which the magnetic moment is approximately one Bohr's magneton and the magnetic field is approximately \SI{1}{\tesla} results in a difference between the two occupation numbers of approximately one per thousand at room temperature.\\
-The total magnetization results from the sum of these thousandth part over the whole substance.
+Here $T$ describes the temperature and $k_\text{B}$ the Boltzmann constant.\\
+%An estimate in which the magnetic moment is approximately one Bohr's magneton and the magnetic field is approximately \SI{1}{\tesla} results in a difference between the two occupation numbers of approximately one per thousand at room temperature.\\
+
+The total magnetization $M$ results from the sum of $N_+$ and $N_-$.
 In general, the following applies from the electrodynamics for the resulting torque from a magnetic field and a magnetization
 \begin{align}
 \vec{\tau}=\vec{M}\times\vec{B}_0.
@@ -39,34 +41,39 @@ If the magnetic field $B_1$ oscillates with the Larmor frequency of the atomic n
 With the duration of the applied high-frequency magnetic field $B_1$ we can determine the angle by which the magnetization is deflected compared to the external magnetic field $B_0$.
 In particular, so-called $\ang{90}$ and $\ang{180}$ pulses can be generated, which generate an orthogonal or antiparallel magnetisation to $B_0$ from a parallel magnetisation.\\
 
-For these excited states of magnetization, the Bloch equations result in an asymptotic drop on characteristic time scales for antiparallel and orthogonal magnetization respectively $T_1$ and $T_2$:
+For these excited states of magnetization, the Bloch equations describes the time development of the magentic state.
+The magnetization is split into a parallel and an antiparallel component in form
 \begin{align}
 M_\parallel(t)&=M_0\cdot\left(1-2\e{-\frac{t}{T_1}}\right) \label{eq:t1}\\
-M_\bot(t)&=M_0\cdot\e{-\frac{t}{T_2}}
+\intertext{and}
+M_\bot(t)&=M_0\cdot\e{-\frac{t}{T_2}}.
 \label{eq:t2}
 \end{align}
-The decay of the anti-parallel magnetization is caused by the interaction of the spins with the external magnetic field $B_0$ (spin-lattice changer effect), whereas interactions between the individual spins (spin-spin interaction) lead to the decay of the parallel magnetization.
+Both change asymptotically with the characteristic time $T_1$ and $T_2$.\\
+The decay of the anti-parallel magnetization is caused by the interaction of the spins with the external magnetic field $B_0$ (spin-lattice contribution).
+On the other hand interactions between the individual spins (spin-spin contribution) in combination with the small spin-lattice effect lead to the decay of the orthogonal magnetization.
 Since the spin-spin interaction is stronger than the spin-lattice interaction, $T_2\leq T_1$ is expected.\\
+
 Measurements of orthogonal magnetization are made in the $B_1$ generating coil by induction.
 After switching off the $B_1$ field, the precession of the magnetization around the external magnetic field $B_0$ induces an alternating current in the $B_1$ coil.
-This can be measured on a connected oscilloscope.
+This can be measured on a connected oscilloscope.\\
 In our setup, the output signal of the induction coil leads back again into the signal generator, which generates the high-frequency alternating field $B_1$, and only then into the readout devices.
-Thus we see the final signal as a superposition of the signal frequency and the alarm frequency, which shows the sum and difference of the two frequencies.
-We also call the difference the operating frequency, which is a few hundred hertz; this difference is in the per thousand range relative to the larmor frequency of hydrogen nuclei (about \SI{20}{\mega\hertz}).\\
+Thus we see the final signal as a superposition of the signal frequency and the Larmor frequency, which shows the sum and difference of the two frequencies.
+We also call the difference the working frequency.\\
 
-The relaxation time $T_1$ can be measured by first passing a $\ang{180}$ pulse, so
-an antiparallel orientation of the magnetization is caused. Then after different time intervals, a $\ang{90}$ pulse generates a signal in the induction coil whose amplitude is proportional to the magnitude of the antiparallel magnetization of before the $\ang{90}$ pulse.
+The relaxation time $T_1$ can be measured by first passing a $\ang{180}$ pulse, so an antiparallel orientation of the magnetization is caused.
+Then after different time intervals a $\ang{90}$ pulse generates a signal in the induction coil whose amplitude is proportional to the magnitude of the antiparallel magnetization.
 By recording these amplitudes after different times, the exponential decrease of the antiparallel magnetization can be investigated and $T_1$ determined.\\
 
 The relaxation time $T_2$ is measured by another combination of $\ang{90}$ and $\ang{180}$ pulses.
-First a $\ang{90}$ pulse produces a magnetization perpendicular to the $B_0$ field. Because of this field, the magnetization begins to precisionize around the $B_0$ axis with the Larmor frequency.
-Due to little inhomogenities in the magnetic field, the Lamor frequencies of protons at different positions are different. This incoherence leads to a reduced magnetization, thus a reduced signal which is measured in the coil.
-After a certain period of time $\tau$ a $\ang{180}$ pulse is sent, which causes a mirroring around $\ang{180}$ on an axis perpendicular to the axis of the $B_0$ field around which the magnetization rotates.
-The consequence of this mirroring is that the nuclei that were in phase at t=0 go back in phase at t=2$\tau$. 
-The previous phase difference was due to the precession during a time $\tau$ had arisen.
-By mirroring through the $\ang{180}$ pulse, after a further precession period of $\tau$, the nuclei are all in phase again and thus show a maximum induction current.
-This allows the magnitude decrease to be measured over a period of 2$\tau$ .\\
-Now you can always use different values for $\tau$ and measure the decrease of the amplitude after twice the time to reconstruct the exponential decrease and so $T_2$.
+First a $\ang{90}$ pulse produces a magnetization perpendicular to the $B_0$ field.
+Because of this field, the magnetization begins to precisionize around the $B_0$ axis with the Larmor frequency according to equation \ref{eq:larmor}.
+Due to the low inhomogeneities in the magnetic field, the Larmor frequencies of the protons at different positions are different.
+This incoherence leads to a reduced magnetization, thus a reduced signal which is measured in the coil.
+After a certain time $\tau$ a $\ang{180}$ pulse is sent, which causes a mirroring perpendicular to the axis of the $B_0$ field around which the magnetization rotates.
+The consequence of this mirroring is that the nuclei that were in phase at $t=0$ go back in phase at $t=2\tau$.
+Because now all nuclei are in phase again, the current in the coil is maximum again.\\
+Now you can always use different values for $\tau$ and measure the decrease of the amplitude after twice the time to reconstruct the exponential decrease.
 \begin{figure}[ht]
 \centering
 \input{images//relaxation.tex}
@@ -75,7 +82,7 @@ Now you can always use different values for $\tau$ and measure the decrease of t
 \end{figure}
 This measuring method is called spin-echo method.\\
 
-Alternatively, another $\ang{180}$ pulse can be sent to all odd multiples of time $\tau$ so that a maximum induction current is measured at all even multiples of $\tau$ and the relaxation time can be determined from this.
+Alternatively, another $\ang{180}$ pulse can be sent to all odd multiples of time $\tau$ so that a maximum induction current is measured at all even multiples of $\tau$.
 This sequence of one $\ang{90}$ and several $\ang{180}$ pulses is called the Carr-Purcell sequence.
 The basic procedure of the process described here is shown in figure \ref{fig:relaxation} is illustrated.
 
@@ -84,23 +91,23 @@ The basic procedure of the process described here is shown in figure \ref{fig:re
 \subsection{Chemical Shift}
 When considering the excitation of nuclear spins, only atoms that actually have a nuclear spin can be excited (i. e. $S\neq 0$).
 Of course, a single proton as fermion in the nucleus of a hydrogen atom has a spin of $S = \nicefrac{1}{2}$.
-On the other hand, for a carbon atom, for example $S = 0$, so there is no magnetic moment at all that could contribute to magnetization.\\
-Additionally, note that the $\ang{90}$ and $\ang{180}$ pulses are always adjusted to a noise frequency.
+On the other hand, for a carbon atom holds $S=0$, so there is no magnetic moment at all that could contribute to magnetization.\\
+Additionally, note that the $\ang{90}$ and $\ang{180}$ pulses are always adjusted to a Larmor frequency.
 In order to achieve an effective excitation of nuclear spins of different atoms, the gyromagnetic ratio must also be the same.
-If we expose a sample of organic material to only one frequency that excites hydrogen nuclei, only the hydrogen atoms of an organic material will contribute to the measured larmor frequency.
+If we expose a sample of organic material to only one frequency that excites hydrogen nuclei, only the hydrogen atoms of an organic material will contribute to the measured Larmor frequency.
 In different molecules the hydrogen molecules are present in different bonds with different electronegativity differences, which means that the probability of residence of the electrons around the proton is not always the same.
-Due to this difference, the externally applied magnetic field $B_0$ is also shielded to different degrees by the electron, which results in a slightly different larmor frequency.
-The shielded part of the magnetic field is described by
+Due to this difference, the externally applied magnetic field $B_0$ is also shielded to different degrees by the electron, which results in a slightly different Larmor frequency.
+The magnetic field change by the electrons is described by
 \begin{align}
 \delta\vec{B}=-\sigma\vec{B}_0,
 \end{align}
-where $\sigma$ is the proportionality factor.
+where $\sigma$ is the proportionality factor.\\
 For a certain material, the changed Larmor frequency results accordingly from the superposition of both magnetic fields to
 \begin{align}
 \omega_i=\omega_\text{L}(1-\sigma_i).
 \end{align}
-In order to identify a sample on the basis of this shift of the Larmor frequency, the shielding factors relative to a reference sample (here Tetra-Methyl-Silane, short TMS) are measured by measuring the distance of the corresponding resonance peaks.
-This distance then corresponds to
+In order to identify a sample on the basis of this shift of the Larmor frequency, the shielding factors relative to a reference sample Tetra-Methyl-Silane (TMS) are measured by the distance of the corresponding resonance peaks.
+This distance corresponds to
 \begin{align}
 \delta_i\cdot\omega_\text{L}=\omega_\text{TMS}-\omega_i.
 \label{eq:shift}
@@ -113,29 +120,26 @@ The positions of the molecules in this list can be explained using the example o
 \caption{Chemical shifts of different molecules relative to TMS \cite{script_nmr}.}
 \label{fig:shift}
 \end{figure}
-Here, the hydrogen atom is directly bonded to an oxygen atom with a relatively high electronegativity, while a second oxygen atom is bonded directly to an oxygen atom with a relatively high electronegativity.
-oxygen atom is still in the immediate vicinity.
-The hydrogen atom itself is thus virtually \enquote{naked} and is hardly shielded from its electron, which leads to a stronger effective magnetic field compared to C-H bonds and thus to an increased larmor frequency. 
 
 
 
 \subsection{Imaging Techniques}
 By excitation of nuclear spins and subsequent measurement of the magnetization, the distribution of the excited spins can be reconstructed under certain conditions and thus one-, two- or three-dimensional images of the nuclear spin distribution can be generated.
-To divide the material into readable pixels in the different dimensions, in addition to an external $B_0$ field along the direction, which we now define as $z$ direction, we use magnetic fields, which also point in $z$ direction but change spatially with the $x, y$ or $z$ coordinate.
-In $x$ direction, for example:
+To divide the material into readable pixels in the different dimensions, in addition to an external $B_0$ field along the $z$ direction, we use magnetic fields, which also point in $z$ direction but change spatially with the $x, y$ or $z$ coordinate.
+In $x$ direction is valid for example
 \begin{align*}
-\vec{B}_x=(0,0,G_xx)
+\vec{B}_x=(0,0,G_xx).
 \end{align*}
 
 \subsubsection{Frequency Coding}
-After equation \ref{eq:lamor} the Larmor frequency in a magnetic field, which is superimposed by $B_0$ and a field varying in $z$ direction, results to
+According to equation \ref{eq:larmor} the Larmor frequency in a magnetic field, which is superimposed by $B_0$ and a field varying in $z$ direction, results to
 \begin{align}
 \omega_\text{L}(z)=\gamma(B_0+G_zz)=\omega_\text{L}^0+\omega_z.
 \end{align}
-As soon as a $\ang{90}$ pulse causes a magnetization in the $x-y$ plane, this precedes the $z$ position with different alarm frequency around the axis of the magnetic field.
-The signal generated in an adjacent induction coil whose axis must be perpendicular to the $z$ direction is then proportional to the sum of all magnetizations multiplied by the phase resulting from the high frequency of the $\ang{90}$ pulse
+As soon as a $\ang{90}$ pulse causes a magnetization in the $x-y$ plane, this precedes the $z$ position with different Larmor frequency around the axis of the magnetic field.
+The signal generated in an induction coil whose axis must be perpendicular to the $z$ direction is then proportional to the sum of all magnetizations multiplied by the phase resulting from the high frequency $\omega_\text{HF}$ of the $\ang{90}$ pulse
 \begin{align}
-S(t)&\sim\int\limits_V M_\bot(z,t)\,\e{-\im\omega_\text{HF}t}\dd{V}\\
+S(t)&\sim\int\limits_V M_\bot(z,t)\,\e{-\im\omega_\text{HF}t}\dd{V},\\
 \intertext{what is equal to}
 S(t)&\sim\int\limits_V M_\bot^\text{rot}(z,t)\,\e{-\im\left(\omega_\text{L}^0+\omega_z-\omega_\text{HF}\right)t}\dd{V}.
 \end{align}
@@ -145,56 +149,57 @@ S(t)&\sim\e{\im\Omega t}\int\limits_Z\left(\int\limits_X\int\limits_Y M_\bot^\te
 \end{align}
 After integration over the area of the induction coil, the measured signal is thus proportional to the Fourier transform of the magnetization.
 By measuring the signal at different times $t_i$ the distribution of the magnetization depending on the position $z$ can be calculated by discrete Fourier transformation.
-As usual for functions that are linked via Fourier transform, the product of characteristic widths of the functions is constant.\\
+As usual for functions that are linked via Fourier transform, the product of characteristic widths of the functions is constant.
 Therefore, the following applies
 \begin{align}
 \Delta z\sim\frac{1}{\Delta t}.
 \end{align}
 The nuclear spins along the $z$ coordinate have because of the inhomogeneous magnetic field different Larmor frequencies and the information of the position is \enquote{encoded} by these frequencies.
 Therefore we also call this method frequency coding.\\
-For the resolution of a two-dimensional image we cannot simply use a
-apply inhomogeneous magnetic field in an additional direction because the two fields would superimpose each other and the magnetization would occur along the corresponding diagonals.
+For the resolution of a two-dimensional image we cannot simply use a inhomogeneous magnetic field in an additional direction because the two fields would superimpose each other and the magnetization would occur along the corresponding diagonals.
 Rather, we need a second type of coding, which we find in phase coding.
 
 \subsubsection{Phase Coding}
-By applying an inhomogeneous magnetic field and the different Larmor frequency, a phase difference
+By applying an inhomogeneous magnetic field the Larmor frequencies are different.
+This results in a phase difference
 \begin{align}
 \Delta \phi(z)=\phi(z)-\phi(0)=\gamma G^z zt=\omega_z t
 \end{align}
-between the nuclear spin.
-If we create such a field for a fixed time $T_\text{Ph}$, the phase is dependent on the z-coordinate in the form
+between the nuclear spins.
+If we create such a field for a fixed time $T_\text{Ph}$, the phase is dependent on the $z$ coordinate in the form
 \begin{align}
 \phi(z)=\gamma G^z T_\text{Ph} z=k_z z.
 \end{align}
 Similar to the steps above, signal and magnetization are again linked via Fourier transformation.
-Instead of creating several measuring points over time, different
-in the phase coding, the $k_z$ implicitly defined above is obtained by varying the magnetic field gradient
-or the action time and thus receive a collection of measuring points that can be transformed back.
+The $k_z$ implicitly defined above is obtained by varying the magnetic field gradient or the action time and thus receive a collection of measuring points that can be transformed back.
 
 \subsubsection{Two dimensional imaging}
-As already mentioned, we now use both of the coding possibilities mentioned to create two-dimensional images.
+As already mentioned, we now use both of the coding possibilities mentioned to create two dimensional images.
 For a three-dimensional sample, we must first select a thin layer from which we want to generate the two-dimensional image.
 This selection is made by selective excitation of the nuclear spins in the layer to be examined.
 In a magnetic field gradient, for a layer whose $z$ coordinate is between $z_1$ and $z_2$, the Larmor frequencies are also between corresponding frequencies $\omega_1$ and $\omega_2$.
-The transmission of a square-wave signal in the frequency space between these frequencies allows selective excitation of the desired layer.\\
-Then the nuclear spins can be encoded one after the other in the two dimensions as illustrated in figure \ref{fig:phase}.
+The transmission of a square-wave signal in the frequency space between these frequencies allows selective excitation of the desired layer.
 \begin{figure}[ht]
 \centering
 \input{images//phase.tex}
 \caption{Spins for two-dimensional images, where the direction of the arrow symbolizes the phase and the grayscale the frequency.}
 \label{fig:phase}
 \end{figure}
-In a first step, by applying an inhomogeneous magnetic field in $x$ direction, different phases can be assigned to the spins in $x$ direction, which are retained after switching off the additional inhomogeneous field, because then all spins again further precise with the same alarm frequency.
+Then the nuclear spins can be encoded one after the other in the two dimensions as illustrated in figure \ref{fig:phase}.\\
+
+In a first step, by applying an inhomogeneous magnetic field in $x$ direction, different phases can be assigned to the spins in $x$ direction, which are retained after switching off the additional inhomogeneous field, because then all spins again further precise with the same Larmor frequency.\\
 In the last step, an inhomogeneous field is created in the y direction and the $y$ direction is encoded in different frequencies.
 Here a data set is recorded directly in a certain time interval.
 To scroll through the pixels in the $x$ direction, the $k_z$ must be changed again.
-This produces a two-dimensional data set, which is again transformed into an image by two-dimensional inverse Fourier transformation.
-of the magnetization can be translated.
-The procedure of this data acquisition is shown in figure \ref{fig:signal}.
+This produces a two-dimensional data set, which is again transformed into an image by two dimensional inverse Fourier transformation.\\
+
+The procedure of this data acquisition is shown in figure \ref{fig:signal}.\\
+It is obvious that by stimulating individual layers and creating the respective images one after the other, three-dimensional objects can also be examined.
+This procedure is used extensively in medicine.
+For this reason, however, MRI must also ensure that the sample is completely immobilised, as temporal sequences cannot be displayed.
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=.25]{images//signal.png}
 \caption{Datarecording for two dimensional imaging \cite{script_nmr}.}
 \label{fig:signal}
 \end{figure}
-It is obvious that by stimulating individual layers and creating the respective images one after the other, three-dimensional objects can also be examined.
