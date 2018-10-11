@@ -536,3 +536,181 @@ omegasec=diffsec/deltat*omegaFSR
 omegasec_err=np.sqrt((diffsec_err/deltat*omegaFSR)**2+(diffsec/deltat**2*omegaFSR*deltat_err)**2+(diffsec/deltat*omegaFSR_err)**2)
 print('omegasec=',omegasec,'+',omegasec_err)
 
+
+x_2, trans_2 = np.loadtxt('data/absorption/stromscan1_oab.csv', delimiter=',', usecols=(3, 4), unpack=True)
+x_3, trans_3 = np.loadtxt('data/absorption/stromscan1_oab.csv', delimiter=',', usecols=(9, 10), unpack=True)
+x_4, trans_4 = np.loadtxt('data/absorption/stromscan1_oab.csv', delimiter=',', usecols=(15, 16), unpack=True)
+x_5, trans_5 = np.loadtxt('data/absorption/stromscan1_oab.csv', delimiter=',', usecols=(21, 22), unpack=True)
+
+diff_peak1=trans_2-trans_4
+trans_3=trans_3*3-0.6
+popt1, pcov1 = curve_fit(Gauss, x_2[1328:1459], diff_peak1[1328:1459],p0=[2.5,5.5,0.08,0], absolute_sigma=True)
+popt2, pcov2 = curve_fit(Gauss, x_3[1258:1293], trans_3[1258:1293],p0=[0.3,5.1,0.02,-0.55], absolute_sigma=True)
+popt3, pcov3 = curve_fit(Gauss, x_3[1341:1360], trans_3[1341:1360],p0=[0.3,5.4,0.02,-0.55], absolute_sigma=True)
+popt4, pcov4 = curve_fit(Gauss, x_3[1439:1460], trans_3[1439:1460],p0=[0.3,5.8,0.02,-0.55], absolute_sigma=True)
+popt5, pcov5 = curve_fit(Gauss, x_3[1561:1586], trans_3[1561:1586],p0=[0.3,6.3,0.02,-0.55], absolute_sigma=True)
+
+plt.plot(x_3[1051:1741],trans_3[1051:1741], linestyle='-',color='blue', label='Resonatormessung')
+plt.plot(x_2[1051:1741],diff_peak1[1051:1741], linestyle='-',color='red', label='Differenz')
+#plt.plot(x_5[345:1891],trans_5[345:1891], linestyle='-',color='green', label='Strommodulation')
+plt.plot(x_2[1328:1459], Gauss(x_2[1328:1459],*popt1), color='black', label='Gaussian')
+#plt.plot(x_3[1258:1293], Gauss(x_3[1258:1293],*popt2), color='turquoise')
+plt.plot(x_3[1341:1360], Gauss(x_3[1341:1360],*popt3), color='turquoise')
+plt.plot(x_3[1439:1460], Gauss(x_3[1439:1460],*popt4), color='turquoise')
+#plt.plot(x_3[1561:1586], Gauss(x_3[1561:1586],*popt5), color='turquoise')
+
+plt.xlabel('Zeit t [s]', fontsize=13)
+plt.ylabel('Spannung U [V]', fontsize=13)
+plt.title('Abb. [?]: Peak 1 Differenz', fontsize=16)
+plt.legend(frameon=True, fontsize = 12)
+#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+print('peak 1',popt1)
+print('resonazpeak 1',popt2)
+print('resonazpeak 2',popt3)
+print('resonazpeak 3',popt4)
+print('resonazpeak 4',popt5)
+#plt.show()
+plt.close()
+
+diff1=popt3[1]-popt2[1]
+diff1_err=np.sqrt(popt3[2]**2+popt2[2]**2)
+diff2=popt4[1]-popt3[1]
+diff2_err=np.sqrt(popt4[2]**2+popt3[2]**2)
+diff3=popt5[1]-popt4[1]
+diff3_err=np.sqrt(popt5[2]**2+popt4[2]**2)
+
+#print("diff1=",diff1,'+',diff1_err)
+print("diff2=",diff2,'+',diff2_err)
+#print("diff3=",diff3,'+',diff3_err)
+
+delhalb=2*np.sqrt(2*np.log(2))*omegaFSR*popt1[2]/diff2
+delhalb_err=2*np.sqrt(2*np.log(2))*np.sqrt((omegaFSR_err*popt1[2]/diff2)**2+(omegaFSR*pcov1[2][2]/diff2)**2+(omegaFSR*popt1[2]/diff2**2*diff2_err)**2)
+print('delhalb=',delhalb,'+',delhalb_err)
+
+
+x_2, trans_2 = np.loadtxt('data/absorption/stromscan2_oab.csv', delimiter=',', usecols=(3, 4), unpack=True)
+x_3, trans_3 = np.loadtxt('data/absorption/stromscan2_oab.csv', delimiter=',', usecols=(9, 10), unpack=True)
+x_4, trans_4 = np.loadtxt('data/absorption/stromscan2_oab.csv', delimiter=',', usecols=(15, 16), unpack=True)
+x_5, trans_5 = np.loadtxt('data/absorption/stromscan2_oab.csv', delimiter=',', usecols=(21, 22), unpack=True)
+
+diff_peak2=trans_2-trans_4
+trans_3=trans_3*3-0.6
+popt1, pcov1 = curve_fit(Gauss, x_2[1434:1547], diff_peak2[1434:1547],p0=[2,5.9,0.08,0.3], absolute_sigma=True)
+popt2, pcov2 = curve_fit(Gauss, x_3[1416:1440], trans_3[1416:1440],p0=[0.5,5.7,0.02,-0.55], absolute_sigma=True)
+popt3, pcov3 = curve_fit(Gauss, x_3[1516:1540], trans_3[1516:1540],p0=[0.5,6.1,0.02,-0.55], absolute_sigma=True)
+
+plt.plot(x_3[1251:1754],trans_3[1251:1754], linestyle='-',color='blue', label='Resonatormessung')
+plt.plot(x_2[1251:1754],diff_peak2[1251:1754], linestyle='-',color='red', label='Differenz')
+#plt.plot(x_5[345:1891],trans_5[345:1891], linestyle='-',color='green', label='Strommodulation')
+plt.plot(x_2[1434:1547], Gauss(x_2[1434:1547],*popt1), color='black', label='Gaussian')
+plt.plot(x_3[1416:1440], Gauss(x_3[1416:1440],*popt2), color='turquoise')
+plt.plot(x_3[1516:1540], Gauss(x_3[1516:1540],*popt3), color='turquoise')
+
+plt.xlabel('Zeit t [s]', fontsize=13)
+plt.ylabel('Spannung U [V]', fontsize=13)
+plt.title('Abb. [?]: Peak 2 Differenz', fontsize=16)
+plt.legend(frameon=True, fontsize = 12)
+#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+print('peak 2',popt1)
+print('resonazpeak 1',popt2)
+print('resonazpeak 2',popt3)
+#plt.show()
+plt.close()
+
+diff1=popt3[1]-popt2[1]
+diff1_err=np.sqrt(popt3[2]**2+popt2[2]**2)
+
+print("diff1=",diff1,'+',diff1_err)
+
+delhalb=2*np.sqrt(2*np.log(2))*omegaFSR*popt1[2]/diff1
+delhalb_err=2*np.sqrt(2*np.log(2))*np.sqrt((omegaFSR_err*popt1[2]/diff1)**2+(omegaFSR*pcov1[2][2]/diff1)**2+(omegaFSR*popt1[2]/diff1**2*diff1_err)**2)
+print('delhalb=',delhalb,'+',delhalb_err)
+
+
+##### Absorbtionsquerschnitt ########
+
+x_2, trans_2 = np.loadtxt('data/absorption/stromscan1_oab.csv', delimiter=',', usecols=(3, 4), unpack=True)
+x_3, trans_3 = np.loadtxt('data/absorption/stromscan1_oab.csv', delimiter=',', usecols=(9, 10), unpack=True)
+x_4, trans_4 = np.loadtxt('data/absorption/stromscan1_oab.csv', delimiter=',', usecols=(15, 16), unpack=True)
+
+quotient_peak1=trans_4/trans_2
+trans_3=trans_3*3-0.6
+
+plt.plot(x_3[1051:1741],trans_3[1051:1741], linestyle='-',color='blue', label='Resonatormessung')
+plt.plot(x_2[1051:1741],quotient_peak1[1051:1741], linestyle='-',color='red', label='Quotient')
+plt.xlabel('Zeit t [s]', fontsize=13)
+plt.ylabel('Spannung U [V]', fontsize=13)
+plt.title('Abb. [?]: Peak 1 Quotient', fontsize=16)
+plt.legend(frameon=True, fontsize = 12)
+#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+#plt.show()
+plt.close()
+
+x_2, trans_2 = np.loadtxt('data/absorption/stromscan2_oab.csv', delimiter=',', usecols=(3, 4), unpack=True)
+x_3, trans_3 = np.loadtxt('data/absorption/stromscan2_oab.csv', delimiter=',', usecols=(9, 10), unpack=True)
+x_4, trans_4 = np.loadtxt('data/absorption/stromscan2_oab.csv', delimiter=',', usecols=(15, 16), unpack=True)
+
+quotient_peak2=trans_4/trans_2
+trans_3=trans_3*3-0.6
+
+plt.plot(x_3[1251:1754],trans_3[1251:1754], linestyle='-',color='blue', label='Resonatormessung')
+plt.plot(x_2[1251:1754],quotient_peak2[1251:1754], linestyle='-',color='red', label='Differenz')
+plt.xlabel('Zeit t [s]', fontsize=13)
+plt.ylabel('Spannung U [V]', fontsize=13)
+plt.title('Abb. [?]: Peak 2 Quotient', fontsize=16)
+plt.legend(frameon=True, fontsize = 12)
+#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+#plt.show()
+plt.close()
+
+
+#############################################
+##### Dopplerfreie Spektroskopie ############
+#############################################
+
+x_2, trans_2 = np.loadtxt('data/dopplerfrei/stromscan1.csv', delimiter=',', usecols=(3, 4), unpack=True)
+x_3, trans_3 = np.loadtxt('data/dopplerfrei/stromscan1.csv', delimiter=',', usecols=(9, 10), unpack=True)
+x_4, trans_4 = np.loadtxt('data/dopplerfrei/stromscan1.csv', delimiter=',', usecols=(15, 16), unpack=True)
+x_5, trans_5 = np.loadtxt('data/dopplerfrei/stromscan1.csv', delimiter=',', usecols=(21, 22), unpack=True)
+
+plt.plot(x_3[800:1980],trans_3[800:1980], linestyle='-',color='blue', label='Resonatormessung')
+plt.plot(x_4[800:1980],trans_4[800:1980], linestyle='-',color='red', label='Messkurve')
+popt1, pcov1 = curve_fit(Gauss, x_3[891:976], trans_3[891:976], p0=[0.2,2.266,0.002,0], absolute_sigma=True)
+popt2, pcov2 = curve_fit(Gauss, x_3[1521:1621], trans_3[1521:1621], p0=[0.2,2.33,0.002,0], absolute_sigma=True)
+
+plt.plot(x_3[891:976], Gauss(x_3[891:976],*popt1), color='turquoise', label='Gaussian')
+plt.plot(x_3[1521:1621], Gauss(x_3[1521:1621],*popt2), color='turquoise')
+plt.xlabel('Zeit t [s]', fontsize=13)
+plt.ylabel('Spannung U [V]', fontsize=13)
+plt.title('Abb. [?]: Stromscan 1 dopplerfrei', fontsize=16)
+plt.legend(frameon=True, fontsize = 12)
+#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+print('resonazpeak 1',popt1)
+print('resonanzpeak 2', popt2)
+#plt.show()
+plt.close()
+
+
+
+
+x_2, trans_2 = np.loadtxt('data/dopplerfrei/stromscan2.csv', delimiter=',', usecols=(3, 4), unpack=True)
+x_3, trans_3 = np.loadtxt('data/dopplerfrei/stromscan2.csv', delimiter=',', usecols=(9, 10), unpack=True)
+x_4, trans_4 = np.loadtxt('data/dopplerfrei/stromscan2.csv', delimiter=',', usecols=(15, 16), unpack=True)
+x_5, trans_5 = np.loadtxt('data/dopplerfrei/stromscan2.csv', delimiter=',', usecols=(21, 22), unpack=True)
+
+plt.plot(x_3[671:1580],trans_3[671:1580], linestyle='-',color='blue', label='Resonatormessung')
+plt.plot(x_4[671:1580],trans_4[671:1580], linestyle='-',color='red', label='Messkurve')
+popt1, pcov1 = curve_fit(Gauss, x_3[741:831], trans_3[741:831], p0=[0.2,2.3,0.002,0], absolute_sigma=True)
+popt2, pcov2 = curve_fit(Gauss, x_3[1428:1511], trans_3[1428:1511], p0=[0.2,2.37,0.002,0], absolute_sigma=True)
+
+plt.plot(x_3[741:831], Gauss(x_3[741:831],*popt1), color='turquoise', label='Gaussian')
+plt.plot(x_3[1428:1511], Gauss(x_3[1428:1511],*popt2), color='turquoise')
+plt.xlabel('Zeit t [s]', fontsize=13)
+plt.ylabel('Spannung U [V]', fontsize=13)
+plt.title('Abb. [?]: Stromscan 1 dopplerfrei', fontsize=16)
+plt.legend(frameon=True, fontsize = 12)
+#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+print('resonazpeak 1',popt1)
+print('resonanzpeak 2', popt2)
+plt.show()
+plt.close()
