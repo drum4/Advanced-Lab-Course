@@ -53,10 +53,10 @@ plt.errorbar(I, P100, xerr=I_err, yerr=P100_err,
              linestyle='-', color='magenta',
              label='Messpunkte mit Fehler für R=100 k$\\Omega$')
 plt.xlabel('Stromstärke I [mA]', fontsize=13)
-plt.ylabel('Leistung [W]', fontsize=13)
+plt.ylabel('Leistung [$\\mu$W]', fontsize=13)
 plt.title('Abb. [1]: Leistungs-Strom-Kennlinie', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+plt.savefig('figures//abb_1.pdf',format='pdf')
 #plt.show()
 plt.close()
 
@@ -119,7 +119,7 @@ plt.xlabel('Stromstärke I [mA]', fontsize=13)
 plt.ylabel('Stromstärke I$_{PD}$ [mA]', fontsize=13)
 plt.title('Abb. [2]: Strom-Strom-Kennlinie', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+plt.savefig('figures//abb_2.pdf',format='pdf')
 #plt.show()
 plt.close()
 
@@ -149,14 +149,14 @@ plt.plot(x_2,trans_2, linestyle='-',
          color='black', label='Messkurve')
 plt.plot(x_4,trans_4, linestyle='-',
          color='green', label='Modulation')
-plt.plot(x_2[91:191], Gauss(x_2[91:191],*popt1), color='red', label='Gaussian')
-plt.plot(x_2[1212:1290], Gauss(x_2[1212:1290],*popt2), color='red', label='Gaussian')
-plt.plot(x_2[2220:2310], Gauss(x_2[2220:2310],*popt3), color='red', label='Gaussian')
+plt.plot(x_2[91:191], Gauss(x_2[91:191],*popt1), color='red', label='Gauss Fit')
+plt.plot(x_2[1212:1290], Gauss(x_2[1212:1290],*popt2), color='red')
+plt.plot(x_2[2220:2310], Gauss(x_2[2220:2310],*popt3), color='red')
 plt.xlabel('Zeit t [s]', fontsize=13)
 plt.ylabel('Spannung U [mV]', fontsize=13)
-plt.title('Abb. [?]: Transmissionpeak', fontsize=16)
+plt.title('Abb. [3]: Transmissionpeak', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+plt.savefig('figures//abb_3.pdf',format='pdf')
 print("peak1",popt1)
 print("peak2",popt2)
 print("peak3",popt3)
@@ -204,7 +204,7 @@ plt.plot(x_2,trans_2, linestyle='-',
          color='black', label='Messkurve')
 plt.plot(x_4,trans_4, linestyle='-',
          color='green', label='Modulation')
-plt.plot(x_2[76:117], Gauss(x_2[76:117],*popt1), color='red', label='Gaussian')
+plt.plot(x_2[76:117], Gauss(x_2[76:117],*popt1), color='red', label='Gauss Fit')
 plt.plot(x_2[124:185], Gauss(x_2[124:185],*popt2), color='red')
 plt.plot(x_2[185:238], Gauss(x_2[185:238],*popt3), color='red')
 plt.plot(x_2[1200:1242], Gauss(x_2[1200:1242],*popt4), color='red')
@@ -216,9 +216,9 @@ plt.plot(x_2[2330:2370], Gauss(x_2[2330:2370],*popt9), color='red')
 
 plt.xlabel('Zeit t [s]', fontsize=13)
 plt.ylabel('Spannung U [mV]', fontsize=13)
-plt.title('Abb. [?]: Modulation', fontsize=16)
+plt.title('Abb. [4]: Modulation', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+plt.savefig('figures//abb_4.pdf',format='pdf')
 print('peak 1')
 print("linke Modulation",popt1)
 print("Mitte",popt2)
@@ -293,16 +293,16 @@ popt4, pcov4 = curve_fit(Gauss, x_2[1453:1486], trans_2[1453:1486],p0=[0.2,1.47,
 popt5, pcov5 = curve_fit(Gauss, x_2[1536:1556], trans_2[1536:1556],p0=[0.05,1.547,0.006,0], absolute_sigma=True)
 
 plt.plot(x_2[1142:1610],trans_2[1142:1610], linestyle='-',color='black', label='Messkurve')
-plt.plot(x_2[1236:1265], Gauss(x_2[1236:1265],*popt1), color='red', label='Gaussian')
+plt.plot(x_2[1236:1265], Gauss(x_2[1236:1265],*popt1), color='red', label='Gauss Fit')
 plt.plot(x_2[1330:1355], Gauss(x_2[1330:1355],*popt2), color='red')
 plt.plot(x_2[1400:1416], Gauss(x_2[1400:1416],*popt3), color='red')
 plt.plot(x_2[1453:1486], Gauss(x_2[1453:1486],*popt4), color='red')
 plt.plot(x_2[1536:1556], Gauss(x_2[1536:1556],*popt5), color='red')
 plt.xlabel('Zeit t [s]', fontsize=13)
 plt.ylabel('Spannung U [mV]', fontsize=13)
-plt.title('Abb. [?]: Strom-Frequenz-Charakteristik', fontsize=16)
+plt.title('Abb. [5]: Strom-Frequenz-Charakteristik', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+plt.savefig('figures//abb_5.pdf',format='pdf')
 print('peak 1',popt1)
 print('peak 2',popt2)
 print('peak 3',popt3)
@@ -341,8 +341,8 @@ deltavdeltaI=omegaFSR/(deltaI*deltat)
 deltavdeltaI_err=np.sqrt((omegaFSR_err/(deltaI*deltat))**2+(omegaFSR/(deltaI**2*deltat)*deltaI_err)**2+(omegaFSR/(deltaI*deltat**2)*deltat_err)**2)
 print('deltavdeltaI=',deltavdeltaI,'+',deltavdeltaI_err,'in Herz pro mA')
 #Um wie viel Prozent kann man die Laserfrequenz maximal veraendern#
-f=deltavdeltaI*13.6 #Differenz zwischen 40mA und der Laserschwelle 26.4
-f_err=np.sqrt((deltavdeltaI_err*13.6)**2+(deltavdeltaI*0.1)**2)
+f=deltavdeltaI*25 #Differenz zwischen 40mA und der Laserschwelle 26.4
+f_err=np.sqrt((deltavdeltaI_err*25)**2+(deltavdeltaI*0.1)**2)
 print('f=',f,'+',f_err,'In der Abbildung der StromFrequenzCharakteristik sieht man dass die Photodiode bis etwa 15mA anstatt 26.4 detektiert')
 
 ######### Frequenz Temperatur Charakteristik #########
@@ -370,9 +370,9 @@ plt.plot(x_2[1698:1789], Gauss(x_2[1698:1789],*popt8), color='red')
 plt.plot(x_2[1841:1956], Gauss(x_2[1841:1956],*popt9), color='red')
 plt.xlabel('Zeit t [s]', fontsize=13)
 plt.ylabel('Spannung U [mV]', fontsize=13)
-plt.title('Abb. [?]: Strom-Temperatur-Charakteristik', fontsize=16)
+plt.title('Abb. [6]: Temperatur-Frequenz-Charakteristik', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+plt.savefig('figures//abb_6.pdf',format='pdf')
 print('peak 1',popt1)
 print('peak 2',popt2)
 print('peak 3',popt3)
@@ -432,6 +432,52 @@ deltavdeltaT=omegaFSR/(deltaT*deltat)
 deltavdeltaT_err=np.sqrt((omegaFSR_err/(deltaT*deltat))**2+(omegaFSR/(deltaT**2*deltat)*deltaT_err)**2+(omegaFSR/(deltaT*deltat**2)*deltat_err)**2)
 print('deltavdeltaT=',deltavdeltaT,'+',deltavdeltaT_err)
 
+
+x_2, trans_2 = np.loadtxt('data/bessel/bessel0_max.csv', delimiter=',', usecols=(3, 4), unpack=True)
+plt.plot(x_2[:1851],trans_2[:1851], linestyle='-',color='black', label='Messkurve')
+
+plt.xlabel('Zeit t [s]', fontsize=13)
+plt.ylabel('Spannung U [V]', fontsize=13)
+plt.title('Abb. [7]: Modulationsindex 0', fontsize=16)
+plt.legend(frameon=True, fontsize = 12)
+plt.savefig('figures//abb_7.pdf',format='pdf')
+#plt.show()
+plt.close()
+
+x_2, trans_2 = np.loadtxt('data/bessel/bessel1_min.csv', delimiter=',', usecols=(3, 4), unpack=True)
+plt.plot(x_2[:1851],trans_2[:1851], linestyle='-',color='black', label='Messkurve')
+
+plt.xlabel('Zeit t [s]', fontsize=13)
+plt.ylabel('Spannung U [V]', fontsize=13)
+plt.title('Abb. [8]: Modulationsindex 2.41', fontsize=16)
+plt.legend(frameon=True, fontsize = 12)
+plt.savefig('figures//abb_8.pdf',format='pdf')
+#plt.show()
+plt.close()
+
+x_2, trans_2 = np.loadtxt('data/bessel/bessel2_max.csv', delimiter=',', usecols=(3, 4), unpack=True)
+plt.plot(x_2[:1851],trans_2[:1851], linestyle='-',color='black', label='Messkurve')
+
+plt.xlabel('Zeit t [s]', fontsize=13)
+plt.ylabel('Spannung U [V]', fontsize=13)
+plt.title('Abb. [9]: Modulationsindex 3.83', fontsize=16)
+plt.legend(frameon=True, fontsize = 12)
+plt.savefig('figures//abb_9.pdf',format='pdf')
+#plt.show()
+plt.close()
+
+x_2, trans_2 = np.loadtxt('data/bessel/bessel3_min.csv', delimiter=',', usecols=(3, 4), unpack=True)
+plt.plot(x_2[:1851],trans_2[:1851], linestyle='-',color='black', label='Messkurve')
+
+plt.xlabel('Zeit t [s]', fontsize=13)
+plt.ylabel('Spannung U [V]', fontsize=13)
+plt.title('Abb. [10]: Modulationsindex 5.52', fontsize=16)
+plt.legend(frameon=True, fontsize = 12)
+plt.savefig('figures//abb_10.pdf',format='pdf')
+#plt.show()
+plt.close()
+
+
 ##############################
 #Dopplerverbreiterte Laserspektroskopie##
 #####################################
@@ -462,7 +508,7 @@ popt12, pcov12 = curve_fit(Gauss, x_4[1698:1754], trans_4[1698:1754],p0=[-40,3.4
 plt.plot(x_3[345:1891],trans_3[345:1891], linestyle='-',color='blue', label='Resonatormessung')
 plt.plot(x_4[345:1891],trans_4[345:1891], linestyle='-',color='red', label='Messkurve')
 plt.plot(x_5[345:1891],trans_5[345:1891], linestyle='-',color='green', label='Temperaturmodulation')
-plt.plot(x_3[1226:1249], Gauss(x_3[1226:1249],*popt1), color='turquoise', label='Gaussian')
+plt.plot(x_3[1226:1249], Gauss(x_3[1226:1249],*popt1), color='turquoise', label='Gauss Fit')
 plt.plot(x_3[1286:1302], Gauss(x_3[1286:1302],*popt2), color='turquoise')
 plt.plot(x_3[1344:1360], Gauss(x_3[1344:1360],*popt3), color='turquoise')
 plt.plot(x_3[1400:1412], Gauss(x_3[1400:1412],*popt4), color='turquoise')
@@ -477,9 +523,9 @@ plt.plot(x_4[1698:1754], Gauss(x_4[1698:1754],*popt12), color='black')
 
 plt.xlabel('Zeit t [s]', fontsize=13)
 plt.ylabel('Spannung U [V]', fontsize=13)
-plt.title('Abb. [?]: Strom-Frequenz-Charakteristik', fontsize=16)
+plt.title('Abb. [11]: Temperaturscan', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+plt.savefig('figures//abb_11.pdf',format='pdf')
 print('peak 1',popt1)
 print('peak 2',popt2)
 print('peak 3',popt3)
@@ -553,7 +599,7 @@ popt5, pcov5 = curve_fit(Gauss, x_3[1561:1586], trans_3[1561:1586],p0=[0.3,6.3,0
 plt.plot(x_3[1051:1741],trans_3[1051:1741], linestyle='-',color='blue', label='Resonatormessung')
 plt.plot(x_2[1051:1741],diff_peak1[1051:1741], linestyle='-',color='red', label='Differenz')
 #plt.plot(x_5[345:1891],trans_5[345:1891], linestyle='-',color='green', label='Strommodulation')
-plt.plot(x_2[1328:1459], Gauss(x_2[1328:1459],*popt1), color='black', label='Gaussian')
+plt.plot(x_2[1328:1459], Gauss(x_2[1328:1459],*popt1), color='black', label='Gauss Fit')
 #plt.plot(x_3[1258:1293], Gauss(x_3[1258:1293],*popt2), color='turquoise')
 plt.plot(x_3[1341:1360], Gauss(x_3[1341:1360],*popt3), color='turquoise')
 plt.plot(x_3[1439:1460], Gauss(x_3[1439:1460],*popt4), color='turquoise')
@@ -561,9 +607,9 @@ plt.plot(x_3[1439:1460], Gauss(x_3[1439:1460],*popt4), color='turquoise')
 
 plt.xlabel('Zeit t [s]', fontsize=13)
 plt.ylabel('Spannung U [V]', fontsize=13)
-plt.title('Abb. [?]: Peak 1 Differenz', fontsize=16)
+plt.title('Abb. [12]: F=4 Linie, Differenz', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+plt.savefig('figures//abb_12.pdf',format='pdf')
 print('peak 1',popt1)
 print('resonazpeak 1',popt2)
 print('resonazpeak 2',popt3)
@@ -602,15 +648,15 @@ popt3, pcov3 = curve_fit(Gauss, x_3[1516:1540], trans_3[1516:1540],p0=[0.5,6.1,0
 plt.plot(x_3[1251:1754],trans_3[1251:1754], linestyle='-',color='blue', label='Resonatormessung')
 plt.plot(x_2[1251:1754],diff_peak2[1251:1754], linestyle='-',color='red', label='Differenz')
 #plt.plot(x_5[345:1891],trans_5[345:1891], linestyle='-',color='green', label='Strommodulation')
-plt.plot(x_2[1434:1547], Gauss(x_2[1434:1547],*popt1), color='black', label='Gaussian')
+plt.plot(x_2[1434:1547], Gauss(x_2[1434:1547],*popt1), color='black', label='Gauss Fit')
 plt.plot(x_3[1416:1440], Gauss(x_3[1416:1440],*popt2), color='turquoise')
 plt.plot(x_3[1516:1540], Gauss(x_3[1516:1540],*popt3), color='turquoise')
 
 plt.xlabel('Zeit t [s]', fontsize=13)
 plt.ylabel('Spannung U [V]', fontsize=13)
-plt.title('Abb. [?]: Peak 2 Differenz', fontsize=16)
+plt.title('Abb. [?]: F=3 Linie, Differenz', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+plt.savefig('figures//abb_13.pdf',format='pdf')
 print('peak 2',popt1)
 print('resonazpeak 1',popt2)
 print('resonazpeak 2',popt3)
@@ -639,10 +685,10 @@ trans_3=trans_3*3-0.6
 plt.plot(x_3[1051:1741],trans_3[1051:1741], linestyle='-',color='blue', label='Resonatormessung')
 plt.plot(x_2[1051:1741],quotient_peak1[1051:1741], linestyle='-',color='red', label='Quotient')
 plt.xlabel('Zeit t [s]', fontsize=13)
-plt.ylabel('Spannung U [V]', fontsize=13)
-plt.title('Abb. [?]: Peak 1 Quotient', fontsize=16)
+plt.ylabel('Quotient', fontsize=13)
+plt.title('Abb. [14]: F=4 Linie, Quotient', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+plt.savefig('figures//abb_14.pdf',format='pdf')
 #plt.show()
 plt.close()
 
@@ -654,12 +700,12 @@ quotient_peak2=trans_4/trans_2
 trans_3=trans_3*3-0.6
 
 plt.plot(x_3[1251:1754],trans_3[1251:1754], linestyle='-',color='blue', label='Resonatormessung')
-plt.plot(x_2[1251:1754],quotient_peak2[1251:1754], linestyle='-',color='red', label='Differenz')
+plt.plot(x_2[1251:1754],quotient_peak2[1251:1754], linestyle='-',color='red', label='Quotient')
 plt.xlabel('Zeit t [s]', fontsize=13)
-plt.ylabel('Spannung U [V]', fontsize=13)
-plt.title('Abb. [?]: Peak 2 Quotient', fontsize=16)
+plt.ylabel('Quotient', fontsize=13)
+plt.title('Abb. [15]: F=3 Linie, Quotient', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+plt.savefig('figures//abb_15.pdf',format='pdf')
 #plt.show()
 plt.close()
 
@@ -682,15 +728,32 @@ plt.plot(x_3[891:976], Gauss(x_3[891:976],*popt1), color='turquoise', label='Gau
 plt.plot(x_3[1521:1621], Gauss(x_3[1521:1621],*popt2), color='turquoise')
 plt.xlabel('Zeit t [s]', fontsize=13)
 plt.ylabel('Spannung U [V]', fontsize=13)
-plt.title('Abb. [?]: Stromscan 1 dopplerfrei', fontsize=16)
+plt.title('Abb. [16]: Stromscan F=4, dopplerfrei', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+plt.savefig('figures//abb_16.pdf',format='pdf')
 print('resonazpeak 1',popt1)
 print('resonanzpeak 2', popt2)
-#plt.show()
+plt.show()
 plt.close()
 
+diff1=popt2[1]-popt1[1]
+diff1_err=np.sqrt(popt2[2]**2+popt1[2]**2)
 
+deltat=omegaFSR/diff1
+deltat_err=np.sqrt((omegaFSR_err/diff1)**2+(omegaFSR/diff1**2*diff1_err)**2)
+print('deltat=',deltat,'+',deltat_err)
+diff1=2.32356-2.3068
+diff1_err=np.sqrt(0.001**2+0.001**2)
+diff2=2.33864-2.32356
+diff2_err=np.sqrt(0.002**2+0.001**2)
+
+dreiaufvier=deltat*diff1
+dreiaufvier_err=np.sqrt((deltat_err*diff1)**2+(deltat*diff1_err)**2)
+vierauffunf=deltat*diff2
+vierauffunf_err=np.sqrt((deltat_err*diff2)**2+(deltat*diff2_err)**2)
+
+print('dreiaufvier=',dreiaufvier,'+',dreiaufvier_err)
+print('vierauffunf=',vierauffunf,'+',vierauffunf_err)
 
 
 x_2, trans_2 = np.loadtxt('data/dopplerfrei/stromscan2.csv', delimiter=',', usecols=(3, 4), unpack=True)
@@ -707,10 +770,33 @@ plt.plot(x_3[741:831], Gauss(x_3[741:831],*popt1), color='turquoise', label='Gau
 plt.plot(x_3[1428:1511], Gauss(x_3[1428:1511],*popt2), color='turquoise')
 plt.xlabel('Zeit t [s]', fontsize=13)
 plt.ylabel('Spannung U [V]', fontsize=13)
-plt.title('Abb. [?]: Stromscan 1 dopplerfrei', fontsize=16)
+plt.title('Abb. [17]: Stromscan F=3, dopplerfrei', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-#plt.savefig('figures//f16_abb_1.pdf',format='pdf')
+plt.savefig('figures//abb_17.pdf',format='pdf')
 print('resonazpeak 1',popt1)
 print('resonanzpeak 2', popt2)
 plt.show()
 plt.close()
+
+
+diff1=popt2[1]-popt1[1]
+diff1_err=np.sqrt(popt2[2]**2+popt1[2]**2)
+
+deltat=omegaFSR/diff1
+deltat_err=np.sqrt((omegaFSR_err/diff1)**2+(omegaFSR/diff1**2*diff1_err)**2)
+print('deltat=',deltat,'+',deltat_err)
+diff1=2.33739-2.32522
+diff1_err=np.sqrt(0.0015**2+0.0007**2)
+diff2=2.35015-2.33739
+diff2_err=np.sqrt(0.0015**2+0.0007**2)
+
+zweiaufdrei=deltat*diff1
+zweiaufdrei_err=np.sqrt((deltat_err*diff1)**2+(deltat*diff1_err)**2)
+dreiaufvier=deltat*diff2
+dreiaufvier_err=np.sqrt((deltat_err*diff2)**2+(deltat*diff2_err)**2)
+
+print('zweiaufdrei=',zweiaufdrei,'+',zweiaufdrei_err)
+print('dreiaufvier=',dreiaufvier,'+',dreiaufvier_err)
+
+
+
