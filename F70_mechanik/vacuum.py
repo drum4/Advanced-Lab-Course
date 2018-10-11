@@ -93,10 +93,39 @@ plt.savefig('figures//f70_abb_1.pdf',format='pdf')
 #plt.show()
 plt.close()
 
+kap = np.concatenate((kap1[:-1],kap2[:-1],kap5[:-1],kap20[:-1],kapK))
+S = np.mean(kap[2:-2])
+S_err = np.std(kap[2:-2])
+print('S =',S,'+/-',S_err)
 
 
-S = 65.6
-S_err = 2.2
+
+
+
+
+
+
+
+##################
+#Teilchen gegen Druck gegen freie Weglänge#
+##################
+plt.xscale('log')
+plt.xlabel('Druck [mbar]', fontsize=13)
+plt.ylabel('Effektives Saugvermögen [l/s]', fontsize=13)
+plt.title('Fig. [1]: Saugvermögen in Abhängigkeit vom Druck', fontsize=16)
+plt.legend(frameon=True, fontsize = 12)
+plt.savefig('figures//f70_abb_1.pdf',format='pdf')
+#plt.show()
+plt.close()
+
+
+
+
+
+
+
+
+
 ##################
 #Leitwerte Rohr#
 ##################
@@ -119,8 +148,12 @@ plt.legend(frameon=True, fontsize = 12)
 plt.savefig('figures//f70_abb_2.pdf',format='pdf')
 #plt.show()
 plt.close()
+ll_r = np.mean(l_r[1:-4])
+ll_r_err = np.std(l_r[1:-4])
+print('L_R =',ll_r,'+/-',ll_r_err)
 
-print(np.mean(l_r[1:-4]),'+/-',np.std(l_r[1:-4]))
+
+
 
 
 
@@ -149,8 +182,11 @@ plt.legend(frameon=True, fontsize = 12)
 plt.savefig('figures//f70_abb_3.pdf',format='pdf')
 #plt.show()
 plt.close()
+ll_b = np.mean(l_b[6:-4])
+ll_b_err = np.std(l_b[6:-4])
+print('L_B =',ll_b,'+/-',ll_b_err)
 
-print(np.mean(l_b[6:-4]),'+/-',np.std(l_b[6:-4]))
+
 
 
 
@@ -180,5 +216,12 @@ plt.legend(frameon=True, fontsize = 12)
 plt.savefig('figures//f70_abb_4.pdf',format='pdf')
 #plt.show()
 plt.close()
+ll_g = np.mean(l_g[4:-4])
+ll_g_err = np.std(l_g[4:-4])
+print('L_g =',ll_g,'+/-',ll_g_err)
 
-print(np.mean(l_g[4:-4]),'+/-',np.std(l_g[4:-4]))
+
+#Kirchhoff
+l_k = 1/(1/ll_b+1/ll_r)
+l_k_err = l_k*np.sqrt((ll_b_err/ll_b)**2+(ll_r_err/ll_r)**2)
+print('L_k =',l_k,'+/-',l_k_err)
