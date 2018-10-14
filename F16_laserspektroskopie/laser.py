@@ -713,11 +713,17 @@ plt.close()
 #############################################
 ##### Dopplerfreie Spektroskopie ############
 #############################################
-
+g=np.arange(0.25,3.26)
 x_2, trans_2 = np.loadtxt('data/dopplerfrei/stromscan1.csv', delimiter=',', usecols=(3, 4), unpack=True)
 x_3, trans_3 = np.loadtxt('data/dopplerfrei/stromscan1.csv', delimiter=',', usecols=(9, 10), unpack=True)
 x_4, trans_4 = np.loadtxt('data/dopplerfrei/stromscan1.csv', delimiter=',', usecols=(15, 16), unpack=True)
 x_5, trans_5 = np.loadtxt('data/dopplerfrei/stromscan1.csv', delimiter=',', usecols=(21, 22), unpack=True)
+
+plt.plot(np.ones(4)*2.3068,g,linestyle='-',color='black')
+plt.plot(np.ones(4)*2.3158,g,linestyle='-',color='black')
+plt.plot(np.ones(4)*2.32356,g,linestyle='-',color='black')
+plt.plot(np.ones(4)*2.3322,g,linestyle='-',color='black')
+plt.plot(np.ones(4)*2.33864,g,linestyle='-',color='black')
 
 plt.plot(x_3[800:1980],trans_3[800:1980], linestyle='-',color='blue', label='Resonatormessung')
 plt.plot(x_4[800:1980],trans_4[800:1980], linestyle='-',color='red', label='Messkurve')
@@ -730,6 +736,7 @@ plt.xlabel('Zeit t [s]', fontsize=13)
 plt.ylabel('Spannung U [V]', fontsize=13)
 plt.title('Abb. [16]: Stromscan F=4, dopplerfrei', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
+#plt.text(2.98,2.4,F=2)
 plt.savefig('figures//abb_16.pdf',format='pdf')
 print('resonazpeak 1',popt1)
 print('resonanzpeak 2', popt2)
@@ -760,6 +767,12 @@ x_2, trans_2 = np.loadtxt('data/dopplerfrei/stromscan2.csv', delimiter=',', usec
 x_3, trans_3 = np.loadtxt('data/dopplerfrei/stromscan2.csv', delimiter=',', usecols=(9, 10), unpack=True)
 x_4, trans_4 = np.loadtxt('data/dopplerfrei/stromscan2.csv', delimiter=',', usecols=(15, 16), unpack=True)
 x_5, trans_5 = np.loadtxt('data/dopplerfrei/stromscan2.csv', delimiter=',', usecols=(21, 22), unpack=True)
+
+plt.plot(np.ones(4)*2.32522,g,linestyle='-',color='black')
+plt.plot(np.ones(4)*2.33171,g,linestyle='-',color='black')
+plt.plot(np.ones(4)*2.33739,g,linestyle='-',color='black')
+plt.plot(np.ones(4)*2.34425,g,linestyle='-',color='black')
+plt.plot(np.ones(4)*2.35015,g,linestyle='-',color='black')
 
 plt.plot(x_3[671:1580],trans_3[671:1580], linestyle='-',color='blue', label='Resonatormessung')
 plt.plot(x_4[671:1580],trans_4[671:1580], linestyle='-',color='red', label='Messkurve')
@@ -800,3 +813,22 @@ print('dreiaufvier=',dreiaufvier,'+',dreiaufvier_err)
 
 
 
+x_2, trans_2 = np.loadtxt('data/dopplerfrei/tempscan.csv', delimiter=',', usecols=(3, 4), unpack=True)
+x_3, trans_3 = np.loadtxt('data/dopplerfrei/tempscan.csv', delimiter=',', usecols=(9, 10), unpack=True)
+x_4, trans_4 = np.loadtxt('data/dopplerfrei/tempscan.csv', delimiter=',', usecols=(15, 16), unpack=True)
+x_5, trans_5 = np.loadtxt('data/dopplerfrei/tempscan.csv', delimiter=',', usecols=(21, 22), unpack=True)
+
+plt.plot(x_3,trans_3, linestyle='-',color='blue', label='Resonatormessung')
+plt.plot(x_4,trans_4, linestyle='-',color='red', label='Messkurve')
+
+plt.plot(x_3[741:831], Gauss(x_3[741:831],*popt1), color='turquoise', label='Gaussian')
+plt.plot(x_3[1428:1511], Gauss(x_3[1428:1511],*popt2), color='turquoise')
+plt.xlabel('Zeit t [s]', fontsize=13)
+plt.ylabel('Spannung U [V]', fontsize=13)
+plt.title('Abb. [17]: Temperaturscan, dopplerfrei', fontsize=16)
+plt.legend(frameon=True, fontsize = 12)
+plt.savefig('figures//abb_18.pdf',format='pdf')
+print('resonazpeak 1',popt1)
+print('resonanzpeak 2', popt2)
+plt.show()
+plt.close()
