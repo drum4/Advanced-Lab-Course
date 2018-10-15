@@ -147,8 +147,8 @@ popt2, pcov2 = curve_fit(Gauss, x_2[1212:1290], trans_2[1212:1290],p0=[68,0.099,
 popt3, pcov3 = curve_fit(Gauss, x_2[2220:2310], trans_2[2220:2310],p0=[68,0.103,0.0003,0.1], absolute_sigma=True)
 plt.plot(x_2,trans_2, linestyle='-',
          color='black', label='Messkurve')
-plt.plot(x_4,trans_4, linestyle='-',
-         color='green', label='Modulation')
+#plt.plot(x_4,trans_4, linestyle='-',
+#         color='green', label='Modulation')
 plt.plot(x_2[91:191], Gauss(x_2[91:191],*popt1), color='red', label='Gauss Fit')
 plt.plot(x_2[1212:1290], Gauss(x_2[1212:1290],*popt2), color='red')
 plt.plot(x_2[2220:2310], Gauss(x_2[2220:2310],*popt3), color='red')
@@ -202,8 +202,8 @@ popt8, pcov8 = curve_fit(Gauss, x_2[2280:2329], trans_2[2280:2329],p0=[4,0.1028,
 popt9, pcov9 = curve_fit(Gauss, x_2[2330:2370], trans_2[2330:2370],p0=[4,0.10296,0.00007,25], absolute_sigma=True)
 plt.plot(x_2,trans_2, linestyle='-',
          color='black', label='Messkurve')
-plt.plot(x_4,trans_4, linestyle='-',
-         color='green', label='Modulation')
+#plt.plot(x_4,trans_4, linestyle='-',
+#         color='green', label='Modulation')
 plt.plot(x_2[76:117], Gauss(x_2[76:117],*popt1), color='red', label='Gauss Fit')
 plt.plot(x_2[124:185], Gauss(x_2[124:185],*popt2), color='red')
 plt.plot(x_2[185:238], Gauss(x_2[185:238],*popt3), color='red')
@@ -736,11 +736,15 @@ plt.xlabel('Zeit t [s]', fontsize=13)
 plt.ylabel('Spannung U [V]', fontsize=13)
 plt.title('Abb. [16]: Stromscan F=4, dopplerfrei', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-#plt.text(2.98,2.4,F=2)
+plt.text(2.305,2.4,'F=3')
+plt.text(2.32,2.4,'F=4')
+plt.text(2.33,2.4,'F=5')
+plt.text(2.308,2.9,'cross-over')
+plt.text(2.325,2.8,'cross-over')
 plt.savefig('figures//abb_16.pdf',format='pdf')
 print('resonazpeak 1',popt1)
 print('resonanzpeak 2', popt2)
-plt.show()
+#plt.show()
 plt.close()
 
 diff1=popt2[1]-popt1[1]
@@ -753,6 +757,9 @@ diff1=2.32356-2.3068
 diff1_err=np.sqrt(0.001**2+0.001**2)
 diff2=2.33864-2.32356
 diff2_err=np.sqrt(0.002**2+0.001**2)
+
+print(diff1,'+',diff1_err)
+print(diff2,'+',diff2_err)
 
 dreiaufvier=deltat*diff1
 dreiaufvier_err=np.sqrt((deltat_err*diff1)**2+(deltat*diff1_err)**2)
@@ -785,10 +792,15 @@ plt.xlabel('Zeit t [s]', fontsize=13)
 plt.ylabel('Spannung U [V]', fontsize=13)
 plt.title('Abb. [17]: Stromscan F=3, dopplerfrei', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
+plt.text(2.323,3,'F=3')
+plt.text(2.335,3,'F=4')
+plt.text(2.347,3,'F=5')
+plt.text(2.326,3.4,'cross-over')
+plt.text(2.34,3.3,'cross-over')
 plt.savefig('figures//abb_17.pdf',format='pdf')
 print('resonazpeak 1',popt1)
 print('resonanzpeak 2', popt2)
-plt.show()
+#plt.show()
 plt.close()
 
 
@@ -802,6 +814,9 @@ diff1=2.33739-2.32522
 diff1_err=np.sqrt(0.0015**2+0.0007**2)
 diff2=2.35015-2.33739
 diff2_err=np.sqrt(0.0015**2+0.0007**2)
+
+print(diff1,'+',diff1_err)
+print(diff2,'+',diff2_err)
 
 zweiaufdrei=deltat*diff1
 zweiaufdrei_err=np.sqrt((deltat_err*diff1)**2+(deltat*diff1_err)**2)
@@ -818,17 +833,90 @@ x_3, trans_3 = np.loadtxt('data/dopplerfrei/tempscan.csv', delimiter=',', usecol
 x_4, trans_4 = np.loadtxt('data/dopplerfrei/tempscan.csv', delimiter=',', usecols=(15, 16), unpack=True)
 x_5, trans_5 = np.loadtxt('data/dopplerfrei/tempscan.csv', delimiter=',', usecols=(21, 22), unpack=True)
 
-plt.plot(x_3,trans_3, linestyle='-',color='blue', label='Resonatormessung')
-plt.plot(x_4,trans_4, linestyle='-',color='red', label='Messkurve')
+plt.plot(np.ones(4)*8.46188,g,linestyle='-',color='black')
+plt.plot(np.ones(4)*2.58043,g,linestyle='-',color='black')
 
-plt.plot(x_3[741:831], Gauss(x_3[741:831],*popt1), color='turquoise', label='Gaussian')
-plt.plot(x_3[1428:1511], Gauss(x_3[1428:1511],*popt2), color='turquoise')
+plt.plot(x_3[131:2301],trans_3[131:2301], linestyle='-',color='blue', label='Resonatormessung')
+plt.plot(x_4[131:2301],trans_4[131:2301], linestyle='-',color='red', label='Messkurve')
+
+
+popt1, pcov1 = curve_fit(Gauss, x_3[751:798], trans_3[751:798], p0=[0.2,3.069,0.002,0], absolute_sigma=True)
+popt2, pcov2 = curve_fit(Gauss, x_3[931:971], trans_3[931:971], p0=[0.2,3.8,0.002,0], absolute_sigma=True)
+popt3, pcov3 = curve_fit(Gauss, x_3[1101:1134], trans_3[1101:1134], p0=[0.2,4.45,0.002,0], absolute_sigma=True)
+popt4, pcov4 = curve_fit(Gauss, x_3[1264:1301], trans_3[1264:1301], p0=[0.2,5.12,0.002,0], absolute_sigma=True)
+
+plt.plot(x_3[751:798], Gauss(x_3[751:798],*popt1), color='turquoise', label='Gaussian')
+plt.plot(x_3[931:971], Gauss(x_3[931:971],*popt2), color='turquoise')
+plt.plot(x_3[1101:1134], Gauss(x_3[1101:1134],*popt3), color='turquoise')
+plt.plot(x_3[1264:1301], Gauss(x_3[1264:1301],*popt4), color='turquoise')
 plt.xlabel('Zeit t [s]', fontsize=13)
 plt.ylabel('Spannung U [V]', fontsize=13)
 plt.title('Abb. [17]: Temperaturscan, dopplerfrei', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
+plt.text(2.4,2,'F=4 $\\to$ F=4')
+plt.text(8.2,3,'F=3 $\\to$ F=4')
 plt.savefig('figures//abb_18.pdf',format='pdf')
 print('resonazpeak 1',popt1)
 print('resonanzpeak 2', popt2)
+print('resonazpeak 3',popt3)
+print('resonanzpeak 4', popt4)
+#plt.show()
+plt.close()
+
+diff1=popt2[1]-popt1[1]
+diff1_err=np.sqrt(popt2[2]**2+popt1[2]**2)
+diff2=popt3[1]-popt2[1]
+diff2_err=np.sqrt(popt3[2]**2+popt2[2]**2)
+diff3=popt4[1]-popt3[1]
+diff3_err=np.sqrt(popt4[2]**2+popt3[2]**2)
+
+a=np.array([diff1,diff2,diff3])
+b_err=np.std(a)
+b=np.mean(a)
+print(a)
+print('b=',b,'+',b_err)
+
+deltat=omegaFSR/b
+deltat_err=np.sqrt((omegaFSR_err/b)**2+(omegaFSR/b**2*b_err)**2)
+print('deltat=',deltat,'+',deltat_err)
+diff1=8.46188-2.58043
+diff1_err=np.sqrt(0.007**2+0.008**2)
+
+print(diff1,'+',diff1_err)
+
+sec=deltat*diff1
+sec_err=np.sqrt((deltat_err*diff1)**2+(deltat*diff1_err)**2)
+
+print('sec=',sec,'+',sec_err)
+
+
+neu1=deltat*(2.39541-2.21526)
+neu2=deltat*(2.58043-2.39541)
+neu3=deltat*(8.46304-8.34868)
+neu4=deltat*(8.59559-8.46304)
+print(neu1)
+print(neu2)
+print(neu3)
+print(neu4)
+
+
+x_2, trans_2 = np.loadtxt('data/dopplerfrei/doppler_temp_gros.csv', delimiter=',', usecols=(3, 4), unpack=True)
+x_3, trans_3 = np.loadtxt('data/dopplerfrei/doppler_temp_gros.csv', delimiter=',', usecols=(9, 10), unpack=True)
+x_4, trans_4 = np.loadtxt('data/dopplerfrei/doppler_temp_gros.csv', delimiter=',', usecols=(15, 16), unpack=True)
+x_5, trans_5 = np.loadtxt('data/dopplerfrei/doppler_temp_gros.csv', delimiter=',', usecols=(21, 22), unpack=True)
+
+trans_4=(trans_4+0.63235)*3.1/0.853305
+trans_2=trans_2+3.11943-0.53-0.92
+
+diff=trans_4-trans_2
+plt.plot(x_2[1101:2172],trans_2[1101:2172], linestyle='-',color='green', label='Messkurve Doppler')
+plt.plot(x_4[1101:2172],trans_4[1101:2172], linestyle='-',color='red', label='Messkurve Dopplerfrei')
+plt.plot(x_2[1101:2172],diff[1101:2172], linestyle='-',color='black',label='Differenz')
+plt.xlabel('Zeit t [s]', fontsize=13)
+plt.ylabel('Spannung U [V]', fontsize=13)
+plt.title('Abb. [19]: Dopplerfrei-Doppler F=4', fontsize=16)
+plt.legend(frameon=True, fontsize = 12)
+plt.savefig('figures//abb_19.pdf',format='pdf')
 plt.show()
 plt.close()
+
