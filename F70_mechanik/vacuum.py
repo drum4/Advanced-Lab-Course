@@ -93,10 +93,57 @@ plt.savefig('figures//f70_abb_1.pdf',format='pdf')
 #plt.show()
 plt.close()
 
+kap = np.concatenate((kap1[:-1],kap2[:-1],kap5[:-1],kap20[:-1],kapK))
+S = np.mean(kap[2:-2])
+S_err = np.std(kap[2:-2])
+print('S =',S,'+/-',S_err)
 
 
-S = 65.6
-S_err = 2.2
+
+
+
+
+
+
+
+##################
+#Teilchen gegen Druck gegen freie Weglänge#
+##################
+
+t = np.arange(1e-6, 1e3)
+data1 = 10**18*t
+data2 = 10**-5/t
+fig, ax1 = plt.subplots()
+plt.xscale('log')
+plt.yscale('log')
+color = 'tab:red'
+ax1.set_xscale('log')
+ax1.set_xlabel('Druck [mbar]', fontsize=13)
+ax1.set_ylabel('Teilchendichte [1/m$^3$]', color=color, fontsize=13)
+ax1.plot(t, data1, color=color)
+ax1.tick_params(axis='y', labelcolor=color)
+ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+color = 'tab:blue'
+ax2.set_ylabel('Freie Weglänge [cm]', color=color, fontsize=13)  # we already handled the x-label with ax1
+ax2.plot(t, data2, color=color)
+plt.yscale('log')
+ax2.tick_params(axis='y', labelcolor=color)
+fig.tight_layout()  # otherwise the right y-label is slightly clipped
+#ax1.title.set_text('Abb. [2]: Teilchendichte und freie Weglänge', fontsize=16)
+plt.suptitle('Abb. [2]: Teilchendichte und freie Weglänge [Nitrogen]', fontsize=16)
+fig.subplots_adjust(top=.92) #adjust title position
+plt.savefig('figures//f70_abb_2.pdf',format='pdf')
+#plt.show()
+plt.close()
+
+
+
+
+
+
+
+
+
 ##################
 #Leitwerte Rohr#
 ##################
@@ -110,17 +157,21 @@ l_r_err = np.sqrt((S_err*p_ur/(p_or-p_ur))**2+(S*p_ur*p_or_err/(p_or-p_ur)**2)**
 plt.errorbar(p_ur, l_r, xerr=p_ur_err, yerr=l_r_err,
              fmt='.', linewidth=1,
              linestyle='', color='black',
-             label='Rohr')
+             label='Messpunkte mit Fehler')
 plt.xscale('log')
 plt.xlabel('Druck [mbar]', fontsize=13)
 plt.ylabel('Leitwert [l/s]', fontsize=13)
-plt.title('Fig. [2]: Leitwert Rohr', fontsize=16)
+plt.title('Abb. [3]: Leitwert Rohr', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-plt.savefig('figures//f70_abb_2.pdf',format='pdf')
+plt.savefig('figures//f70_abb_3.pdf',format='pdf')
 #plt.show()
 plt.close()
+ll_r = np.mean(l_r[1:-4])
+ll_r_err = np.std(l_r[1:-4])
+print('L_R =',ll_r,'+/-',ll_r_err)
 
-print(np.mean(l_r[1:-4]),'+/-',np.std(l_r[1:-4]))
+
+
 
 
 
@@ -140,17 +191,20 @@ l_b_err = np.sqrt((S_err*p_ub/(p_ob-p_ub))**2+(S*p_ub*p_ob_err/(p_ob-p_ub)**2)**
 plt.errorbar(p_ub, l_b, xerr=p_ub_err, yerr=l_b_err,
              fmt='.', linewidth=1,
              linestyle='', color='black',
-             label='Blende')
+             label='Messpunkte mit Fehler')
 plt.xscale('log')
 plt.xlabel('Druck [mbar]', fontsize=13)
 plt.ylabel('Leitwert [l/s]', fontsize=13)
-plt.title('Fig. [3]: Leitwert Blende', fontsize=16)
+plt.title('Abb. [4]: Leitwert Blende', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-plt.savefig('figures//f70_abb_3.pdf',format='pdf')
+plt.savefig('figures//f70_abb_4.pdf',format='pdf')
 #plt.show()
 plt.close()
+ll_b = np.mean(l_b[6:-4])
+ll_b_err = np.std(l_b[6:-4])
+print('L_B =',ll_b,'+/-',ll_b_err)
 
-print(np.mean(l_b[6:-4]),'+/-',np.std(l_b[6:-4]))
+
 
 
 
@@ -171,14 +225,21 @@ l_g_err = np.sqrt((S_err*p_ug/(p_og-p_ug))**2+(S*p_ug*p_og_err/(p_og-p_ug)**2)**
 plt.errorbar(p_ug, l_g, xerr=p_ug_err, yerr=l_g_err,
              fmt='.', linewidth=1,
              linestyle='', color='black',
-             label='Kombination')
+             label='Messpunkte mit Fehler')
 plt.xscale('log')
 plt.xlabel('Druck [mbar]', fontsize=13)
 plt.ylabel('Leitwert [l/s]', fontsize=13)
-plt.title('Fig. [4]: Leitwert Kombination', fontsize=16)
+plt.title('Abb. [5]: Leitwert Kombination', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
-plt.savefig('figures//f70_abb_4.pdf',format='pdf')
+plt.savefig('figures//f70_abb_5.pdf',format='pdf')
 #plt.show()
 plt.close()
+ll_g = np.mean(l_g[4:-4])
+ll_g_err = np.std(l_g[4:-4])
+print('L_g =',ll_g,'+/-',ll_g_err)
 
-print(np.mean(l_g[4:-4]),'+/-',np.std(l_g[4:-4]))
+
+#Kirchhoff
+l_k = 1/(1/ll_b+1/ll_r)
+l_k_err = l_k*np.sqrt((ll_b_err/ll_b)**2+(ll_r_err/ll_r)**2)
+print('L_k =',l_k,'+/-',l_k_err)
