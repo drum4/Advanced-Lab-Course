@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2018.4.6)  18 SEP 2018 12:42
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2018.4.6)  18 OCT 2018 22:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3438,26 +3438,30 @@ wn
 
 File: images//interference.jpg Graphic file (type bmp)
 <images//interference.jpg>
+File: images//pi_11_scope.jpg Graphic file (type bmp)
+<images//pi_11_scope.jpg>
+File: images//sigma_11_scope.jpg Graphic file (type bmp)
+<images//sigma_11_scope.jpg>
 
-Overfull \hbox (0.55157pt too wide) in paragraph at lines 31--46
+Overfull \hbox (0.55157pt too wide) in paragraph at lines 31--61
 \TU/LinuxLibertineO(0)/m/n/12 constructive interference with the gear differenc
 e
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--46
+Underfull \hbox (badness 10000) in paragraph at lines 31--61
 
  []
 
 [3]
-Overfull \hbox (12.52893pt too wide) in paragraph at lines 47--49
+Overfull \hbox (12.52893pt too wide) in paragraph at lines 62--64
 \TU/LinuxLibertineO(0)/m/n/12 sider the distance between the $\U/eur/m/n/12 ^^Y
 $\TU/LinuxLibertineO(0)/m/n/12 - and $\OML/cmm/m/it/12 ^^[$\TU/LinuxLibertineO(
 0)/m/n/12 -lines, which
  []
 
 
-Overfull \hbox (1.54936pt too wide) in paragraph at lines 51--53
+Overfull \hbox (1.54936pt too wide) in paragraph at lines 66--68
 \TU/LinuxLibertineO(0)/m/n/12 with $\OT1/cmr/m/n/12 ^^A\OML/cmm/m/it/12 k$ \TU/
 LinuxLibertineO(0)/m/n/12 the order difference between two $\U/eur/m/n/12 ^^Y$\
 TU/LinuxLibertineO(0)/m/n/12 -lines,
@@ -3466,41 +3470,41 @@ TU/LinuxLibertineO(0)/m/n/12 -lines,
 File: images//gaussian.png Graphic file (type bmp)
 <images//gaussian.png>
 
-Overfull \hbox (17.54326pt too wide) in paragraph at lines 92--93
+Overfull \hbox (17.54326pt too wide) in paragraph at lines 107--108
  [][] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 98--99
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
 
  []
 
-[4]
-Overfull \hbox (2.0116pt too wide) in paragraph at lines 100--103
+
+Overfull \hbox (2.0116pt too wide) in paragraph at lines 115--118
 \TU/LinuxLibertineO(0)/m/n/12 mirror onto the grating, where it is spectrally s
 plit
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--103
+Underfull \hbox (badness 10000) in paragraph at lines 115--118
 
  []
 
 File: images//spectrum.png Graphic file (type bmp)
 <images//spectrum.png>
 
-Overfull \hbox (17.54326pt too wide) in paragraph at lines 108--109
+Overfull \hbox (17.54326pt too wide) in paragraph at lines 123--124
  [][] 
  []
 
 File: images//position.png Graphic file (type bmp)
 <images//position.png>
 
-Overfull \hbox (17.54326pt too wide) in paragraph at lines 117--118
+Overfull \hbox (17.54326pt too wide) in paragraph at lines 132--133
  [][] 
  []
 
-) (./discussion.tex [5])
+) (./discussion.tex) [5]
 Overfull \hbox (3.2505pt too wide) in paragraph at lines 36--36
 \TU/LinuxLibertineO(0)/m/n/12 2016. Springer-Lehrbuch. Berlin, Heidelberg:
  []
@@ -3535,21 +3539,17 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 36.
  (./f44_shortreport_schmitt_kleinbek.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 36.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 36.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package logreq Info: Writing requests to 'f44_shortreport_schmitt_kleinbek.run.
 xml'.
 \openout1 = `f44_shortreport_schmitt_kleinbek.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 59088 strings out of 493007
- 1326847 string characters out of 6137966
+ 59127 strings out of 493007
+ 1327820 string characters out of 6137966
  2015297 words of memory out of 5000000
- 62234 multiletter control sequences out of 15000+600000
- 540399 words of font info for 97 fonts, out of 8000000 for 9000
+ 62268 multiletter control sequences out of 15000+600000
+ 542311 words of font info for 107 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  76i,20n,119p,10519b,6044s stack positions out of 5000i,500n,10000p,200000b,80000s
 

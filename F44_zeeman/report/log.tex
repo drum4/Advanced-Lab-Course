@@ -34,13 +34,28 @@ The reflection angle $\alpha$ within the plate is assumed to be approximately $\
 Our interference pattern of the Lummer-Gehrcke plate for a transversal image can be seen in Figure \ref{fig:interference}.
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=.15]{images//interference.jpg}
+\includegraphics[scale=.14]{images//interference.jpg}
 \caption{Zeeman effect with $\SI{13}{\ampere}$}
 \label{fig:interference}
 \end{figure}
 The quantitative results from the observation of the Zeeman effect should next be used to determine Bohr's magneton.
 For this purpose, the images from the first test section were plotted in Python and fitted with a Gaussian function.
 This gave us the positions and width of the interference lines in pixels for each measurement with $I =\SIlist{9;11;13}{\ampere}$.
+\begin{figure}[ht]
+\centering
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[scale=.115]{images//pi.jpg}
+\caption{$\pi$-lines}
+\end{subfigure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[scale=.115]{images//sigma.jpg}
+\caption{$\sigma$-lines}
+\end{subfigure}
+\caption{Interference with $\SI{11}{\ampere}$}
+\label{fig:pisigma}
+\end{figure}
 The orders of the $\pi$-lines were plotted against the position in pixels and provided with a second-order polynomial fit.
 With the help of this fit the orders of the $\sigma$-lines were determined.\\
 
