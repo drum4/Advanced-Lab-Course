@@ -62,7 +62,7 @@ plt.title('Fig. [1]: Hysteresis effect for magnets used', fontsize=16)
 plt.plot(current, prop(current,*popt_up), color='red', label='Linear fit ascending')
 plt.plot(current, prop(current,*popt_down), color='blue', label='Linear fit descending',
          linestyle='--')
-plt.text(6,0.05,'Ascending/Descending Slope: \n %s \n %s'%(slope_a, slope_d),
+plt.text(5,0.05,'Ascending/Descending Slope: \n %s \n %s'%(slope_a, slope_d),
         bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
         fontsize=13)
 plt.legend(frameon=True, fontsize = 12)
@@ -152,7 +152,7 @@ print("Neon_650:",popt7)
 print("Neon_640:",popt8)
 print("Neon_638:",popt9)
 plt.savefig('figures//f44_abb_11.pdf',format='pdf')
-plt.show()
+#plt.show()
 plt.close()
 
 

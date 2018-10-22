@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2018.4.6)  18 OCT 2018 22:55
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2018.4.6)  19 OCT 2018 17:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3338,8 +3338,8 @@ Overfull \hbox (1.33159pt too wide) in paragraph at lines 3--2
  []
 
 
-Overfull \hbox (6.69159pt too wide) in paragraph at lines 3--2
-\TU/LinuxLibertineO(0)/m/n/12 different energy levels, which wavelength depends
+Overfull \hbox (7.93958pt too wide) in paragraph at lines 3--2
+\TU/LinuxLibertineO(0)/m/n/12 different energy levels, whose wavelength depends
 
  []
 
@@ -3380,9 +3380,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 79--85
  []
 
 ) (./log.tex
-Overfull \hbox (7.41441pt too wide) in paragraph at lines 4--5
-\TU/LinuxLibertineO(0)/m/n/12 which ist formed at the transition from $[][][] \
-OMS/cmsy/m/n/12 !  [][][][]$\TU/LinuxLibertineO(0)/m/n/12 . 
+Overfull \hbox (3.62242pt too wide) in paragraph at lines 4--5
+\TU/LinuxLibertineO(0)/m/n/12 which is formed at the transition from $[][][] \O
+MS/cmsy/m/n/12 !  [][][][]$\TU/LinuxLibertineO(0)/m/n/12 . 
  []
 
 
@@ -3390,10 +3390,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--5
 
  []
 
-File: images//hystheresis.png Graphic file (type bmp)
-<images//hystheresis.png>
+File: images//hystheresis.pdf Graphic file (type pdf)
+<use images//hystheresis.pdf>
 
-Overfull \hbox (17.54326pt too wide) in paragraph at lines 11--12
+Overfull \hbox (17.54276pt too wide) in paragraph at lines 11--12
  [][] 
  []
 
@@ -3438,13 +3438,13 @@ wn
 
 File: images//interference.jpg Graphic file (type bmp)
 <images//interference.jpg>
-File: images//pi_11_scope.jpg Graphic file (type bmp)
-<images//pi_11_scope.jpg>
-File: images//sigma_11_scope.jpg Graphic file (type bmp)
-<images//sigma_11_scope.jpg>
+File: images//pi.jpg Graphic file (type bmp)
+<images//pi.jpg>
+File: images//sigma.jpg Graphic file (type bmp)
+<images//sigma.jpg>
 
-Overfull \hbox (0.55157pt too wide) in paragraph at lines 31--61
-\TU/LinuxLibertineO(0)/m/n/12 constructive interference with the gear differenc
+Overfull \hbox (1.19958pt too wide) in paragraph at lines 31--61
+\TU/LinuxLibertineO(0)/m/n/12 constructive interference with the path differenc
 e
  []
 
@@ -3467,44 +3467,53 @@ LinuxLibertineO(0)/m/n/12 the order difference between two $\U/eur/m/n/12 ^^Y$\
 TU/LinuxLibertineO(0)/m/n/12 -lines,
  []
 
-File: images//gaussian.png Graphic file (type bmp)
-<images//gaussian.png>
+File: images//gaussian.pdf Graphic file (type pdf)
+<use images//gaussian.pdf>
 
-Overfull \hbox (17.54326pt too wide) in paragraph at lines 107--108
+Overfull \hbox (17.54276pt too wide) in paragraph at lines 107--108
  [][] 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 113--114
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
 
  []
 
 
-Overfull \hbox (2.0116pt too wide) in paragraph at lines 115--118
-\TU/LinuxLibertineO(0)/m/n/12 mirror onto the grating, where it is spectrally s
-plit
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 115--118
+Underfull \hbox (badness 10000) in paragraph at lines 116--119
 
  []
 
-File: images//spectrum.png Graphic file (type bmp)
-<images//spectrum.png>
+File: images//spectrum.pdf Graphic file (type pdf)
+<use images//spectrum.pdf>
 
-Overfull \hbox (17.54326pt too wide) in paragraph at lines 123--124
+Overfull \hbox (17.54276pt too wide) in paragraph at lines 124--125
  [][] 
  []
 
 File: images//position.png Graphic file (type bmp)
 <images//position.png>
 
-Overfull \hbox (17.54326pt too wide) in paragraph at lines 132--133
+Overfull \hbox (17.54326pt too wide) in paragraph at lines 130--131
  [][] 
  []
 
-) (./discussion.tex) [5]
+
+Overfull \hbox (4.57956pt too wide) in paragraph at lines 120--138
+\TU/LinuxLibertineO(0)/m/n/12 surement we could then calculate the wavelengths
+ []
+
+[5]) (./discussion.tex
+Overfull \hbox (1.64758pt too wide) in paragraph at lines 140--2
+\TU/LinuxLibertineO(0)/m/n/12 Unfortunately, we were no longer resolve another
+ []
+
+)
+Overfull \hbox (0.44757pt too wide) in paragraph at lines 3--36
+\TU/LinuxLibertineO(0)/m/n/12 to determine the wavelengths of the red cadmium
+ []
+
+
 Overfull \hbox (3.2505pt too wide) in paragraph at lines 36--36
 \TU/LinuxLibertineO(0)/m/n/12 2016. Springer-Lehrbuch. Berlin, Heidelberg:
  []
@@ -3545,8 +3554,8 @@ xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 59127 strings out of 493007
- 1327820 string characters out of 6137966
+ 59125 strings out of 493007
+ 1327789 string characters out of 6137966
  2015297 words of memory out of 5000000
  62268 multiletter control sequences out of 15000+600000
  542311 words of font info for 107 fonts, out of 8000000 for 9000
