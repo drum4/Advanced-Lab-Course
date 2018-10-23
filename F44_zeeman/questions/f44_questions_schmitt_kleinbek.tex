@@ -60,14 +60,22 @@
 \setsansfont{Linux Biolinum O}
 \addbibresource{}
 
-\subject{}
+\titlehead{\begin{minipage}{.5\textwidth}
+			\begin{flushleft}
+			\includegraphics[scale=.065]{logo_color.jpg}
+			\end{flushleft}
+ 	 		\end{minipage}
+			\begin{minipage}{.5\textwidth}
+			\begin{flushright}
+			\includegraphics[scale=.8]{logo_fp.png}
+			\end{flushright}
+ 	 		\end{minipage}}
 \title{F44 Zeeman spectroscopy}
 \subtitle{Questions to the experiment}
 \author{Nils Schmitt \and Timo Kleinbek}
-\publishers{}
-\date{}
+\publishers{Supervisor: Srinivas, Hemkumar}
+\date{Conducted in August 2018}
 
-\numberwithin{equation}{section}
 %\automark{chapter}
 \pagestyle{scrheadings}
 \chead{}
@@ -87,13 +95,75 @@
 			 
 \begin{document}
 \maketitle
-\section*{Is it possible to observe the Natrium Zeeman splitting with current setup?
+
+\section*{Is it possible to observe the Sodium Zeeman splitting with current setup?
 What needs to be changed if needed?}
+For Sodium the energy of the excited electron is splitted into two levels.
+The atomic electron transition to the ground state emits photons with the wavelengths
+\begin{align*}
+\lambda_1&=\SI{589.0}{\nano\meter},\\
+\lambda_2&=\SI{589.6}{\nano\meter}.
+\end{align*}
+The free spectral range of both transitions follows the formula
+\begin{align}
+\Delta\lambda=\frac{\lambda^2}{2d\cdot\sqrt{n^2-1}}
+\end{align}
+with the thickness $d$ of the Lummer-Gehrcke-Plate and the refractive index $n$.\\
+So we get the free spectral range
+\begin{align*}
+\Delta\lambda&=\SI{4.053e-11}{\meter}.
+\end{align*}
+In the best case the peaks of one transition are always in the middle of the free spectral range of the other.
+To resolve lines in this range the Zeeman splitting is only allowed in the quarter of this.
+Therefore we use the equation
+\begin{align}
+\delta\lambda&=\frac{hc}{h\frac{c}{\lambda}+\Delta E}-\lambda\\
+\intertext{with the energy difference}
+\Delta E&=\mu_\text{B}\cdot m_l\cdot B.
+\end{align}
+If we solve according to the current
+\begin{align}
+I=\frac{hc}{\mu_\text{B}\overline{a}}\left(\frac{1}{\delta\lambda+\lambda}-\frac{1}{\lambda}\right)
+\end{align}
+with the ratio $\overline{a}$ between the magnetic field and the current, we see that the current must be under $I=\SI{10}{\ampere}$.
+But generally the peaks are not in the middle of their free spectral range so the resolution will be more poor.\\
+There is one solution for example which is called an Ethalon.
+This is using an Fabry-Perot interferometer where you can observe both lines seperatly.
+It works with an resonator which only transmit light following the rule
+\begin{align}
+f=\frac{c}{2nL}\cdot m
+\end{align}
+with the length of the resonator $L$ and $m\in\mathbbm{C}$.\\
+In contrast to the Lummer-Gehrcke-Plate the Fabry-Perot interferometer can change the length, so the different wavelengths can be observed alone.
 
 
 
 
 \section*{Calculate the $\nicefrac{e}{m}$ ratio for an electron using the Bohr magneton value.}
+Because the electron mass is difficult to determine directly, the charge-mass-ratio ($\nicefrac{e}{m_\text{e}}$) is determined from measurements with the elementary charge instead.\\
+The 2014 CODATA recommended value is
+\begin{align*}
+\frac{e}{m_\text{e}}=\SI{-1.759e11}{\second\ampere\per\kilo\gram}.
+\end{align*}
+We can check this value with the help of our measurement for the Bohr magneton $\mu_\text{B}=\SI{9.7(8)e-24}{\joule\per\tesla}$ and test how good the Zeeman effect is for determining the electron mass.\\
+For this we use the already known equation
+\begin{align}
+\mu_\text{B}&=\frac{\hbar e}{2m_\text{e}}\\
+\intertext{and solve according to the charge-mass-ratio}
+\frac{e}{m_\text{e}}&=\frac{2\mu_\text{B}}{\hbar}.
+\end{align}
+So we finally get the value
+\begin{align*}\frac{e}{m_\text{e}}&=\SI{1.84(15)e11}{\second\ampere\per\kilo\gram}
+\end{align*}
+This is in the 1$\sigma$-range of the literature value and only differs up to 4.6\% from this.\\
+We conclude that it is possible to calculate the $\nicefrac{e}{m_\text{e}}$ ratio using the Zeeman effect, but for a better value with less error we would use an mass spectrometer.
+For this, an electric field is combined with a magnetic field and the charge to mass ratio is obtained as a function of the radius in the form
+\begin{align}
+\frac{q}{m}=\frac{E}{B^2r}.
+\end{align}
 
-
+\begin{thebibliography}{}
+\bibitem{}'Zeeman- und Paschen-Back-Effekt', \url{https://astro.uni-bonn.de/~joachimi/fp/Zeeman-Paschen-Back-Effekt.pdf}, 22.10.2018
+\bibitem{}'Mass-to-Charge ratio', \url{https://en.wikipedia.org/wiki/Mass-to-charge_ratio}, 22.10.2018
+\end{thebibliography}
 \end{document}
