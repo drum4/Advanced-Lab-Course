@@ -49,10 +49,10 @@ M_\parallel(t)&=M_0\cdot\left(1-2\e{-\frac{t}{T_1}}\right) \label{eq:t1}\\
 M_\bot(t)&=M_0\cdot\e{-\frac{t}{T_2}}.
 \label{eq:t2}
 \end{align}
-Both change asymptotically with the characteristic time $T_1$ and $T_2$.\\
+Both change asymptotically with the characteristic time $T_1$ and $T_2$, the first describing the spin-lattice relaxation time and the second the spin-spin relaxation time.\\
 The decay of the anti-parallel magnetization is caused by the interaction of the spins with the external magnetic field $B_0$ (spin-lattice contribution).
 On the other hand interactions between the individual spins (spin-spin contribution) in combination with the small spin-lattice effect lead to the decay of the orthogonal magnetization.
-Since the spin-spin interaction is stronger than the spin-lattice interaction, $T_2\leq T_1$ is expected.\\
+The relation $T_2\leq T_1$ is expected, because the spin-spin interaction is stronger than the spin-lattice interaction.\\
 
 Measurements of orthogonal magnetization are made in the $B_1$ generating coil by induction.
 After switching off the $B_1$ field, the precession of the magnetization around the external magnetic field $B_0$ induces an alternating current in the $B_1$ coil.
@@ -67,7 +67,7 @@ By recording these amplitudes after different times, the exponential decrease of
 
 The relaxation time $T_2$ is measured by another combination of $\ang{90}$ and $\ang{180}$ pulses.
 First a $\ang{90}$ pulse produces a magnetization perpendicular to the $B_0$ field.
-Because of this field, the magnetization begins to precisionize around the $B_0$ axis with the Larmor frequency according to equation \ref{eq:larmor}.
+Because of this field, the magnetization begins to precisionize around the $B_0$ axis with the Larmor frequency according to equation \ref{eq:lamor}.
 Due to the low inhomogeneities in the magnetic field, the Larmor frequencies of the protons at different positions are different.
 This incoherence leads to a reduced magnetization, thus a reduced signal which is measured in the coil.
 After a certain time $\tau$ a $\ang{180}$ pulse is sent, which causes a mirroring perpendicular to the axis of the $B_0$ field around which the magnetization rotates.
@@ -88,6 +88,9 @@ The basic procedure of the process described here is shown in figure \ref{fig:re
 
 
 
+%------------------------
+%Chemical Shift
+%------------------------
 \subsection{Chemical Shift}
 When considering the excitation of nuclear spins, only atoms that actually have a nuclear spin can be excited (i. e. $S\neq 0$).
 Of course, a single proton as fermion in the nucleus of a hydrogen atom has a spin of $S = \nicefrac{1}{2}$.
@@ -123,6 +126,9 @@ The positions of the molecules in this list can be explained using the example o
 
 
 
+%-------------------
+%Imaging
+%-------------------
 \subsection{Imaging Techniques}
 By excitation of nuclear spins and subsequent measurement of the magnetization, the distribution of the excited spins can be reconstructed under certain conditions and thus one-, two- or three-dimensional images of the nuclear spin distribution can be generated.
 To divide the material into readable pixels in the different dimensions, in addition to an external $B_0$ field along the $z$ direction, we use magnetic fields, which also point in $z$ direction but change spatially with the $x, y$ or $z$ coordinate.
@@ -132,7 +138,7 @@ In $x$ direction is valid for example
 \end{align*}
 
 \subsubsection{Frequency Coding}
-According to equation \ref{eq:larmor} the Larmor frequency in a magnetic field, which is superimposed by $B_0$ and a field varying in $z$ direction, results to
+According to equation \ref{eq:lamor} the Larmor frequency in a magnetic field, which is superimposed by $B_0$ and a field varying in $z$ direction, results to
 \begin{align}
 \omega_\text{L}(z)=\gamma(B_0+G_zz)=\omega_\text{L}^0+\omega_z.
 \end{align}
@@ -193,13 +199,12 @@ Here a data set is recorded directly in a certain time interval.
 To scroll through the pixels in the $x$ direction, the $k_z$ must be changed again.
 This produces a two-dimensional data set, which is again transformed into an image by two dimensional inverse Fourier transformation.\\
 
-The procedure of this data acquisition is shown in figure \ref{fig:signal}.\\
 It is obvious that by stimulating individual layers and creating the respective images one after the other, three-dimensional objects can also be examined.
 This procedure is used extensively in medicine.
 For this reason, however, MRI must also ensure that the sample is completely immobilised, as temporal sequences cannot be displayed.
-\begin{figure}[ht]
-\centering
-\includegraphics[scale=.25]{images//signal.png}
-\caption{Datarecording for two dimensional imaging \cite{script_nmr}.}
-\label{fig:signal}
-\end{figure}
+%\begin{figure}[ht]
+%\centering
+%\includegraphics[scale=.25]{images//signal.png}
+%\caption{Datarecording for two dimensional imaging \cite{script_nmr}.}
+%\label{fig:signal}
+%\end{figure}
