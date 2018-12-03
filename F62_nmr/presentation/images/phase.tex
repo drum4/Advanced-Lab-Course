@@ -1,0 +1,21 @@
+% !TeX root = ..//f61_longreport_schmitt_kleinbek.tex
+\begin{tikzpicture}[scale=1.25]
+\foreach \i in {0,1.25,2.5}
+\foreach \j in {0,1.25,2.5}
+\draw (\i,\j)--+(1,0)--+(1,1)--+(0,1)--+(0,0);
+
+\draw[arrows=-{Stealth[scale=1]}, line width=.75mm](.75,-.5)--+(2,0) node[midway, below]{$x$};
+\draw[arrows=-{Stealth[scale=1]}, line width=.75mm](4,.75)--+(0,2) node[midway, right]{$y$};
+
+\draw[arrows=-{Stealth[scale=.5]}, line width=.75mm, color=mygrey](.5,.25)--+(0,.5);
+\draw[arrows=-{Stealth[scale=.5]}, line width=.75mm, color=mygrey](1.65,.275)--+(60:.5);
+\draw[arrows=-{Stealth[scale=.5]}, line width=.75mm, color=mygrey](2.825,.325)--+(40:.5);
+
+\draw[arrows=-{Stealth[scale=.5]}, line width=.75mm, color=grey](.5,1.5)--+(0,.5);
+\draw[arrows=-{Stealth[scale=.5]}, line width=.75mm, color=grey](1.65,1.525)--+(60:.5);
+\draw[arrows=-{Stealth[scale=.5]}, line width=.75mm, color=grey](2.825,1.575)--+(40:.5);
+
+\draw[arrows=-{Stealth[scale=.5]}, line width=.75mm](.5,2.75)--+(0,.5);
+\draw[arrows=-{Stealth[scale=.5]}, line width=.75mm](1.65,2.775)--+(60:.5);
+\draw[arrows=-{Stealth[scale=.5]}, line width=.75mm](2.825,2.825)--+(40:.5);
+\end{tikzpicture}

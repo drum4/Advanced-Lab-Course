@@ -1,0 +1,49 @@
+% !TeX root = ..//fp_nmr_schmitt_kleinbek_18.tex
+\usepackage{polyglossia}				%Sprache
+\usepackage{amsmath}					%Matheumgebung
+\usepackage{amsopn}					%Matheoperatoren
+\usepackage{amssymb}					%Mathesymbole
+\usepackage{amsthm}					%Mathetheorem
+\usepackage{array}						%Tabellen
+\usepackage[style=numeric,
+			natbib=true,
+			backend=biber]{biblatex}	%Bibliographie
+\usepackage{booktabs}					%Tabellen
+\usepackage[autostyle=true,
+			 german=quotes]
+			 {csquotes}					%Anführungszeichen
+\usepackage{graphicx}					%Graphik
+\usepackage{mathdots}					%Punkte
+\usepackage{mathtools}				%Bugfix ams
+\usepackage{microtype}				%Makrotypographie
+\usepackage{multimedia}				%Videos
+\usepackage{multirow}					%Tabelle
+\usepackage{nicefrac}
+\usepackage{physics}					%Physiksymbole
+\usepackage{relsize}					%Größenangaben
+\usepackage{scrhack}					%Verbesserung Pakete
+\usepackage[separate-uncertainty,
+			per-mode=symbol,
+			binary-units=true]
+			{siunitx}					%Einheiten
+\usepackage{tikz}						%Zeichnen
+\usepackage{upgreek}					%Griechische Buchstaben
+\usepackage{xltxtra}					%fontec
+
+\setmainlanguage{german}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+
+\usetheme{Singapore}
+\usecolortheme{rose}
+
+\addbibresource{bib_nmr.bib}
+
+\AtBeginSection[]{\frame{\frametitle{Inhaltsübersicht}\tableofcontents[currentsection]}}
+
+%\addtobeamertemplate{frametitle}{}{
+%\begin{tikzpicture}[remember picture, overlay]
+%\node[anchor=north east, yshift=-1.14cm]at (current page.north east) {\includegraphics[scale=0.11]{logo.png}};
+%\end{tikzpicture}}
+
+\beamertemplatenavigationsymbolsempty
