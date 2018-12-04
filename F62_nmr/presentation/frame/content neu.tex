@@ -1,0 +1,287 @@
+% !TeX root = ..//fp_nmr_schmitt_kleinbek_18.tex
+
+\thispagestyle{empty}
+\frame{\titlepage}
+\frame{\frametitle{Inhaltsübersicht}\tableofcontents}
+
+
+%---------------
+%Relaxationszeiten
+%---------------
+\section{Relaxationszeit}
+\begin{frame}{Physikalischer Hintergrund}
+	\begin{itemize}
+	\item Teilchen mit Spin $S\neq 0$ befindet sich in externem Feld $\vec{B_{0}}$
+	\item Energieaufspaltung durch parallele bzw. antiparallele Ausrichtung
+		\begin{align*}
+		\Delta E = -\vec{\mu}\cdot\vec{B}_0
+		\end{align*}
+	\item Verhältnis der Besetzung des parallelen und antiparallelen Zustands:
+		\begin{align}
+		\frac{N_{+}}{N_{-}}=e^{\frac{2\Delta E}{kT}}
+		\end{align}
+	\item \rightarrow Dies führt zur Magnetisierung 
+		\begin{align*}
+		\vec{M}=\frac{1}{V}(N_{+}-N_{-})|\vec{\mu}|\vec{e_{z}}
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Physikalischer Hintergrund}
+	\begin{itemize}
+	\item Drehmoment    \vec{\tau}=\vec{M}\times\vec{B}_0
+	\item Daraus resultiert:
+		\begin{align*}
+		\frac{d\vec{M_{senkrecht}}}{dt}=-\gamma\vec{M_{senkrecht}}\times\vec{B_0}	
+	\item Rotation mit Larmorfrequenz
+		\begin{align*}
+		\omega_\text{L}=\gamma B_0
+		\end{align*}
+	\end{itemize}
+	\begin{figure}
+	\input{images//magnet.tex}
+	\caption{Auslenkung der Magnetisierung}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Physikalischer Hintergrund}
+\item Kleine Spule senkrecht zu \vec{B_{0}}
+$\Rightarrow$ \SI{90}{\degree} und \SI{180}{\degree} Pulse drehen Magnetisierung
+	\begin{itemize}
+	\item Spule misst Magnetisierung durch Induktion
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Physikalischer Hintergrund}
+	\item Zeitliche Änderung der Magnetisierung:
+	\begin{align*}
+	M_\parallel (t)&=M_0\left(1-2\cdot\e{-\frac{t}{T_1}}\right)\\
+	M_\bot(t)&=M_0\cdot\e{-\frac{t}{T_2}}
+	\end{align*}
+	\end{itemize}
+	\begin{block}{Ursache}
+	T_{2}: Spin-Spin Relaxationszeit\\
+	T_{1}: Spin-Gitter Relaxationszeit
+	antiparallel: Spin-Spin-WW
+	\end{block}
+\end{frame}
+
+\begin{frame}{Versuchsaufbau}
+	\begin{figure}
+	\centering
+	\includegraphics[scale=.075]{images//magnet.png}
+	\caption{Magnet}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Messung}
+Messung der Spin-Spin Relaxationszeit $T_2$:
+\item Spin Echo Methode:
+	\item M_{senkrecht} wird durch  \SI{90}{\degree} Puls generiert
+	\item Nach Zeit \tau wird  \SI{180}{\degree} Puls angelegt
+	\item Messung des Signals nach 2\tau
+\end{frame}
+
+\begin{frame}{Messung}
+	\begin{figure}
+	\centering
+	\input{images//relaxation.tex}
+	\caption{Spin-Echo-Methode}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Messung}
+Messung der Spin-Spin Relaxationszeit $T_2$:
+\item Carr-Purcell Methode:
+	\item Generieren von M_{senkrecht}
+	\item ungerade Vielfache von \tau:  \SI{180}{\degree} Puls
+	\item gerade Vielfache von\tau:  kohärentes Signal
+\end{frame}
+
+\begin{frame}{Messung}
+BIlder von Carr Purcell
+\end{frame}
+
+\begin{frame}{Messung}
+Messung der Spin-Gitter Relaxationszeit $T_1$:
+	\begin{align*}
+	M_\parallel (t)&=M_0\left(1-2\cdot\e{-\frac{t}{T_1}}\right)
+	\end{align*}
+	\begin{figure}
+	\centering
+		\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[scale=.36]{..//figures//f61_abb_1.pdf}
+		\caption{Gd 500}
+		\end{subfigure}
+		\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[scale=.36]{..//figures//f61_abb_1_600.pdf}
+		\caption{Gd 600}
+		\end{subfigure}
+	\caption{Relaxationszeit $T_1$}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Messung}
+	\begin{align*}
+	M_\bot(t)&=M_0\cdot\e{-\frac{t}{T_2}}
+	\end{align*}
+	\begin{figure}
+	\centering
+		\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[scale=.36]{..//figures//f61_abb_2.pdf}
+		\caption{Gd 500}
+		\end{subfigure}
+		\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[scale=.36]{..//figures//f61_abb_2_600.pdf}
+		\caption{Gd 600}
+		\end{subfigure}
+	\caption{Relaxationszeit $T_2$}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Ergebnisse}
+	\begin{table}
+	\centering
+	\begin{tabular}{cccc}
+	\toprule
+	Sample & $T_1$ [ms] & $T_{2,\text{ Spin-Echo}}$ [ms] & $T_{2,\text{ Carr-Purcell}}$ [ms]\\
+	\midrule
+	Gd500 & \num{190.0(6)} & \num{154.2(9)} & \num{170.1(4)}\\
+	Gd600 & \num{234.3(5)} & \num{186.5(9)} & \num{198.2(7)}\\
+	\bottomrule
+	\end{tabular}
+	\caption{Gemessene Relaxationszeiten}
+	\end{table}
+	\begin{block}{Ergebnis}
+	\begin{itemize}
+	\item $T_\text{Gd500} < T_\text{Gd600}$
+	\item $T_2 < T_1$
+	\item $T_\text{Spin-Echo} < T_\text{Carr-Purcell}$
+	\end{itemize}
+	\end{block}
+\end{frame}
+
+
+
+
+%---------------
+%Chemical Shift
+%---------------
+\section{Chemische Verschiebung}
+\begin{frame}{Physikalischer Hintergrund}
+\begin{exampleblock}{alles}
+hallo
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Physikalischer Hintergrund}
+	\item Betrachten Larmor Frequenzen von Molekülen
+	\item Abschirmung durch Elektronen führt zu
+	\begin{align*}
+	\omega_{i}=\omega_{L}(1-\sigma_{i})
+	\item Stärke der Abweichung zu Referenzstoff TMS:
+	\begin{align*}
+	\delta_{i}=\frac{\omega_{TMS}-\omega_{i}}{\omega_{L}}
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Physikalischer Hintergrund}
+Moleküle zur Verfügung:
+\end{frame}
+
+\begin{frame}{Messung}
+	\item Probe wird in Rotation versetzt
+	\item M_{senkrecht} wird durch \SI{90}{\degree} Puls generiert
+	\item Signal wird Fouriertransformiert
+	\item Differenz zur Referenz wird errechnet
+\end{frame}
+
+\begin{frame}{Messung}
+Ergnebnisbild und Beispielhafte Zuordnung
+\end{frame}
+
+
+%---------------
+%Bildgebung
+%---------------
+\section{Bildgebende Verfahren} %2D- und 3D-Bildgebung
+\begin{frame}{Physikalischer Hintergrund}
+	\item Bildgebende Messverfahren benötigen \vec{B_{0}} und Gradientenfelder:
+	\begin{align*}
+	\vec{B_{0}}=(0,0,B_{0})
+	\vec{B_{x}}=(0,0,G_{x}x)
+	\vec{B_{y}}=(0,0,G_{y}y)
+	\vec{B_{z}}=(0,0,G_{z}z)
+	\end{align*}
+	\item 2 mögliche Messmethoden:
+		\item Frequnez Coding
+		\item Phase Coding
+\begin{figure}
+\centering
+\includegraphics[scale=.1]{images//signal.png}
+\caption{signal}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Physikalischer Hintergrund}
+Betrachte 1Dim Bildgebende Verfahren
+Frequenz Coding:
+	\item \M_{senkrecht} wird durch \SI{90}{\degree} Puls generiert
+	\item Larmorfrequenz \omega_{L} wird Ortsabhängig
+	\item Fouriertransformierte des Signals gibt Menge an H_{2} an bestimmter Position an
+\end{frame}
+
+\begin{frame}{Physikalischer Hintergrund}
+Phase Coding:
+	\item \M_{senkrecht} wird durch \SI{90}{\degree} Puls generiert
+	\item Gradientenfeld wird kurz angeschalten
+	\rightarrow Phasendifferenz zwischen Kernen an unterschiedlichen Orten entsteht
+	\item Fouriertransformierte gibt Position der H_{2} Kernen an
+\end{frame}
+
+\begin{frame}{Physikalischer Hintergrund}
+2Dim. bildgebende Verfahren:
+	\item Phase Coding und Frequenz Coding werden kombiniert
+\end{frame}
+
+\begin{frame}{Messung}
+Messung von Öl in Reagenzglas
+\end{frame}
+
+\begin{frame}{Messung}
+Messung von Öl auf Sand
+	\rightarrow Großer Einfluss von Gravitation
+	\rightarrow Diffusion spielt untergeordnete Rolle
+\end{frame}
+
+\begin{frame}{Messung}
+2Dim. Bilder
+\end{frame}
+
+
+%---------------
+%Diskussion
+%---------------
+\section{Diskussion}
+\begin{frame}{Fazit}
+%	\begin{alertblock}
+%	\begin{itemize}
+%	\item inhomogener Magnet
+%	\item Temperaturschwankungen
+%	\end{itemize}
+%	\end{alertblock}
+	\begin{exampleblock}
+	\begin{itemize}
+	\item nmr bei altem Gerät
+	\item bilder
+	\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Anwendung}
+haehd
+\end{frame}
