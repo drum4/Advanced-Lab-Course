@@ -11,9 +11,128 @@
 \section{Relaxationszeit}
 \begin{frame}{Physikalischer Hintergrund}
 	\begin{itemize}
-	\item Telchen mit Spin $S\neq 0$
+	\item Teilchen mit Spin $S\neq 0$
+	\item Energieaufspaltung durch parallele bzw. antiparallele Ausrichtung
+		\begin{align*}
+		\Delta E = -\vec{\mu}\cdot\vec{B}_0
+		\end{align*}
+	\item Resultierendes Drehmoment
+		\begin{align*}
+		\vec{\tau}=\vec{M}\times\vec{B}_0
+		\end{align*}
 	\end{itemize}
-	$\quad\Rightarrow$ was
+\end{frame}
+
+\begin{frame}{Physikalischer Hintergrund}
+	\begin{itemize}
+	\item Rotation mit Larmorfrequenz
+		\begin{align*}
+		\omega_\text{L}=\gamma B_0
+		\end{align*}
+	\end{itemize}
+	\begin{figure}
+	\input{images//magnet.tex}
+	\caption{Auslenkung der Magnetisierung}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Physikalischer Hintergrund}
+$\Rightarrow$ \SI{90}{\degree} und \SI{180}{\degree} Pulse durch Veränderung
+	\begin{itemize}
+	\item Messung der Ausrichtung der Magnetisierung durch Induktion
+	\item Zerfall der Magnetisierung
+	\begin{align*}
+	M_\parallel (t)&=M_0\left(1-2\cdot\e{-\frac{t}{T_1}}\right)\\
+	M_\bot(t)&=M_0\cdot\e{-\frac{t}{T_2}}
+	\end{align*}
+	\end{itemize}
+	\begin{block}{Ursache}
+	parallel: Spin-Gitter-WW\\
+	antiparallel: Spin-Spin-WW
+	\end{block}
+\end{frame}
+
+\begin{frame}{Spin-Echo-Methode}
+Messung der Spin-Gitter Relaxationszeit $T_1$
+	\begin{figure}
+	\centering
+	\input{images//relaxation.tex}
+	\caption{Spin-Echo-Methode}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Carr-Purcell-Methode}
+Messung der Spin-Gitter Relaxationszeit $T_1$ und der Spin-Spin Relaxationszeit $T_2$
+\end{frame}
+
+\begin{frame}{Versuchsaufbau}
+	\begin{figure}
+	\centering
+	\includegraphics[scale=.075]{images//magnet.png}
+	\caption{Magnet}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Messung}
+	\begin{align*}
+	M_\parallel (t)&=M_0\left(1-2\cdot\e{-\frac{t}{T_1}}\right)
+	\end{align*}
+	\begin{figure}
+	\centering
+		\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[scale=.36]{..//figures//f61_abb_1.pdf}
+		\caption{Gd 500}
+		\end{subfigure}
+		\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[scale=.36]{..//figures//f61_abb_1_600.pdf}
+		\caption{Gd 600}
+		\end{subfigure}
+	\caption{Relaxationszeit $T_1$}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Messung}
+	\begin{align*}
+	M_\bot(t)&=M_0\cdot\e{-\frac{t}{T_2}}
+	\end{align*}
+	\begin{figure}
+	\centering
+		\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[scale=.36]{..//figures//f61_abb_2.pdf}
+		\caption{Gd 500}
+		\end{subfigure}
+		\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[scale=.36]{..//figures//f61_abb_2_600.pdf}
+		\caption{Gd 600}
+		\end{subfigure}
+	\caption{Relaxationszeit $T_2$}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Ergebnisse}
+	\begin{table}
+	\centering
+	\begin{tabular}{cccc}
+	\toprule
+	Sample & $T_1$ [ms] & $T_{2,\text{ Spin-Echo}}$ [ms] & $T_{2,\text{ Carr-Purcell}}$ [ms]\\
+	\midrule
+	Gd500 & \num{190.0(6)} & \num{154.2(9)} & \num{170.1(4)}\\
+	Gd600 & \num{234.3(5)} & \num{186.5(9)} & \num{198.2(7)}\\
+	\bottomrule
+	\end{tabular}
+	\caption{Gemessene Relaxationszeiten}
+	\end{table}
+	\begin{block}{Ergebnis}
+	\begin{itemize}
+	\item $T_\text{Gd500} < T_\text{Gd600}$
+	\item $T_2 < T_1$
+	\item $T_\text{Spin-Echo} < T_\text{Carr-Purcell}$
+	\end{itemize}
+	\end{block}
 \end{frame}
 
 
@@ -23,7 +142,7 @@
 %Chemical Shift
 %---------------
 \section{Chemische Verschiebung}
-\begin{frame}{Chemical Shift}
+\begin{frame}{Physikalischer Hintergrund}
 \begin{exampleblock}{alles}
 hallo
 \end{exampleblock}
@@ -38,7 +157,11 @@ hallo
 %---------------
 \section{Bildgebende Verfahren} %2D- und 3D-Bildgebung
 \begin{frame}{Physikalischer Hintergrund}
+\begin{figure}
+\centering
 \includegraphics[scale=.1]{images//signal.png}
+\caption{signal}
+\end{figure}
 \end{frame}
 
 
@@ -49,7 +172,18 @@ hallo
 %---------------
 \section{Diskussion}
 \begin{frame}{Fazit}
-alles
+%	\begin{alertblock}
+%	\begin{itemize}
+%	\item inhomogener Magnet
+%	\item Temperaturschwankungen
+%	\end{itemize}
+%	\end{alertblock}
+	\begin{exampleblock}
+	\begin{itemize}
+	\item nmr bei altem Gerät
+	\item bilder
+	\end{itemize}
+	\end{exampleblock}
 \end{frame}
 
 \begin{frame}{Anwendung}

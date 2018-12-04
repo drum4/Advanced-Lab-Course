@@ -1,8 +1,25 @@
 % !TeX root = ..//fp_nmr_schmitt_kleinbek_18.tex
-\newcommand*{\quelle}[1]{\par\footnotesize Quelle:~\href{#1}{#1}}
-\newcommand{\im}{\mathrm{i}}
-\newcommand{\e}{\mathrm{e}}
-\renewcommand{\pi}{\uppi}
-\renewcommand{\epsilon}{\varepsilon}
 
-%\tikzset{schraffiert/.style={pattern=horizontal lines,pattern color=#1},schraffiert/.default=black}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\newcommand{\im}{\mathrm{i}}
+\newcommand{\e}[1]{\mathrm{e}^{#1}}
+\renewcommand{\pi}{\uppi}
+\newcommand{\rom}[1]{\uppercase\expandafter{\romannumeral #1 \relax}}
+%\renewcommand{\vec}{\pmb}
+
+\newcolumntype{C}{>{$}c<{$}}
+
+\usetikzlibrary{shapes.callouts}
+\tikzset{
+	level/.style = {ultra thick},
+	connect/.style = {dashed},
+	notice/.style = {
+        draw,
+        rectangle callout,
+        callout relative pointer={#1}},
+}
+\usetikzlibrary{arrows.meta}
+
+\definecolor{grey}{RGB}{105,105,105}
+\definecolor{mygrey}{RGB}{150,150,150}
+\definecolor{myred}{RGB}{200,0,0}
