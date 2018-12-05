@@ -45,7 +45,11 @@
 	\item \SI{90}{\degree} und \SI{180}{\degree} Pulse drehen Magnetisierung
 	\item Messung der Magnetisierung durch Induktion
 	\end{itemize}
-%Figure mit bfeld
+	%\begin{figure}
+	%\centering
+	%\includegraphics[scale=.65]{images//setup.tex}
+	%\caption{Versuchsaufbau}
+	%\end{figure}
 \end{frame}
 
 \begin{frame}{Physikalischer Hintergrund}
@@ -73,7 +77,7 @@
 \end{frame}
 
 \begin{frame}{Messung}
-Messung der Spin-Spin Relaxationszeit $T_2$\\mit der Spin-Echo-Methode % Bild von gemessenen Signalen um zu erklären dass Signal inkohärent wird
+Messung der Spin-Spin Relaxationszeit $T_2$\\mit der Spin-Echo-Methode
 	\begin{figure}
 	\centering
 	\input{images//relaxation.tex}
@@ -82,17 +86,52 @@ Messung der Spin-Spin Relaxationszeit $T_2$\\mit der Spin-Echo-Methode % Bild vo
 \end{frame}
 
 \begin{frame}{Messung}
-Messung der Spin-Spin Relaxationszeit $T_2$:
-	\begin{itemize}
-	\item Carr-Purcell Methode:
-	\item Generieren von $M_\bot$
-	\item ungerade Vielfache von $\tau$:  $\SI{180}{\degree}$ Puls
-	\item gerade Vielfache von $\tau$:  kohärentes Signal
-	\end{itemize}
+	\begin{figure}
+	\centering
+	\includegraphics[scale=.8]{images//pulse.png}
+	\caption{Signal Spin-Echo-Methode \cite{script_nmr}}
+	\end{figure}
 \end{frame}
 
 \begin{frame}{Messung}
-BIlder von Carr Purcell
+Messung der Spin-Spin Relaxationszeit $T_2$\\mit der Carr-Purcell-Methode
+	\begin{align*}
+	t =\begin{cases*} (2n+1)\tau: & \SI{180}{\degree} Puls \\ (2n)\tau: & kohärentes Signal \end{cases*}
+	\end{align*}
+	\begin{figure}
+	\centering
+	\includegraphics[scale=.65]{images//carrpurcell.png}
+	\caption{Signal Carr-Purcell-Methode \cite{script_nmr}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Messung}
+	\begin{align*}
+	M_\bot(t)&=M_0\cdot\e{-\frac{t}{T_2}}
+	\end{align*}
+	\begin{figure}
+	\centering
+		\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[scale=.36]{..//figures//f61_abb_2.pdf}
+		\caption{Spin-Echo}
+		\end{subfigure}
+		\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[scale=.36]{..//figures//f61_abb_3.pdf}
+		\caption{Carr-Purcell}
+		\end{subfigure}
+	\caption{Relaxationszeit $T_2$}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+Messung der Spin-Gitter Relaxationszeit $T_1$
+	\begin{figure}
+	\centering
+	\includegraphics[scale=.65]{images//spinlattice.png}
+	\caption{Spin-Gitter Relaxation \cite{script_nmr}}
+	\end{figure}
 \end{frame}
 
 \begin{frame}{Messung}
@@ -116,26 +155,6 @@ Messung der Spin-Gitter Relaxationszeit $T_1$:
 	\end{figure}
 \end{frame}
 
-\begin{frame}{Messung}
-	\begin{align*}
-	M_\bot(t)&=M_0\cdot\e{-\frac{t}{T_2}}
-	\end{align*}
-	\begin{figure}
-	\centering
-		\begin{subfigure}{.49\textwidth}
-		\centering
-		\includegraphics[scale=.36]{..//figures//f61_abb_2.pdf}
-		\caption{Gd 500}
-		\end{subfigure}
-		\begin{subfigure}{.49\textwidth}
-		\centering
-		\includegraphics[scale=.36]{..//figures//f61_abb_2_600.pdf}
-		\caption{Gd 600}
-		\end{subfigure}
-	\caption{Relaxationszeit $T_2$}
-	\end{figure}
-\end{frame}
-
 \begin{frame}{Ergebnisse}
 	\begin{table}
 	\centering
@@ -149,7 +168,7 @@ Messung der Spin-Gitter Relaxationszeit $T_1$:
 	\end{tabular}
 	\caption{Gemessene Relaxationszeiten}
 	\end{table}
-	\begin{block}{Ergebnis}
+	\begin{block}{Schlussfolgerung}
 	\begin{itemize}
 	\item $T_\text{Gd500} < T_\text{Gd600}$
 	\item $T_2 < T_1$
@@ -157,138 +176,200 @@ Messung der Spin-Gitter Relaxationszeit $T_1$:
 	\end{itemize}
 	\end{block}
 \end{frame}
-%
-%
-%
-%
-%%---------------
-%%Chemical Shift
-%%---------------
-%\section{Chemische Verschiebung}
-%\begin{frame}{Physikalischer Hintergrund}
-%\begin{exampleblock}{alles}
-%hallo
-%\end{exampleblock}
-%\end{frame}
-%
-%\begin{frame}{Physikalischer Hintergrund}
-%	\begin{itemize}
-%	\item Betrachten Larmor Frequenzen von Molekülen
-%	\item Abschirmung durch Elektronen führt zu
-%	\begin{align*}
-%	\omega_{i}=\omega_{L}(1-\sigma_{i})
-%	\item Stärke der Abweichung zu Referenzstoff TMS:
-%	\begin{align*}
-%	\delta_{i}=\frac{\omega_{TMS}-\omega_{i}}{\omega_{L}}
-%	\end{align*}
-%	\end{itemize}
-%\end{frame}
-%
-%\begin{frame}{Physikalischer Hintergrund}
-%Moleküle zur Verfügung:
-%\end{frame}
-%
-%\begin{frame}{Messung}
-%	\begin{itemize}
-%	\item Probe wird in Rotation versetzt
-%	\item M_{senkrecht} wird durch \SI{90}{\degree} Puls generiert
-%	\item Signal wird Fouriertransformiert
-%	\item Differenz zur Referenz wird errechnet
-%	\end{itemize}
-%\end{frame}
-%
-%\begin{frame}{Messung}
-%Ergnebnisbild und Beispielhafte Zuordnung
-%\end{frame}
-%
-%
-%%---------------
-%%Bildgebung
-%%---------------
-%\section{Bildgebende Verfahren} %2D- und 3D-Bildgebung
-%\begin{frame}{Physikalischer Hintergrund}
-%	\begin{itemize}
-%	\item Bildgebende Messverfahren benötigen \vec{B_{0}} und Gradientenfelder:
-%	\begin{align*}
-%	\vec{B_{0}}=(0,0,B_{0})
-%	\vec{B_{x}}=(0,0,G_{x}x)
-%	\vec{B_{y}}=(0,0,G_{y}y)
-%	\vec{B_{z}}=(0,0,G_{z}z)
-%	\end{align*}
-%	\item 2 mögliche Messmethoden:
-%		\begin{itemize}
-%		\item Frequnez Coding
-%		\item Phase Coding
-%		\end{itemize}
-%	\end{itemize}
-%\begin{figure}
-%\centering
-%\includegraphics[scale=.1]{images//signal.png}
-%\caption{signal}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{Physikalischer Hintergrund}
-%Betrachte 1Dim Bildgebende Verfahren
-%Frequenz Coding:
-%\begin{itemize}
-%	\item \M_{senkrecht} wird durch \SI{90}{\degree} Puls generiert
-%	\item Larmorfrequenz \omega_{L} wird Ortsabhängig
-%	\item Fouriertransformierte des Signals gibt Menge an H_{2} an bestimmter Position an
-%	\end{itemize}
-%\end{frame}
-%
-%\begin{frame}{Physikalischer Hintergrund}
-%Phase Coding:
-%\begin{itemize}
-%	\item \M_{senkrecht} wird durch \SI{90}{\degree} Puls generiert
-%	\item Gradientenfeld wird kurz angeschalten
-%	\rightarrow Phasendifferenz zwischen Kernen an unterschiedlichen Orten entsteht
-%	\item Fouriertransformierte gibt Position der H_{2} Kernen an
-%	\end{itemize}
-%\end{frame}
-%
-%\begin{frame}{Physikalischer Hintergrund}
-%2Dim. bildgebende Verfahren:
-%\begin{itemize}
-%	\item Phase Coding und Frequenz Coding werden kombiniert
-%	\end{itemize}
-%\end{frame}
-%
-%\begin{frame}{Messung}
-%Messung von Öl in Reagenzglas
-%\end{frame}
-%
-%\begin{frame}{Messung}
-%Messung von Öl auf Sand
-%	$\rightarrow$ Großer Einfluss von Gravitation\\
-%	$\rightarrow$ Diffusion spielt untergeordnete Rolle
-%\end{frame}
-%
-%\begin{frame}{Messung}
-%2Dim. Bilder
-%\end{frame}
-%
-%
-%%---------------
-%%Diskussion
-%%---------------
-%\section{Diskussion}
-%\begin{frame}{Fazit}
-%	\begin{alertblock}{Contra}
-%	\begin{itemize}
-%	\item inhomogener Magnet
-%	\item Temperaturschwankungen
-%	\end{itemize}
-%	\end{alertblock}
-%	\begin{exampleblock}{Pro}
-%	\begin{itemize}
-%	\item nmr bei altem Gerät
-%	\item bilder
-%	\end{itemize}
-%	\end{exampleblock}
-%\end{frame}
-%
-%\begin{frame}{Anwendung}
-%haehd
-%\end{frame}
+
+
+
+
+%---------------
+%Chemical Shift
+%---------------
+\section{Chemische Verschiebung}
+
+\begin{frame}{Physikalischer Hintergrund}
+	\begin{itemize}
+	\item Abschirmung durch Elektronen führt zu
+	\begin{align*}
+	\omega_i=\omega_\text{L}(1-\sigma_i)
+	\end{align*}
+	\end{itemize}
+	\begin{block}{Abweichung zu Referenzstoff TMS}
+	\[
+	\delta_i=\frac{\omega_{TMS}-\omega_i}{\omega_\text{L}}
+	\]
+	\end{block}
+	\begin{itemize}
+	\item Messung des Frequenzspektrums\\
+	$\Rightarrow$ Probe in Rotation versetzen
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Messung}
+\begin{figure}
+	\centering
+	\begin{subfigure}{.49\textwidth}
+	\centering
+	\includegraphics[scale=.36]{..//figures//f61_abb_7.pdf}
+	\caption{mit TMS-Peak}
+	\end{subfigure}
+	\begin{subfigure}{.49\textwidth}
+	\centering
+	\includegraphics[scale=.36]{..//figures//f61_abb_7_ohne.pdf}
+	\caption{ohne TMS}
+	\end{subfigure}	
+	\caption{Fluoroaceton}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Physikalischer Hintergrund}
+	\begin{figure}
+	\centering
+	\begin{subfigure}{.49\textwidth}
+	\centering
+	\includegraphics[width=5.4cm, height=4cm]{images//shift.png}
+	\caption{$\delta_i$ relativ zu TMS}
+	\end{subfigure}
+	\begin{subfigure}{.49\textwidth}
+	\centering
+	\includegraphics[width=5cm, height=4cm]{images//substances.png}
+	\caption{Verwendete Moleküle}
+	\end{subfigure}	
+	\caption{Chemische Verschiebung \cite{script_nmr}}
+	\end{figure}
+\end{frame}
+
+
+
+
+%---------------
+%Bildgebung
+%---------------
+\section{Bildgebende Verfahren} %2D- und 3D-Bildgebung
+\begin{frame}{Physikalischer Hintergrund}
+	\begin{itemize}
+	\item Bildgebende Messverfahren benötigen $\vec{B}_0$ und Gradientenfelder:
+	\begin{align*}
+	\vec{B}_0&=(0,0,B_0)\\
+	\vec{B}_x&=(0,0,G_x x)\\
+	\vec{B}_y&=(0,0,G_y y)\\
+	\vec{B}_z&=(0,0,G_z z)\\
+	\end{align*}
+	\item Mögliche Messmethoden:
+		\begin{itemize}
+		\item Frequenz Methode
+		\item Phasen Methode
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Physikalischer Hintergrund}
+Frequenz Methode:
+	\begin{itemize}
+	\item $\vec{M}_\bot$ wird durch \SI{90}{\degree} Puls generiert
+	\item Einmaliges Einschalten des Gradientenfeld\\
+	$\Rightarrow$ Ortsabhängige Larmorfrequenz $\omega_\text{L}$
+	\end{itemize}
+\vspace{.5cm}
+Phasen Methode:
+	\begin{itemize}
+	\item $\vec{M}_\bot$ wird durch \SI{90}{\degree} Puls generiert
+	\item Mehrmaliges Einschalten des Gradientenfeld\\
+	$\Rightarrow$ Phasendifferenz zwischen Kernen an unterschiedlichen Orten
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Physikalischer Hintergrund}
+Kombination von Phasen/Frequenz Methode für 2D
+	\begin{figure}
+	\centering
+	\includegraphics[scale=.15]{images//signal.png}
+	\caption{2D Bildgebung \cite{script_nmr}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Messung}
+	\begin{figure}
+	\centering
+	\includegraphics[scale=.55]{..//figures//f61_abb_8.pdf}
+	\caption{Öl in Reagenzglas}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Messung}
+Fick'sches Gesetz:
+	\begin{align*}
+	\dv{c}{t}=D\dv[2]{c}{x}
+	\end{align*}
+	$\Rightarrow$ \enquote{zerlaufende} Gaußfunktion
+	\begin{figure}
+	\centering
+	\includegraphics[scale=.4]{..//figures//gaus.pdf}
+	\caption{Diffusionsprozess}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Messung}
+	\begin{figure}
+	\centering
+	\includegraphics[scale=.35]{..//figures//f61_abb_9.pdf}
+	\caption{Versickerungsprozess von Öl in Sand}
+	\end{figure}
+	\begin{block}{Schlussfolgerung}
+	Diffusion spielt untergeordnete Rolle (Gravitation)
+	\end{block}
+\end{frame}
+
+\begin{frame}{Messung}
+	\begin{figure}
+	\centering
+	\includegraphics[scale=.5]{..//figures//chilipepper.png}
+	\caption{Chillischote}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Messung}
+	\begin{figure}
+	\centering
+	\includegraphics[scale=.5]{..//figures//peanut.png}
+	\caption{Erdnuss}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Messung}
+	\begin{figure}
+	\centering
+	\includegraphics[scale=.5]{..//figures//olive.png}
+	\caption{Olive}
+	\end{figure}
+\end{frame}
+
+
+
+
+%---------------
+%Diskussion
+%---------------
+\section{Diskussion}
+\begin{frame}{Fazit}
+	\begin{alertblock}{Contra}
+	\begin{itemize}
+	\item Inhomogener Magnet
+	\item Temperaturschwankungen
+	\end{itemize}
+	\end{alertblock}
+	\begin{exampleblock}{Pro}
+	\begin{itemize}
+	\item Methode immer noch bei altem Gerät möglich
+	\item Einblick in 2D Bildgebung 
+	\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Anwendung}
+Medizinischer Bereich
+	\begin{figure}
+	\centering
+	\includegraphics[scale=.35]{images//mrt.jpg}
+	\quelle{http://www.gesundmed.de/diagnose/magnet-resonanz-tomografie-mrt-kerspintomografie/}
+	\caption{MRT}
+	\end{figure}
+\end{frame}
