@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib import rc
 from scipy.optimize import curve_fit
+from matplotlib.dates import datestr2num
 
 rc('font',**{'family':'serif','serif':['Linux Libertine O']})
 plt.rcParams['errorbar.capsize']=2
@@ -80,7 +81,7 @@ plt.xlabel('Nummer', fontsize=13)
 plt.ylabel('Delta_2H', fontsize=13)
 plt.title('Fig. [1]:Delta_2H Standards', fontsize=16)
 plt.legend()
-plt.show()
+#plt.show()
 plt.close()
 
 plt.errorbar(a, VE_1[2], yerr=VE_1[3], fmt='.', linewidth=1, linestyle='', color='black', label='VE')
@@ -95,7 +96,7 @@ plt.xlabel('Nummer', fontsize=13)
 plt.ylabel('Delta_18O', fontsize=13)
 plt.title('Fig. [1]:Delta_18O Standards', fontsize=16)
 plt.legend()
-plt.show()
+#plt.show()
 plt.close()
 
 plt.errorbar(a, VE_1[4], yerr=VE_1[5], fmt='.', linewidth=1, linestyle='', color='black', label='VE')
@@ -110,24 +111,42 @@ plt.xlabel('Nummer', fontsize=13)
 plt.ylabel('Delta_17O', fontsize=13)
 plt.title('Fig. [1]:Delta_17O Standards', fontsize=16)
 plt.legend()
-plt.show()
+#plt.show()
 plt.close()
-
-VE=auslesenstandard(0,15,27,32,47,59,68)
-print('VE=',VE)
-print(Degre40_1252)
-
 
 ########################
 ######Teil 2############
 ########################
 
-#H2O_ppm, H2O_ppm_sd, O18_del, O18_del_sd, D_del, D_del_sd, O17_del, O17_del_sd= np.loadtxt('data/teil2.txt', delimiter=',',  skiprows=3, usecols=(1,2,3,4,5,6,7,8), unpack=True)
+Time, H2O_ppm, H2O_ppm_sd, O18_del, O18_del_sd, D_del, D_del_sd, O17_del, O17_del_sd= np.genfromtxt('data/teil2.txt', delimiter=",", skip_header=1265, skip_footer=700, usecols=(0,1,2,3,4,5,6,7,8), unpack=True)
 
-#a=np.arange(1,86)
-#plt.errorbar(a, Delta_2H,yerr=Delta_2H_StDev, fmt='.', linewidth=1, linestyle='', color='black')
-#plt.xlabel('Nummer', fontsize=13)
-#plt.ylabel('Delta_2H', fontsize=13)
-#plt.title('Fig. [1]:Delta_2H', fontsize=16)
-#plt.show()
-#plt.close()
+print(len(H2O_ppm))
+time=np.arange(0,len(H2O_ppm))*10.035/60
+
+plt.errorbar(time, H2O_ppm, yerr=H2O_ppm_sd, fmt='.', linewidth=1, linestyle='', color='black')
+plt.xlabel('Zeit [min]', fontsize=13)
+plt.ylabel('H2O [ppm]', fontsize=13)
+plt.title('Fig. [1]:H2O [ppm]', fontsize=16)
+plt.show()
+plt.close()
+
+plt.errorbar(time, O18_del, yerr=O18_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
+plt.xlabel('Zeit [min]', fontsize=13)
+plt.ylabel('O18_del ', fontsize=13)
+plt.title('Fig. [1]:', fontsize=16)
+plt.show()
+plt.close()
+
+plt.errorbar(time, D_del, yerr=D_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
+plt.xlabel('Zeit [min]', fontsize=13)
+plt.ylabel('D_del', fontsize=13)
+plt.title('Fig. [1]:', fontsize=16)
+plt.show()
+plt.close()
+
+plt.errorbar(time, O17_del, yerr=O17_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
+plt.xlabel('Zeit [min]', fontsize=13)
+plt.ylabel('O17_del', fontsize=13)
+plt.title('Fig. [1]:', fontsize=16)
+plt.show()
+plt.close()
