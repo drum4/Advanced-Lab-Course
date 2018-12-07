@@ -47,8 +47,8 @@
 	\end{itemize}
 	\begin{figure}
 	\centering
-	\input{images//setup.tex}
-	\caption{Versuchsaufbau}
+	\input{images//rotation.tex}
+	\caption{Drehung der Magnetisierung}
 	\end{figure}
 \end{frame}
 
@@ -77,7 +77,7 @@
 \end{frame}
 
 \begin{frame}{Messung}
-Messung der Spin-Spin Relaxationszeit $T_2$\\mit der Spin-Echo-Methode
+Messung der Spin-Spin Relaxationszeit $T_2$\\mit der Spin-Echo-Methode:
 	\begin{figure}
 	\centering
 	\input{images//relaxation.tex}
@@ -94,7 +94,7 @@ Messung der Spin-Spin Relaxationszeit $T_2$\\mit der Spin-Echo-Methode
 \end{frame}
 
 \begin{frame}{Messung}
-Messung der Spin-Spin Relaxationszeit $T_2$\\mit der Carr-Purcell-Methode
+Messung der Spin-Spin Relaxationszeit $T_2$\\mit der Carr-Purcell-Methode:
 	\begin{align*}
 	t =\begin{cases*} (2n+1)\tau: & \SI{180}{\degree} Puls \\ (2n)\tau: & kohärentes Signal \end{cases*}
 	\end{align*}
@@ -126,7 +126,7 @@ Messung der Spin-Spin Relaxationszeit $T_2$\\mit der Carr-Purcell-Methode
 \end{frame}
 
 \begin{frame}{Messung}
-Messung der Spin-Gitter Relaxationszeit $T_1$
+Messung der Spin-Gitter Relaxationszeit $T_1$:
 \begin{itemize}
 \item Drehung von $\vec{M}_\parallel$ mit \SI{180}{\degree} Puls nach $t=\tau$
 \end{itemize}
@@ -276,7 +276,7 @@ Phasen Methode:
 	\begin{itemize}
 	\item $\vec{M}_\bot$ wird durch \SI{90}{\degree} Puls generiert
 	\item Mehrmaliges Einschalten des Gradientenfeld\\
-	$\Rightarrow$ Phasendifferenz zwischen Kernen an unterschiedlichen Orten
+	$\Rightarrow$ Phasendifferenz der Kerne an unterschiedlichen Orten
 	\end{itemize}
 \end{frame}
 
@@ -289,15 +289,18 @@ Kombination von Phasen/Frequenz Methode für 2D %Hier vielleicht noch mehr Erkl�
 	\end{figure}
 \end{frame}
 
-\begin{frame}{1-Dim. Messung}
+\begin{frame}{Eindimensionale Messung}
 	\begin{figure} %Bild von Reagenzglas mit Teflon, auch erklärung der Messungen auf Folien
 	\centering
-	\includegraphics[scale=.55]{..//figures//f61_abb_8.pdf}
+	\includegraphics<+>[scale=.55]{..//figures//f61_abb_8.pdf}
+	\includegraphics<+>[scale=.09]{images//oilteflon.jpg}
+	\includegraphics<+>[scale=.55]{..//figures//f61_abb_8.pdf}
 	\caption{Öl in Reagenzglas}
 	\end{figure}
+	
 \end{frame}
 
-\begin{frame}{1-Dim. Messung}
+\begin{frame}{Eindimensionale Messung}
 Fick'sches Gesetz: %Erklärung der Situation des Öls und Sands muss noch davor
 	\begin{align*}
 	\dv{c}{t}=D\dv[2]{c}{x}
@@ -310,7 +313,7 @@ Fick'sches Gesetz: %Erklärung der Situation des Öls und Sands muss noch davor
 	\end{figure}
 \end{frame}
 
-\begin{frame}{1-Dim. Messung}
+\begin{frame}{Eindimensionale Messung}
 	\begin{figure}
 	\centering
 	\includegraphics[scale=.35]{..//figures//f61_abb_9.pdf}
@@ -321,7 +324,7 @@ Fick'sches Gesetz: %Erklärung der Situation des Öls und Sands muss noch davor
 	\end{block}
 \end{frame}
 
-\begin{frame}{2-Dim. Messung}
+\begin{frame}{Zweidimensionale Messung}
 	\begin{figure}
 	\centering
 	\includegraphics[scale=.5]{..//figures//chilipepper.png}
@@ -329,7 +332,7 @@ Fick'sches Gesetz: %Erklärung der Situation des Öls und Sands muss noch davor
 	\end{figure}
 \end{frame}
 
-\begin{frame}{2-Dim. Messung}
+\begin{frame}{Zweidimensionale Messung}
 	\begin{figure}
 	\centering
 	\includegraphics[scale=.5]{..//figures//peanut.png}
@@ -337,7 +340,7 @@ Fick'sches Gesetz: %Erklärung der Situation des Öls und Sands muss noch davor
 	\end{figure}
 \end{frame}
 
-\begin{frame}{2-Dim. Messung}
+\begin{frame}{Zweidimensionale Messung}
 	\begin{figure}
 	\centering
 	\includegraphics[scale=.5]{..//figures//olive.png}
@@ -352,22 +355,6 @@ Fick'sches Gesetz: %Erklärung der Situation des Öls und Sands muss noch davor
 %Diskussion
 %---------------
 \section{Diskussion}
-\begin{frame}{Fazit}
-	\begin{alertblock}{Contra}
-	\begin{itemize}
-	\item Inhomogener Magnet
-	\item Temperaturschwankungen
-	\end{itemize}
-	\end{alertblock}
-	\begin{exampleblock}{Pro}
-	\begin{itemize}
-	\item Komponenten des ersten Messgeräts sind sichtbar
-	\item Einblick in 2D Bildgebung 
-	\item Gute Einführung in Methode moderner Medizin
-	\end{itemize}
-	\end{exampleblock}
-\end{frame}
-
 \begin{frame}{Anwendung}
 Medizinischer Bereich
 	\begin{figure}
@@ -376,4 +363,20 @@ Medizinischer Bereich
 	\quelle{http://www.gesundmed.de/diagnose/magnet-resonanz-tomografie-mrt-kerspintomografie/}
 	\caption{MRT}
 	\end{figure}
+\end{frame}
+
+\begin{frame}{Fazit}
+	\begin{alertblock}{-}
+	\begin{itemize}
+	\item Inhomogener Magnet
+	\item Temperaturschwankungen
+	\end{itemize}
+	\end{alertblock}
+	\begin{exampleblock}{+}
+	\begin{itemize}
+	\item Komponenten des ersten Messgeräts sind sichtbar
+	\item Einblick in die 2D Bildgebung 
+	\item Guten Einführung in einen Bereich der modernen Medizin
+	\end{itemize}
+	\end{exampleblock}
 \end{frame}

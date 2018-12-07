@@ -1,0 +1,18 @@
+% !TeX root = ..//fp_nmr_schmitt_kleinbek_18.tex
+\begin{tikzpicture}[scale=1]
+\node at (.75,2) {x-y-Ebene};
+\draw[ultra thick] (0,0)--+(1.5,0)--+(1.5,1)--+(0,1)--+(0,0);
+\draw[ultra thick] (2.5,0)--+(1.5,0)--+(1.5,1)--+(0,1)--+(0,0);
+\draw[decoration={aspect=0.3, segment length=2mm, amplitude=3mm,coil},decorate, thick] (2,-.5) -- (2,1.5);
+\draw[arrows=-{Stealth[scale=.75]}, ultra thick, color=mygrey](2,-.75)--(2,1.75) node[right]{$B_1$};
+\draw[arrows=-{Stealth[scale=.75]}, ultra thick, color=grey](1.25,.75)--(3,.75) node[right]{$B_0$};
+\draw[arrows=-{Stealth[scale=.75]}, ultra thick, color=grey](1.25,.5)--(3,.5);
+\draw[arrows=-{Stealth[scale=.75]}, ultra thick, color=grey](1.25,.25)--(3,.25);
+\node at (.5,.15){\scriptsize Magnet};
+
+\node at (5.75,2) {x-z-Ebene};
+\draw[ultra thick] (5,-.5)--+(2,0)--+(3,2)--+(1,2)--+(0,0);
+\fill[color=myred] (6.25,.75) circle (1.5pt);
+\draw[arrows=-{Stealth[scale=1]},ultra thick, color=myred](6.25,.75)--(7.35,.75) node[above]{$M$};
+\draw[arrows=-{Stealth[scale=1]},ultra thick, color=myred, dashed](6.25,.75)--(5.75,-.25) node[right]{$M_\bot$};
+\end{tikzpicture}
