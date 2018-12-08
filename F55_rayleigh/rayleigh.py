@@ -56,7 +56,19 @@ Degre40_1521_mean=meansample(Degre40_1521)
 Degre40_1552_mean=meansample(Degre40_1552)
 
 
+delta_D_40_1=np.array([Degre40_1252[0][0],Degre40_1323[0][0],Degre40_1352[0][0],Degre40_1423[0][0],Degre40_1453[0][0],Degre40_1521[0][0],Degre40_1552[0][0]])
+delta_D_40_2=np.array([Degre40_1252[0][1],Degre40_1323[0][1],Degre40_1352[0][1],Degre40_1423[0][1],Degre40_1453[0][1],Degre40_1521[0][1],Degre40_1552[0][1]])
+delta_D_err_40_1=np.array([Degre40_1252[1][0],Degre40_1323[1][0],Degre40_1352[1][0],Degre40_1423[1][0],Degre40_1453[1][0],Degre40_1521[1][0],Degre40_1552[1][0]])
+delta_D_err_40_2=np.array([Degre40_1252[1][1],Degre40_1323[1][1],Degre40_1352[1][1],Degre40_1423[1][1],Degre40_1453[1][1],Degre40_1521[1][1],Degre40_1552[1][1]])
+delta_O18_40_1=np.array([Degre40_1252[2][0],Degre40_1323[2][0],Degre40_1352[2][0],Degre40_1423[2][0],Degre40_1453[2][0],Degre40_1521[2][0],Degre40_1552[2][0]])
+delta_O18_40_2=np.array([Degre40_1252[2][1],Degre40_1323[2][1],Degre40_1352[2][1],Degre40_1423[2][1],Degre40_1453[2][1],Degre40_1521[2][1],Degre40_1552[2][1]])
+delta_O18_err_40_1=np.array([Degre40_1252[3][0],Degre40_1323[3][0],Degre40_1352[3][0],Degre40_1423[3][0],Degre40_1453[3][0],Degre40_1521[3][0],Degre40_1552[3][0]])
+delta_O18_err_40_2=np.array([Degre40_1252[3][1],Degre40_1323[3][1],Degre40_1352[3][1],Degre40_1423[3][1],Degre40_1453[3][1],Degre40_1521[3][1],Degre40_1552[3][1]])
+delta_O17_40=np.array([Degre40_1252[4],Degre40_1323[4],Degre40_1352[4],Degre40_1423[4],Degre40_1453[4],Degre40_1521[4],Degre40_1552[4]])
+delta_O17_err_40=np.array([Degre40_1252[5],Degre40_1323[5],Degre40_1352[5],Degre40_1423[5],Degre40_1453[5],Degre40_1521[5],Degre40_1552[5]])
+
 Masse_40=np.array([1038.20,1026.02,1014.70,1003.19,991.83,981.25,969.81])
+fraction_40=np.array([Masse_40[0]/Masse_40[0],Masse_40[1]/Masse_40[0],Masse_40[2]/Masse_40[0],Masse_40[3]/Masse_40[0],Masse_40[4]/Masse_40[0],Masse_40[5]/Masse_40[0]])
 
 Degre50_1252=auslesen(7,39)
 Degre50_1324=auslesen(9,41)
@@ -75,7 +87,9 @@ Degre50_1522_mean=meansample(Degre50_1522)
 Degre50_1553_mean=meansample(Degre50_1553)
 
 Masse_50=np.array([1012.61,990.05,968.50,946.43,925.30,903.97,891.91])
-
+fraction_50=Masse_50/Masse_50[0]
+#
+#
 VE_1=auslesenstandard(0,15,27,32,47,59,68)
 Alpen_1=auslesenstandard(2,13,23,34,45,55,66)
 Colle_1=auslesenstandard(4,11,26,36,43,58,64)
@@ -102,6 +116,7 @@ Degre60_1623_mean=meansample(Degre60_1623)
 
 
 Masse_60=np.array([953.10,919.13,875.74,844.71,809.80,776.12,740.07])
+fraction_60=np.array([Masse_60[0]/Masse_60[0],Masse_60[1]/Masse_60[0],Masse_60[2]/Masse_60[0],Masse_60[3]/Masse_60[0],Masse_60[4]/Masse_60[0],Masse_60[5]/Masse_60[0]])
 
 Sample_293=auslesen(6,39)
 Sample_58=auslesen(7,40)
@@ -188,6 +203,15 @@ plt.legend()
 #plt.show()
 plt.close()
 
+print(delta_D_40_1)
+print(fraction_40)
+plt.errorbar(fraction_40,delta_D_40_1,yerr=delta_D_err_40_1, fmt='.',color='red')
+plt.errorbar(fraction_40,delta_D_40_2,yerr=delta_D_err_40_2, fmt='.',color='black')
+plt.xlabel('Fraction')
+plt.ylabel('Delta_D 40')
+plt.title('Delta_D bei 40 Grad')
+plt.show()
+plt.close()
 
 ########################
 ######Teil 2############
