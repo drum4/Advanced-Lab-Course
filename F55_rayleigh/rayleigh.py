@@ -27,13 +27,54 @@ def auslesenstandard(a,b,c,d,e,f,g):
          x=np.insert(x,0,[[Delta_2H[i], Delta_2H_StDev[i], Delta_18O[i], Delta_18O_StDev[i], Delta_17O[i], Delta_17O_StDev[i]]],axis=1)
     return x
 
+def meansample(x):
+    x_mean=np.array([])
+    x_mean=np.append(x_mean, [(x[0][0]+x[0][1])/2])
+    x_mean=np.append(x_mean, [np.sqrt((x[1][0])**2+(x[1][1])**2)/2])
+    x_mean=np.append(x_mean, [(x[2][0]+x[2][1])/2])
+    x_mean=np.append(x_mean, [np.sqrt((x[3][0])**2+(x[3][1])**2)/2])
+    x_mean=np.append(x_mean, [(x[4][0]+x[4][1])/2])
+    x_mean=np.append(x_mean, [np.sqrt((x[5][0])**2+(x[5][1])**2)/2])
+    return x_mean
+
+
+
 Degre40_1252=auslesen(6,38)#tatsaeliche Zeilennummer aus txt Datei -2
 Degre40_1323=auslesen(8,40)
 Degre40_1352=auslesen(10,42)
+Degre40_1423=auslesen(18,50)
+Degre40_1453=auslesen(20,52)
+Degre40_1521=auslesen(28,60)
+Degre40_1552=auslesen(30,62)
+
+Degre40_1252_mean=meansample(Degre40_1252)
+Degre40_1323_mean=meansample(Degre40_1323)
+Degre40_1352_mean=meansample(Degre40_1352)
+Degre40_1423_mean=meansample(Degre40_1423)
+Degre40_1453_mean=meansample(Degre40_1453)
+Degre40_1521_mean=meansample(Degre40_1521)
+Degre40_1552_mean=meansample(Degre40_1552)
+
+
+Masse_40=np.array([1038.20,1026.02,1014.70,1003.19,991.83,981.25,969.81])
+
+Degre50_1252=auslesen(7,39)
+Degre50_1324=auslesen(9,41)
+Degre50_1353=auslesen(17,49)
+Degre50_1424=auslesen(19,51)
 Degre50_1455=auslesen(21,53)
 Degre50_1522=auslesen(29,61)
 Degre50_1553=auslesen(31,63)
 
+Degre50_1252_mean=meansample(Degre50_1252)
+Degre50_1324_mean=meansample(Degre50_1324)
+Degre50_1353_mean=meansample(Degre50_1353)
+Degre50_1424_mean=meansample(Degre50_1424)
+Degre50_1455_mean=meansample(Degre50_1455)
+Degre50_1522_mean=meansample(Degre50_1522)
+Degre50_1553_mean=meansample(Degre50_1553)
+
+Masse_50=np.array([1012.61,990.05,968.50,946.43,925.30,903.97,891.91])
 
 VE_1=auslesenstandard(0,15,27,32,47,59,68)
 Alpen_1=auslesenstandard(2,13,23,34,45,55,66)
@@ -45,11 +86,22 @@ Delta_2H, Delta_2H_StDev, Delta_18O, Delta_18O_StDev, Delta_17O, Delta_17O_StDev
 
 Degre60_1321=auslesen(20,53)
 Degre60_1351=auslesen(21,54)
-Degre60_1421=auslesen(28,61)
-Degre60_1451=auslesen(29,62)
-Degre60_1521=auslesen(30,63)
-Degre60_1551=auslesen(31,64)
-Degre60_1621=auslesen(32,65)
+Degre60_1428=auslesen(28,61)
+Degre60_1455=auslesen(29,62)
+Degre60_1525=auslesen(30,63)
+Degre60_1554=auslesen(31,64)
+Degre60_1623=auslesen(32,65)
+
+Degre60_1321_mean=meansample(Degre60_1321)
+Degre60_1351_mean=meansample(Degre60_1351)
+Degre60_1428_mean=meansample(Degre60_1428)
+Degre60_1455_mean=meansample(Degre60_1455)
+Degre60_1525_mean=meansample(Degre60_1525)
+Degre60_1554_mean=meansample(Degre60_1554)
+Degre60_1623_mean=meansample(Degre60_1623)
+
+
+Masse_60=np.array([953.10,919.13,875.74,844.71,809.80,776.12,740.07])
 
 Sample_293=auslesen(6,39)
 Sample_58=auslesen(7,40)
@@ -135,6 +187,7 @@ plt.title('Fig. [1]:Delta_17O Standards', fontsize=16)
 plt.legend()
 #plt.show()
 plt.close()
+
 
 ########################
 ######Teil 2############
