@@ -18,7 +18,7 @@ Delta_2H, Delta_2H_StDev, Delta_18O, Delta_18O_StDev, Delta_17O, Delta_17O_StDev
 def auslesen(a,b):
     x=np.array([[],[],[],[],[],[]])
     for i in [a,b]:
-         x=np.insert(x,0,[[Delta_2H[i], Delta_2H_StDev[i], Delta_18O[i], Delta_18O_StDev[i], Delta_17O[i], Delta_17O_StDev[i]]],axis=1)
+         x=np.insert(x,0,[Delta_2H[i], Delta_2H_StDev[i], Delta_18O[i], Delta_18O_StDev[i], Delta_17O[i], Delta_17O_StDev[i]],axis=1)
     return x
 
 def auslesenstandard(a,b,c,d,e,f,g):
@@ -37,15 +37,43 @@ def meansample(x):
     x_mean=np.append(x_mean, [np.sqrt((x[5][0])**2+(x[5][1])**2)/2])
     return x_mean
 
+def longarray(x):
+    xarray=np.array([[]])
+    for l in range(0,6):
+        xarray_1=np.array([])
+        for i in range(0,2):
+            xarray_2=np.array([])
+            for j in range(0,7):
+                xarray_2=np.append(xarray_2, [x[j][l][i]])
+            xarray_1=np.append(xarray_1, [xarray_2])
+        xarray=np.append(xarray, [xarray_1])
+    return xarray
+
+def longarraymean(x):
+    xarray=np.array([[]])
+    for i in range(0,6):
+        xarray_1=np.array([])
+        for j in range(0,7):
+            xarray_1=np.append(xarray_1, [x[j][i]])
+        xarray=np.append(xarray, [xarray_1])
+    return xarray
+
+def linear(x,a,b):
+    return a*x+b
+
+def frac(x,a,b):
+    return b*x**(a-1)-1
 
 
-Degre40_1252=auslesen(6,38)#tatsaeliche Zeilennummer aus txt Datei -2
-Degre40_1323=auslesen(8,40)
-Degre40_1352=auslesen(10,42)
-Degre40_1423=auslesen(18,50)
-Degre40_1453=auslesen(20,52)
-Degre40_1521=auslesen(28,60)
-Degre40_1552=auslesen(30,62)
+Degre40_1252=auslesen(6,38)/1000#tatsaeliche Zeilennummer aus txt Datei -2
+Degre40_1323=auslesen(8,40)/1000
+Degre40_1352=auslesen(10,42)/1000
+Degre40_1423=auslesen(18,50)/1000
+Degre40_1453=auslesen(20,52)/1000
+Degre40_1521=auslesen(28,60)/1000
+Degre40_1552=auslesen(30,62)/1000
+Degre40=np.array([Degre40_1252,Degre40_1323,Degre40_1352,Degre40_1423,Degre40_1453,Degre40_1521,Degre40_1552])
+Degre40=longarray(Degre40)
 
 Degre40_1252_mean=meansample(Degre40_1252)
 Degre40_1323_mean=meansample(Degre40_1323)
@@ -54,29 +82,24 @@ Degre40_1423_mean=meansample(Degre40_1423)
 Degre40_1453_mean=meansample(Degre40_1453)
 Degre40_1521_mean=meansample(Degre40_1521)
 Degre40_1552_mean=meansample(Degre40_1552)
+Degre40_mean=np.array([Degre40_1252_mean,Degre40_1323_mean,Degre40_1352_mean,Degre40_1423_mean,Degre40_1453_mean,Degre40_1521_mean,Degre40_1552_mean])
 
-
-delta_D_40_1=np.array([Degre40_1252[0][0],Degre40_1323[0][0],Degre40_1352[0][0],Degre40_1423[0][0],Degre40_1453[0][0],Degre40_1521[0][0],Degre40_1552[0][0]])
-delta_D_40_2=np.array([Degre40_1252[0][1],Degre40_1323[0][1],Degre40_1352[0][1],Degre40_1423[0][1],Degre40_1453[0][1],Degre40_1521[0][1],Degre40_1552[0][1]])
-delta_D_err_40_1=np.array([Degre40_1252[1][0],Degre40_1323[1][0],Degre40_1352[1][0],Degre40_1423[1][0],Degre40_1453[1][0],Degre40_1521[1][0],Degre40_1552[1][0]])
-delta_D_err_40_2=np.array([Degre40_1252[1][1],Degre40_1323[1][1],Degre40_1352[1][1],Degre40_1423[1][1],Degre40_1453[1][1],Degre40_1521[1][1],Degre40_1552[1][1]])
-delta_O18_40_1=np.array([Degre40_1252[2][0],Degre40_1323[2][0],Degre40_1352[2][0],Degre40_1423[2][0],Degre40_1453[2][0],Degre40_1521[2][0],Degre40_1552[2][0]])
-delta_O18_40_2=np.array([Degre40_1252[2][1],Degre40_1323[2][1],Degre40_1352[2][1],Degre40_1423[2][1],Degre40_1453[2][1],Degre40_1521[2][1],Degre40_1552[2][1]])
-delta_O18_err_40_1=np.array([Degre40_1252[3][0],Degre40_1323[3][0],Degre40_1352[3][0],Degre40_1423[3][0],Degre40_1453[3][0],Degre40_1521[3][0],Degre40_1552[3][0]])
-delta_O18_err_40_2=np.array([Degre40_1252[3][1],Degre40_1323[3][1],Degre40_1352[3][1],Degre40_1423[3][1],Degre40_1453[3][1],Degre40_1521[3][1],Degre40_1552[3][1]])
-delta_O17_40=np.array([Degre40_1252[4],Degre40_1323[4],Degre40_1352[4],Degre40_1423[4],Degre40_1453[4],Degre40_1521[4],Degre40_1552[4]])
-delta_O17_err_40=np.array([Degre40_1252[5],Degre40_1323[5],Degre40_1352[5],Degre40_1423[5],Degre40_1453[5],Degre40_1521[5],Degre40_1552[5]])
+Degre40_mean=longarraymean(Degre40_mean)
 
 Masse_40=np.array([1038.20,1026.02,1014.70,1003.19,991.83,981.25,969.81])
-fraction_40=np.array([Masse_40[0]/Masse_40[0],Masse_40[1]/Masse_40[0],Masse_40[2]/Masse_40[0],Masse_40[3]/Masse_40[0],Masse_40[4]/Masse_40[0],Masse_40[5]/Masse_40[0]])
+fraction_40=Masse_40/(Masse_40[0])
 
-Degre50_1252=auslesen(7,39)
-Degre50_1324=auslesen(9,41)
-Degre50_1353=auslesen(17,49)
-Degre50_1424=auslesen(19,51)
-Degre50_1455=auslesen(21,53)
-Degre50_1522=auslesen(29,61)
-Degre50_1553=auslesen(31,63)
+
+Degre50_1252=auslesen(7,39)/1000
+Degre50_1324=auslesen(9,41)/1000
+Degre50_1353=auslesen(17,49)/1000
+Degre50_1424=auslesen(19,51)/1000
+Degre50_1455=auslesen(21,53)/1000
+Degre50_1522=auslesen(29,61)/1000
+Degre50_1553=auslesen(31,63)/1000
+Degre50=np.array([Degre50_1252,Degre50_1324,Degre50_1353,Degre50_1424,Degre50_1455,Degre50_1522,Degre50_1553])
+Degre50=longarray(Degre50)
+
 
 Degre50_1252_mean=meansample(Degre50_1252)
 Degre50_1324_mean=meansample(Degre50_1324)
@@ -85,26 +108,31 @@ Degre50_1424_mean=meansample(Degre50_1424)
 Degre50_1455_mean=meansample(Degre50_1455)
 Degre50_1522_mean=meansample(Degre50_1522)
 Degre50_1553_mean=meansample(Degre50_1553)
+Degre50_mean=np.array([Degre50_1252_mean,Degre50_1324_mean,Degre50_1353_mean,Degre50_1424_mean,Degre50_1455_mean,Degre50_1522_mean,Degre50_1553_mean])
+Degre50_mean=longarraymean(Degre50_mean)
 
-Masse_50=np.array([1012.61,990.05,968.50,946.43,925.30,903.97,891.91])
-fraction_50=Masse_50/Masse_50[0]
+Masse_50=np.array([1012.61, 990.05, 968.50, 946.43, 925.30, 903.97, 891.91])
+fraction_50=Masse_50/(Masse_50[0])
 #
 #
-VE_1=auslesenstandard(0,15,27,32,47,59,68)
-Alpen_1=auslesenstandard(2,13,23,34,45,55,66)
-Colle_1=auslesenstandard(4,11,26,36,43,58,64)
-Sammelprobe_1=auslesenstandard(5,16,25,37,48,57,69)
+VE_1=auslesenstandard(0,15,27,32,47,59,68)/1000
+Alpen_1=auslesenstandard(2,13,23,34,45,55,66)/1000
+Colle_1=auslesenstandard(4,11,26,36,43,58,64)/1000
+Sammelprobe_1=auslesenstandard(5,16,25,37,48,57,69)/1000
 
 
 Delta_2H, Delta_2H_StDev, Delta_18O, Delta_18O_StDev, Delta_17O, Delta_17O_StDev= np.loadtxt('data/teil1_60_teil3_4-Processed.txt', usecols=(2,3,4,5,6,7), skiprows=1, unpack=True)
 
-Degre60_1321=auslesen(20,53)
-Degre60_1351=auslesen(21,54)
-Degre60_1428=auslesen(28,61)
-Degre60_1455=auslesen(29,62)
-Degre60_1525=auslesen(30,63)
-Degre60_1554=auslesen(31,64)
-Degre60_1623=auslesen(32,65)
+Degre60_1321=auslesen(20,53)/1000
+Degre60_1351=auslesen(21,54)/1000
+Degre60_1428=auslesen(28,61)/1000
+Degre60_1455=auslesen(29,62)/1000
+Degre60_1525=auslesen(30,63)/1000
+Degre60_1554=auslesen(31,64)/1000
+Degre60_1623=auslesen(32,65)/1000
+Degre60=np.array([Degre60_1321,Degre60_1351,Degre60_1428,Degre60_1455,Degre60_1525,Degre60_1554,Degre60_1623])
+Degre60=longarray(Degre60)
+
 
 Degre60_1321_mean=meansample(Degre60_1321)
 Degre60_1351_mean=meansample(Degre60_1351)
@@ -113,24 +141,26 @@ Degre60_1455_mean=meansample(Degre60_1455)
 Degre60_1525_mean=meansample(Degre60_1525)
 Degre60_1554_mean=meansample(Degre60_1554)
 Degre60_1623_mean=meansample(Degre60_1623)
-
+Degre60_mean=np.array([Degre60_1321_mean,Degre60_1351_mean,Degre60_1428_mean,Degre60_1455_mean,Degre60_1525_mean,Degre60_1554_mean,Degre60_1623_mean])
+Degre60_mean=longarraymean(Degre60_mean)
 
 Masse_60=np.array([953.10,919.13,875.74,844.71,809.80,776.12,740.07])
-fraction_60=np.array([Masse_60[0]/Masse_60[0],Masse_60[1]/Masse_60[0],Masse_60[2]/Masse_60[0],Masse_60[3]/Masse_60[0],Masse_60[4]/Masse_60[0],Masse_60[5]/Masse_60[0]])
+fraction_60=Masse_60/(Masse_60[0])
 
-Sample_293=auslesen(6,39)
-Sample_58=auslesen(7,40)
-Sample_298=auslesen(8,41)
-Sample_k009=auslesen(9,42)
-Sample_w051=auslesen(10,43)
-Sample_w075=auslesen(17,50)
-Sample_w023=auslesen(18,51)
-Sample_w077=auslesen(19,52)
 
-VE_2=auslesenstandard(0,15,26,33,48,59,70)
-Alpen_2=auslesenstandard(2,13,23,35,45,57,68)
-Colle_2=auslesenstandard(4,16,27,37,49,55,66)
-Sammelprobe_2=auslesenstandard(5,11,25,38,47,60,71)
+Sample_293=auslesen(6,39)/1000
+Sample_58=auslesen(7,40)/1000
+Sample_298=auslesen(8,41)/1000
+Sample_k009=auslesen(9,42)/1000
+Sample_w051=auslesen(10,43)/1000
+Sample_w075=auslesen(17,50)/1000
+Sample_w023=auslesen(18,51)/1000
+Sample_w077=auslesen(19,52)/1000
+
+VE_2=auslesenstandard(0,15,26,33,48,59,70)/1000
+Alpen_2=auslesenstandard(2,13,23,35,45,57,68)/1000
+Colle_2=auslesenstandard(4,16,27,37,49,55,66)/1000
+Sammelprobe_2=auslesenstandard(5,11,25,38,47,60,71)/1000
 
 temp, humidity = np.loadtxt('data/temp_data_logger.txt', delimiter="\t", usecols=(2,3), skiprows=1, unpack=True)
 
@@ -203,15 +233,231 @@ plt.legend()
 #plt.show()
 plt.close()
 
-print(delta_D_40_1)
-print(fraction_40)
-plt.errorbar(fraction_40,delta_D_40_1,yerr=delta_D_err_40_1, fmt='.',color='red')
-plt.errorbar(fraction_40,delta_D_40_2,yerr=delta_D_err_40_2, fmt='.',color='black')
+############################
+
+
+plt.errorbar(fraction_40,(Degre40)[0:7],yerr=(Degre40)[14:21], fmt='.',color='red', label='Messung 2')
+plt.errorbar(fraction_40,(Degre40)[7:14],yerr=(Degre40)[21:28], fmt='.',color='black', label='Messung 1')
+plt.errorbar(fraction_40,Degre40_mean[0:7],yerr=Degre40_mean[7:14], fmt='.', color='green', label='Mittelwert')
 plt.xlabel('Fraction')
 plt.ylabel('Delta_D 40')
 plt.title('Delta_D bei 40 Grad')
+plt.legend()
+plt.gca().invert_xaxis()
+#plt.show()
+plt.close()
+
+plt.errorbar(fraction_40,(Degre40)[28:35],yerr=(Degre40)[42:49], fmt='.',color='red', label='Messung 2')
+plt.errorbar(fraction_40,(Degre40)[35:42],yerr=(Degre40)[49:56], fmt='.',color='black', label='Messung 1')
+plt.errorbar(fraction_40,Degre40_mean[14:21],yerr=Degre40_mean[21:28], fmt='.', color='green', label='Mittelwert')
+plt.xlabel('Fraction')
+plt.ylabel('Delta_O18 40')
+plt.title('Delta_O18 bei 40 Grad')
+plt.legend()
+plt.gca().invert_xaxis()
+#plt.show()
+plt.close()
+
+plt.errorbar(fraction_40,(Degre40)[56:63],yerr=(Degre40)[70:77], fmt='.',color='red', label='Messung 2')
+plt.errorbar(fraction_40,(Degre40)[63:70],yerr=(Degre40)[77:84], fmt='.',color='black', label='Messung 1')
+plt.errorbar(fraction_40,Degre40_mean[28:35],yerr=Degre40_mean[35:42], fmt='.', color='green', label='Mittelwert')
+plt.xlabel('Fraction')
+plt.ylabel('Delta_O17 40')
+plt.title('Delta_O17 bei 40 Grad')
+plt.legend()
+plt.gca().invert_xaxis()
+#plt.show()
+plt.close()
+
+############
+
+plt.errorbar(fraction_50,(Degre50)[0:7],yerr=(Degre50)[14:21], fmt='.',color='red', label='Messung 2')
+plt.errorbar(fraction_50,(Degre50)[7:14],yerr=(Degre50)[21:28], fmt='.',color='black', label='Messung 1')
+plt.errorbar(fraction_50,Degre50_mean[0:7],yerr=Degre50_mean[7:14], fmt='.', color='green', label='Mittelwert')
+plt.xlabel('Fraction')
+plt.ylabel('Delta_D 50')
+plt.title('Delta_D bei 50 Grad')
+plt.legend()
+plt.gca().invert_xaxis()
+#plt.show()
+plt.close()
+
+plt.errorbar(fraction_50,(Degre50)[28:35],yerr=(Degre50)[42:49], fmt='.',color='red', label='Messung 2')
+plt.errorbar(fraction_50,(Degre50)[35:42],yerr=(Degre50)[49:56], fmt='.',color='black', label='Messung 1')
+plt.errorbar(fraction_50,Degre50_mean[14:21],yerr=Degre50_mean[21:28], fmt='.', color='green', label='Mittelwert')
+plt.xlabel('Fraction')
+plt.ylabel('Delta_O18 50')
+plt.title('Delta_O18 bei 50 Grad')
+plt.legend()
+plt.gca().invert_xaxis()
+#plt.show()
+plt.close()
+
+plt.errorbar(fraction_50,(Degre50)[56:63],yerr=(Degre50)[70:77], fmt='.',color='red', label='Messung 2')
+plt.errorbar(fraction_50,(Degre50)[63:70],yerr=(Degre50)[77:84], fmt='.',color='black', label='Messung 1')
+plt.errorbar(fraction_50,Degre50_mean[28:35],yerr=Degre50_mean[35:42], fmt='.', color='green', label='Mittelwert')
+plt.xlabel('Fraction')
+plt.ylabel('Delta_O17 50')
+plt.title('Delta_O17 bei 50 Grad')
+plt.legend()
+plt.gca().invert_xaxis()
+#plt.show()
+plt.close()
+
+#############
+
+plt.errorbar(fraction_60,(Degre60)[0:7],yerr=(Degre60)[14:21], fmt='.',color='red', label='Messung 2')
+plt.errorbar(fraction_60,(Degre60)[7:14],yerr=(Degre60)[21:28], fmt='.',color='black', label='Messung 1')
+plt.errorbar(fraction_60,Degre60_mean[0:7],yerr=Degre60_mean[7:14], fmt='.', color='green', label='Mittelwert')
+plt.xlabel('Fraction')
+plt.ylabel('Delta_D 60')
+plt.title('Delta_D bei 60 Grad')
+plt.legend()
+plt.gca().invert_xaxis()
+#plt.show()
+plt.close()
+
+plt.errorbar(fraction_60,(Degre60)[28:35],yerr=(Degre60)[42:49], fmt='.',color='red', label='Messung 2')
+plt.errorbar(fraction_60,(Degre60)[35:42],yerr=(Degre60)[49:56], fmt='.',color='black', label='Messung 1')
+plt.errorbar(fraction_60,Degre60_mean[14:21],yerr=Degre60_mean[21:28], fmt='.', color='green', label='Mittelwert')
+plt.xlabel('Fraction')
+plt.ylabel('Delta_O18 60')
+plt.title('Delta_O18 bei 60 Grad')
+plt.legend()
+plt.gca().invert_xaxis()
+#plt.show()
+plt.close()
+
+plt.errorbar(fraction_60,(Degre60)[56:63],yerr=(Degre60)[70:77], fmt='.',color='red', label='Messung 2')
+plt.errorbar(fraction_60,(Degre60)[63:70],yerr=(Degre60)[77:84], fmt='.',color='black', label='Messung 1')
+plt.errorbar(fraction_60,Degre60_mean[28:35],yerr=Degre60_mean[35:42], fmt='.', color='green', label='Mittelwert')
+plt.xlabel('Fraction')
+plt.ylabel('Delta_O17 60')
+plt.title('Delta_O17 bei 60 Grad')
+plt.legend()
+plt.gca().invert_xaxis()
+#plt.show()
+plt.close()
+
+###############
+
+popt1, pcov1 = curve_fit(frac, fraction_40, Degre40_mean[0:7], absolute_sigma=True, sigma=Degre40_mean[7:14])
+popt2, pcov2 = curve_fit(frac, fraction_50, Degre50_mean[0:7], absolute_sigma=True, sigma=Degre50_mean[7:14])
+popt3, pcov3 = curve_fit(frac, fraction_60, Degre60_mean[0:7], absolute_sigma=True, sigma=Degre60_mean[7:14])
+plt.plot(fraction_40, frac(fraction_40,*popt1), linestyle='-', color='blue')
+plt.plot(fraction_50, frac(fraction_50,*popt2), linestyle='-', color='green')
+plt.plot(fraction_60, frac(fraction_60,*popt3), linestyle='-', color='red')
+plt.errorbar(fraction_40,Degre40_mean[0:7],yerr=Degre40_mean[7:14], fmt='.', color='blue', label='40 Grad')
+plt.errorbar(fraction_50,Degre50_mean[0:7],yerr=Degre50_mean[7:14], fmt='.', color='green', label='50 Grad')
+plt.errorbar(fraction_60,Degre60_mean[0:7],yerr=Degre60_mean[7:14], fmt='.', color='red', label='60 Grad')
+plt.xlabel('Fraction')
+plt.ylabel('Delta_D')
+plt.title('Delta_D Mittelwerte')
+plt.legend()
+plt.gca().invert_xaxis()
 plt.show()
 plt.close()
+
+alphaD40=popt1[0]
+alphaD40err=pcov1[0][0]
+alphaD50=popt2[0]
+alphaD50err=pcov2[0][0]
+alphaD60=popt3[0]
+alphaD60err=pcov3[0][0]
+
+
+popt1, pcov1 = curve_fit(frac, fraction_40, Degre40_mean[14:21], absolute_sigma=True, sigma=Degre40_mean[21:28])
+popt2, pcov2 = curve_fit(frac, fraction_50, Degre50_mean[14:21], absolute_sigma=True, sigma=Degre50_mean[21:28])
+popt3, pcov3 = curve_fit(frac, fraction_60, Degre60_mean[14:21], absolute_sigma=True, sigma=Degre60_mean[21:28])
+plt.plot(fraction_40, frac(fraction_40,*popt1), linestyle='-', color='blue')
+plt.plot(fraction_50, frac(fraction_50,*popt2), linestyle='-', color='green')
+plt.plot(fraction_60, frac(fraction_60,*popt3), linestyle='-', color='red')
+plt.errorbar(fraction_40,Degre40_mean[14:21],yerr=Degre40_mean[21:28], fmt='.', color='blue', label='40 Grad')
+plt.errorbar(fraction_50,Degre50_mean[14:21],yerr=Degre50_mean[21:28], fmt='.', color='green', label='50 Grad')
+plt.errorbar(fraction_60,Degre60_mean[14:21],yerr=Degre60_mean[21:28], fmt='.', color='red', label='60 Grad')
+plt.xlabel('Fraction')
+plt.ylabel('Delta_O18')
+plt.title('Delta_O18 Mittelwerte')
+plt.legend()
+plt.gca().invert_xaxis()
+plt.show()
+plt.close()
+
+alphaO1840=popt1[0]
+alphaO1840err=pcov1[0][0]
+alphaO1850=popt2[0]
+alphaO1850err=pcov2[0][0]
+alphaO1860=popt3[0]
+alphaO1860err=pcov3[0][0]
+
+
+popt1, pcov1 = curve_fit(frac, fraction_40, Degre40_mean[28:35], absolute_sigma=True, sigma=Degre40_mean[35:42])
+popt2, pcov2 = curve_fit(frac, fraction_50, Degre50_mean[28:35], absolute_sigma=True, sigma=Degre50_mean[35:42])
+popt3, pcov3 = curve_fit(frac, fraction_60, Degre60_mean[28:35], absolute_sigma=True, sigma=Degre60_mean[35:42])
+plt.plot(fraction_40, frac(fraction_40,*popt1), linestyle='-', color='blue')
+plt.plot(fraction_50, frac(fraction_50,*popt2), linestyle='-', color='green')
+plt.plot(fraction_60, frac(fraction_60,*popt3), linestyle='-', color='red')
+plt.errorbar(fraction_40,Degre40_mean[28:35],yerr=Degre40_mean[35:42], fmt='.', color='blue', label='40 Grad')
+plt.errorbar(fraction_50,Degre50_mean[28:35],yerr=Degre50_mean[35:42], fmt='.', color='green', label='50 Grad')
+plt.errorbar(fraction_60,Degre60_mean[28:35],yerr=Degre60_mean[35:42], fmt='.', color='red', label='60 Grad')
+plt.xlabel('Fraction')
+plt.ylabel('Delta_O17')
+plt.title('Delta_O17 Mittelwerte')
+plt.legend()
+plt.gca().invert_xaxis()
+plt.show()
+plt.close()
+
+alphaO1740=popt1[0]
+alphaO1740err=pcov1[0][0]
+alphaO1750=popt2[0]
+alphaO1750err=pcov2[0][0]
+alphaO1760=popt3[0]
+alphaO1760err=pcov3[0][0]
+
+
+plt.errorbar(np.array([40,50,60]),np.array([alphaD40,alphaD50,alphaD60]), yerr=np.array([alphaD40err,alphaD50err,alphaD60err]), fmt='.', color='black', label='Deuterium')
+plt.errorbar([40,50,60],[alphaO1840,alphaO1850,alphaO1860], yerr=[alphaO1840err,alphaO1850err,alphaO1860err], fmt='.', color='red', label='O18')
+plt.errorbar([40,50,60],[alphaO1740,alphaO1750,alphaO1760], yerr=[alphaO1740err,alphaO1750err,alphaO1760err], fmt='.', color='blue', label='O17')
+plt.xlabel('Temperatur')
+plt.ylabel('alpha')
+plt.title('Alphawerte der Isotope')
+plt.legend()
+plt.show()
+plt.close()
+
+###############
+##waterline temperature##
+##############
+
+
+popt1, pcov1 = curve_fit(linear, Degre40_mean[14:21], Degre40_mean[0:7], absolute_sigma=True, sigma=Degre40_mean[21:28])
+popt2, pcov2 = curve_fit(linear, Degre50_mean[14:21], Degre50_mean[0:7], absolute_sigma=True, sigma=Degre50_mean[21:28])
+popt3, pcov3 = curve_fit(linear, Degre60_mean[14:21], Degre60_mean[0:7], absolute_sigma=True, sigma=Degre60_mean[21:28])
+plt.plot(Degre60_mean[14:21], linear(Degre60_mean[14:21],*popt1), linestyle='-', color='blue')
+plt.plot(Degre60_mean[14:21], linear(Degre60_mean[14:21],*popt2), linestyle='-', color='green')
+plt.plot(Degre60_mean[14:21], linear(Degre60_mean[14:21],*popt3), linestyle='-', color='red')
+plt.errorbar(Degre40_mean[14:21],Degre40_mean[0:7],xerr=Degre40_mean[21:28],yerr=Degre40_mean[7:14], fmt='.', color='blue', label='40 Grad')
+plt.errorbar(Degre50_mean[14:21],Degre50_mean[0:7],xerr=Degre50_mean[21:28],yerr=Degre50_mean[7:14], fmt='.', color='green', label='50 Grad')
+plt.errorbar(Degre60_mean[14:21],Degre60_mean[0:7],xerr=Degre60_mean[21:28],yerr=Degre60_mean[7:14], fmt='.', color='red', label='60 Grad')
+plt.xlabel('Delta_O18 [promille]')
+plt.ylabel('Delta_D [promille]')
+plt.title('Waterline Temperature')
+plt.legend()
+plt.show()
+plt.close()
+
+a=popt1[0]
+aerr=pcov1[0][0]
+b=popt2[0]
+berr=pcov2[0][0]
+c=popt3[0]
+cerr=pcov3[0][0]
+
+slope=(a+b+c)/3
+#slopeerr=np.sqrt(aerr**2+berr**2+cerr**2)/3
+slopeerr=np.std([a,b,c])
+print('slope=',slope,'+',slopeerr)
 
 ########################
 ######Teil 2############
@@ -229,21 +475,21 @@ plt.title('Fig. [1]:H2O [ppm]', fontsize=16)
 #plt.show()
 plt.close()
 
-plt.errorbar(time, O18_del, yerr=O18_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
+plt.errorbar(time, O18_del/1000, yerr=O18_del_sd/1000, fmt='.', linewidth=1, linestyle='', color='black')
 plt.xlabel('Zeit [min]', fontsize=13)
 plt.ylabel('O18_del ', fontsize=13)
 plt.title('Fig. [1]:', fontsize=16)
 #plt.show()
 plt.close()
 
-plt.errorbar(time, D_del, yerr=D_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
+plt.errorbar(time, D_del/1000, yerr=D_del_sd/1000, fmt='.', linewidth=1, linestyle='', color='black')
 plt.xlabel('Zeit [min]', fontsize=13)
 plt.ylabel('D_del', fontsize=13)
 plt.title('Fig. [1]:', fontsize=16)
 #plt.show()
 plt.close()
 
-plt.errorbar(time, O17_del, yerr=O17_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
+plt.errorbar(time, O17_del/1000, yerr=O17_del_sd/1000, fmt='.', linewidth=1, linestyle='', color='black')
 plt.xlabel('Zeit [min]', fontsize=13)
 plt.ylabel('O17_del', fontsize=13)
 plt.title('Fig. [1]:', fontsize=16)
