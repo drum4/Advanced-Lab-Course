@@ -26,3 +26,14 @@
 \definecolor{myred}{RGB}{200,0,0}
 
 \usetikzlibrary{decorations.pathmorphing,patterns}
+
+\setbeamertemplate{frametitle}
+{\vskip3pt
+  \leavevmode
+  \hbox{%
+    \begin{beamercolorbox} [wd=\paperwidth,ht=2ex,dp=1ex]{frametitle}%
+     % \hspace*{40pt}
+      \centering\Large\bfseries\insertframetitle
+    \end{beamercolorbox}
+  }%
+}

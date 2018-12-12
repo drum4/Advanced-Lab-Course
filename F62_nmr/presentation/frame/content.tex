@@ -12,14 +12,22 @@
 \begin{frame}{Physikalischer Hintergrund}
 	\begin{itemize}
 	\item Teilchen mit Spin $S\neq 0$ befindet sich in externem Feld $\vec{B_{0}}$
+	\item Dipolmoment
+		\begin{align*}
+		\vec{\mu}=\hbar\gamma\cdot\vec{S}
+		\end{align*}
 	\item Energieaufspaltung durch parallele bzw. antiparallele Ausrichtung
 		\begin{align*}
 		\Delta E = -\vec{\mu}\cdot\vec{B}_0
 		\end{align*}
-	\item Ungleichmäßige Besetzung der anti-/parallelen Zustände\\
-	 $\Rightarrow$ Magnetisierung 
+	\item Ungleichmäßige Besetzung der anti-/parallelen Zustände (Fermi-Dirac Verteilung)
+		$\Rightarrow$ Boltzmann Näherung
 		\begin{align*}
-		\vec{M}=\frac{1}{V}(N_{+}-N_{-})|\vec{\mu}|\vec{e_{z}}
+		\frac{N_+}{N_-}=\e{\frac{2\Delta E}{\k_\text{b} T}}
+		\end{align*}
+	 \item Magnetisierung 
+		\begin{align*}
+		\vec{M}=\frac{1}{V}(N_+-N_-)|\vec{\mu}|\vec{e_{z}}
 		\end{align*}
 	\end{itemize}
 \end{frame}
@@ -44,6 +52,7 @@
 	\begin{itemize}
 	\item \SI{90}{\degree} und \SI{180}{\degree} Pulse drehen Magnetisierung
 	\item Messung der Magnetisierung durch Induktion
+	\item Messbare Frequenz $\omega_\text{working}=\omega_\text{Puls}-\omega_\text{Signal}$
 	\end{itemize}
 	\begin{figure}
 	\centering
@@ -55,16 +64,20 @@
 \begin{frame}{Physikalischer Hintergrund}
 	\begin{itemize}
 	\item Zeitliche Änderung der Magnetisierung
-	\begin{align*}
-	\pdv{\vec{M}}{t}=\pdv{\vec{M}_\text{rot}}{t}+\gamma\vec{B}_0\times\vec{M}
-	\end{align*}
+		\begin{align*}
+		\pdv{\vec{M}}{t}=\pdv{\vec{M}_\text{rot}}{t}+\gamma\vec{B}_0\times\vec{M}
+		\end{align*}
+	\item Bloch-Gleichungen
+		\begin{align*}
+		\dv{M_\bot(t)}{t}&=\gamma(\vec{B}\times\vec{M})_\bot-\frac{M_\bot(t)}{T_2}\\
+		\dv{M_\parallel(t)}{t}&=\gamma(\vec{B}\times\vec{M})_\parallel-\frac{M_\parallel(t)-M_0}{T_1}
+		\end{align*}
 	\item Lösungen
-	\begin{align*}
-	M_\parallel (t)&=M_0\left(1-2\cdot\e{-\frac{t}{T_1}}\right)\\
-	M_\bot(t)&=M_0\cdot\e{-\frac{t}{T_2}}
-	\end{align*}
-	$T_{2}$: Spin-Spin Relaxationszeit\\
-	$T_{1}$: Spin-Gitter Relaxationszeit
+		\begin{align*}
+		M_\parallel (t)&=M_0\left(1-2\cdot\e{-\frac{t}{T_1}}\right)\\
+		M_\bot(t)&=M_\bot(0)\cdot\e{-\frac{t}{T_2}}
+		\end{align*}
+	$T_{1}$: Spin-Gitter Relaxationszeit $\quad$ $T_{2}$: Spin-Spin Relaxationszeit
 	\end{itemize}
 \end{frame}
 
@@ -88,8 +101,8 @@ Messung der Spin-Spin Relaxationszeit $T_2$\\mit der Spin-Echo-Methode:
 \begin{frame}{Messung}
 	\begin{figure}
 	\centering
-	\includegraphics[scale=.8]{images//pulse.png}
-	\caption{Signal Spin-Echo-Methode \cite{script_nmr}}
+	\includegraphics[width=7cm, height=4cm]{images//sequenz12.eps}
+	\caption{Signal Spin-Echo-Methode}
 	\end{figure}
 \end{frame}
 
@@ -100,8 +113,8 @@ Messung der Spin-Spin Relaxationszeit $T_2$\\mit der Carr-Purcell-Methode:
 	\end{align*}
 	\begin{figure}
 	\centering
-	\includegraphics[scale=.65]{images//carrpurcell.png}
-	\caption{Signal Carr-Purcell-Methode \cite{script_nmr}}
+	\includegraphics[width=7cm, height=4cm]{images//sequenzcp.eps}
+	\caption{Signal Carr-Purcell-Methode}
 	\end{figure}
 \end{frame}
 
@@ -128,12 +141,19 @@ Messung der Spin-Spin Relaxationszeit $T_2$\\mit der Carr-Purcell-Methode:
 \begin{frame}{Messung}
 Messung der Spin-Gitter Relaxationszeit $T_1$:
 \begin{itemize}
-\item Drehung von $\vec{M}_\parallel$ mit \SI{180}{\degree} Puls nach $t=\tau$
+\item Drehung von $\vec{M}_\parallel$ mit \SI{90}{\degree} Puls nach $t=\tau$
 \end{itemize}
 	\begin{figure}
 	\centering
-	\includegraphics[scale=.65]{images//spinlattice.png}
-	\caption{Spin-Gitter Relaxation \cite{script_nmr}}
+	\begin{subfigure}{.49\textwidth}
+	\centering
+	\includegraphics[width=5cm, height=3.6cm]{images//sequenz21.eps}
+	\end{subfigure}
+	\begin{subfigure}{.49\textwidth}
+	\centering
+	\includegraphics[width=5cm, height=3.6cm]{images//sequenz21einzel.eps}
+	\end{subfigure}
+	\caption{Spin-Gitter Relaxation}
 	\end{figure}
 \end{frame}
 
@@ -173,9 +193,9 @@ Messung der Spin-Gitter Relaxationszeit $T_1$:
 	\end{table}
 	\begin{block}{Schlussfolgerung}
 	\begin{itemize}
-	\item $T_\text{Gd500} < T_\text{Gd600}$
-	\item $T_2 < T_1$
 	\item $T_\text{Spin-Echo} < T_\text{Carr-Purcell}$
+	\item $T_2 < T_1$
+	\item $T_\text{Gd500} < T_\text{Gd600}$	
 	\end{itemize}
 	\end{block}
 \end{frame}
@@ -211,15 +231,15 @@ Messung der Spin-Gitter Relaxationszeit $T_1$:
 	\centering
 	\begin{subfigure}{.49\textwidth}
 	\centering
-	\includegraphics[scale=.36]{..//figures//f61_abb_7.pdf}
+	\includegraphics[scale=.36]{..//figures//f61_abb_6.pdf}
 	\caption{mit TMS-Peak}
 	\end{subfigure}
 	\begin{subfigure}{.49\textwidth}
 	\centering
-	\includegraphics[scale=.36]{..//figures//f61_abb_7_ohne.pdf}
+	\includegraphics[scale=.36]{..//figures//f61_abb_6_ohne.pdf}
 	\caption{ohne TMS}
 	\end{subfigure}	
-	\caption{Fluoroaceton}
+	\caption{Essigsäure}
 	\end{figure}
 \end{frame}
 
@@ -267,14 +287,14 @@ Messung der Spin-Gitter Relaxationszeit $T_1$:
 \begin{frame}{Physikalischer Hintergrund}
 Frequenz Methode:
 	\begin{itemize}
-	\item $\vec{M}_\bot$ wird durch \SI{90}{\degree} Puls generiert
+	\item $\vec{M}_\bot$ wird durch $\operatorname{sinc}$ Puls generiert
 	\item Einmaliges Einschalten des Gradientenfeld\\
 	$\Rightarrow$ Ortsabhängige Larmorfrequenz $\omega_\text{L}$
 	\end{itemize}
 \vspace{.5cm}
 Phasen Methode:
 	\begin{itemize}
-	\item $\vec{M}_\bot$ wird durch \SI{90}{\degree} Puls generiert
+	\item $\vec{M}_\bot$ wird durch $\operatorname{sinc}$ Puls generiert
 	\item Mehrmaliges Einschalten des Gradientenfeld\\
 	$\Rightarrow$ Phasendifferenz der Kerne an unterschiedlichen Orten
 	\end{itemize}
@@ -292,18 +312,30 @@ Kombination von Phasen/Frequenz Methode für 2D %Hier vielleicht noch mehr Erkl�
 \begin{frame}{Eindimensionale Messung}
 	\begin{figure} %Bild von Reagenzglas mit Teflon, auch erklärung der Messungen auf Folien
 	\centering
-	\includegraphics<+>[scale=.55]{..//figures//f61_abb_8.pdf}
-	\includegraphics<+>[scale=.09]{images//oilteflon.jpg}
-	\includegraphics<+>[scale=.55]{..//figures//f61_abb_8.pdf}
+	\includegraphics[scale=.55]{..//figures//f61_abb_8.pdf}
 	\caption{Öl in Reagenzglas}
 	\end{figure}
-	
 \end{frame}
 
 \begin{frame}{Eindimensionale Messung}
-Fick'sches Gesetz: %Erklärung der Situation des Öls und Sands muss noch davor
+	\begin{figure} %Bild von Reagenzglas mit Teflon, auch erklärung der Messungen auf Folien
+	\centering
+	\begin{subfigure}{.49\textwidth}
+	\centering
+	\includegraphics[width=3cm, height=5cm]{images//oilteflon.jpg}
+	\end{subfigure}
+	\begin{subfigure}{.49\textwidth}
+	\centering
+	\makebox[\textwidth][c]{\includegraphics[width=1.2\textwidth]{..//figures//f61_abb_8_teflon.pdf}}
+	\end{subfigure}
+	\caption{Öl zwischen Teflon in Reagenzglas}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Eindimensionale Messung}
+Diffusionsgleichung: %Erklärung der Situation des Öls und Sands muss noch davor
 	\begin{align*}
-	\dv{c}{t}=D\dv[2]{c}{x}
+	\pdv{c(x,t)}{t}=D\pdv[2]{c}{x}
 	\end{align*}
 	$\Rightarrow$ \enquote{zerlaufende} Gaußfunktion
 	\begin{figure}
@@ -328,15 +360,7 @@ Fick'sches Gesetz: %Erklärung der Situation des Öls und Sands muss noch davor
 	\begin{figure}
 	\centering
 	\includegraphics[scale=.5]{..//figures//chilipepper.png}
-	\caption{Chillischote}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{Zweidimensionale Messung}
-	\begin{figure}
-	\centering
-	\includegraphics[scale=.5]{..//figures//peanut.png}
-	\caption{Erdnuss}
+	\caption{Chilischote}
 	\end{figure}
 \end{frame}
 
@@ -345,6 +369,14 @@ Fick'sches Gesetz: %Erklärung der Situation des Öls und Sands muss noch davor
 	\centering
 	\includegraphics[scale=.5]{..//figures//olive.png}
 	\caption{Olive}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Zweidimensionale Messung}
+	\begin{figure}
+	\centering
+	\includegraphics[scale=.5]{..//figures//peanut.png}
+	\caption{Erdnuss}
 	\end{figure}
 \end{frame}
 
@@ -368,7 +400,7 @@ Medizinischer Bereich
 \begin{frame}{Fazit}
 	\begin{alertblock}{-}
 	\begin{itemize}
-	\item Inhomogener Magnet
+	\item Inhomogener Magnet ($\nicefrac{\Delta B}{B}\sim\num{e-5}$)
 	\item Temperaturschwankungen
 	\end{itemize}
 	\end{alertblock}

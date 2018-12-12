@@ -189,6 +189,19 @@ plt.savefig('figures//f61_abb_6.pdf',format='pdf')
 #plt.show()
 plt.close()
 
+x, y=np.loadtxt('data/samples/C.txt', skiprows=1, unpack=True)
+
+plt.plot(x[120:450], y[120:450], color='black', label='Measuring data')
+plt.xlabel('Frequency [Hz]', fontsize=13)
+plt.ylabel('Amplitude [a. u.]', fontsize=13)
+#plt.title('Fig. [6]: Sample C+', fontsize=16)
+plt.annotate("TMS-Peak", xy=(650, 0.1), xytext=(720, 0.14), fontsize=13,
+            arrowprops=dict(arrowstyle="simple", color='black'))
+plt.legend(frameon=True, fontsize = 12)
+plt.savefig('figures//f61_abb_6_ohne.pdf',format='pdf')
+#plt.show()
+plt.close()
+
 x, y=np.loadtxt('data/samples/D+.txt', skiprows=0, unpack=True)
 
 plt.plot(x[247:450], y[247:450], color='black', label='Measuring data')
@@ -234,13 +247,23 @@ x3, y3=np.loadtxt('data/testProfil3.txt', skiprows=0, unpack=True)
 plt.plot(-20,280)
 plt.plot(x1, y1, color=(.784,0,0), label='Less oil')
 plt.plot(x2, y2, color='forestgreen', label='Much oil')
-plt.plot(x3, y3, color='black', label='Oil between teflon layers')
+#plt.plot(x3, y3, color='black', label='Oil between teflon layers')
 plt.xlabel('Vertical coordinates [mm]', fontsize=13)
 plt.ylabel('Amplitude [a. u.]', fontsize=13)
 #plt.title('Fig. [8]: Different oil', fontsize=16)
 plt.legend(frameon=True, fontsize = 12)
 plt.savefig('figures//f61_abb_8.pdf',format='pdf')
 #plt.show()
+plt.close()
+
+
+plt.plot(x3, y3, color='black', label='Oil between teflon layers')
+plt.xlabel('Vertical coordinates [mm]', fontsize=13)
+plt.ylabel('Amplitude [a. u.]', fontsize=13)
+#plt.title('Fig. [8]: Different oil', fontsize=16)
+plt.legend(loc = 'upper right', frameon=True, fontsize = 12)
+plt.savefig('figures//f61_abb_8_teflon.pdf',format='pdf')
+plt.show()
 plt.close()
 
 
