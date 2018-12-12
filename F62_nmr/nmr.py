@@ -195,8 +195,8 @@ plt.plot(x[120:450], y[120:450], color='black', label='Measuring data')
 plt.xlabel('Frequency [Hz]', fontsize=13)
 plt.ylabel('Amplitude [a. u.]', fontsize=13)
 #plt.title('Fig. [6]: Sample C+', fontsize=16)
-plt.annotate("TMS-Peak", xy=(650, 0.1), xytext=(720, 0.14), fontsize=13,
-            arrowprops=dict(arrowstyle="simple", color='black'))
+#plt.annotate("TMS-Peak", xy=(650, 0.1), xytext=(720, 0.14), fontsize=13,
+ #           arrowprops=dict(arrowstyle="simple", color='black'))
 plt.legend(frameon=True, fontsize = 12)
 plt.savefig('figures//f61_abb_6_ohne.pdf',format='pdf')
 #plt.show()
@@ -263,7 +263,7 @@ plt.ylabel('Amplitude [a. u.]', fontsize=13)
 #plt.title('Fig. [8]: Different oil', fontsize=16)
 plt.legend(loc = 'upper right', frameon=True, fontsize = 12)
 plt.savefig('figures//f61_abb_8_teflon.pdf',format='pdf')
-plt.show()
+#plt.show()
 plt.close()
 
 
