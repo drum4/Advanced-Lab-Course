@@ -133,6 +133,10 @@ Degre60_1623=auslesen(32,65)/1000
 Degre60=np.array([Degre60_1321,Degre60_1351,Degre60_1428,Degre60_1455,Degre60_1525,Degre60_1554,Degre60_1623])
 Degre60=longarray(Degre60)
 
+rain293=meansample(auslesen(6,39)/1000)
+rain298=meansample(auslesen(8,41)/1000)
+rain58=meansample(auslesen(7,40)/1000)
+
 
 Degre60_1321_mean=meansample(Degre60_1321)
 Degre60_1351_mean=meansample(Degre60_1351)
@@ -524,10 +528,27 @@ plt.title('Fig. [1]:', fontsize=16)
 plt.close()
 
 #############
-#### Teil3 ####
+#### Teil 3 ####
 ##############
 
 Time, D_del, D_del_sd, O18_del, O18_del_sd, O17_del, O17_del_sd= np.genfromtxt('data/rainfall_daily2.txt', delimiter='\t', skip_header=1, usecols=(0,3,4,5,6,7,8), unpack=True)
+
+
+D_del=D_del/1000
+D_del_sd=D_del_sd/1000
+O18_del=O18_del/1000
+O18_del_sd=O18_del_sd/1000
+O17_del=O17_del/1000
+O17_del_sd=O17_del_sd/1000
+
+Time=np.append(Time, [240,241])
+D_del=np.append(D_del, [rain293[0],rain298[0]])
+D_del_sd=np.append(D_del_sd, [rain293[1],rain298[1]])
+O18_del=np.append(O18_del, [rain293[2],rain298[2]])
+O18_del_sd=np.append(O18_del_sd, [rain293[3],rain298[3]])
+O17_del=np.append(O17_del, [rain293[4],rain298[4]])
+O17_del_sd=np.append(O17_del_sd, [rain293[5],rain298[5]])
+
 
 plt.errorbar(Time, D_del, yerr=D_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
 plt.xlabel('Zeit [min]', fontsize=13)
@@ -543,7 +564,22 @@ plt.title('Daily', fontsize=16)
 plt.show()
 plt.close()
 
-D_del, D_del_sd, O18_del, O18_del_sd, O17_del, O17_del_sd= np.genfromtxt('data/rainfall_daily2.txt', delimiter='\t', skip_header=1, usecols=(3,4,5,6,7,8), unpack=True)
+D_del, D_del_sd, O18_del, O18_del_sd, O17_del, O17_del_sd= np.genfromtxt('data/rainfall_monthly2.txt', delimiter='\t', skip_header=1, usecols=(3,4,6,7,9,10), unpack=True)
+
+D_del=D_del/1000
+D_del_sd=D_del_sd/1000
+O18_del=O18_del/1000
+O18_del_sd=O18_del_sd/1000
+O17_del=O17_del/1000
+O17_del_sd=O17_del_sd/1000
+
+D_del=np.append(D_del, [rain58[0]])
+D_del_sd=np.append(D_del_sd, [rain58[1]])
+O18_del=np.append(O18_del, [rain58[2]])
+O18_del_sd=np.append(O18_del_sd, [rain58[3]])
+O17_del=np.append(O17_del, [rain58[4]])
+O17_del_sd=np.append(O17_del_sd, [rain58[5]])
+
 
 Time=np.arange(0,len(D_del))
 plt.errorbar(Time, D_del, yerr=D_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
