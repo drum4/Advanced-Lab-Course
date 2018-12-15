@@ -113,8 +113,8 @@ Degre50_mean=longarraymean(Degre50_mean)
 
 Masse_50=np.array([1012.61, 990.05, 968.50, 946.43, 925.30, 903.97, 891.91])
 fraction_50=Masse_50/(Masse_50[0])
-#
-#
+
+
 VE_1=auslesenstandard(0,15,27,32,47,59,68)/1000
 Alpen_1=auslesenstandard(2,13,23,34,45,55,66)/1000
 Colle_1=auslesenstandard(4,11,26,36,43,58,64)/1000
@@ -238,7 +238,7 @@ plt.close()
 
 plt.errorbar(fraction_40,(Degre40)[0:7],yerr=(Degre40)[14:21], fmt='.',color='red', label='Messung 2')
 plt.errorbar(fraction_40,(Degre40)[7:14],yerr=(Degre40)[21:28], fmt='.',color='black', label='Messung 1')
-plt.errorbar(fraction_40,Degre40_mean[0:7],yerr=Degre40_mean[7:14], fmt='.', color='green', label='Mittelwert')
+#plt.errorbar(fraction_40,Degre40_mean[0:7],yerr=Degre40_mean[7:14], fmt='.', color='green', label='Mittelwert')
 plt.xlabel('Fraction')
 plt.ylabel('Delta_D 40')
 plt.title('Delta_D bei 40 Grad')
@@ -350,12 +350,14 @@ plt.plot(fraction_60, frac(fraction_60,*popt3), linestyle='-', color='red')
 plt.errorbar(fraction_40,Degre40_mean[0:7],yerr=Degre40_mean[7:14], fmt='.', color='blue', label='40 Grad')
 plt.errorbar(fraction_50,Degre50_mean[0:7],yerr=Degre50_mean[7:14], fmt='.', color='green', label='50 Grad')
 plt.errorbar(fraction_60,Degre60_mean[0:7],yerr=Degre60_mean[7:14], fmt='.', color='red', label='60 Grad')
-plt.xlabel('Fraction')
-plt.ylabel('Delta_D')
-plt.title('Delta_D Mittelwerte')
-plt.legend()
+plt.xlabel('Fraction', fontsize=13)
+plt.ylabel('$\\delta D$', fontsize=13)
+plt.title('Mittelwert: $\\delta D$',fontsize=16)
 plt.gca().invert_xaxis()
-plt.show()
+plt.legend(frameon=True, fontsize = 12)
+plt.tight_layout()
+plt.savefig('figures//f55_abb_1.pdf',format='pdf')
+#plt.show()
 plt.close()
 
 alphaD40=popt1[0]
@@ -364,7 +366,9 @@ alphaD50=popt2[0]
 alphaD50err=pcov2[0][0]
 alphaD60=popt3[0]
 alphaD60err=pcov3[0][0]
-
+print('alphaD40=',alphaD40,'+',alphaD40err)
+print('alphaD50=',alphaD50,'+',alphaD50err)
+print('alphaD60=',alphaD60,'+',alphaD60err)
 
 popt1, pcov1 = curve_fit(frac, fraction_40, Degre40_mean[14:21], absolute_sigma=True, sigma=Degre40_mean[21:28])
 popt2, pcov2 = curve_fit(frac, fraction_50, Degre50_mean[14:21], absolute_sigma=True, sigma=Degre50_mean[21:28])
@@ -375,12 +379,14 @@ plt.plot(fraction_60, frac(fraction_60,*popt3), linestyle='-', color='red')
 plt.errorbar(fraction_40,Degre40_mean[14:21],yerr=Degre40_mean[21:28], fmt='.', color='blue', label='40 Grad')
 plt.errorbar(fraction_50,Degre50_mean[14:21],yerr=Degre50_mean[21:28], fmt='.', color='green', label='50 Grad')
 plt.errorbar(fraction_60,Degre60_mean[14:21],yerr=Degre60_mean[21:28], fmt='.', color='red', label='60 Grad')
-plt.xlabel('Fraction')
-plt.ylabel('Delta_O18')
-plt.title('Delta_O18 Mittelwerte')
-plt.legend()
+plt.xlabel('Fraction', fontsize=13)
+plt.ylabel('$\\delta^{18} O$', fontsize=13)
+plt.title('Mittelwert: $\\delta^{18} O$',fontsize=16)
 plt.gca().invert_xaxis()
-plt.show()
+plt.legend(frameon=True, fontsize = 12)
+plt.tight_layout()
+plt.savefig('figures//f55_abb_2.pdf',format='pdf')
+#plt.show()
 plt.close()
 
 alphaO1840=popt1[0]
@@ -389,7 +395,9 @@ alphaO1850=popt2[0]
 alphaO1850err=pcov2[0][0]
 alphaO1860=popt3[0]
 alphaO1860err=pcov3[0][0]
-
+print('alphaO1840=',alphaO1840,'+',alphaO1840err)
+print('alphaO1850=',alphaO1850,'+',alphaO1850err)
+print('alphaO1860=',alphaO1860,'+',alphaO1860err)
 
 popt1, pcov1 = curve_fit(frac, fraction_40, Degre40_mean[28:35], absolute_sigma=True, sigma=Degre40_mean[35:42])
 popt2, pcov2 = curve_fit(frac, fraction_50, Degre50_mean[28:35], absolute_sigma=True, sigma=Degre50_mean[35:42])
@@ -400,12 +408,14 @@ plt.plot(fraction_60, frac(fraction_60,*popt3), linestyle='-', color='red')
 plt.errorbar(fraction_40,Degre40_mean[28:35],yerr=Degre40_mean[35:42], fmt='.', color='blue', label='40 Grad')
 plt.errorbar(fraction_50,Degre50_mean[28:35],yerr=Degre50_mean[35:42], fmt='.', color='green', label='50 Grad')
 plt.errorbar(fraction_60,Degre60_mean[28:35],yerr=Degre60_mean[35:42], fmt='.', color='red', label='60 Grad')
-plt.xlabel('Fraction')
-plt.ylabel('Delta_O17')
-plt.title('Delta_O17 Mittelwerte')
-plt.legend()
+plt.xlabel('Fraction', fontsize=13)
+plt.ylabel('$\\delta^{17} O$', fontsize=13)
+plt.title('Mittelwert: $\\delta^{17} O$',fontsize=16)
 plt.gca().invert_xaxis()
-plt.show()
+plt.legend(frameon=True, fontsize = 12)
+plt.tight_layout()
+plt.savefig('figures//f55_abb_3.pdf',format='pdf')
+#plt.show()
 plt.close()
 
 alphaO1740=popt1[0]
@@ -414,7 +424,9 @@ alphaO1750=popt2[0]
 alphaO1750err=pcov2[0][0]
 alphaO1760=popt3[0]
 alphaO1760err=pcov3[0][0]
-
+print('alphaO1740=',alphaO1740,'+',alphaO1740err)
+print('alphaO1750=',alphaO1750,'+',alphaO1750err)
+print('alphaO1760=',alphaO1760,'+',alphaO1760err)
 
 plt.errorbar(np.array([40,50,60]),np.array([alphaD40,alphaD50,alphaD60]), yerr=np.array([alphaD40err,alphaD50err,alphaD60err]), fmt='.', color='black', label='Deuterium')
 plt.errorbar([40,50,60],[alphaO1840,alphaO1850,alphaO1860], yerr=[alphaO1840err,alphaO1850err,alphaO1860err], fmt='.', color='red', label='O18')
@@ -423,7 +435,7 @@ plt.xlabel('Temperatur')
 plt.ylabel('alpha')
 plt.title('Alphawerte der Isotope')
 plt.legend()
-plt.show()
+#plt.show()
 plt.close()
 
 ###############
@@ -431,12 +443,19 @@ plt.close()
 ##############
 
 
-popt1, pcov1 = curve_fit(linear, Degre40_mean[14:21], Degre40_mean[0:7], absolute_sigma=True, sigma=Degre40_mean[21:28])
-popt2, pcov2 = curve_fit(linear, Degre50_mean[14:21], Degre50_mean[0:7], absolute_sigma=True, sigma=Degre50_mean[21:28])
-popt3, pcov3 = curve_fit(linear, Degre60_mean[14:21], Degre60_mean[0:7], absolute_sigma=True, sigma=Degre60_mean[21:28])
-plt.plot(Degre60_mean[14:21], linear(Degre60_mean[14:21],*popt1), linestyle='-', color='blue')
-plt.plot(Degre60_mean[14:21], linear(Degre60_mean[14:21],*popt2), linestyle='-', color='green')
-plt.plot(Degre60_mean[14:21], linear(Degre60_mean[14:21],*popt3), linestyle='-', color='red')
+Delta_O18=np.append(Degre40_mean[14:21],[Degre50_mean[14:21],Degre60_mean[14:21]])
+Delta_O18_err=np.append(Degre40_mean[21:28],[Degre50_mean[21:28],Degre60_mean[21:28]])
+Delta_D=np.append(Degre40_mean[0:7],[Degre50_mean[0:7],Degre60_mean[0:7]])
+Delta_D_err=np.append(Degre40_mean[7:14],[Degre50_mean[7:14],Degre60_mean[7:14]])
+
+popt, pcov = curve_fit(linear, Delta_O18, Delta_D, absolute_sigma=True, sigma=Delta_D_err)
+popt1, pcov1 = curve_fit(linear, Degre40_mean[14:21], Degre40_mean[0:7], absolute_sigma=True, sigma=Degre40_mean[7:14])
+popt2, pcov2 = curve_fit(linear, Degre50_mean[14:21], Degre50_mean[0:7], absolute_sigma=True, sigma=Degre50_mean[7:14])
+popt3, pcov3 = curve_fit(linear, Degre60_mean[14:21], Degre60_mean[0:7], absolute_sigma=True, sigma=Degre60_mean[7:14])
+#plt.plot(Degre60_mean[14:21], linear(Degre60_mean[14:21],*popt1), linestyle='-', color='blue')
+#plt.plot(Degre60_mean[14:21], linear(Degre60_mean[14:21],*popt2), linestyle='-', color='green')
+#plt.plot(Degre60_mean[14:21], linear(Degre60_mean[14:21],*popt3), linestyle='-', color='red')
+plt.plot(Delta_O18, linear(Delta_O18,*popt), linestyle='-', color='black', label='linearer Fit')
 plt.errorbar(Degre40_mean[14:21],Degre40_mean[0:7],xerr=Degre40_mean[21:28],yerr=Degre40_mean[7:14], fmt='.', color='blue', label='40 Grad')
 plt.errorbar(Degre50_mean[14:21],Degre50_mean[0:7],xerr=Degre50_mean[21:28],yerr=Degre50_mean[7:14], fmt='.', color='green', label='50 Grad')
 plt.errorbar(Degre60_mean[14:21],Degre60_mean[0:7],xerr=Degre60_mean[21:28],yerr=Degre60_mean[7:14], fmt='.', color='red', label='60 Grad')
@@ -444,7 +463,7 @@ plt.xlabel('Delta_O18 [promille]')
 plt.ylabel('Delta_D [promille]')
 plt.title('Waterline Temperature')
 plt.legend()
-plt.show()
+#plt.show()
 plt.close()
 
 a=popt1[0]
@@ -453,11 +472,19 @@ b=popt2[0]
 berr=pcov2[0][0]
 c=popt3[0]
 cerr=pcov3[0][0]
+d=popt[0]
+d_err=pcov[0][0]
 
-slope=(a+b+c)/3
+print(a)
+print(b)
+print(c)
+slope_einzel=(a+b+c)/3
 #slopeerr=np.sqrt(aerr**2+berr**2+cerr**2)/3
-slopeerr=np.std([a,b,c])
-print('slope=',slope,'+',slopeerr)
+slope_einzel_err=np.std([a,b,c])
+print('slope_einzel=',slope_einzel,'+',slope_einzel_err)
+slope=d
+slope_err=d_err
+print('slope=',slope,'+',slope_err)
 
 ########################
 ######Teil 2############
@@ -495,3 +522,41 @@ plt.ylabel('O17_del', fontsize=13)
 plt.title('Fig. [1]:', fontsize=16)
 #plt.show()
 plt.close()
+
+#############
+#### Teil3 ####
+##############
+
+Time, D_del, D_del_sd, O18_del, O18_del_sd, O17_del, O17_del_sd= np.genfromtxt('data/rainfall_daily2.txt', delimiter='\t', skip_header=1, usecols=(0,3,4,5,6,7,8), unpack=True)
+
+plt.errorbar(Time, D_del, yerr=D_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
+plt.xlabel('Zeit [min]', fontsize=13)
+plt.ylabel('DeltaD', fontsize=13)
+plt.title('Daily', fontsize=16)
+plt.show()
+plt.close()
+
+plt.errorbar(O18_del, D_del, xerr=O18_del_sd, yerr=D_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
+plt.xlabel('Zeit [min]', fontsize=13)
+plt.ylabel('DeltaD', fontsize=13)
+plt.title('Daily', fontsize=16)
+plt.show()
+plt.close()
+
+D_del, D_del_sd, O18_del, O18_del_sd, O17_del, O17_del_sd= np.genfromtxt('data/rainfall_daily2.txt', delimiter='\t', skip_header=1, usecols=(3,4,5,6,7,8), unpack=True)
+
+Time=np.arange(0,len(D_del))
+plt.errorbar(Time, D_del, yerr=D_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
+plt.xlabel('Zeit [min]', fontsize=13)
+plt.ylabel('O17_del', fontsize=13)
+plt.title('Monthly', fontsize=16)
+plt.show()
+plt.close()
+
+plt.errorbar(O18_del, D_del, xerr=O18_del_sd, yerr=D_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
+plt.xlabel('Zeit [min]', fontsize=13)
+plt.ylabel('DeltaD', fontsize=13)
+plt.title('Monthly', fontsize=16)
+plt.show()
+plt.close()
+
