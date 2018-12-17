@@ -151,15 +151,17 @@ Degre60_mean=longarraymean(Degre60_mean)
 Masse_60=np.array([953.10,919.13,875.74,844.71,809.80,776.12,740.07])
 fraction_60=Masse_60/(Masse_60[0])
 
-
-Sample_293=auslesen(6,39)/1000
-Sample_58=auslesen(7,40)/1000
-Sample_298=auslesen(8,41)/1000
 Sample_k009=auslesen(9,42)/1000
 Sample_w051=auslesen(10,43)/1000
 Sample_w075=auslesen(17,50)/1000
 Sample_w023=auslesen(18,51)/1000
 Sample_w077=auslesen(19,52)/1000
+
+Sample_k009=meansample(Sample_k009)
+Sample_w051=meansample(Sample_w051)
+Sample_w075=meansample(Sample_w075)
+Sample_w023=meansample(Sample_w023)
+Sample_w077=meansample(Sample_w077)
 
 VE_2=auslesenstandard(0,15,26,33,48,59,70)/1000
 Alpen_2=auslesenstandard(2,13,23,35,45,57,68)/1000
@@ -570,14 +572,39 @@ plt.savefig('figures//f55_abb_10.pdf',format='pdf')
 plt.show()
 plt.close()
 
-popt, pcov = curve_fit(linear, Delta_O18, Delta_D, absolute_sigma=True, sigma=Delta_D_err)
+plt.errorbar(Time, O18_del, yerr=O18_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
+plt.xlabel('Zeitraum 2016-2018', fontsize=13)
+plt.ylabel('$\\delta D$', fontsize=13)
+plt.title('Abb. [10]: Tägliche $\\delta^{18}O$ Werte', fontsize=16)
+#plt.savefig('figures//f55_abb_10.pdf',format='pdf')
+plt.show()
+plt.close()
+
+plt.errorbar(Time, O17_del, yerr=O17_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
+plt.xlabel('Zeitraum 2016-2018', fontsize=13)
+plt.ylabel('$\\delta D$', fontsize=13)
+plt.title('Abb. [10]: Tägliche $\\delta^{17}O$ Werte', fontsize=16)
+#plt.savefig('figures//f55_abb_10.pdf',format='pdf')
+plt.show()
+plt.close()
+
+p=np.array([8,0.003])
+popt, pcov = curve_fit(linear, O18_del, D_del,p0=p)
+a=popt[0]
+a_err=pcov[0][0]
+b=popt[1]
+b_err=pcov[1][1]
 plt.errorbar(O18_del, D_del, xerr=O18_del_sd, yerr=D_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
+plt.plot(O18_del, linear(O18_del,*popt), linestyle='-', color='red')
 plt.xlabel('$\\delta^{18} O$', fontsize=13)
 plt.ylabel('$\\delta D$', fontsize=13)
 plt.title('Abb. [11]: Waterline täglich', fontsize=16)
 plt.savefig('figures//f55_abb_11.pdf',format='pdf')
 plt.show()
 plt.close()
+
+print('a=',a,'+',a_err,'Einzelwerte, die nehmen wir')
+print('b=',b,'+',b_err)
 
 D_del, D_del_sd, O18_del, O18_del_sd, O17_del, O17_del_sd= np.genfromtxt('data/rainfall_monthly2.txt', delimiter='\t', skip_header=1, usecols=(3,4,6,7,9,10), unpack=True)
 
@@ -605,7 +632,29 @@ plt.savefig('figures//f55_abb_12.pdf',format='pdf')
 plt.show()
 plt.close()
 
+plt.errorbar(Time, O18_del, yerr=O18_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
+plt.xlabel('Zeitraum 2016-2018', fontsize=13)
+plt.ylabel('$\\delta^{18}O$', fontsize=13)
+plt.title('Abb. [12]: Monatliche $\\delta^{18}O$ Werte', fontsize=16)
+#plt.savefig('figures//f55_abb_12.pdf',format='pdf')
+plt.show()
+plt.close()
+
+plt.errorbar(Time, O17_del, yerr=O17_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
+plt.xlabel('Zeitraum 2016-2018', fontsize=13)
+plt.ylabel('$\\delta^{17}O$', fontsize=13)
+plt.title('Abb. [12]: Monatliche $\\delta^{17}O$ Werte', fontsize=16)
+#plt.savefig('figures//f55_abb_12.pdf',format='pdf')
+plt.show()
+plt.close()
+
+popt, pcov = curve_fit(linear, O18_del, D_del,p0=p)
+a=popt[0]
+a_err=pcov[0][0]
+b=popt[1]
+b_err=pcov[1][1]
 plt.errorbar(O18_del, D_del, xerr=O18_del_sd, yerr=D_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
+plt.plot(O18_del, linear(O18_del,*popt), linestyle='-', color='red')
 plt.xlabel('$\\delta^{18} O$', fontsize=13)
 plt.ylabel('$\\delta D$', fontsize=13)
 plt.title('Abb. [13]: Waterline monatlich', fontsize=16)
@@ -613,3 +662,15 @@ plt.savefig('figures//f55_abb_13.pdf',format='pdf')
 plt.show()
 plt.close()
 
+print('a=',a,'+',a_err)
+print('b=',b,'+',b_err)
+
+##############
+#### Teil 4###
+##############
+
+print('Sample_k009=',Sample_k009)
+print('Sample_w051=',Sample_w051)
+print('Sample_w075=',Sample_w075)
+print('Sample_w023=',Sample_w023)
+print('Sample_w077=',Sample_w077)
