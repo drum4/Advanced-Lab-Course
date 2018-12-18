@@ -463,13 +463,13 @@ popt3, pcov3 = curve_fit(linear, Degre60_mean[14:21], Degre60_mean[0:7], absolut
 #plt.plot(Degre60_mean[14:21], linear(Degre60_mean[14:21],*popt2), linestyle='-', color='green')
 #plt.plot(Degre60_mean[14:21], linear(Degre60_mean[14:21],*popt3), linestyle='-', color='red')
 a=popt1[0]
-aerr=pcov1[0][0]
+aerr=np.sqrt(pcov1[0][0])
 b=popt2[0]
-berr=pcov2[0][0]
+berr=np.sqrt(pcov2[0][0])
 c=popt3[0]
-cerr=pcov3[0][0]
+cerr=np.sqrt(pcov3[0][0])
 d=popt[0]
-d_err=pcov[0][0]
+d_err=np.sqrt(pcov[0][0])
 
 print(a)
 print(b)
@@ -478,8 +478,8 @@ slope_einzel=(a+b+c)/3
 #slopeerr=np.sqrt(aerr**2+berr**2+cerr**2)/3
 slope_einzel_err=np.std([a,b,c])
 print('slope_einzel=',slope_einzel,'+',slope_einzel_err)
-slope=np.round(d,4)
-slope_err=np.round(d_err,4)
+slope=np.round(d,2)
+slope_err=np.round(d_err,2)
 print('slope=',slope,'+',slope_err)
 
 plt.plot(Delta_O18, linear(Delta_O18,*popt), linestyle='-', color='black', label='linearer Fit')
@@ -565,45 +565,52 @@ O17_del_sd=np.append(O17_del_sd, [rain293[5],rain298[5]])
 
 
 plt.errorbar(Time, D_del, yerr=D_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
-plt.xlabel('Zeitraum 2016-2018', fontsize=13)
+plt.xlabel('Zeitraum Tage', fontsize=13)
+#plt.xticks([114,214],["1.1-11.1.16", "11.8-12.8.17"])
+plt.xticks([114,144,184,224],["1.1-11.1.16", "2.6-5.6.16", "31.1-8.2.17", "9.10-23.10.17"])
 plt.ylabel('$\\delta D$', fontsize=13)
 plt.title('Abb. [10]: Tägliche $\\delta D$ Werte', fontsize=16)
 plt.savefig('figures//f55_abb_10.pdf',format='pdf')
-plt.show()
+#plt.show()
 plt.close()
 
 plt.errorbar(Time, O18_del, yerr=O18_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
 plt.xlabel('Zeitraum 2016-2018', fontsize=13)
 plt.ylabel('$\\delta D$', fontsize=13)
-plt.title('Abb. [10]: Tägliche $\\delta^{18}O$ Werte', fontsize=16)
-#plt.savefig('figures//f55_abb_10.pdf',format='pdf')
-plt.show()
+plt.title('Abb. [11]: Tägliche $\\delta^{18}O$ Werte', fontsize=16)
+#plt.savefig('figures//f55_abb_101.pdf',format='pdf')
+#plt.show()
 plt.close()
 
 plt.errorbar(Time, O17_del, yerr=O17_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
 plt.xlabel('Zeitraum 2016-2018', fontsize=13)
 plt.ylabel('$\\delta D$', fontsize=13)
-plt.title('Abb. [10]: Tägliche $\\delta^{17}O$ Werte', fontsize=16)
-#plt.savefig('figures//f55_abb_10.pdf',format='pdf')
-plt.show()
+plt.title('Abb. [12]: Tägliche $\\delta^{17}O$ Werte', fontsize=16)
+#plt.savefig('figures//f55_abb_102.pdf',format='pdf')
+#plt.show()
 plt.close()
 
 p=np.array([8,0.003])
 popt, pcov = curve_fit(linear, O18_del, D_del,p0=p)
 a=popt[0]
-a_err=pcov[0][0]
+a_err=np.sqrt(pcov[0][0])
 b=popt[1]
-b_err=pcov[1][1]
+b_err=np.sqrt(pcov[1][1])
+slope = np.round(a,2)
+sloper_err = np.round(a_err,2)
 plt.errorbar(O18_del, D_del, xerr=O18_del_sd, yerr=D_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
 plt.plot(O18_del, linear(O18_del,*popt), linestyle='-', color='red')
 plt.xlabel('$\\delta^{18} O$', fontsize=13)
 plt.ylabel('$\\delta D$', fontsize=13)
+plt.text(-0.007,-0.1,'Steigung: %s $\\pm$ %s'%(slope, slope_err),
+        bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
+        fontsize=13)
 plt.title('Abb. [11]: Waterline täglich', fontsize=16)
 plt.savefig('figures//f55_abb_11.pdf',format='pdf')
-plt.show()
+#plt.show()
 plt.close()
 
-print('a=',a,'+',a_err,'Einzelwerte, die nehmen wir')
+print('a=',a,'+',a_err,'Einzelwerte, die wir nehmen')
 print('b=',b,'+',b_err)
 
 D_del, D_del_sd, O18_del, O18_del_sd, O17_del, O17_del_sd= np.genfromtxt('data/rainfall_monthly2.txt', delimiter='\t', skip_header=1, usecols=(3,4,6,7,9,10), unpack=True)
@@ -625,41 +632,47 @@ O17_del_sd=np.append(O17_del_sd, [rain58[5]])
 
 Time=np.arange(0,len(D_del))
 plt.errorbar(Time, D_del, yerr=D_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
-plt.xlabel('Zeitraum 2016-2018', fontsize=13)
+plt.xlabel('Zeitraum Monate', fontsize=13)
+plt.xticks([0,5,10,15,20,24],["Dezember 15", "Mai 16", "Oktober 16", "März 17", "August 17", "April 18"])
 plt.ylabel('$\\delta D$', fontsize=13)
 plt.title('Abb. [12]: Monatliche $\\delta D$ Werte', fontsize=16)
 plt.savefig('figures//f55_abb_12.pdf',format='pdf')
-plt.show()
+#plt.show()
 plt.close()
 
 plt.errorbar(Time, O18_del, yerr=O18_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
 plt.xlabel('Zeitraum 2016-2018', fontsize=13)
 plt.ylabel('$\\delta^{18}O$', fontsize=13)
 plt.title('Abb. [12]: Monatliche $\\delta^{18}O$ Werte', fontsize=16)
-#plt.savefig('figures//f55_abb_12.pdf',format='pdf')
-plt.show()
+#plt.savefig('figures//f55_abb_121.pdf',format='pdf')
+#plt.show()
 plt.close()
 
 plt.errorbar(Time, O17_del, yerr=O17_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
 plt.xlabel('Zeitraum 2016-2018', fontsize=13)
 plt.ylabel('$\\delta^{17}O$', fontsize=13)
 plt.title('Abb. [12]: Monatliche $\\delta^{17}O$ Werte', fontsize=16)
-#plt.savefig('figures//f55_abb_12.pdf',format='pdf')
-plt.show()
+#plt.savefig('figures//f55_abb_122.pdf',format='pdf')
+#plt.show()
 plt.close()
 
 popt, pcov = curve_fit(linear, O18_del, D_del,p0=p)
 a=popt[0]
-a_err=pcov[0][0]
+a_err=np.sqrt(pcov[0][0])
 b=popt[1]
-b_err=pcov[1][1]
+b_err=np.sqrt(pcov[1][1])
+slope = np.round(a,2)
+slope_err = np.round(a_err,2)
 plt.errorbar(O18_del, D_del, xerr=O18_del_sd, yerr=D_del_sd, fmt='.', linewidth=1, linestyle='', color='black')
 plt.plot(O18_del, linear(O18_del,*popt), linestyle='-', color='red')
 plt.xlabel('$\\delta^{18} O$', fontsize=13)
 plt.ylabel('$\\delta D$', fontsize=13)
+plt.text(-0.0075,-0.09,'Steigung: %s $\\pm$ %s'%(slope, slope_err),
+        bbox={'facecolor':'white', 'alpha':0.5, 'pad':10},
+        fontsize=13)
 plt.title('Abb. [13]: Waterline monatlich', fontsize=16)
 plt.savefig('figures//f55_abb_13.pdf',format='pdf')
-plt.show()
+#plt.show()
 plt.close()
 
 print('a=',a,'+',a_err)
