@@ -5,12 +5,38 @@ Created on 09.01.2019
 '''
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib import rc
 from scipy.optimize import curve_fit
+
+rc('font',**{'family':'serif','serif':['Linux Libertine O']})
+plt.rcParams['errorbar.capsize']=2
+
+########################
+#Bilder##
+########################
+#x, y = np.loadtxt('data/resonance_old.txt', usecols=(2,3,4,5,6,7), skiprows=1, unpack=True)
 
 ########################
 ## Abschnitt 3.1.2 #####
 ########################
 
+#####TGZ02 #####
+
+print('TGZ02')
+w_2=np.array([5.9,5.88,5.86,5.87,5.85])
+h1=np.array([104,101,7,103.3,103.5,102.9,103.7,103.6,104.8,104.8,104.9])
+phi1=np.array([13.85,13.61,14.67,14,11.27,13.88,12.85,13.98,13.04,14.47])
+
+w=np.mean(w_2)/2
+w_err=np.std(w_2)/2
+h=np.mean(h1)
+h_err=np.std(h1)
+phi_err=np.std(phi1)
+phi=np.mean(phi1)
+
+print('w=',w,'+',w_err)
+print('h=',h,'+',h_err)
+print('phi=',phi,'+',phi_err)
 #####TGZ01 old tip#####
 
 print('TGZ01 old tip')
@@ -23,7 +49,7 @@ w_err=np.std(w_2)/2
 h=np.mean(h1)
 h_err=np.std(h1)
 phi=np.mean(phi1)
-phi_err=np.std(phi)
+phi_err=np.std(phi1)
 
 print('w=',w,'+',w_err)
 print('h=',h,'+',h_err)
@@ -41,7 +67,7 @@ w_err=np.std(w_2)/2
 h=np.mean(h1)
 h_err=np.std(h1)
 phi=np.mean(phi1)
-phi_err=np.std(phi)
+phi_err=np.std(phi1)
 
 print('w=',w,'+',w_err)
 print('h=',h,'+',h_err)
