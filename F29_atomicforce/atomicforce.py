@@ -143,7 +143,27 @@ print('a=',a,'+',a_err)
 #### CD #######
 ###############
 
-pits=np.array([7.65/4, 4.84/2, 1.74, 3.41/2, 4.75/2])
-print(pits)
-print("2.42/9, 2.375/9, 1.9125/7, 1.74/6, 1.705/6")
-print('oder 2.42/7, 2.375/7, 1.74/5, 1.705/5 ')
+print("CD")
+pits1 =np.array([7.65/4, 4.84/2, 1.74, 3.41/2, 4.75/2])
+pits = np.array([2.42/9, 2.375/9, 1.9125/7, 1.74/6, 1.705/6])
+print(np.mean(pits)*3, np.std(pits)*3)
+print(np.mean(pits)*17, np.std(pits)*17)
+
+print("DVD")
+pits1 = np.array([7.84/5, 6.72/5, 6.19/4, 7.48/6])
+pits = np.array([1.568/11, 1.344/10, 1.5475/11, 1.2466/9])
+print(np.mean(pits)*3, np.std(pits)*3)
+print(np.mean(pits)*17, np.std(pits)*17)
+
+print("Blu-Ray")
+pits = np.array([0.199/3, 0.194/3])
+print(np.mean(pits)*3, np.std(pits)*3)
+print(np.mean(pits)*17, np.std(pits)*17)
+
+print("length")
+a = np.array([6.41/4, 5.18/7, 1.564/5])
+print(a)
+l=8605*10**6/a
+print(l)
+
+
