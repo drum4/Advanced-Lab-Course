@@ -412,9 +412,9 @@ plt.close()
 
 
 
-##############
-#Cosinus-Fit#
-##############
+###################
+### Cosinus-Fit ###
+###################
 raw = np.loadtxt('data//degree0_t901_raw.dat',
                  delimiter = '\t', unpack=True)
 a=0
