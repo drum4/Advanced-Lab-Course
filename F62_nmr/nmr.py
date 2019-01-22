@@ -15,9 +15,9 @@ plt.rcParams['errorbar.capsize']=2
 
 
 
-#################
-#Relaxation Time#
-#################
+#######################
+### Relaxation Time ###
+#######################
 def lattice(x,a,b,c):
     return a*(1-2*np.exp(-x/b))+c
 
