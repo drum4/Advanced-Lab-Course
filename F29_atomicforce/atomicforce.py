@@ -143,22 +143,6 @@ print('a=',a,'+',a_err)
 #### CD #######
 ###############
 
-print("CD")
-pits1 =np.array([7.65/4, 4.84/2, 1.74, 3.41/2, 4.75/2])
-pits = np.array([2.42/9, 2.375/9, 1.9125/7, 1.74/6, 1.705/6])
-print(np.mean(pits)*3, np.std(pits)*3)
-print(np.mean(pits)*17, np.std(pits)*17)
-
-print("DVD")
-pits1 = np.array([7.84/5, 6.72/5, 6.19/4, 7.48/6])
-pits = np.array([1.568/11, 1.344/10, 1.5475/11, 1.2466/9])
-print(np.mean(pits)*3, np.std(pits)*3)
-print(np.mean(pits)*17, np.std(pits)*17)
-
-print("Blu-Ray")
-pits = np.array([0.199/3, 0.194/3])
-print(np.mean(pits)*3, np.std(pits)*3)
-print(np.mean(pits)*17, np.std(pits)*17)
 
 print("length")
 a = np.array([6.41/4, 5.18/7, 1.564/5])
@@ -166,4 +150,52 @@ print(a)
 l=8605*10**6/a
 print(l)
 
+print("CD")
+pits1 =np.array([7.65/4, 4.84/2, 1.74, 3.41/2, 4.75/2])
+pits = np.array([2.42/9, 2.375/9, 1.9125/7, 1.74/6, 1.705/6])
+print(np.mean(pits)*3, np.std(pits)*3)
+print(np.mean(pits)*17, np.std(pits)*17)
+b = np.mean(pits)*17
+b_err = np.std(pits)*17
+print(l[0]/b, l[0]/b**2*b_err)
 
+print("DVD")
+pits1 = np.array([7.84/5, 6.72/5, 6.19/4, 7.48/6])
+pits = np.array([1.568/11, 1.344/10, 1.5475/11, 1.2466/9])
+print(np.mean(pits)*3, np.std(pits)*3)
+print(np.mean(pits)*17, np.std(pits)*17)
+b = np.mean(pits)*17
+b_err = np.std(pits)*17
+print(l[1]/b, l[1]/b**2*b_err)
+
+print("Blu-Ray")
+pits = np.array([0.199/3, 0.194/3])
+print(np.mean(pits)*3, np.std(pits)*3)
+print(np.mean(pits)*17, np.std(pits)*17)
+b = np.mean(pits)*17
+b_err = np.std(pits)*17
+print(l[2]/b, l[2]/b**2*b_err)
+
+
+
+
+
+
+########################
+### Force Distance ####
+#######################
+
+x, y = np.loadtxt('data/force_new.txt', delimiter="\t", usecols=(0,1), skiprows=1, unpack=True)
+plt.errorbar(x, y, fmt='.', linewidth=1, linestyle='', color='black')
+plt.xlabel('Z [nm]', fontsize=13)
+plt.ylabel('TM Detection [nm]', fontsize=13)
+plt.title('Abb. [20]: Force old', fontsize=16)
+plt.legend()
+#plt.show()
+plt.close()
+
+b = np.array([3.5,9.5,11,13.5])
+b_err = np.array([0.3,0.3,0.5,0.5])
+f = b * 11.1*10**(-9)
+f_err = np.sqrt((b_err * 11.1*10**(-9))**2 + (b * 10**(-9))**2)
+print(f, f_err)
