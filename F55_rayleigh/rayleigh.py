@@ -15,6 +15,9 @@ plt.rcParams['errorbar.capsize']=2
 Delta_2H, Delta_2H_StDev, Delta_18O, Delta_18O_StDev, Delta_17O, Delta_17O_StDev= np.loadtxt('data/teil1_40_50-Processed.txt', usecols=(2,3,4,5,6,7), skiprows=1, unpack=True)
 
 
+###############################
+### Rayleigh-Fraktionierung ###
+###############################
 def auslesen(a,b):
     x=np.array([[],[],[],[],[],[]])
     for i in [a,b]:
