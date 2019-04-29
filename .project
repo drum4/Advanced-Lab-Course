@@ -21,6 +21,11 @@
 			<location>C:/Users/schmi/Documents/Studium/experimentalphysics/3_semester</location>
 		</link>
 		<link>
+			<name>computationalphysics</name>
+			<type>2</type>
+			<location>C:/Users/schmi/Documents/Studium/computationalphysics</location>
+		</link>
+		<link>
 			<name>theoreticalphysics</name>
 			<type>2</type>
 			<location>C:/Users/schmi/Documents/Studium/theoreticalphysics</location>
