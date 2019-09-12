@@ -26,6 +26,11 @@
 			<location>C:/Users/schmi/Documents/Studium/algorithm</location>
 		</link>
 		<link>
+			<name>bachelor</name>
+			<type>2</type>
+			<location>C:/Users/schmi/Documents/Studium/bachelor</location>
+		</link>
+		<link>
 			<name>computationalphysics</name>
 			<type>2</type>
 			<location>C:/Users/schmi/Documents/Studium/computationalphysics</location>

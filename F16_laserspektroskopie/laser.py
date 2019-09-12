@@ -1,8 +1,3 @@
-'''
-Created on 27.05.2018
-
-@author: schmi
-'''
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.optimize import curve_fit
